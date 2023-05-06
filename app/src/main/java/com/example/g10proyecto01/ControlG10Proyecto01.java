@@ -87,9 +87,45 @@ public class ControlG10Proyecto01 {
         DBHelper.close();
     }
 
+    /* Metodos Insertar aqui */
+
     public String insertar(Escuela escuela){
         return null;
     }
+
+    /* Metodos Actualizar aqui */
+
+
+
+
+
+
+
+
+
+    /* Metodos Eliminar aqui */
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Metodos Consultar aqui */
+
+
+
+
+
+
+
+
+
 
 
     // Verificar integridad
