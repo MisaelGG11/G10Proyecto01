@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">G10Proyecto01</string>
+    <!--Tablas-->
+    <string name="tablaEmpleadoUES">Tableau des employés de l’UES</string>
+    <string name="tablaTipoDeEmpleado">Tableau des types d’employés</string>
+    <string name="tablaDocente">Table des enseignants</string>
+    <string name="tablaLocalAdministrado">Table locale gérée</string>
+    <string name="tablaLocalidad">Tableau des localités</string>
+    <string name="tablaEventoEspecial">Table des événements spéciaux</string>
+    <string name="tablaTipoEvento">Tableau des types d’événements</string>
+    <string name="tablaOpcionCrud">Table d’options CRUD</string>
+    <string name="tablaHorario">Tableau de planification</string>
+    <string name="tablaUsuario">Table utilisateur</string>
+    <string name="tablaPropuestaEspecifica">Tableau des propositions spécifiques</string>
+    <string name="tablaPropuestaGeneral">Tableau des propositions générales</string>
+    <string name="tablaGrupo">Table de groupe</string>
+    <string name="tablaGrupoHorario">Tableau des horaires de groupe</string>
+    <string name="tablaMateria">Tableau des objets</string>
+    <string name="tablaOfertaAcademica">Tableau des offres académiques</string>
+    <string name="tablaCiclo">Tableau des cycles</string>
+    <string name="tablaEscuela">Table d’école</string>
+
+    <!--LoginActivity-->
+    <string name="user">Utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="login">"Se connecter "</string>
+
+    <!--MenuActivity-->
+    <string name="bienvenida">Bienvenue</string>
+    <string name="logout">Déconnexion</string>
+    <string name="llenadoBaseDatos">Remplir la base de données</string>
+
+</resources>

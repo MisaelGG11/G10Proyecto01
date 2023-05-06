@@ -7,19 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-public class AC17033Activity extends ListActivity {
+public class HS19011Activity extends ListActivity {
 
-    String[] activities={"LocalMenuActivity","LocalAdministradoMenuActivity","EventoEspecialMenuActivity", "TipoEventoMenuActivity"};
+    String[] activities={"EscuelaMenuActivity","CicloHorarioMenuActivity","OfertaAcademicaMenuActivity", "MateriaMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] menu={ getResources().getString(R.string.tablaLocalidad),
-                getResources().getString(R.string.tablaLocalAdministrado),
-                getResources().getString(R.string.tablaEventoEspecial),
-                getResources().getString(R.string.tablaTipoEvento) };
+        String[] menu={ getResources().getString(R.string.tablaEscuela),
+                getResources().getString(R.string.tablaCiclo),
+                getResources().getString(R.string.tablaOfertaAcademica),
+                getResources().getString(R.string.tablaMateria) };
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.parseColor("#9a5071"));
+        listView.setBackgroundColor(Color.parseColor("#7b6ed6"));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, menu);
         setListAdapter(adapter);
     }
@@ -29,7 +29,7 @@ public class AC17033Activity extends ListActivity {
 
         String nombreValue=activities[position];
 
-        l.getChildAt(position).setBackgroundColor(Color.parseColor("#9a5071"));
+        l.getChildAt(position).setBackgroundColor(Color.parseColor("#7b6ed6"));
 
         try{
             Class<?> clase=Class.forName("com.example.g10proyecto01." + nombreValue);

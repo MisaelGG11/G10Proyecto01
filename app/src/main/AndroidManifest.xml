@@ -12,6 +12,30 @@
         android:theme="@style/Theme.G10Proyecto01"
         tools:targetApi="31">
         <activity
+            android:name=".EL19004Activity"
+            android:exported="false" />
+        <activity
+            android:name=".HS19011Activity"
+            android:exported="false" />
+        <activity
+            android:name=".FM19038Activity"
+            android:exported="false" />
+        <activity
+            android:name=".TipoEmpleadoMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EmpleadoUESMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DocenteMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GG20031Activity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".Local"
             android:exported="false" />
         <activity
@@ -84,7 +108,7 @@
             android:name=".AC17033Activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

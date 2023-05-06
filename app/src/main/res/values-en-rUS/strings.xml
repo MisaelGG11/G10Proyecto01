@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">G10Proyecto01</string>
+    <!--Tablas-->
+    <string name="tablaEmpleadoUES">UES Employee Table</string>
+    <string name="tablaTipoDeEmpleado">Employee Type Table</string>
+    <string name="tablaDocente">Teacher Table</string>
+    <string name="tablaLocalAdministrado">Managed Local Table</string>
+    <string name="tablaLocalidad">Locality Table</string>
+    <string name="tablaEventoEspecial">Special Event Table</string>
+    <string name="tablaTipoEvento">Event Type Table</string>
+    <string name="tablaOpcionCrud">CRUD option Table</string>
+    <string name="tablaHorario">Schedule Table</string>
+    <string name="tablaUsuario">User Table</string>
+    <string name="tablaPropuestaEspecifica">Specific Proposal Table</string>
+    <string name="tablaPropuestaGeneral">General Proposal Table</string>
+    <string name="tablaGrupo">Group Table</string>
+    <string name="tablaGrupoHorario">Group-Schedule Table</string>
+    <string name="tablaMateria">Subject Table</string>
+    <string name="tablaOfertaAcademica">Academic Offer Table</string>
+    <string name="tablaCiclo">Cycle Table</string>
+    <string name="tablaEscuela">School Table</string>
+
+
+    <!--LoginActivity-->
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+
+    <!--MenuActivity-->
+    <string name="bienvenida">Welcome,</string>
+    <string name="logout">Logout</string>
+    <string name="llenadoBaseDatos">Populate database</string>
+
+</resources>

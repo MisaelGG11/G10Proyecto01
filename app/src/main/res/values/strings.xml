@@ -1,3 +1,33 @@
 <resources>
     <string name="app_name">G10Proyecto01</string>
+    <!--Tablas-->
+    <string name="tablaEmpleadoUES">Tabla Empleado UES</string>
+    <string name="tablaTipoDeEmpleado">Tabla Tipo de Empleado</string>
+    <string name="tablaDocente">Tabla Docente</string>
+    <string name="tablaLocalAdministrado">Tabla Local Administrado</string>
+    <string name="tablaLocalidad">Tabla Localidad</string>
+    <string name="tablaEventoEspecial">Tabla Evento Especial</string>
+    <string name="tablaTipoEvento">Tabla Tipo Evento</string>
+    <string name="tablaOpcionCrud">Tabla Opcion CRUD</string>
+    <string name="tablaHorario">Tabla Horario</string>
+    <string name="tablaUsuario">Tabla Usuario</string>
+    <string name="tablaPropuestaEspecifica">Tabla Propuesta Especifica</string>
+    <string name="tablaPropuestaGeneral">Tabla Propuesta General</string>
+    <string name="tablaGrupo">Tabla Grupo</string>
+    <string name="tablaGrupoHorario">Tabla Grupo Horario</string>
+    <string name="tablaMateria">Tabla Materia</string>
+    <string name="tablaOfertaAcademica">Tabla Oferta Academica</string>
+    <string name="tablaCiclo">Tabla Ciclo</string>
+    <string name="tablaEscuela">Tabla Escuela</string>
+
+    <!--LoginActivity-->
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar sesión</string>
+
+    <!--MenuActivity-->
+    <string name="bienvenida">Bienvenido,</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="llenadoBaseDatos">LLenar base de datos</string>
+
 </resources>
