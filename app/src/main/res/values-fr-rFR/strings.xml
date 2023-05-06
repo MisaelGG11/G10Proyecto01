@@ -24,6 +24,7 @@
     <!--Operaciones de cada tabla-->
     <string name="insertar_registro">Créer un enregistrement</string>
     <string name="eliminar_registro">Supprimer l’enregistrement</string>
+    <string name="eliminar">Supprimer</string>
     <string name="consultar_registro">Lire l’enregistrement</string>
     <string name="actualizar_registro">Mettre à jour l’enregistrement</string>
 
@@ -36,5 +37,8 @@
     <string name="bienvenida">Bienvenue</string>
     <string name="logout">Déconnexion</string>
     <string name="llenadoBaseDatos">Remplir la base de données</string>
+
+    <!--TipoEmpleado-->
+    <string name="tvIdTipoEmpleado">ID de la catégorie de salarié:</string>
 
 </resources>

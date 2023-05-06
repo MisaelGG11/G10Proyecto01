@@ -24,6 +24,7 @@
     <!--Operaciones de cada tabla-->
     <string name="insertar_registro">Create Record</string>
     <string name="eliminar_registro">Delete Record</string>
+    <string name="eliminar">Delete</string>
     <string name="consultar_registro">Read Record</string>
     <string name="actualizar_registro">Update Record</string>
 
@@ -36,5 +37,8 @@
     <string name="bienvenida">Welcome,</string>
     <string name="logout">Logout</string>
     <string name="llenadoBaseDatos">Populate database</string>
+
+    <!--TipoEmpleado-->
+    <string name="tvIdTipoEmpleado">Employee Type Id:</string>
 
 </resources>

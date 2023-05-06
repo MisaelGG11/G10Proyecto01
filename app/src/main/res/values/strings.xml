@@ -23,6 +23,7 @@
     <!--Operaciones de cada tabla-->
     <string name="insertar_registro">Insertar Registro</string>
     <string name="eliminar_registro">Eliminar Registro</string>
+    <string name="eliminar">Eliminar</string>
     <string name="consultar_registro">Consultar Registro</string>
     <string name="actualizar_registro">Actualizar Registro</string>
 
@@ -36,6 +37,8 @@
     <string name="logout">Cerrar sesión</string>
     <string name="llenadoBaseDatos">LLenar base de datos</string>
 
+    <!--TipoEmpleado-->
+    <string name="tvIdTipoEmpleado">Id Tipo empleado:</string>
 
     <!--Evento Especial Activity-->
     <string name="txtViewNombreEventoEspecial">Nombre del evento:</string>
