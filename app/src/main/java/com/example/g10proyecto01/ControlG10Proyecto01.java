@@ -74,7 +74,7 @@ public class ControlG10Proyecto01 {
 
         @Override
         public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-// TODO Auto-generated method stub
+            // TODO Auto-generated method stub
         }
     }
 
@@ -87,6 +87,11 @@ public class ControlG10Proyecto01 {
         DBHelper.close();
     }
 
+    public String insertar(Escuela escuela){
+        return null;
+    }
+
+
     // Verificar integridad
     private boolean verificarIntegridad(Object dato, int relacion) throws SQLException {
 
@@ -95,9 +100,25 @@ public class ControlG10Proyecto01 {
 
     // Datos para llenar base de datos
     public String llenarBD(){
+        final int[] EscuelaId = {1,};
+        final String[] EscuelaAcronimo = {"EISI",};
+        final String[] EscuelaNombre = {"Escuela de Ingenieria en sistemas informaticos",};
 
-        return null;
+        abrir();
+
+        db.execSQL("DELETE FROM escuela");
+
+        Escuela escuela = new Escuela();
+        for(int i=0;i<4;i++){
+            escuela.setId_escuela(EscuelaId[i]);
+            escuela.setAcronimo(EscuelaAcronimo[i]);
+            escuela.setNombre(EscuelaNombre[i]);
+            insertar(escuela);
+        }
+
+
+        cerrar();
+
+        return "Guardo Correctamente";
     }
-
-
 }

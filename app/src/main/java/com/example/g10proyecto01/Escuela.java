@@ -5,6 +5,9 @@ public class Escuela {
     private String acronimo;
     private String nombre;
 
+    public Escuela() {
+    }
+
     public Escuela(int id_escuela, String acronimo, String nombre) {
         this.id_escuela = id_escuela;
         this.acronimo = acronimo;
