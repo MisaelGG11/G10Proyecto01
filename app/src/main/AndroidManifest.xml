@@ -12,6 +12,18 @@
         android:theme="@style/Theme.G10Proyecto01"
         tools:targetApi="31">
         <activity
+            android:name=".MateriaMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OfertaAcademicaMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CicloHorarioMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EscuelaMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".OpcionCrudEliminarActivity"
             android:exported="false" />
         <activity
