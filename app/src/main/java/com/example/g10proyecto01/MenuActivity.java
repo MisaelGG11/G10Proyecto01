@@ -3,6 +3,7 @@ package com.example.g10proyecto01;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,8 +21,8 @@ public class MenuActivity extends AppCompatActivity {
     TextView usuario;
     private ArrayAdapter<String> lvAdpter;
     String user = "Fabio Flores";
-    String[] activities={"AC17033Activity","EL19004Activity","FM19038Activity","GG20031Activity", "HS19011Activity"};
-
+    String[] activities = {"AC17033Activity", "EL19004Activity", "FM19038Activity", "GG20031Activity", "HS19011Activity"};
+    ControlG10Proyecto01 BDhelper;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -30,6 +31,8 @@ public class MenuActivity extends AppCompatActivity {
         setContentView(R.layout.activity_menu);
 
         String[] menu = {"AC17033", "EL19004", "FM19038", "GG20031", "HS19011", getResources().getString(R.string.llenadoBaseDatos), getResources().getString(R.string.logout)};
+
+        BDhelper = new ControlG10Proyecto01(this);
 
         lvAdpter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu);
         menuPrincipal = findViewById(R.id.lvMenuPrincipal);
@@ -44,24 +47,26 @@ public class MenuActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 menuPrincipal.getChildAt(position).setBackgroundColor(Color.parseColor("#26979f"));
 
-                if (position < 5){
-                    String nombreValue=activities[position];
-                    try{
-                        Class<?> clase=Class.forName("com.example.g10proyecto01."+nombreValue);
-                        Intent inte = new Intent(MenuActivity.this,clase);
+                if (position < 5) {
+                    String nombreValue = activities[position];
+                    try {
+                        Class<?> clase = Class.forName("com.example.g10proyecto01." + nombreValue);
+                        Intent inte = new Intent(MenuActivity.this, clase);
                         MenuActivity.this.startActivity(inte);
-                    }catch(ClassNotFoundException e){
+                    } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-                } else if (position == 5){
-                    // LLENADO DE BASE DE DATOS
-                }
-                else if (position == 6){
-                    try{
-                        Class<?> clase2=Class.forName("com.example.g10proyecto01.LoginActivity");
-                        Intent inte2 = new Intent(MenuActivity.this,clase2);
+                } else if (position == 5) {
+                    BDhelper.abrir();
+                    String tost = BDhelper.llenarBD();
+                    BDhelper.cerrar();
+                    //Toast.makeText(, tost, Toast.LENGTH_SHORT).show();
+                } else if (position == 6) {
+                    try {
+                        Class<?> clase2 = Class.forName("com.example.g10proyecto01.LoginActivity");
+                        Intent inte2 = new Intent(MenuActivity.this, clase2);
                         startActivity(inte2);
-                    }catch(ClassNotFoundException e){
+                    } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
                 }

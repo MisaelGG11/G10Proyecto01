@@ -89,8 +89,26 @@ public class ControlG10Proyecto01 {
 
     /* Metodos Insertar aqui */
 
-    public String insertar(Escuela escuela){
-        return null;
+    public String insertar(Escuela escuela) {
+        String regInsertados = "Registro Insertado Nº= ";
+
+        long contador = 0;
+
+        ContentValues escu = new ContentValues();
+
+        escu.put("id_escuela", escuela.getId_escuela());
+        escu.put("acronimo", escuela.getAcronimo());
+        escu.put("nombre",escuela.getNombre());
+
+        contador = db.insert("escuela", null, escu);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al Insertar el registro, RegistroDuplicado.Verificar inserción";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+
+        return regInsertados;
     }
 
     /* Metodos Actualizar aqui */
@@ -119,15 +137,6 @@ public class ControlG10Proyecto01 {
     /* Metodos Consultar aqui */
 
 
-
-
-
-
-
-
-
-
-
     // Verificar integridad
     private boolean verificarIntegridad(Object dato, int relacion) throws SQLException {
 
@@ -135,7 +144,7 @@ public class ControlG10Proyecto01 {
     }
 
     // Datos para llenar base de datos
-    public String llenarBD(){
+    public String llenarBD() {
         final int[] EscuelaId = {1,};
         final String[] EscuelaAcronimo = {"EISI",};
         final String[] EscuelaNombre = {"Escuela de Ingenieria en sistemas informaticos",};
@@ -145,7 +154,7 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM escuela");
 
         Escuela escuela = new Escuela();
-        for(int i=0;i<4;i++){
+        for (int i = 0; i < 4; i++) {
             escuela.setId_escuela(EscuelaId[i]);
             escuela.setAcronimo(EscuelaAcronimo[i]);
             escuela.setNombre(EscuelaNombre[i]);
