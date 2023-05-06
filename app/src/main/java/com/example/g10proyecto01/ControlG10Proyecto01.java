@@ -28,7 +28,7 @@ public class ControlG10Proyecto01 {
     private static final String[] camposTipoEmpleado = new String[]{"id_tipo_empleado", "ocupacion"};
     private static final String[] camposTipoEvento = new String[]{"id_tipo_evento", "nombre_tipo_evento"};
     private static final String[] camposUsuario = new String[]{"id_usuario", "nom_usuario", "clave"};
-    private static final String[] camposOpcionCrud = new String[]{"id_usuario", "id-opcion"};
+    private static final String[] camposAcessoUsuario = new String[]{"id_usuario", "id-opcion"};
 
     private final Context context;
     private DatabaseHelper DBHelper;
