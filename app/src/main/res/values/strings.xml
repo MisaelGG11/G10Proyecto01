@@ -30,4 +30,43 @@
     <string name="logout">Cerrar sesión</string>
     <string name="llenadoBaseDatos">LLenar base de datos</string>
 
+
+
+    <!--Evento Especial Activity-->
+    <string name="txtViewNombreEventoEspecial">Nombre del evento:</string>
+    <string name="txtViewTipoEventoEspecial">Tipo de evento especial:</string>
+    <string name="txtViewEdificioEventoEspecial">Edificio:</string>
+    <string name="txtViewLocalidadEventoEspecial">Localidad:</string>
+    <string name="txtViewFechaEventoEspecial">Fecha:</string>
+    <string name="txtViewSeleccionarHorarioEventoEspecial">Seleccione horario:</string>
+    <string name="btnCrearEventoEspecial">Guardar</string>
+    <string name="btnCancelarEventoEspecial">Cancelar</string>
+    <string name="btnActualizarEventoEspecial">Actualizar</string>
+    <string name="btnVolverEventoEspecial">Volver</string>
+    <string-array name="spinnerHorariosEventoEspecial">
+        <item>Horario 1</item>
+        <item>Horario 2</item>
+        <item>Horario 3</item>
+        <item>Horario 4</item>
+        <item>Horario 5</item>
+        <item>Horario 6</item>
+        <item>Horario 7</item>
+        <item>Horario 8</item>
+    </string-array>
+
+    <!--Local Activity-->
+    <string name="txtViewNombreLocal">Nombre del Local:</string>
+    <string name="txtViewCupoLocal">Cupo:</string>
+    <string name="btnCancelarLocal">Cancelar</string>
+    <string name="btnCrearLocal">Guardar</string>
+    <string name="txtViewEdificio">Edificio:</string>
+    <string-array name="spinnerEdificioLocal">
+        <item>Auditorio Miguel Mármol</item>
+        <item>Biblioteca FIA</item>
+        <item>Edificio B</item>
+        <item>Edificio C</item>
+        <item>Edificio D</item>
+        <item>Lab Ciencias Básicas</item>
+        <item>Labcomp EISI</item>
+    </string-array>
 </resources>
