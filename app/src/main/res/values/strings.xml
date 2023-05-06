@@ -20,6 +20,12 @@
     <string name="tablaCiclo">Tabla Ciclo</string>
     <string name="tablaEscuela">Tabla Escuela</string>
 
+    <!--Operaciones de cada tabla-->
+    <string name="insertar_registro">Insertar Registro</string>
+    <string name="eliminar_registro">Eliminar Registro</string>
+    <string name="consultar_registro">Consultar Registro</string>
+    <string name="actualizar_registro">Actualizar Registro</string>
+
     <!--LoginActivity-->
     <string name="user">Usuario</string>
     <string name="password">Contraseña</string>
@@ -29,7 +35,6 @@
     <string name="bienvenida">Bienvenido,</string>
     <string name="logout">Cerrar sesión</string>
     <string name="llenadoBaseDatos">LLenar base de datos</string>
-
 
 
     <!--Evento Especial Activity-->

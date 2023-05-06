@@ -3,7 +3,7 @@ package com.example.g10proyecto01;
 public class TipoEmpleado {
     private String id_tipo_empleado;
     private String ocupacion;
-    
+
     //Constructor
     public TipoEmpleado() {
     }

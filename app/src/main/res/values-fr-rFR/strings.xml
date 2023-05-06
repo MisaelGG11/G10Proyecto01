@@ -21,6 +21,12 @@
     <string name="tablaCiclo">Tableau des cycles</string>
     <string name="tablaEscuela">Table d’école</string>
 
+    <!--Operaciones de cada tabla-->
+    <string name="insertar_registro">Créer un enregistrement</string>
+    <string name="eliminar_registro">Supprimer l’enregistrement</string>
+    <string name="consultar_registro">Lire l’enregistrement</string>
+    <string name="actualizar_registro">Mettre à jour l’enregistrement</string>
+
     <!--LoginActivity-->
     <string name="user">Utilisateur</string>
     <string name="password">Mot de passe</string>

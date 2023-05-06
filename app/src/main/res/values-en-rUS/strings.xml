@@ -4,7 +4,7 @@
     <!--Tablas-->
     <string name="tablaEmpleadoUES">UES Employee Table</string>
     <string name="tablaTipoDeEmpleado">Employee Type Table</string>
-    <string name="tablaDocente">G10Proyecto01</string>
+    <string name="tablaDocente">Teacher Table</string>
     <string name="tablaLocalAdministrado">Managed Local Table</string>
     <string name="tablaLocalidad">Locality Table</string>
     <string name="tablaEventoEspecial">Special Event Table</string>
@@ -21,6 +21,11 @@
     <string name="tablaCiclo">Cycle Table</string>
     <string name="tablaEscuela">School Table</string>
 
+    <!--Operaciones de cada tabla-->
+    <string name="insertar_registro">Create Record</string>
+    <string name="eliminar_registro">Delete Record</string>
+    <string name="consultar_registro">Read Record</string>
+    <string name="actualizar_registro">Update Record</string>
 
     <!--LoginActivity-->
     <string name="user">User</string>

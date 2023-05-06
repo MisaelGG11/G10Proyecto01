@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-public class TipoEmpleadoMenuActivity extends ListActivity {
+public class PropuestaEspecificaMenuActivity extends ListActivity {
 
-    String[] activities={"TipoEmpleadoInsertarActivity","TipoEmpleadoConsultarActivity","TipoEmpleadoActualizarActivity", "TipoEmpleadoEliminarActivity"};
+    String[] activities={"PropuestaEspecificaInsertarActivity","PropuestaEspecificaConsultarActivity","PropuestaEspecificaActualizarActivity", "PropuestaEspecificaEliminarActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +19,7 @@ public class TipoEmpleadoMenuActivity extends ListActivity {
                 getResources().getString(R.string.eliminar_registro)};
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.parseColor("#99c9bd"));
+        listView.setBackgroundColor(Color.parseColor("#ee7f27"));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, menu);
         setListAdapter(adapter);
     }
@@ -29,7 +29,7 @@ public class TipoEmpleadoMenuActivity extends ListActivity {
 
         String nombreValue=activities[position];
 
-        l.getChildAt(position).setBackgroundColor(Color.parseColor("#99c9bd"));
+        l.getChildAt(position).setBackgroundColor(Color.parseColor("#ee7f27"));
 
         try{
             Class<?> clase=Class.forName("com.example.g10proyecto01." + nombreValue);
