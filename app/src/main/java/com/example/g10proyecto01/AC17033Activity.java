@@ -19,7 +19,7 @@ public class AC17033Activity extends ListActivity {
                 getResources().getString(R.string.tablaTipoEvento) };
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.parseColor("#9a5071"));
+        listView.setBackgroundColor(Color.parseColor("#B67291"));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, menu);
         setListAdapter(adapter);
     }
