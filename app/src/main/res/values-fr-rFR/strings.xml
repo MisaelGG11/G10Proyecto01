@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">G10Proyecto01</string>
+    <string name="app_name">SALH FIA App</string>
     <!--Tablas-->
     <string name="tablaEmpleadoUES">Tableau des employés de l’UES</string>
     <string name="tablaTipoDeEmpleado">Tableau des types d’employés</string>

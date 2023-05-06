@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">G10Proyecto01</string>
+    <string name="app_name">SALH FIA App</string>
     <!--Tablas-->
     <string name="tablaEmpleadoUES">UES Employee Table</string>
     <string name="tablaTipoDeEmpleado">Employee Type Table</string>
-    <string name="tablaDocente">Teacher Table</string>
+    <string name="tablaDocente">G10Proyecto01</string>
     <string name="tablaLocalAdministrado">Managed Local Table</string>
     <string name="tablaLocalidad">Locality Table</string>
     <string name="tablaEventoEspecial">Special Event Table</string>
