@@ -173,11 +173,32 @@ public class ControlG10Proyecto01 {
         return regInsertados;
     }
 
-    /*  Consultar EmpleadoUES  */
+    /*  Consultar Tipo de Empleado  */
+    public TipoEmpleado consultar(String id_tipo_empleado){
+        String[] id = {id_tipo_empleado};
+        Cursor cursor = db.query("Tipo_de_Empleado", camposTipoEmpleado, "id_tipo_empleado = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            TipoEmpleado tipoEmpleado = new TipoEmpleado();
+            tipoEmpleado.setId_tipo_empleado(cursor.getInt(0));
+            tipoEmpleado.setOcupacion(cursor.getString(1));
+            return tipoEmpleado;
+        }else{
+            return null;
+        }
 
-    /*  Actualizar EmpleadoUES  */
+    }
 
-    /*  Eliminar EmpleadoUES  */
+    /*  Actualizar Tipo de Empleado  */
+
+    /*  Eliminar tipoEmpleado  */
+    public String eliminar(TipoEmpleado tipoEmpleado){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        String where="id_tipo_empleado=" + tipoEmpleado.getId_tipo_empleado();
+        contador += db.delete("Tipo_de_Empleado", where, null);
+        regAfectados+=contador;
+        return regAfectados;
+    }
 
 
     /*********************************** Tabla Escuela ***********************************/
@@ -238,6 +259,10 @@ public class ControlG10Proyecto01 {
         return false;
     }
 
+    public Cursor llenarSpinner(String sql) throws SQLException{
+        Cursor cursor = DBHelper.getReadableDatabase().rawQuery(sql, null);
+        return cursor;
+    }
     // Datos para llenar base de datos
     public String llenarBD() {
         final int[] EscuelaId = {1};
@@ -245,9 +270,12 @@ public class ControlG10Proyecto01 {
         final String[] EscuelaNombre = {"Escuela de Ingenieria en sistemas informaticos"};
 
         abrir();
-
+        //Limpia Base
         db.execSQL("DELETE FROM Escuela");
+
         db.execSQL("DELETE FROM Tipo_de_Empleado");
+        db.execSQL("DELETE FROM Empleado_UES");
+        db.execSQL("DELETE FROM Docente");
 
         Escuela escuela = new Escuela();
         for (int i = 0; i < 1; i++) {
@@ -258,7 +286,7 @@ public class ControlG10Proyecto01 {
         }
 
         final int[] idTipoEmpleado = {1,2,3,4};
-        final String[] ocupacion = {"Secretario", "Administrador", "Profesor", "Profesor"};
+        final String[] ocupacion = {"Secretario", "Administrador", "Profesor", "Encargado de Laboratorios"};
 
         TipoEmpleado tipoEmpleado = new TipoEmpleado();
         for (int i = 0; i < 4; i++){

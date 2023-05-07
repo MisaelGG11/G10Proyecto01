@@ -5,14 +5,18 @@
     android:paddingTop="30dip"
     android:stretchColumns="1" >
     <TableRow>
-        <TextView android:text="@string/tvIdTipoEmpleado"/>
+        <TextView
+            android:text="@string/tvIdTipoEmpleado"
+            android:paddingHorizontal="10dip"/>
         <EditText
             android:id="@+id/editIdEmpleado"
             android:inputType="text"
-            android:maxLength="7" />
+            android:maxLength="4" />
     </TableRow>
     <TableRow>
-        <TextView android:text="@string/ocupacion" />
+        <TextView
+            android:text="@string/ocupacion"
+            android:paddingHorizontal="10dip"/>
         <EditText
             android:id="@+id/editOcupacion"
             android:inputType="text"
@@ -21,6 +25,7 @@
     <TableRow>
         <Button
             android:onClick="insertarTipoEmpleado"
+            android:backgroundTint="#0a996f"
             android:text="@string/insertar" />
         <Button
             android:onClick="limpiarTexto"
