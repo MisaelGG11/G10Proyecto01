@@ -58,9 +58,9 @@ public class MenuActivity extends AppCompatActivity {
                     }
                 } else if (position == 5) {
                     BDhelper.abrir();
-                    //String tost = BDhelper.llenarBD();
+                    String tost = BDhelper.llenarBD();
                     BDhelper.cerrar();
-                    //Toast.makeText(, tost, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MenuActivity.this, tost, Toast.LENGTH_SHORT).show();
                 } else if (position == 6) {
                     try {
                         Class<?> clase2 = Class.forName("com.example.g10proyecto01.LoginActivity");

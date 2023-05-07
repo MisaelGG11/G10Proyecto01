@@ -1,22 +1,22 @@
 package com.example.g10proyecto01;
 
 public class TipoEmpleado {
-    private String id_tipo_empleado;
+    private int id_tipo_empleado;
     private String ocupacion;
 
     //Constructor
     public TipoEmpleado() {
     }
 
-    public TipoEmpleado(String id_tipo_empleado,String ocupacion){
+    public TipoEmpleado(int id_tipo_empleado,String ocupacion){
         this.id_tipo_empleado = id_tipo_empleado;
         this.ocupacion = ocupacion;
     }
 
-    public String getId_tipo_empleado(){
+    public int getId_tipo_empleado(){
         return id_tipo_empleado;
     }
-    public void setId_tipo_empleado(String id_tipo_empleado){
+    public void setId_tipo_empleado(int id_tipo_empleado){
         this.id_tipo_empleado = id_tipo_empleado;
     }
     public String getOcupacion(){

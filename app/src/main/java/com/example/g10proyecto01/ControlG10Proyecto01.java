@@ -240,20 +240,31 @@ public class ControlG10Proyecto01 {
 
     // Datos para llenar base de datos
     public String llenarBD() {
-        final int[] EscuelaId = {1,};
-        final String[] EscuelaAcronimo = {"EISI",};
-        final String[] EscuelaNombre = {"Escuela de Ingenieria en sistemas informaticos",};
+        final int[] EscuelaId = {1};
+        final String[] EscuelaAcronimo = {"EISI"};
+        final String[] EscuelaNombre = {"Escuela de Ingenieria en sistemas informaticos"};
 
         abrir();
 
-        db.execSQL("DELETE FROM escuela");
+        db.execSQL("DELETE FROM Escuela");
+        db.execSQL("DELETE FROM Tipo_de_Empleado");
 
         Escuela escuela = new Escuela();
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 1; i++) {
             escuela.setId_escuela(EscuelaId[i]);
             escuela.setAcronimo(EscuelaAcronimo[i]);
             escuela.setNombre(EscuelaNombre[i]);
             insertar(escuela);
+        }
+
+        final int[] idTipoEmpleado = {1,2,3,4};
+        final String[] ocupacion = {"Secretario", "Administrador", "Profesor", "Profesor"};
+
+        TipoEmpleado tipoEmpleado = new TipoEmpleado();
+        for (int i = 0; i < 4; i++){
+            tipoEmpleado.setId_tipo_empleado(idTipoEmpleado[i]);
+            tipoEmpleado.setOcupacion(ocupacion[i]);
+            insertar(tipoEmpleado);
         }
 
 

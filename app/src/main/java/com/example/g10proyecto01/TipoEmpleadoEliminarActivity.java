@@ -30,7 +30,7 @@ public class TipoEmpleadoEliminarActivity extends Activity {
                 //ACCIONES SI RESPONDE QUE SI A LA ALERTA
                 String regEliminadas;
                 TipoEmpleado tipoEmpleado=new TipoEmpleado();
-                tipoEmpleado.setId_tipo_empleado(editTipoEmpleado.getText().toString());
+                tipoEmpleado.setId_tipo_empleado(Integer.valueOf(editTipoEmpleado.getText().toString()));
                 //controlhelper.abrir();
                 //regEliminadas=controlhelper.eliminar(alumno);
                 regEliminadas = "Se elimino registros";

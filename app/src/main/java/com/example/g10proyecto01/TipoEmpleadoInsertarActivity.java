@@ -22,7 +22,7 @@ public class TipoEmpleadoInsertarActivity extends Activity {
         String ocupacion = editOcupacion.getText().toString();
         String regInsertados;
         TipoEmpleado tipoEmp = new TipoEmpleado();
-        tipoEmp.setId_tipo_empleado(idEmpleado);
+        tipoEmp.setId_tipo_empleado(Integer.valueOf(idEmpleado));
         tipoEmp.setOcupacion(ocupacion);
 
         helper.abrir();
