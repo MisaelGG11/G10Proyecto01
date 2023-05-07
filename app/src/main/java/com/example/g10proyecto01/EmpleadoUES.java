@@ -2,6 +2,7 @@ package com.example.g10proyecto01;
 
 public class EmpleadoUES {
     private String id_empleado;
+    private String id_tipo_empleado;
     private String nombre_empleado;
     private String apellido_empleado;
     private String email_empleado;
@@ -11,8 +12,9 @@ public class EmpleadoUES {
     public EmpleadoUES() {
     }
 
-    public EmpleadoUES(String id_empleado, String nombre_empleado, String apellido_empleado, String email_empleado, String telefono_empleado) {
+    public EmpleadoUES(String id_empleado, String id_tipo_empleado, String nombre_empleado, String apellido_empleado, String email_empleado, String telefono_empleado) {
         this.id_empleado = id_empleado;
+        this.id_tipo_empleado = id_tipo_empleado;
         this.nombre_empleado = nombre_empleado;
         this.apellido_empleado = apellido_empleado;
         this.email_empleado = email_empleado;
@@ -24,6 +26,12 @@ public class EmpleadoUES {
     }
     public void setId_empleado(String id_empleado){
         this.id_empleado = id_empleado;
+    }
+    public String getId_tipo_empleado(){
+        return id_tipo_empleado;
+    }
+    public void setId_tipo_empleado(String id_tipo_empleado){
+        this.id_tipo_empleado = id_tipo_empleado;
     }
     public String getNombre_empleado(){
         return nombre_empleado;

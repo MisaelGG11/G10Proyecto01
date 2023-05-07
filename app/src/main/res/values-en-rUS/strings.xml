@@ -23,10 +23,14 @@
 
     <!--Operaciones de cada tabla-->
     <string name="insertar_registro">Create Record</string>
+    <string name="insertar">Create</string>
     <string name="eliminar_registro">Delete Record</string>
     <string name="eliminar">Delete</string>
     <string name="consultar_registro">Read Record</string>
+    <string name="consultar">Read</string>
     <string name="actualizar_registro">Update Record</string>
+    <string name="actualizar">Update</string>
+    <string name="limpiar">Clean</string>
 
     <!--LoginActivity-->
     <string name="user">User</string>
@@ -38,7 +42,8 @@
     <string name="logout">Logout</string>
     <string name="llenadoBaseDatos">Populate database</string>
 
-    <!--TipoEmpleado-->
+    <!--TipoEmpleadoActivity-->
     <string name="tvIdTipoEmpleado">Employee Type Id:</string>
+    <string name="ocupacion">occupation</string>
 
 </resources>

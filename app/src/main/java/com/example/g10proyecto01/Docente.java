@@ -2,6 +2,7 @@ package com.example.g10proyecto01;
 
 public class Docente {
     private String id_docente;
+    private String id_empleado;
     private String nip_docente;
     private String categoria_docente;
 
@@ -10,8 +11,9 @@ public class Docente {
     public Docente() {
     }
 
-    public Docente(String id_docente,String nip_docente,String categoria_docente){
+    public Docente(String id_docente,String id_empleado, String nip_docente,String categoria_docente){
         this.id_docente = id_docente;
+        this.id_empleado = id_empleado;
         this.nip_docente = nip_docente;
         this.categoria_docente = categoria_docente;
     }
@@ -21,6 +23,12 @@ public class Docente {
     }
     public void setId_docente(String id_docente){
         this.id_docente = id_docente;
+    }
+    public String getId_empleado(){
+        return id_empleado;
+    }
+    public void setId_empleado(String id_empleado){
+        this.id_empleado = id_empleado;
     }
     public String getNip_docente(){
         return nip_docente;

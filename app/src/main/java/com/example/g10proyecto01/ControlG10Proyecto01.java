@@ -40,7 +40,7 @@ public class ControlG10Proyecto01 {
     }
 
     private static class DatabaseHelper extends SQLiteOpenHelper {
-        private static final String BASE_DATOS = "TBD"; // Aquí se añade el nombre de la base de datos
+        private static final String BASE_DATOS = "AsignacionHLBD.s3db"; // Aquí se añade el nombre de la base de datos
         private static final int VERSION = 1;
 
         public DatabaseHelper(Context context) {
@@ -86,6 +86,101 @@ public class ControlG10Proyecto01 {
     public void cerrar() {
         DBHelper.close();
     }
+
+    /******************************************** Tabla EmpleadoUES ********************************************/
+    // CAMPOS: {"id_empleado", "id_tipo_empleado", "nombre_empleado", "apellido_empleado", "email_empleado", "telefono_empleado"}
+    /*  Insertar EmpleadoUES  */
+    public String insertar(EmpleadoUES empleadoUES){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues empleado = new ContentValues();
+        empleado.put("id_empleado", empleadoUES.getId_empleado());
+        empleado.put("id_tipo_empleado", empleadoUES.getId_tipo_empleado());
+        empleado.put("nombre_empleado", empleadoUES.getNombre_empleado());
+        empleado.put("apellido_empleado", empleadoUES.getApellido_empleado());
+        empleado.put("email_empleado", empleadoUES.getEmail_empleado());
+        empleado.put("telefono_empleado", empleadoUES.getTelefono_empleado());
+
+        contador = db.insert("Empleado_UES", null, empleado);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados=regInsertados+contador;
+        }
+        return regInsertados;
+    }
+
+    /*  Consultar EmpleadoUES  */
+
+    /*  Actualizar EmpleadoUES  */
+
+    /*  Inserta EmpleadoUES  */
+
+
+    /******************************************** Tabla Docente ********************************************/
+    // CAMPOS: {"id_docente", "id_empleado", "nip_docente", "categoria_docente"}
+
+    /*  Insertar Docente  */
+    public String insertar(Docente docente){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues docent = new ContentValues();
+        docent.put("id_docente", docente.getId_docente());
+        docent.put("id_empleado", docente.getId_empleado());
+        docent.put("nip_docente", docente.getNip_docente());
+        docent.put("categoria_docente", docente.getCategoria_docente());
+;
+        contador = db.insert("Docente", null, docent);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados=regInsertados+contador;
+        }
+        return regInsertados;
+    }
+
+    /*  Consultar Docente  */
+
+    /*  Actualizar Docente  */
+
+    /*  Eliminar Docente  */
+
+
+    /******************************************** Tabla TipoEmpleado ********************************************/
+    // CAMPOS: {"id_tipo_empleado", "ocupacion"}
+
+    /*  Insertar EmpleadoUES  */
+    public String insertar(TipoEmpleado tipoEmpleado){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues tEmpleado = new ContentValues();
+        tEmpleado.put("id_tipo_empleado", tipoEmpleado.getId_tipo_empleado());
+        tEmpleado.put("ocupacion", tipoEmpleado.getOcupacion());
+
+        ;
+        contador = db.insert("Tipo_de_Empleado", null, tEmpleado);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados=regInsertados+contador;
+        }
+        return regInsertados;
+    }
+
+    /*  Consultar EmpleadoUES  */
+
+    /*  Actualizar EmpleadoUES  */
+
+    /*  Eliminar EmpleadoUES  */
+
+
+    /*********************************** Tabla Escuela ***********************************/
 
     /* Metodos Insertar aqui */
 

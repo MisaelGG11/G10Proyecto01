@@ -23,10 +23,14 @@
 
     <!--Operaciones de cada tabla-->
     <string name="insertar_registro">Créer un enregistrement</string>
+    <string name="insertar">créer</string>
     <string name="eliminar_registro">Supprimer l’enregistrement</string>
     <string name="eliminar">Supprimer</string>
     <string name="consultar_registro">Lire l’enregistrement</string>
+    <string name="consultar">Lire</string>
     <string name="actualizar_registro">Mettre à jour l’enregistrement</string>
+    <string name="actualizar">mettre à jour</string>
+    <string name="limpiar">propre</string>
 
     <!--LoginActivity-->
     <string name="user">Utilisateur</string>
@@ -38,7 +42,8 @@
     <string name="logout">Déconnexion</string>
     <string name="llenadoBaseDatos">Remplir la base de données</string>
 
-    <!--TipoEmpleado-->
+    <!--TipoEmpleadoActivity-->
     <string name="tvIdTipoEmpleado">ID de la catégorie de salarié:</string>
+    <string name="ocupacion">occupation</string>
 
 </resources>
