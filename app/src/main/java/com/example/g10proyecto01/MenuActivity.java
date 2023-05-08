@@ -71,6 +71,7 @@ public class MenuActivity extends AppCompatActivity {
                         Class<?> clase2 = Class.forName("com.example.g10proyecto01.LoginActivity");
                         Intent inte2 = new Intent(MenuActivity.this, clase2);
                         startActivity(inte2);
+                        finish();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
