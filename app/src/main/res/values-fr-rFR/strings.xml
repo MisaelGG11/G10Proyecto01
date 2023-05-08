@@ -46,4 +46,31 @@
     <string name="tvIdTipoEmpleado">ID de la catégorie de salarié:</string>
     <string name="ocupacion">occupation</string>
 
+    <!--Evento Especial Activity-->
+    <string name="txtViewFechaEventoEspecial">Date:</string>
+    <string name="txtViewLocalidadEventoEspecial">Localisation:</string>
+    <string name="txtViewNombreEventoEspecial">Nom de l\'événement:</string>
+    <string name="txtViewTipoEventoEspecial">Type d\'événement:</string>
+    <string name="txtViewidTipoEventoEspecial">Id Type d\'événement:</string>
+    <string name="txtViewEdificioEventoEspecial">Bâtiment:</string>
+    <string-array name="spinnerHorariosEventoEspecial">
+        <item>Horario 1</item>
+        <item>Horario 2</item>
+    </string-array>
+
+    <!--Local Activity-->
+    <string name="txtViewIdLocal">Id de la place:</string>
+    <string name="txtViewNombreLocal">Nom de la place:</string>
+    <string name="txtViewCupoLocal">Quota:</string>
+    <string name="txtViewEdificio">Bâtiment:</string>
+    <string-array name="spinnerEdificioLocal">
+        <item>Auditorio Miguel Mármol</item>
+        <item>Biblioteca FIA</item>
+        <item>Edificio B</item>
+        <item>Edificio C</item>
+        <item>Edificio D</item>
+        <item>Lab Ciencias Básicas</item>
+        <item>Labcomp EISI</item>
+    </string-array>
+
 </resources>

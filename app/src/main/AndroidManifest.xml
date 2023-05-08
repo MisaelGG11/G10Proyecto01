@@ -207,6 +207,9 @@
             android:name=".TipoEventoMenuActivity"
             android:exported="false" />
         <activity
+            android:name=".TipoEventoConsultarActivity"
+            android:exported="false" />
+        <activity
             android:name=".EventoEspecialMenuActivity"
             android:exported="false" />
         <activity

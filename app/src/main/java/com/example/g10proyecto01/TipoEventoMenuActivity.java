@@ -1,6 +1,5 @@
 package com.example.g10proyecto01;
 
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.graphics.Color;

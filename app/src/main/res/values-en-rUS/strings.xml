@@ -46,4 +46,31 @@
     <string name="tvIdTipoEmpleado">Employee Type Id:</string>
     <string name="ocupacion">occupation</string>
 
+    <!--Evento Especial Activity-->
+    <string name="txtViewFechaEventoEspecial">Date:</string>
+    <string name="txtViewLocalidadEventoEspecial">Location:</string>
+    <string name="txtViewNombreEventoEspecial">Event Name:</string>
+    <string name="txtViewidTipoEventoEspecial">Type special event Id:</string>
+    <string name="txtViewTipoEventoEspecial">Type special event:</string>
+    <string name="txtViewEdificioEventoEspecial">Building:</string>
+    <string-array name="spinnerHorariosEventoEspecial">
+        <item>Horario 1</item>
+        <item>Horario 2</item>
+    </string-array>
+
+    <!--Local Activity-->
+    <string name="txtViewIdLocal">Location Id:</string>
+    <string name="txtViewNombreLocal">Location name:</string>
+    <string name="txtViewCupoLocal">Availability:</string>
+    <string name="txtViewEdificio">Building:</string>
+    <string-array name="spinnerEdificioLocal">
+        <item>Auditorio Miguel Mármol</item>
+        <item>Biblioteca FIA</item>
+        <item>Edificio B</item>
+        <item>Edificio C</item>
+        <item>Edificio D</item>
+        <item>Lab Ciencias Básicas</item>
+        <item>Labcomp EISI</item>
+    </string-array>
+
 </resources>
