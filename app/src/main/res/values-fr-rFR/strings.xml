@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">SALH FIA App</string>
+    <string name="app_name">ARES App</string>
     <!--Tablas-->
     <string name="tablaEmpleadoUES">Tableau des employés de l’UES</string>
     <string name="tablaTipoDeEmpleado">Tableau des types d’employés</string>
@@ -46,8 +46,37 @@
     <string name="tvIdTipoEmpleado">ID de la catégorie de salarié:</string>
     <string name="ocupacion">occupation</string>
 
+
     <!--OpcionCrudActivity-->
     <string name="IdOpcionCrud">ID de l\'option CRUD:</string>
     <string name="descripcionOpcionCrud">Description</string>
     <string name="registro_no_encontrado">Registro no encontrado</string>
+
+    <!--Evento Especial Activity-->
+    <string name="txtViewFechaEventoEspecial">Date:</string>
+    <string name="txtViewLocalidadEventoEspecial">Localisation:</string>
+    <string name="txtViewNombreEventoEspecial">Nom de l\'événement:</string>
+    <string name="txtViewTipoEventoEspecial">Type d\'événement:</string>
+    <string name="txtViewidTipoEventoEspecial">Id Type d\'événement:</string>
+    <string name="txtViewEdificioEventoEspecial">Bâtiment:</string>
+    <string-array name="spinnerHorariosEventoEspecial">
+        <item>Horario 1</item>
+        <item>Horario 2</item>
+    </string-array>
+
+    <!--Local Activity-->
+    <string name="txtViewIdLocal">Id de la place:</string>
+    <string name="txtViewNombreLocal">Nom de la place:</string>
+    <string name="txtViewCupoLocal">Quota:</string>
+    <string name="txtViewEdificio">Bâtiment:</string>
+    <string-array name="spinnerEdificioLocal">
+        <item>Auditorio Miguel Mármol</item>
+        <item>Biblioteca FIA</item>
+        <item>Edificio B</item>
+        <item>Edificio C</item>
+        <item>Edificio D</item>
+        <item>Lab Ciencias Básicas</item>
+        <item>Labcomp EISI</item>
+    </string-array>
+
 </resources>

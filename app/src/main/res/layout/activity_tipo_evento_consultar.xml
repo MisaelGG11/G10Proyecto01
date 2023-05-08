@@ -6,4 +6,88 @@
     android:layout_height="match_parent"
     tools:context=".TipoEventoConsultarActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayoutce1"
+        android:layout_width="340dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dip"
+            android:text="@string/txtViewidTipoEventoEspecial" />
+
+        <Spinner
+            android:id="@+id/spinIdEvento"
+            android:layout_width="197dp"
+            android:layout_height="34dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutce2"
+        android:layout_width="324dp"
+        android:layout_height="61dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutce1"
+        app:layout_constraintVertical_bias="0.105">
+
+        <Button
+            android:id="@+id/btnConsultarLocal"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="20dp"
+            android:background="@color/botones"
+            android:textColor="@color/white"
+            android:onClick="consultarTipoEvento"
+            android:text="@string/consultar"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btnLimpiarLocal"
+            android:layout_width="163dp"
+            android:layout_height="40dp"
+            android:background="@color/botones"
+            android:textColor="@color/white"
+            android:onClick="limpiarTextoEv"
+            android:text="@string/limpiar"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edittipodeeventoc"
+        android:layout_width="326dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="32dp"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:hint="@string/txtViewTipoEventoEspecial"
+        android:inputType="textPersonName"
+        android:longClickable="false"
+        android:text="@string/txtViewTipoEventoEspecial"
+        android:textAlignment="center"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutce2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

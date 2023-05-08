@@ -6,89 +6,102 @@
     android:layout_height="match_parent"
     tools:context=".LocalInsertarActivity">
 
-
-    <TextView
-        android:id="@+id/textViewEdificio"
-        android:layout_width="69dp"
-        android:layout_height="51dp"
-        android:layout_marginBottom="224dp"
-        android:hint="@string/txtViewEdificio"
-        android:textSize="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCrearLocal"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerEdificioLocal"
-        app:layout_constraintHorizontal_bias="1.0"
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="36dp"
+        android:orientation="horizontal"
+        android:paddingTop="30dip"
+        android:stretchColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.875" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <Spinner
-        android:id="@+id/spinnerEdificioLocal"
-        android:layout_width="219dp"
-        android:layout_height="57dp"
-        android:layout_marginTop="112dp"
+        <TableRow>
 
-        android:layout_marginEnd="60dp"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewIdLocal" />
 
-    <EditText
-        android:id="@+id/editTextNombreLocal"
-        android:layout_width="290dp"
+            <EditText
+                android:id="@+id/edittidLocal"
+                android:inputType="text"
+                android:maxLength="4" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewEdificio" />
+            <EditText
+                android:id="@+id/editTextedificioLocal"
+                android:inputType="text"
+                android:maxLength="60" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewNombreLocal" />
+
+            <EditText
+                android:id="@+id/editTextNombreLocal"
+                android:inputType="text"
+                android:maxLength="30" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewCupoLocal" />
+
+            <EditText
+                android:id="@+id/editTextCupoLocal"
+                android:inputType="text"
+                android:maxLength="3" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="264dp"
         android:layout_height="53dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="@string/txtViewNombreLocal"
-        android:inputType="textPersonName"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinnerEdificioLocal" />
-
-    <EditText
-        android:id="@+id/editTextCupoLocal"
-        android:layout_width="290dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="@string/txtViewCupoLocal"
-        android:inputType="textPersonName"
-        android:textSize="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNombreLocal" />
-
-    <Button
-        android:id="@+id/btnCrearLocal"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="44dp"
-        android:background="@color/botones"
-        android:text="@string/btnCrearLocal"
-        android:textSize="15dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCancelarInsertarLocal"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCupoLocal"
-        app:layout_constraintVertical_bias="0.043" />
-
-    <Button
-        android:id="@+id/btnCancelarInsertarLocal"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="40dp"
-        android:background="@color/botones"
-        android:text="@string/btnCancelarLocal"
-        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btnCrearLocal"
-        app:layout_constraintTop_toBottomOf="@+id/editTextCupoLocal" />
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout1"
+        app:layout_constraintVertical_bias="0.103">
 
+        <Button
+            android:id="@+id/btnInsertarLocal"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="20dp"
+            android:background="@color/botones"
+            android:onClick="insertarLocalidad"
+            android:text="@string/insertar"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/btnLimpiarInsertarLocal"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:background="@color/botones"
+            android:onClick="limpiarTextoLocal"
+            android:text="@string/limpiar"
+            android:textSize="16dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

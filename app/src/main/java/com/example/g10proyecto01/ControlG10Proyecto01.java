@@ -19,7 +19,7 @@ public class ControlG10Proyecto01 {
     private static final String[] camposGrupoHorario = new String[]{"id_gh", "id_horario", "id_grupo"};
     private static final String[] camposHorario = new String[]{"id_horario", "id_evento", "hora_inicio", "hora_finalizacion"};
     private static final String[] camposLocalAdministrado = new String[]{"id_local_admin", "id_localidad", "id_empleado"};
-    private static final String[] camposLocalidad = new String[]{"id_localidad", "id_evento", "edificio_localidad", "nombre_localidad", "capacidad_localidad"};
+    private static final String[] camposLocalidad = new String[]{"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"};
     private static final String[] camposMateria = new String[]{"id_materia", "id_escuela", "cod_materia", "ciclo_materia", "nombre_materia"};
     private static final String[] camposOfertaAcademica = new String[]{"id_oferta_a", "id_ciclo", "id_docente", "id_materia"};
     private static final String[] camposOpcionCrud = new String[]{"id_opcion_crud", "des_opcion"};
@@ -58,7 +58,7 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Grupo(id_grupo INTEGER NOT NULL PRIMARY KEY, id_oferta_a INTEGER NOT NULL, num_grupo INTEGER NOT NULL, tipo_grupo VARCHAR2(11) NOT NULL, cupo INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER NOT NULL PRIMARY KEY, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Local_Administrado(id_local_admin INTEGER NOT NULL PRIMARY KEY, id_localidad INTEGER NOT NULL, id_empleado INTEGER NOT NULL);");
-                db.execSQL("CREATE TABLE Localidad(id_localidad INTEGER NOT NULL, id_evento INTEGER NOT NULL, edificio_localidad VARCHAR2(60) NOT NULL, nombre_localidad VARCHAR2(30) NOT NULL, capacidad_localidad INTEGER NOT NULL, CONSTRAINT PK_LOCALIDAD PRIMARY KEY (id_localidad));");
+                db.execSQL("CREATE TABLE Localidad(id_localidad INTEGER NOT NULL, edificio_localidad VARCHAR2(60) NOT NULL, nombre_localidad VARCHAR2(30) NOT NULL, capacidad_localidad INTEGER NOT NULL, CONSTRAINT PK_LOCALIDAD PRIMARY KEY (id_localidad));");
                 db.execSQL("CREATE TABLE Materia(id_materia INTEGER NOT NULL PRIMARY KEY, id_escuela INTEGER NOT NULL, cod_materia VARCHAR2(6) NOT NULL, ciclo_materia VARCHAR2(50) NOT NULL, nombre_materia VARCHAR2(30) NOT NULL);");
                 db.execSQL("CREATE TABLE Oferta_Academica(id_oferta_a INTEGER NOT NULL PRIMARY KEY, id_ciclo NUMBER(6) NOT NULL, id_docente INTEGER NOT NULL, id_materia INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE OpcionCrud(id_opcion_crud INTEGER NOT NULL PRIMARY KEY, des_opcion VARCHAR2(30) NOT NULL);");
@@ -66,7 +66,7 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Propuesta_General(id_propuesta INTEGER NOT NULL, estado_propuesta VARCHAR2(1) NOT NULL, CONSTRAINT PK_PROPUESTA_GENERAL PRIMARY KEY (id_propuesta));");
                 db.execSQL("CREATE TABLE Tipo_de_Empleado(id_tipo_empleado INTEGER NOT NULL, ocupacion VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_DE_EMPLEADO PRIMARY KEY (id_tipo_empleado));");
                 db.execSQL("CREATE TABLE Tipo_evento (id_tipo_evento INTEGER NOT NULL, nombre_tipo_evento VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_EVENTO PRIMARY KEY (id_tipo_evento));");
-                db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave CHAR(5) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
+                db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave VARCHAR(10) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -85,6 +85,28 @@ public class ControlG10Proyecto01 {
 
     public void cerrar() {
         DBHelper.close();
+    }
+
+    /******************************************** Tabla Usuario ********************************************/
+    // CAMPOS: {"id_usuario", "nom_usuario", "clave"}
+    /* Insertar Usuario*/
+    public String insertar (Usuario usuario){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues user = new ContentValues();
+        user.put("id_usuario", usuario.getId_usuario());
+        user.put("nom_usuario", usuario.getNom_usuario());
+        user.put("clave", usuario.getClave());
+
+        contador = db.insert("Usuario", null, user);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados=regInsertados+contador;
+        }
+        return regInsertados;
     }
 
     /******************************************** Tabla EmpleadoUES ********************************************/
@@ -272,6 +294,113 @@ public class ControlG10Proyecto01 {
 
         return regInsertados;
     }
+    /*********************************** Tabla Local ***********************************/
+    // CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
+
+    /*  Insertar Local  */
+
+    public String insertar(Local local) {
+        String regInsertados = "Registro Insertado Nº= ";
+
+        long contador = 0;
+
+        ContentValues loc = new ContentValues();
+
+        loc.put("id_localidad", local.getId_localidad());
+        loc.put("edificio_localidad", local.getEdificio_localidad());
+        loc.put("nombre_localidad", local.getNombre_localidad());
+        loc.put("capacidad_localidad", local.getCapacidad_localidad());
+
+        contador = db.insert("Tipo_evento", null, loc);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados = "ERROR al Insertar el registro, Registro Duplicado.Verificar inserción";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    /*  Consultar Local  */
+    public Local consultarlocal(String id_localidad){
+        String[] id = {id_localidad};
+        Cursor cursor = db.query("Localidad", camposLocalidad, "id_localidad = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Local local = new Local();
+            local.setId_localidad(cursor.getInt(0));
+            local.setNombre_localidad(cursor.getString(1));
+            local.setEdificio_localidad(cursor.getString(2));
+            local.setCapacidad_localidad(cursor.getInt(3));
+            return local;
+        }else{
+            return null;
+        }
+    }
+    /*  Actualizar Local  */
+
+    /*  Eliminar Local  */
+
+    /*********************************** Tabla Local Administrado ***********************************/
+    // CAMPOS: {"id_local_admin", "id_localidad", "id_empleado"}
+
+    /*  Insertar Local Administrado */
+
+    /*  Consultar Local Administrado*/
+
+    /*  Actualizar Local Administrado */
+
+    /*  Eliminar Local Administrado */
+
+    /*********************************** Tabla Evento Especial ***********************************/
+    // CAMPOS: {"id_evento", "id_tipo_evento", "organizador", "nombre_evento", "fecha"}
+
+    /*  Insertar Evento Especial  */
+    /*  Consultar Evento Especial  */
+
+    /*  Actualizar Evento Especial  */
+
+    /*  Eliminar Evento Especial  */
+
+    /*********************************** Tabla Tipo de Evento ***********************************/
+    // CAMPOS: {"id_tipo_evento", "nombre_tipo_evento"}
+
+    /*  Insertar Tipo de Evento  */
+    public String insertar(TipoEvento tipoEvento) {
+        String regInsertados = "Registro Insertado Nº= ";
+
+        long contador = 0;
+
+        ContentValues teven = new ContentValues();
+
+        teven.put("id_tipo_evento", tipoEvento.getId_tipo_evento());
+        teven.put("nombre_tipo_evento", tipoEvento.getNombre_tipo_evento());
+
+        contador = db.insert("Tipo_evento", null, teven);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados = "ERROR al Insertar el registro, Registro Duplicado.Verificar inserción";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+    /*  Consultar Tipo de Evento  */
+    public TipoEvento consultartipoevento(String id_tipo_evento){
+        String[] id = {id_tipo_evento};
+        Cursor cursor = db.query("Tipo_evento", camposTipoEvento, "id_tipo_evento = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            TipoEvento tipoEvento = new TipoEvento();
+            tipoEvento.setId_tipo_evento(cursor.getInt(0));
+            tipoEvento.setNombre_tipo_evento(cursor.getString(1));
+            return tipoEvento;
+        }else{
+            return null;
+        }
+    }
+
+    /*  Actualizar Tipo de Evento  */
+
+    /*  Eliminar Tipo de Evento  */
 
     /* Metodos Actualizar aqui */
 
@@ -305,12 +434,33 @@ public class ControlG10Proyecto01 {
         return false;
     }
 
+    //Usuarios iniciales
+    public void permisosUsuarios(){
+        final String[] IDusuario = {"U1", "U2", "U3", "U4"};
+        final String[] nomUsuario = {"Misael", "Fabio", "Claudia", "Leonardo", "Alexander"};
+        final String[] clave = {"GG20031", "FM19038", "AC17033", "EL19004", "HS19011"};
+
+
+        db.execSQL("DELETE FROM Usuario");
+
+        Usuario user = new Usuario();
+
+        for (int i = 0; i < 4; i++){
+            user.setId_usuario(IDusuario[i]);
+            user.setNom_usuario(nomUsuario[i]);
+            user.setClave(clave[i]);
+            insertar(user);
+        }
+    }
+
+    // Método para rescatar datos de de la base para el Spinner
     public Cursor llenarSpinner(String sql) throws SQLException{
         Cursor cursor = DBHelper.getReadableDatabase().rawQuery(sql, null);
         return cursor;
     }
     // Datos para llenar base de datos
     public String llenarBD() {
+        //ESCUELA
         final int[] EscuelaId = {1};
         final String[] EscuelaAcronimo = {"EISI"};
         final String[] EscuelaNombre = {"Escuela de Ingenieria en sistemas informaticos"};
@@ -331,6 +481,7 @@ public class ControlG10Proyecto01 {
             insertar(escuela);
         }
 
+        //TIPO EMPLEADO
         final int[] idTipoEmpleado = {1,2,3,4};
         final String[] ocupacion = {"Secretario", "Administrador", "Profesor", "Encargado de Laboratorios"};
 
@@ -347,7 +498,33 @@ public class ControlG10Proyecto01 {
             OpcionCrud opcion = new OpcionCrud(idOpcionCrud[i],opcionCrud[i]);
             insertar(opcion);
         }
-        
+
+        //LOCAL
+        final int[] idlocal = {1,2,3,4,5,6,7};
+        final String[] edificio= {"Auditorio Miguel Mármol", "Biblioteca FIA", "Edificio B", "Edificio B", "Edificio C","Labcomp EISI", "Labcomp EISI"};
+        final String[] localnom = {"Auditorio Miguel Mármol", "BIB-201", "B11", "B32", "C12", "LCOMP1", "LCOMP3"};
+        final int[] cupo = {100,50,100,100,100,20,20};
+
+        Local local = new Local();
+        for (int i = 0; i < 4; i++){
+            local.setId_localidad(idlocal[i]);
+            local.setEdificio_localidad(edificio[i]);
+            local.setNombre_localidad(localnom[i]);
+            local.setCapacidad_localidad(cupo[i]);
+            insertar(local);
+        }
+
+        //TIPO DE EVENTO
+        final int[] idTipoEvento = {1,2,3,4};
+        final String[] nombre = {"Foro", "Conferencia", "Examen Parcial", "Capacitacion"};
+
+        TipoEvento tipoEvento = new TipoEvento();
+        for (int i = 0; i < 4; i++){
+            tipoEvento.setId_tipo_evento(idTipoEvento[i]);
+            tipoEvento.setNombre_tipo_evento(nombre[i]);
+            insertar(tipoEvento);
+        }
+
         cerrar();
 
         return "Guardo Correctamente";

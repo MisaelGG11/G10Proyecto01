@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SALH FIA App</string>
+    <string name="app_name">ARES App</string>
 
     <!--Tablas-->
     <string name="tablaEmpleadoUES">Tabla Empleado UES</string>
@@ -50,32 +50,22 @@
     <string name="IdOpcionCrud">Id opcion CRUD:</string>
     <string name="descripcionOpcionCrud">Descripción:</string>
     <!--Evento Especial Activity-->
+    <string name="txtViewidTipoEventoEspecial">Id Tipo de evento:</string>
     <string name="txtViewNombreEventoEspecial">Nombre del evento:</string>
     <string name="txtViewTipoEventoEspecial">Tipo de evento especial:</string>
     <string name="txtViewEdificioEventoEspecial">Edificio:</string>
     <string name="txtViewLocalidadEventoEspecial">Localidad:</string>
     <string name="txtViewFechaEventoEspecial">Fecha:</string>
-    <string name="txtViewSeleccionarHorarioEventoEspecial">Seleccione horario:</string>
-    <string name="btnCrearEventoEspecial">Guardar</string>
-    <string name="btnCancelarEventoEspecial">Cancelar</string>
-    <string name="btnActualizarEventoEspecial">Actualizar</string>
-    <string name="btnVolverEventoEspecial">Volver</string>
     <string-array name="spinnerHorariosEventoEspecial">
         <item>Horario 1</item>
         <item>Horario 2</item>
-        <item>Horario 3</item>
-        <item>Horario 4</item>
-        <item>Horario 5</item>
-        <item>Horario 6</item>
-        <item>Horario 7</item>
-        <item>Horario 8</item>
+
     </string-array>
 
     <!--Local Activity-->
-    <string name="txtViewNombreLocal">Nombre del Local:</string>
-    <string name="txtViewCupoLocal">Cupo:</string>
-    <string name="btnCancelarLocal">Cancelar</string>
-    <string name="btnCrearLocal">Guardar</string>
+    <string name="txtViewIdLocal">Id Local:</string>
+    <string name="txtViewNombreLocal">Localidad:</string>
+    <string name="txtViewCupoLocal">Capacidad:</string>
     <string name="txtViewEdificio">Edificio:</string>
     <string name="registro_no_encontrado">Registro no encontrado</string>
     <string-array name="spinnerEdificioLocal">
