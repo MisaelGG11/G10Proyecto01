@@ -66,7 +66,7 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Propuesta_General(id_propuesta INTEGER NOT NULL, estado_propuesta VARCHAR2(1) NOT NULL, CONSTRAINT PK_PROPUESTA_GENERAL PRIMARY KEY (id_propuesta));");
                 db.execSQL("CREATE TABLE Tipo_de_Empleado(id_tipo_empleado INTEGER NOT NULL, ocupacion VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_DE_EMPLEADO PRIMARY KEY (id_tipo_empleado));");
                 db.execSQL("CREATE TABLE Tipo_evento (id_tipo_evento INTEGER NOT NULL, nombre_tipo_evento VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_EVENTO PRIMARY KEY (id_tipo_evento));");
-                db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave CHAR(5) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
+                db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave VARCHAR(10) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -85,6 +85,28 @@ public class ControlG10Proyecto01 {
 
     public void cerrar() {
         DBHelper.close();
+    }
+
+    /******************************************** Tabla Usuario ********************************************/
+    // CAMPOS: {"id_usuario", "nom_usuario", "clave"}
+    /* Insertar Usuario*/
+    public String insertar (Usuario usuario){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues user = new ContentValues();
+        user.put("id_usuario", usuario.getId_usuario());
+        user.put("nom_usuario", usuario.getNom_usuario());
+        user.put("clave", usuario.getClave());
+
+        contador = db.insert("Usuario", null, user);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados=regInsertados+contador;
+        }
+        return regInsertados;
     }
 
     /******************************************** Tabla EmpleadoUES ********************************************/
@@ -259,6 +281,25 @@ public class ControlG10Proyecto01 {
         return false;
     }
 
+    //Usuarios iniciales
+    public void permisosUsuarios(){
+        final String[] IDusuario = {"U1", "U2", "U3", "U4"};
+        final String[] clave = {"GG20031", "FM19038", "AC17033", "EL19004", "HS19011"};
+        final String[] nomUsuario = {"Misael", "Fabio", "Claudia", "Leonardo", "Alexander"};
+
+        db.execSQL("DELETE FROM Usuario");
+
+        Usuario user = new Usuario();
+
+        for (int i = 0; i < 4; i++){
+            user.setId_usuario(IDusuario[i]);
+            user.setNom_usuario(nomUsuario[i]);
+            user.setClave(clave[i]);
+            insertar(user);
+        }
+    }
+
+    // Método para rescatar datos de de la base para el Spinner
     public Cursor llenarSpinner(String sql) throws SQLException{
         Cursor cursor = DBHelper.getReadableDatabase().rawQuery(sql, null);
         return cursor;
