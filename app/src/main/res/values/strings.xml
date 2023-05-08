@@ -46,6 +46,9 @@
     <string name="tvIdTipoEmpleado">Id Tipo empleado:</string>
     <string name="ocupacion">Ocupacion</string>
 
+    <!--OpcionCrudActivity-->
+    <string name="IdOpcionCrud">Id opcion CRUD:</string>
+    <string name="descripcionOpcionCrud">Descripción:</string>
     <!--Evento Especial Activity-->
     <string name="txtViewNombreEventoEspecial">Nombre del evento:</string>
     <string name="txtViewTipoEventoEspecial">Tipo de evento especial:</string>
@@ -74,6 +77,7 @@
     <string name="btnCancelarLocal">Cancelar</string>
     <string name="btnCrearLocal">Guardar</string>
     <string name="txtViewEdificio">Edificio:</string>
+    <string name="registro_no_encontrado">Registro no encontrado</string>
     <string-array name="spinnerEdificioLocal">
         <item>Auditorio Miguel Mármol</item>
         <item>Biblioteca FIA</item>
@@ -83,4 +87,5 @@
         <item>Lab Ciencias Básicas</item>
         <item>Labcomp EISI</item>
     </string-array>
+
 </resources>

@@ -46,4 +46,10 @@
     <string name="tvIdTipoEmpleado">Employee Type Id:</string>
     <string name="ocupacion">occupation</string>
 
+
+    <!--OpcionCrudActivity-->
+    <string name="IdOpcionCrud">CRUD option Id:</string>
+    <string name="descripcionOpcionCrud">Description</string>
+    <string name="registro_no_encontrado">Registro no encontrado</string>
+
 </resources>

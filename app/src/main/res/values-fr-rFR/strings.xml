@@ -46,4 +46,8 @@
     <string name="tvIdTipoEmpleado">ID de la catégorie de salarié:</string>
     <string name="ocupacion">occupation</string>
 
+    <!--OpcionCrudActivity-->
+    <string name="IdOpcionCrud">ID de l\'option CRUD:</string>
+    <string name="descripcionOpcionCrud">Description</string>
+    <string name="registro_no_encontrado">Registro no encontrado</string>
 </resources>

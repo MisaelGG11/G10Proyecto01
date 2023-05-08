@@ -22,7 +22,7 @@ public class ControlG10Proyecto01 {
     private static final String[] camposLocalidad = new String[]{"id_localidad", "id_evento", "edificio_localidad", "nombre_localidad", "capacidad_localidad"};
     private static final String[] camposMateria = new String[]{"id_materia", "id_escuela", "cod_materia", "ciclo_materia", "nombre_materia"};
     private static final String[] camposOfertaAcademica = new String[]{"id_oferta_a", "id_ciclo", "id_docente", "id_materia"};
-    private static final String[] camposOpcionCrud = new String[]{"id-opcion", "des_opcion", "NumCrud"};
+    private static final String[] camposOpcionCrud = new String[]{"id_opcion_crud", "des_opcion"};
     private static final String[] camposPropuestaEspecifica = new String[]{"id_especifica", "id_propuesta", "id_gh", "id_localidad", "estado_especifica"};
     private static final String[] camposPropuestaGeneral = new String[]{"id_propuesta", "estado_propuesta"};
     private static final String[] camposTipoEmpleado = new String[]{"id_tipo_empleado", "ocupacion"};
@@ -61,7 +61,7 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Localidad(id_localidad INTEGER NOT NULL, id_evento INTEGER NOT NULL, edificio_localidad VARCHAR2(60) NOT NULL, nombre_localidad VARCHAR2(30) NOT NULL, capacidad_localidad INTEGER NOT NULL, CONSTRAINT PK_LOCALIDAD PRIMARY KEY (id_localidad));");
                 db.execSQL("CREATE TABLE Materia(id_materia INTEGER NOT NULL PRIMARY KEY, id_escuela INTEGER NOT NULL, cod_materia VARCHAR2(6) NOT NULL, ciclo_materia VARCHAR2(50) NOT NULL, nombre_materia VARCHAR2(30) NOT NULL);");
                 db.execSQL("CREATE TABLE Oferta_Academica(id_oferta_a INTEGER NOT NULL PRIMARY KEY, id_ciclo NUMBER(6) NOT NULL, id_docente INTEGER NOT NULL, id_materia INTEGER NOT NULL);");
-                db.execSQL("CREATE TABLE OpcionCrud(id_opcion CHAR(3) NOT NULL PRIMARY KEY, des_opcion VARCHAR2(30) NOT NULL, NumCrud INTEGER NOT NULL);");
+                db.execSQL("CREATE TABLE OpcionCrud(id_opcion_crud INTEGER NOT NULL PRIMARY KEY, des_opcion VARCHAR2(30) NOT NULL);");
                 db.execSQL("CREATE TABLE Propuesta_Especifica(id_especifica INTEGER NOT NULL, id_propuesta INTEGER NOT NULL, id_gh INTEGER NOT NULL, id_localidad INTEGER NOT NULL, estado_especifica VARCHAR2(1) NOT NULL, CONSTRAINT PK_PROPUESTA_ESPECIFICA PRIMARY KEY (id_especifica));");
                 db.execSQL("CREATE TABLE Propuesta_General(id_propuesta INTEGER NOT NULL, estado_propuesta VARCHAR2(1) NOT NULL, CONSTRAINT PK_PROPUESTA_GENERAL PRIMARY KEY (id_propuesta));");
                 db.execSQL("CREATE TABLE Tipo_de_Empleado(id_tipo_empleado INTEGER NOT NULL, ocupacion VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_DE_EMPLEADO PRIMARY KEY (id_tipo_empleado));");
@@ -199,8 +199,54 @@ public class ControlG10Proyecto01 {
         regAfectados+=contador;
         return regAfectados;
     }
+    /******************************************** Tabla OpcionCrud ********************************************/
+    // CAMPOS: {"id_opcion_crud", "des_opcion"}
 
+    public String insertar(OpcionCrud opcionCrud){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        ContentValues opcCrud = new ContentValues();
+        opcCrud.put("id_opcion_crud", opcionCrud.getId_opcion_crud());
+        opcCrud.put("des_opcion", opcionCrud.getDes_opcion());
 
+        ;
+        contador = db.insert("OpcionCrud", null, opcCrud);
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+        }
+        else {
+            regInsertados=regInsertados+contador;
+        }
+        return regInsertados;
+    }
+    public OpcionCrud consultarOpcionCrud(String id_opcion_crud){
+        String[] id = {id_opcion_crud};
+        Cursor cursor1 = db.query("OpcionCrud", camposOpcionCrud, "id_opcion_crud = ?", id, null, null, null);
+        System.out.println(cursor1);
+        if(cursor1.moveToFirst()){
+            OpcionCrud opcionCrud = new OpcionCrud(cursor1.getInt(0),cursor1.getString(1));
+            return opcionCrud;
+        }else{
+            return null;
+        }
+    }
+    public String actualizar(OpcionCrud opcionCrud){
+        String[] id = {String.valueOf(opcionCrud.getId_opcion_crud())};
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("des_opcion",opcionCrud.getDes_opcion());
+        System.out.println("Llego acá");
+        db.update("OpcionCrud",contentValues,"id_opcion_crud = ?", id);
+        return "Registro Actualizado Correctamente";
+    }
+    public String eliminar(OpcionCrud opcionCrud){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        String where="id_opcion_crud=" + opcionCrud.getId_opcion_crud();
+        contador += db.delete("OpcionCrud", where, null);
+        regAfectados+=contador;
+        return regAfectados;
+    }
     /*********************************** Tabla Escuela ***********************************/
 
     /* Metodos Insertar aqui */
@@ -272,10 +318,10 @@ public class ControlG10Proyecto01 {
         abrir();
         //Limpia Base
         db.execSQL("DELETE FROM Escuela");
-
         db.execSQL("DELETE FROM Tipo_de_Empleado");
         db.execSQL("DELETE FROM Empleado_UES");
         db.execSQL("DELETE FROM Docente");
+        db.execSQL("DELETE FROM OpcionCrud");
 
         Escuela escuela = new Escuela();
         for (int i = 0; i < 1; i++) {
@@ -295,7 +341,13 @@ public class ControlG10Proyecto01 {
             insertar(tipoEmpleado);
         }
 
-
+        final int[] idOpcionCrud= {1,2,3,4};
+        final String[] opcionCrud = {"insertar","actualizar","eliminar","ver detalle"};
+        for (int i = 0; i < opcionCrud.length; i++) {
+            OpcionCrud opcion = new OpcionCrud(idOpcionCrud[i],opcionCrud[i]);
+            insertar(opcion);
+        }
+        
         cerrar();
 
         return "Guardo Correctamente";
