@@ -60,15 +60,16 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                usuario = editUsuario.getText().toString();
+                //usuario = editUsuario.getText().toString();
+                usuario = "UserLogueado";
                 contrasenia = editClave.getText().toString();
-                //editUsuario.setText(String.valueOf(users.size()));
-                for (int i = 0; i < users.size(); i++){
+                /*for (int i = 0; i < users.size(); i++){
                     if (contrasenia.equals(passwords.get(i)) && usuario.equals(users.get(i))){
                         correct = true;
                     }
                     else  {messageError = "Usuario o contrasea incorrecto.";}
-                }
+                }*/
+                correct = true;
                 if (correct){
                     try{
                         Class<?> clase=Class.forName("com.example.g10proyecto01.MenuActivity");

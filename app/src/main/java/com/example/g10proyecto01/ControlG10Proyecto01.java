@@ -284,8 +284,9 @@ public class ControlG10Proyecto01 {
     //Usuarios iniciales
     public void permisosUsuarios(){
         final String[] IDusuario = {"U1", "U2", "U3", "U4"};
-        final String[] clave = {"GG20031", "FM19038", "AC17033", "EL19004", "HS19011"};
         final String[] nomUsuario = {"Misael", "Fabio", "Claudia", "Leonardo", "Alexander"};
+        final String[] clave = {"GG20031", "FM19038", "AC17033", "EL19004", "HS19011"};
+
 
         db.execSQL("DELETE FROM Usuario");
 
