@@ -19,7 +19,7 @@ public class ControlG10Proyecto01 {
     private static final String[] camposGrupoHorario = new String[]{"id_gh", "id_horario", "id_grupo"};
     private static final String[] camposHorario = new String[]{"id_horario", "id_evento", "hora_inicio", "hora_finalizacion"};
     private static final String[] camposLocalAdministrado = new String[]{"id_local_admin", "id_localidad", "id_empleado"};
-    private static final String[] camposLocalidad = new String[]{"id_localidad", "id_evento", "edificio_localidad", "nombre_localidad", "capacidad_localidad"};
+    private static final String[] camposLocalidad = new String[]{"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"};
     private static final String[] camposMateria = new String[]{"id_materia", "id_escuela", "cod_materia", "ciclo_materia", "nombre_materia"};
     private static final String[] camposOfertaAcademica = new String[]{"id_oferta_a", "id_ciclo", "id_docente", "id_materia"};
     private static final String[] camposOpcionCrud = new String[]{"id-opcion", "des_opcion", "NumCrud"};
