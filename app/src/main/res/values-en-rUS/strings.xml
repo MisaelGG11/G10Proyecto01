@@ -64,7 +64,7 @@
         <item>Horario 2</item>
     </string-array>
 
-    <!--Local Activity-->
+    <!--Localidad Activity-->
     <string name="txtViewIdLocal">Location Id:</string>
     <string name="txtViewNombreLocal">Location name:</string>
     <string name="txtViewCupoLocal">Availability:</string>

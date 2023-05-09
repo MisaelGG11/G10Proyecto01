@@ -147,7 +147,7 @@
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
-            android:name=".Local"
+            android:name=".Localidad"
             android:exported="false" />
         <activity
             android:name=".LocalAdministrado"

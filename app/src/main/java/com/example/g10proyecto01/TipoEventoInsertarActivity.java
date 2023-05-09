@@ -3,6 +3,7 @@ package com.example.g10proyecto01;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -27,18 +28,27 @@ public class TipoEventoInsertarActivity extends AppCompatActivity {
         String nombre_tipo_evento = edittipoevento.getText().toString();
         String regInsertados;
 
-        TipoEvento tipoEvento = new TipoEvento();
-        tipoEvento.setId_tipo_evento(Integer.valueOf(id_tipo_evento));
-        tipoEvento.setNombre_tipo_evento(nombre_tipo_evento);
+        if (id_tipo_evento.isEmpty()||nombre_tipo_evento.isEmpty()) {
+            Toast.makeText(TipoEventoInsertarActivity.this, "Ingresar datos obligatorios", Toast.LENGTH_SHORT).show();
+        } else {
+            if (TextUtils.isDigitsOnly(id_tipo_evento)) {
+                TipoEvento tipoEvento = new TipoEvento();
+                tipoEvento.setId_tipo_evento(Integer.valueOf(id_tipo_evento));
+                tipoEvento.setNombre_tipo_evento(nombre_tipo_evento);
 
-        helper.abrir();
+                helper.abrir();
 
-        regInsertados = helper.insertar(tipoEvento);
+                regInsertados = helper.insertar(tipoEvento);
 
-        helper.cerrar();
+                helper.cerrar();
 
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+               } else {
+                Toast.makeText(TipoEventoInsertarActivity.this, "ID es un valor numerico", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
+
 
     public void limpiarTextoTE(View v) {
         editidtipoevento.setText("");

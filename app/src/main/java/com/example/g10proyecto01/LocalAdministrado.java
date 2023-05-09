@@ -3,8 +3,8 @@ package com.example.g10proyecto01;
 
 public class LocalAdministrado {
     private int id_local_admin;
-    private Local Edificios;
-    private Local nombrelocalidad;
+    private Localidad Edificios;
+    private Localidad nombrelocalidad;
     private EmpleadoUES nombreempleado;
     private EmpleadoUES apellidoempleado;
 
@@ -12,7 +12,7 @@ public class LocalAdministrado {
     }
     //Constructor
 
-    public LocalAdministrado(int id_local_admin, Local edificios, Local nombrelocalidad, EmpleadoUES nombreempleado, EmpleadoUES apellidoempleado) {
+    public LocalAdministrado(int id_local_admin, Localidad edificios, Localidad nombrelocalidad, EmpleadoUES nombreempleado, EmpleadoUES apellidoempleado) {
         this.id_local_admin = id_local_admin;
         Edificios = edificios;
         this.nombrelocalidad = nombrelocalidad;
@@ -30,19 +30,19 @@ public class LocalAdministrado {
         this.id_local_admin = id_local_admin;
     }
 
-    public Local getEdificios() {
+    public Localidad getEdificios() {
         return Edificios;
     }
 
-    public void setEdificios(Local edificios) {
+    public void setEdificios(Localidad edificios) {
         Edificios = edificios;
     }
 
-    public Local getNombrelocalidad() {
+    public Localidad getNombrelocalidad() {
         return nombrelocalidad;
     }
 
-    public void setNombrelocalidad(Local nombrelocalidad) {
+    public void setNombrelocalidad(Localidad nombrelocalidad) {
         this.nombrelocalidad = nombrelocalidad;
     }
 

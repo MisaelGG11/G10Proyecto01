@@ -1,5 +1,7 @@
 package com.example.g10proyecto01;
 
+import androidx.annotation.NonNull;
+
 public class TipoEvento{
     private int id_tipo_evento;
     private String nombre_tipo_evento;
@@ -28,5 +30,10 @@ public class TipoEvento{
 
     public void setNombre_tipo_evento(String nombre_tipo_evento) {
         this.nombre_tipo_evento = nombre_tipo_evento;
+    }
+    @NonNull
+    @Override
+    public String toString() {
+        return super.toString();
     }
 }

@@ -62,7 +62,7 @@
 
     </string-array>
 
-    <!--Local Activity-->
+    <!--Localidad Activity-->
     <string name="txtViewIdLocal">Id Local:</string>
     <string name="txtViewNombreLocal">Localidad:</string>
     <string name="txtViewCupoLocal">Capacidad:</string>
