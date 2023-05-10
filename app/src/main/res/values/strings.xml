@@ -42,13 +42,14 @@
     <string name="logout">Cerrar sesión</string>
     <string name="llenadoBaseDatos">LLenar base de datos</string>
 
-    <!--TipoEmpleadoActivity-->
-    <string name="tvIdTipoEmpleado">Id Tipo empleado:</string>
-    <string name="ocupacion">Ocupacion</string>
+    <!--TipoEmpleadoActivities-->
+    <string name="tvIdTipoEmpleado">Id de tipo de empleado:</string>
+    <string name="ocupacion">Ocupacion:</string>
 
     <!--OpcionCrudActivity-->
     <string name="IdOpcionCrud">Id opcion CRUD:</string>
     <string name="descripcionOpcionCrud">Descripción:</string>
+
     <!--Evento Especial Activity-->
     <string name="txtViewidTipoEventoEspecial">Id Tipo de evento:</string>
     <string name="txtViewNombreEventoEspecial">Nombre del evento:</string>

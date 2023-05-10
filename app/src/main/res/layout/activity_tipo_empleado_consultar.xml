@@ -12,7 +12,7 @@
         android:text="@string/tvIdTipoEmpleado"/>
 
     <Spinner
-        android:id="@+id/spinIdEmpleado"
+        android:id="@+id/spinnerIdTipoEmpleado"
         android:layout_width="match_parent"
         android:layout_height="35dp" />
 

@@ -66,7 +66,7 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Propuesta_General(id_propuesta INTEGER NOT NULL, estado_propuesta VARCHAR2(1) NOT NULL, CONSTRAINT PK_PROPUESTA_GENERAL PRIMARY KEY (id_propuesta));");
                 db.execSQL("CREATE TABLE Tipo_de_Empleado(id_tipo_empleado INTEGER NOT NULL, ocupacion VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_DE_EMPLEADO PRIMARY KEY (id_tipo_empleado));");
                 db.execSQL("CREATE TABLE Tipo_evento (id_tipo_evento INTEGER NOT NULL, nombre_tipo_evento VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_EVENTO PRIMARY KEY (id_tipo_evento));");
-                db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave VARCHAR(10) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
+                db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave CHAR(7) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -211,6 +211,13 @@ public class ControlG10Proyecto01 {
     }
 
     /*  Actualizar Tipo de Empleado  */
+    public String actualizar(TipoEmpleado tipoEmpleado){
+        String[] id = {String.valueOf(tipoEmpleado.getId_tipo_empleado())};
+        ContentValues cv = new ContentValues();
+        cv.put("ocupacion", tipoEmpleado.getOcupacion());
+        db.update("Tipo_de_Empleado",cv,"id_tipo_empleado = ?", id);
+        return "Registro Actualizado Correctamente";
+    }
 
     /*  Eliminar tipoEmpleado  */
     public String eliminar(TipoEmpleado tipoEmpleado){
@@ -420,11 +427,20 @@ public class ControlG10Proyecto01 {
         return regAfectados;
     }
 
+
+
+
+
+
     // Verificar integridad
     private boolean verificarIntegridad(Object dato, int relacion) throws SQLException {
 
         return false;
     }
+
+
+
+
 
     //Usuarios iniciales
     public void permisosUsuarios(){

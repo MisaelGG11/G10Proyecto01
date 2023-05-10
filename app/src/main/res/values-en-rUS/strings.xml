@@ -44,7 +44,7 @@
 
     <!--TipoEmpleadoActivity-->
     <string name="tvIdTipoEmpleado">Employee Type Id:</string>
-    <string name="ocupacion">occupation</string>
+    <string name="ocupacion">Occupation:</string>
 
 
     <!--OpcionCrudActivity-->
