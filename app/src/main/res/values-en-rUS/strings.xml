@@ -46,6 +46,17 @@
     <string name="tvIdTipoEmpleado">Employee Type Id:</string>
     <string name="ocupacion">Occupation:</string>
 
+    <!--DocenteActivities-->
+    <string name="IdDocente">Teacher ID:</string>
+    <string name="nipDocente">Teacher\'s NIP:</string>
+    <string name="categoria">Category:</string>
+
+    <!--EmpleadoUESActivities-->
+    <string name="IdEmpleado">Employee ID:</string>
+    <string name="nombreEmpleado">Employee\'s name:</string>
+    <string name="apellidoEmpleado">Employee\'s last name:</string>
+    <string name="emailEmpleado">Email:</string>
+    <string name="Telefono">Phone:</string>
 
     <!--OpcionCrudActivity-->
     <string name="IdOpcionCrud">CRUD option Id:</string>

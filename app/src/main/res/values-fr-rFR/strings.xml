@@ -46,6 +46,17 @@
     <string name="tvIdTipoEmpleado">ID de la catégorie de salarié:</string>
     <string name="ocupacion">Occupation:</string>
 
+    <!--DocenteActivities-->
+    <string name="IdDocente">Id de l’enseignant:</string>
+    <string name="nipDocente">NIP de l’enseignant:</string>
+    <string name="categoria">Catégorie:</string>
+
+    <!--EmpleadoUESActivities-->
+    <string name="IdEmpleado">ID de l’employé:</string>
+    <string name="nombreEmpleado">Nom de l’employé:</string>
+    <string name="apellidoEmpleado">Nom de famille de l’employé:</string>
+    <string name="emailEmpleado">Messagerie électronique:</string>
+    <string name="Telefono">Téléphone:</string>
 
     <!--OpcionCrudActivity-->
     <string name="IdOpcionCrud">ID de l\'option CRUD:</string>

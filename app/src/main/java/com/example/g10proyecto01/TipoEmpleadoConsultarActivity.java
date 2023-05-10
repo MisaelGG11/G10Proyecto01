@@ -45,14 +45,13 @@ public class TipoEmpleadoConsultarActivity extends Activity {
     public void consultarTipoDeEmpleado(View v) {
         String id_TE = spinnerIntento.getSelectedItem().toString();
         helper.abrir();
-        TipoEmpleado tipoEmpleado = helper.consultar(id_TE);
+        TipoEmpleado tipoEmpleado = helper.consultarTipoEmpleado(id_TE);
         helper.cerrar();
         if(tipoEmpleado == null)
             Toast.makeText(this, "Registro no encontrado", Toast.LENGTH_LONG).show();
         else{
             editOcupacion.setText(tipoEmpleado.getOcupacion());
         }
-        editOcupacion.setText(tipoEmpleado.getOcupacion());
     }
     public void limpiarTexto(View v){
         editOcupacion.setText("");

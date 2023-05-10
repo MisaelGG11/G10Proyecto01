@@ -41,11 +41,23 @@
     <string name="bienvenida">Bienvenido,</string>
     <string name="logout">Cerrar sesión</string>
     <string name="llenadoBaseDatos">LLenar base de datos</string>
-
+ 
     <!--TipoEmpleadoActivities-->
     <string name="tvIdTipoEmpleado">Id de tipo de empleado:</string>
     <string name="ocupacion">Ocupacion:</string>
 
+    <!--DocenteActivities-->
+    <string name="IdDocente">Id docente:</string>
+    <string name="nipDocente">NIP docente:</string>
+    <string name="categoria">Categoría:</string>
+
+    <!--EmpleadoUESActivities-->
+    <string name="IdEmpleado">Id empleado:</string>
+    <string name="nombreEmpleado">Nombre de empleado:</string>
+    <string name="apellidoEmpleado">Apellido de empleado:</string>
+    <string name="emailEmpleado">Correo electrónico:</string>
+    <string name="Telefono">Teléfono:</string>
+    
     <!--OpcionCrudActivity-->
     <string name="IdOpcionCrud">Id opcion CRUD:</string>
     <string name="descripcionOpcionCrud">Descripción:</string>

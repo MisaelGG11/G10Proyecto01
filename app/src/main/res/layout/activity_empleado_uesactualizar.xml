@@ -1,9 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".EmpleadoUESActualizarActivity">
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:paddingHorizontal="20dip"
+    android:stretchColumns="1" >
+    <TextView
+        android:text="@string/IdEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/spinnerIdEmpleado"
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+    <TextView
+        android:text="@string/tvIdTipoEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Spinner
+        android:id="@+id/spinnerIdTipoEmpleado"
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:text="@string/nombreEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/editNombreEmpleado"
+        android:inputType="text"
+        android:maxLength="30" />
+    <TextView
+        android:text="@string/apellidoEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/editApellidoEmpleado"
+        android:inputType="text"
+        android:maxLength="30" />
+
+    <TextView
+        android:text="@string/emailEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/editEmailEmpleado"
+        android:inputType="textEmailAddress"
+        android:maxLength="50" />
+
+    <TextView
+        android:text="@string/Telefono"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/editTelefonoEmpleado"
+        android:inputType="number"
+        android:maxLength="8" />
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+        <Button
+            android:id="@+id/botonActualizar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/actualizar"
+            android:backgroundTint="#2c9fa3"
+            android:onClick="actualizarEmpleadoUES"
+            />
+        <Button
+            android:id="@+id/botonLimpiar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/limpiar"
+            android:onClick="limpiarTexto"/>
+    </LinearLayout>
+</TableLayout>
