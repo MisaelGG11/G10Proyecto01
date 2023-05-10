@@ -1,16 +1,16 @@
 package com.example.g10proyecto01;
 
-public class Local {
+public class Localidad {
     private int id_localidad;
     private String edificio_localidad;
     private String nombre_localidad;
     private int capacidad_localidad;
 
-    public Local(){
+    public Localidad(){
     }
 
     //Constructor
-    public Local(int id_localidad, String edificio_localidad, String nombre_localidad, int capacidad_localidad) {
+    public Localidad(int id_localidad, String edificio_localidad, String nombre_localidad, int capacidad_localidad) {
         this.id_localidad = id_localidad;
         this.edificio_localidad = edificio_localidad;
         this.nombre_localidad = nombre_localidad;

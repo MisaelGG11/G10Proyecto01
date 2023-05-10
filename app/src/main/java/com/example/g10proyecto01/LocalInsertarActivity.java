@@ -3,15 +3,14 @@ package com.example.g10proyecto01;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 public class LocalInsertarActivity extends AppCompatActivity {
     ControlG10Proyecto01 helper;
-    EditText editidlocal, editnombrelocal, editcupolocal, editedificio;
+    EditText editidlocal, editedificio, editnombrelocal, editcupolocal;
 
     //Spinner editedificioo;
     @Override
@@ -32,7 +31,7 @@ public class LocalInsertarActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerEdificios.setAdapter(adapter);
     }*/
-    public void insertarLocalidad(View v) {
+    public void insertar(View v) {
         String id_localidad = editidlocal.getText().toString();
         //String edificio_localidad = editedificioo.getSelectedItem().toString();
         String edificio_localidad = editedificio.getText().toString();
@@ -40,19 +39,27 @@ public class LocalInsertarActivity extends AppCompatActivity {
         String capacidad_localidad = editcupolocal.getText().toString();
         String regInsertados;
 
-        Local local= new Local();
-        local.setId_localidad(Integer.valueOf(id_localidad));
-        local.setEdificio_localidad(edificio_localidad);
-        local.setNombre_localidad(nombre_localidad);
-        local.setCapacidad_localidad(Integer.valueOf(capacidad_localidad));
+        if (id_localidad.isEmpty()||edificio_localidad.isEmpty()||nombre_localidad.isEmpty()||capacidad_localidad.isEmpty()) {
+            Toast.makeText(LocalInsertarActivity.this, "Ingresar datos obligatorios", Toast.LENGTH_SHORT).show();
+        } else {
+            if (TextUtils.isDigitsOnly(id_localidad)){
+                Localidad localidad = new Localidad();
+                localidad.setId_localidad(Integer.valueOf(id_localidad));
+                localidad.setEdificio_localidad(edificio_localidad);
+                localidad.setNombre_localidad(nombre_localidad);
+                localidad.setCapacidad_localidad(Integer.valueOf(capacidad_localidad));
 
-        helper.abrir();
+                helper.abrir();
 
-        regInsertados = helper.insertar(local);
+                regInsertados = helper.insertar(localidad);
 
-        helper.cerrar();
+                helper.cerrar();
 
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(LocalInsertarActivity.this, "ID y Capacidad son valores numericos", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     public void limpiarTextoLocal(View v) {

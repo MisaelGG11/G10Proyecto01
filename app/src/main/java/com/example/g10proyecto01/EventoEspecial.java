@@ -5,8 +5,8 @@ public class EventoEspecial{
     private String organizador;
     private String nombre_evento;
     private TipoEvento nombre_tipo_evento;
-    private Local Edificio;
-    private Local nombre_localidad;
+    private Localidad Edificio;
+    private Localidad nombre_localidad;
     private String fecha_evento;
     //private Horario horainicio;
     //private Horario horafinalizacion;

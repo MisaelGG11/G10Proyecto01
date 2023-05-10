@@ -44,7 +44,7 @@
 
     <!--TipoEmpleadoActivity-->
     <string name="tvIdTipoEmpleado">Employee Type Id:</string>
-    <string name="ocupacion">occupation</string>
+    <string name="ocupacion">Occupation:</string>
 
 
     <!--OpcionCrudActivity-->
@@ -64,7 +64,7 @@
         <item>Horario 2</item>
     </string-array>
 
-    <!--Local Activity-->
+    <!--Localidad Activity-->
     <string name="txtViewIdLocal">Location Id:</string>
     <string name="txtViewNombreLocal">Location name:</string>
     <string name="txtViewCupoLocal">Availability:</string>

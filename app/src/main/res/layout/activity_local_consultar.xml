@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LocalConsultarActivity">
-
     <LinearLayout
-        android:id="@+id/linearLayoutl1"
-        android:layout_width="283dp"
-        android:layout_height="48dp"
+        android:id="@+id/linearLayoutce1"
+        android:layout_width="279dp"
+        android:layout_height="39dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="56dp"
         android:orientation="horizontal"
@@ -27,34 +26,34 @@
             android:text="@string/txtViewIdLocal" />
 
         <Spinner
-            android:id="@+id/spinIdLocal"
+            android:id="@+id/spinIdlocal"
             android:layout_width="197dp"
             android:layout_height="34dp" />
     </LinearLayout>
 
+
     <LinearLayout
-        android:id="@+id/linearLayoutl2"
-        android:layout_width="324dp"
-        android:layout_height="61dp"
+        android:id="@+id/linearLayoutce2"
+        android:layout_width="345dp"
+        android:layout_height="46dp"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/linearLayoutl1"
-        app:layout_constraintVertical_bias="0.105">
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutce1"
+        app:layout_constraintVertical_bias="0.123">
 
         <Button
             android:id="@+id/btnConsultarLocal"
             android:layout_width="140dp"
             android:layout_height="40dp"
-            android:layout_gravity="left"
             android:layout_marginRight="20dp"
             android:background="@color/botones"
-            android:textColor="@color/white"
             android:onClick="consultarLocal"
             android:text="@string/consultar"
+            android:textColor="@color/white"
             android:textSize="16dp" />
 
         <Button
@@ -62,94 +61,81 @@
             android:layout_width="163dp"
             android:layout_height="40dp"
             android:background="@color/botones"
-            android:textColor="@color/white"
-            android:onClick="limpiarTextoL"
+            android:onClick="limpiarTextoLoc"
             android:text="@string/limpiar"
+            android:textColor="@color/white"
             android:textSize="16dp" />
     </LinearLayout>
 
-
     <TextView
-        android:id="@+id/textViewNom"
-        android:layout_width="match_parent"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="@string/txtViewNombreLocal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutl2" />
-
-    <EditText
-        android:id="@+id/editNomLocal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:cursorVisible="false"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:inputType="text"
-        android:longClickable="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNom"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textViewEdi"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="10dip"
         android:text="@string/txtViewEdificio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNomLocal" />
-
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutce2" />
     <EditText
-        android:id="@+id/editEdificioLocal"
+        android:id="@+id/editEdifiLoc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:cursorVisible="false"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
+        android:layout_marginTop="0dp"
         android:inputType="text"
-        android:longClickable="false"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewEdi" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:textAlignment="center"/>
+
 
     <TextView
-        android:id="@+id/textViewC"
-        android:layout_width="match_parent"
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/txtViewCupoLocal"
+        android:layout_marginTop="16dp"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewNombreLocal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEdificioLocal" />
+        app:layout_constraintTop_toBottomOf="@+id/editEdifiLoc" />
 
     <EditText
-        android:id="@+id/editCupoLocal"
+        android:id="@+id/editNomLoc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:cursorVisible="false"
-        android:enabled="false"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
         android:inputType="text"
-        android:longClickable="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:maxLength="50"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewCupoLocal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNomLoc" />
+
+    <EditText
+        android:id="@+id/editCupoLo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewC"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintVertical_bias="0.0"
+        android:textAlignment="center"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LocalActualizarActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="30dip"
+    android:paddingHorizontal="10dip"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewIdLocal"/>
+
+    <Spinner
+        android:id="@+id/spinIdLoc"
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewEdificio" />
+    <EditText
+        android:id="@+id/editedificio"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="60"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewNombreLocal" />
+    <EditText
+        android:id="@+id/editNomLoc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="30"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewCupoLocal"
+        android:maxLength="50"/>
+    <EditText
+        android:id="@+id/editCupoLoc"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:maxLength="3"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/TEVactualizar"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/botones"
+            android:onClick="ActualizarLOC"
+            android:text="@string/actualizar"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/btLimpiarTEV"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/botones"
+            android:onClick="limpiarTextoLOC"
+            android:text="@string/limpiar"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+    </LinearLayout>
+</LinearLayout>

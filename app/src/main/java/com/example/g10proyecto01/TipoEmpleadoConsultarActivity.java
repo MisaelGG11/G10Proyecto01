@@ -20,6 +20,7 @@ public class TipoEmpleadoConsultarActivity extends Activity {
     Spinner spinnerIntento;
 
     /** Called when the activity is first created. */
+    @SuppressLint("MissingInflatedId")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +28,7 @@ public class TipoEmpleadoConsultarActivity extends Activity {
 
         helper = new ControlG10Proyecto01(this);
 
-        spinnerIntento = findViewById(R.id.spinIdEmpleado);
+        spinnerIntento = findViewById(R.id.spinnerIdTipoEmpleado);
         editOcupacion = findViewById(R.id.editOcupacion);
 
         String sql = "SELECT id_tipo_empleado FROM Tipo_de_Empleado";

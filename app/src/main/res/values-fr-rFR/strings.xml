@@ -44,7 +44,7 @@
 
     <!--TipoEmpleadoActivity-->
     <string name="tvIdTipoEmpleado">ID de la catégorie de salarié:</string>
-    <string name="ocupacion">occupation</string>
+    <string name="ocupacion">Occupation:</string>
 
 
     <!--OpcionCrudActivity-->
@@ -64,7 +64,7 @@
         <item>Horario 2</item>
     </string-array>
 
-    <!--Local Activity-->
+    <!--Localidad Activity-->
     <string name="txtViewIdLocal">Id de la place:</string>
     <string name="txtViewNombreLocal">Nom de la place:</string>
     <string name="txtViewCupoLocal">Quota:</string>

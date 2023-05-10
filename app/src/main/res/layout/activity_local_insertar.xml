@@ -90,7 +90,7 @@
             android:layout_gravity="left"
             android:layout_marginRight="20dp"
             android:background="@color/botones"
-            android:onClick="insertarLocalidad"
+            android:onClick="insertar"
             android:text="@string/insertar"
             android:textSize="16dp" />
 
