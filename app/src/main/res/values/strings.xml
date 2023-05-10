@@ -78,4 +78,9 @@
         <item>Labcomp EISI</item>
     </string-array>
 
+    <!--UsuarioActivity-->
+    <string name="txtIdUsuario">Id Usuario:</string>
+    <string name="txtNombreUsuario">Nombre:</string>
+    <string name="txtPasswordUsuario">Contraseña:</string>
+    <string name="txtOpcionesCrudUsuario">Permisos:</string>
 </resources>

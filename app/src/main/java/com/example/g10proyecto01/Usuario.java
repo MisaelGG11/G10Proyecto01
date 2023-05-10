@@ -8,12 +8,21 @@ public class Usuario {
     //Constructor
     public Usuario() {
     }
-
+    public Usuario(String id_usuario) {
+        this.id_usuario = id_usuario;
+    }
     public Usuario(String id_usuario, String nom_usuario,String clave){
         this.id_usuario = id_usuario;
         this.nom_usuario = nom_usuario;
         this.clave = clave;
     }
+    public Usuario(String id_usuario, String nom_usuario) {
+        this.id_usuario = id_usuario;
+        this.nom_usuario = nom_usuario;
+    }
+
+
+
     public String getId_usuario(){
         return id_usuario;
     }
