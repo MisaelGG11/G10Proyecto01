@@ -303,7 +303,6 @@ public class ControlG10Proyecto01 {
     }
     /*********************************** Tabla Local ***********************************/
     // CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
-// CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
 
     /*  Insertar Localidad  */
     public String insertar(Localidad localidad) {
@@ -330,24 +329,40 @@ public class ControlG10Proyecto01 {
 
 
     /*  Consultar Localidad  */
-
     public Localidad consultarlocalidad(String id_localidad){
         String[] id = {id_localidad};
-        Cursor cursor = db.query("localidad", camposLocalidad, "id_localidad = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            Localidad localidad = new Localidad();
-            localidad.setId_localidad(cursor.getInt(0));
-            localidad.setEdificio_localidad(cursor.getString(1));
-            localidad.setNombre_localidad(cursor.getString(2));
-            localidad.setCapacidad_localidad(cursor.getInt(3));
+        Cursor cursorLoc = db.query("localidad", camposLocalidad, "id_localidad = ?", id, null, null, null);
+        //System.out.println(cursorLoc);
+        if(cursorLoc.moveToFirst()){
+            Localidad localidad = new Localidad(cursorLoc.getInt(0),cursorLoc.getString(1),cursorLoc.getString(2),cursorLoc.getInt(3));
             return localidad;
         }else{
             return null;
         }
     }
+
     /*  Actualizar Localidad  */
+    public String actualizar(Localidad localidad){
+        String[] id = {String.valueOf(localidad.getId_localidad())};
+        ContentValues loc = new ContentValues();
+        loc.put("id_localidad", localidad.getId_localidad());
+        loc.put("edificio_localidad", localidad.getEdificio_localidad());
+        loc.put("nombre_localidad", localidad.getNombre_localidad());
+        loc.put("capacidad_localidad", localidad.getCapacidad_localidad());
+
+        db.update("localidad",loc,"id_localidad = ?", id);
+        return "Registro Actualizado Correctamente";
+    }
 
     /*  Eliminar Localidad  */
+    public String eliminar(Localidad localidad){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        String where="id_localidad=" + localidad.getId_localidad();
+        contador += db.delete("Localidad", where, null);
+        regAfectados+=contador;
+        return regAfectados;
+    }
 
     /*********************************** Tabla Localidad Administrado ***********************************/
     // CAMPOS: {"id_local_admin", "id_localidad", "id_empleado"}
@@ -359,7 +374,14 @@ public class ControlG10Proyecto01 {
     /*  Actualizar Localidad Administrado */
 
     /*  Eliminar Localidad Administrado */
-
+    public String eliminar(LocalAdministrado localAdministrado){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        String where="id_local_admin=" + localAdministrado.getId_local_admin();
+        contador += db.delete("Local_Administrado", where, null);
+        regAfectados+=contador;
+        return regAfectados;
+    }
 
     /*********************************** Tabla Evento Especial ***********************************/
     // CAMPOS: {"id_evento", "id_tipo_evento", "organizador", "nombre_evento", "fecha"}
@@ -368,6 +390,14 @@ public class ControlG10Proyecto01 {
     /*  Consultar Evento Especial  */
     /*  Actualizar Evento Especial  */
     /*  Eliminar Evento Especial  */
+    /*public String eliminar(EventoEspecial eventoEspecial){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        String where="id_local_admin=" + eventoEspecial.getId_evento();
+        contador += db.delete("Evento_Especial", where, null);
+        regAfectados+=contador;
+        return regAfectados;
+    }*/
 
     /*********************************** Tabla Tipo de Evento ***********************************/
     // CAMPOS: {"id_tipo_evento", "nombre_tipo_evento"}
@@ -395,11 +425,11 @@ public class ControlG10Proyecto01 {
     /*  Consultar Tipo de Evento  */
     public TipoEvento consultartipoevento(String id_tipo_evento){
         String[] id = {id_tipo_evento};
-        Cursor cursor = db.query("Tipo_evento", camposTipoEvento, "id_tipo_evento = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
+        Cursor cursortv = db.query("Tipo_evento", camposTipoEvento, "id_tipo_evento = ?", id, null, null, null);
+        if(cursortv.moveToFirst()){
             TipoEvento tipoEvento = new TipoEvento();
-            tipoEvento.setId_tipo_evento(cursor.getInt(0));
-            tipoEvento.setNombre_tipo_evento(cursor.getString(1));
+            tipoEvento.setId_tipo_evento(cursortv.getInt(0));
+            tipoEvento.setNombre_tipo_evento(cursortv.getString(1));
             return tipoEvento;
         }else{
             return null;
@@ -468,12 +498,8 @@ public class ControlG10Proyecto01 {
     }
     // Datos para llenar base de datos
     public String llenarBD() {
-        //ESCUELA
-        final int[] EscuelaId = {1};
-        final String[] EscuelaAcronimo = {"EISI"};
-        final String[] EscuelaNombre = {"Escuela de Ingenieria en sistemas informaticos"};
-
         abrir();
+
         //Limpia Base
         db.execSQL("DELETE FROM Escuela");
 
@@ -488,33 +514,26 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM Tipo_evento");
         db.execSQL("DELETE FROM Evento_Especial");
 
+        //CICLO
+        //DOCENTE
+        //EMPLEADO_UES
+        //ESCUELA
+        final int[] EscuelaId = {1,2,3,4};
+        final String[] EscuelaAcronimo = {"EISI","UCB","EII","EIE"};
+        final String[] EscuelaNombre = {"Escuela de Ingeniería en Sistemas Informaticos","Unidad de Ciencias Básicas","Escuela de Ingeniería Industrial","Escuela de Ingeniería Eléctrica"};
 
         Escuela escuela = new Escuela();
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < 4; i++){
             escuela.setId_escuela(EscuelaId[i]);
             escuela.setAcronimo(EscuelaAcronimo[i]);
             escuela.setNombre(EscuelaNombre[i]);
             insertar(escuela);
         }
-
-        //TIPO EMPLEADO
-        final int[] idTipoEmpleado = {1,2,3,4};
-        final String[] ocupacion = {"Secretario", "Administrador", "Profesor", "Encargado de Laboratorios"};
-
-        TipoEmpleado tipoEmpleado = new TipoEmpleado();
-        for (int i = 0; i < 4; i++){
-            tipoEmpleado.setId_tipo_empleado(idTipoEmpleado[i]);
-            tipoEmpleado.setOcupacion(ocupacion[i]);
-            insertar(tipoEmpleado);
-        }
-
-        final int[] idOpcionCrud= {1,2,3,4};
-        final String[] opcionCrud = {"insertar","actualizar","eliminar","ver detalle"};
-        for (int i = 0; i < opcionCrud.length; i++) {
-            OpcionCrud opcion = new OpcionCrud(idOpcionCrud[i],opcionCrud[i]);
-            insertar(opcion);
-        }
-
+        //EVENTOESPECIAL
+        //GRUPO
+        //GRUPOHORARIO
+        //HORARIO
+        //LOCALADMINISTRADO
         //LOCALIDAD
         final int[] idlocal = {1,2,3,4,5,6,7};
         final String[] edificio= {"Auditorio Miguel Mármol", "Biblioteca FIA", "Edificio B", "Edificio B", "Edificio C","Labcomp EISI", "Labcomp EISI"};
@@ -528,6 +547,32 @@ public class ControlG10Proyecto01 {
             localidad.setNombre_localidad(localnom[i]);
             localidad.setCapacidad_localidad(cupo[i]);
             insertar(localidad);
+        }
+
+        //MATERIA
+
+        //OFERTAACADEMICA
+
+        //OPCIONCRUD
+        final int[] idOpcionCrud= {1,2,3,4};
+        final String[] opcionCrud = {"insertar","actualizar","eliminar","ver detalle"};
+        for (int i = 0; i < opcionCrud.length; i++) {
+            OpcionCrud opcion = new OpcionCrud(idOpcionCrud[i],opcionCrud[i]);
+            insertar(opcion);
+        }
+
+        //PROPUESTAESPECIFICA
+        //PROPUESTAGENERAL
+
+        //TIPO EMPLEADO
+        final int[] idTipoEmpleado = {1,2,3,4};
+        final String[] ocupacion = {"Secretario", "Administrador", "Profesor", "Encargado de Laboratorios"};
+
+        TipoEmpleado tipoEmpleado = new TipoEmpleado();
+        for (int i = 0; i < 4; i++){
+            tipoEmpleado.setId_tipo_empleado(idTipoEmpleado[i]);
+            tipoEmpleado.setOcupacion(ocupacion[i]);
+            insertar(tipoEmpleado);
         }
 
         //TIPO DE EVENTO
