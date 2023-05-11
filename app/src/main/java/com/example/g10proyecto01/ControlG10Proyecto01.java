@@ -34,7 +34,7 @@ public class ControlG10Proyecto01 {
     private static final String[] camposTipoEmpleado = new String[]{"id_tipo_empleado", "ocupacion"};
     private static final String[] camposTipoEvento = new String[]{"id_tipo_evento", "nombre_tipo_evento"};
     private static final String[] camposUsuario = new String[]{"id_usuario", "nom_usuario", "clave"};
-    private static final String[] camposAcessoUsuario = new String[]{"id_acceso","id_usuario", "id-opcion"};
+    private static final String[] camposAccesoUsuario = new String[]{"id_acceso","id_usuario", "id-opcion"};
 
 
     private final Context context;
@@ -281,7 +281,7 @@ public class ControlG10Proyecto01 {
     public String insertar(Docente docente){
         String regInsertados="Registro Insertado Nº= ";
         long contador=0;
-        if (verificarIntegridad(docente, 1)){
+        if (verificarIntegridad(docente, 3)){
             ContentValues docent = new ContentValues();
             docent.put("id_docente", docente.getId_docente());
             docent.put("id_empleado", docente.getId_empleado());
@@ -289,14 +289,6 @@ public class ControlG10Proyecto01 {
             docent.put("categoria_docente", docente.getCategoria_docente());
             contador = db.insert("Docente", null, docent);
         }
-
-        ContentValues docent = new ContentValues();
-        docent.put("id_docente", docente.getId_docente());
-        docent.put("id_empleado", docente.getId_empleado());
-        docent.put("nip_docente", docente.getNip_docente());
-        docent.put("categoria_docente", docente.getCategoria_docente());
-        ;
-        contador = db.insert("Docente", null, docent);
         if(contador==-1 || contador==0)
         {
             regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
@@ -308,12 +300,45 @@ public class ControlG10Proyecto01 {
     }
 
     /*  Consultar Docente  */
-
+    public Docente consultarDocente(String id_Docente){
+        String[] id = {id_Docente};
+        Cursor cursor = db.query("Docente", camposDocente, "id_Docente = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            Docente docente = new Docente();
+            docente.setId_docente(cursor.getInt(0));
+            docente.setId_empleado(cursor.getInt(1));
+            docente.setNip_docente(cursor.getInt(2));
+            docente.setCategoria_docente(cursor.getString(3));
+            return docente;
+        }else{
+            return null;
+        }
+    }
 
     /*  Actualizar Docente  */
+    public String actualizar(Docente docente){
+        String[] id = {String.valueOf(docente.getId_docente())};
+        ContentValues docent = new ContentValues();
+        docent.put("id_empleado", docente.getId_empleado());
+        docent.put("nip_docente", docente.getNip_docente());
+        docent.put("categoria_docente", docente.getCategoria_docente());
+        db.update("Docente",docent,"id_docente= ?", id);
+        return "Registro Actualizado Correctamente";
+    }
+
 
     /*  Eliminar Docente  */
-
+    public String eliminar(Docente docente){
+        String regAfectados="filas afectadas= ";
+        int contador=0;
+        //if (verificarIntegridad(docente, 4)) {
+            String where = "id_Docente=" + docente.getId_docente();
+            contador += db.delete("Docente", where, null);
+            regAfectados += contador;
+            return regAfectados;
+        //}
+        //else return "Hay una referencia en Empleado UES de id tipo de empleado " + docente.getId_docente();
+    }
 
     /******************************************** Tabla TipoEmpleado ********************************************/
     // CAMPOS: {"id_tipo_empleado", "ocupacion"}
@@ -623,14 +648,28 @@ public class ControlG10Proyecto01 {
                 }
                 return false;
             }
-            case 2:
+            case 2: {
                 //VERIFICA QUE NO SE ELIMINE UN TIPO EMPLEADO MIENTRA EXiISTA UNA REFERENCIA DE EL EN LA TABLA EMPLEADO UES
                 TipoEmpleado tipoEmpleado = (TipoEmpleado) dato;
-                Cursor cursor = db.query(true, "Empleado_UES", new String[] {"id_tipo_empleado"}, "id_tipo_empleado ='" + tipoEmpleado.getId_tipo_empleado() + "'", null, null, null, null, null);
-                if(cursor.moveToFirst())
+                Cursor cursor = db.query(true, "Empleado_UES", new String[]{"id_tipo_empleado"}, "id_tipo_empleado ='" + tipoEmpleado.getId_tipo_empleado() + "'", null, null, null, null, null);
+                if (cursor.moveToFirst())
                     return false;
                 else
                     return true;
+            }
+            case 3: {
+                //VERIFICA QUE EXISTA EMPLEADO UES ANTES DE INSERTAR UN DOCENTE
+                Docente docente = (Docente) dato;
+                String[] id = {String.valueOf(docente.getId_empleado())};
+
+                Cursor cursor = db.query("Empleado_UES", null, "id_empleado = ?", id , null, null,null);
+
+                if (cursor.moveToFirst()){
+                    //SE ENCUENTRAN DATOS
+                    return true;
+                }
+                return false;
+            }
             default: return false;
         }
     }
@@ -642,7 +681,7 @@ public class ControlG10Proyecto01 {
     //Usuarios iniciales
     public void permisosUsuarios(){
 
-        final String[] IDusuario = {"01", "02", "03", "04"};
+        final String[] IDusuario = {"01", "02", "03", "04", "05"};
         final String[] nomUsuario = {"Misael", "Fabio", "Claudia", "Leonardo", "Alexander"};
         final String[] clave = {"GG20031", "FM19038", "AC17033", "EL19004", "HS19011"};
 
@@ -744,9 +783,43 @@ public class ControlG10Proyecto01 {
             insertar(tipoEmpleado);
         }
 
+        //EMPLEADO UES
+        final  int [] idEmpleado = {1,2,3,4};
+        final int [] idTipoEmpleado_EmpleadoUES = {4,3,2,1};
+        final String [] nombres = {"Juan", "Luis", "Laura", "Julia"};
+        final String [] apellidos = {"Perez", "Gómez", "Rodriguez", "López"};
+        final String [] emails = {"juan12@gmail.com", "LuisGG@gmail.com", "Laurita96gmail.com", "JuliaL17@gmail.com"};
+        final int [] telefonos = {77889945, 75489561, 71724598, 76611225};
+
+        EmpleadoUES empleado = new EmpleadoUES();
+        for (int i = 0; i < 4; i++){
+            empleado.setId_empleado(idEmpleado[i]);
+            empleado.setId_tipo_empleado(idTipoEmpleado_EmpleadoUES[i]);
+            empleado.setNombre_empleado(nombres[i]);
+            empleado.setApellido_empleado(apellidos[i]);
+            empleado.setEmail_empleado(emails[i]);
+            empleado.setTelefono_empleado(telefonos[i]);
+            insertar(empleado);
+        }
+
+        //DOCENTE
+        final int[] idDocente = {1,2,3,4};
+        final int [] idEmpleado_Docente = {4,2,1,3};
+        final int [] nip = {2233445, 5656897, 4561237, 1234567};
+        final String [] categoria = {"Categoria1", "Categoria2", "Categoria3", "Categoria2"};
+
+        Docente docente = new Docente();
+        for (int i = 0; i < 4; i++){
+            docente.setId_docente(idDocente[i]);
+            docente.setId_empleado(idEmpleado_Docente[i]);
+            docente.setNip_docente(nip[i]);
+            docente.setCategoria_docente(categoria[i]);
+            insertar(docente);
+        }
+
         //ACCESO USUARIO
         final int[] idsAccesoUsuario= {1,2,3,4};
-        final String[] IDusuarios = {"U1", "U2", "U3", "U4","U5"};
+        final String[] IDusuarios = {"01", "02", "03", "04","05"};
         for (int i = 0; i < idsAccesoUsuario.length; i++) {
             AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idsAccesoUsuario[i]);
             insertar(accesoUsuario);
