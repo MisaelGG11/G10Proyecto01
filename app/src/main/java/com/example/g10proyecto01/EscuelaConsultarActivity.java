@@ -2,6 +2,8 @@ package com.example.g10proyecto01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -70,47 +72,72 @@ public class EscuelaConsultarActivity extends AppCompatActivity {
         if (edicion == 0) {
             editAcronimo.setEnabled(true);
             editNombre.setEnabled(true);
-            btnActualizar.setText("Guardar");
+            btnActualizar.setText(getResources().getString(R.string.guardar));
 
             edicion = 1;
 
         } else {
-            editAcronimo.setEnabled(false);
-            editNombre.setEnabled(false);
-            btnActualizar.setText("Actulizar");
+            if (editIdEscuela.getText().toString().isEmpty() ||
+                    editAcronimo.getText().toString().isEmpty() ||
+                    editNombre.getText().toString().isEmpty()) {
 
-            actualizarEscuela(v);
+                Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+            } else {
+                Escuela escuela = new Escuela();
 
-            actulizarAlRegresar();
+                escuela.setId_escuela(Integer.parseInt(editIdEscuela.getText().toString()));
+                escuela.setAcronimo(editAcronimo.getText().toString());
+                escuela.setNombre(editNombre.getText().toString());
+
+                helper.abrir();
+                String estado = helper.actualizar(escuela);
+                helper.cerrar();
+
+                if (estado.contains("Correcto")) {
+                    Toast.makeText(this, getResources().getString(R.string.regActualizado), Toast.LENGTH_SHORT).show();
+
+                    actulizarAlRegresar();
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.regNoActualizado), Toast.LENGTH_SHORT).show();
+                }
+            }
         }
     }
 
-    public void actualizarEscuela(View v) {
-        Escuela escuela = new Escuela();
-        escuela.setId_escuela(Integer.parseInt(editIdEscuela.getText().toString()));
-        escuela.setAcronimo(editAcronimo.getText().toString());
-        escuela.setNombre(editNombre.getText().toString());
-
-        helper.abrir();
-        String estado = helper.actualizar(escuela);
-        helper.cerrar();
-
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-    }
-
     public void eliminarEscuela(View v) {
-        String regEliminadas;
+        AlertDialog.Builder alerta = new AlertDialog.Builder(this);
+        alerta.setCancelable(false);
 
-        Escuela escuela = new Escuela();
-        escuela.setId_escuela(Integer.parseInt(editIdEscuela.getText().toString()));
+        alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
 
-        helper.abrir();
-        regEliminadas = helper.eliminar(escuela);
-        helper.cerrar();
+        alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //ACCIONES SI RESPONDE QUE SI A LA ALERTA
+                String regEliminadas;
 
-        Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+                Escuela escuela = new Escuela();
+                escuela.setId_escuela(Integer.parseInt(editIdEscuela.getText().toString()));
 
-        actulizarAlRegresar();
+                helper.abrir();
+                regEliminadas = helper.eliminar(escuela);
+                helper.cerrar();
+
+                Toast.makeText(v.getContext(), getResources().getString(R.string.regEliminados) + regEliminadas, Toast.LENGTH_SHORT).show();
+
+                actulizarAlRegresar();
+            }
+        });
+
+        alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //ACCIONES SI PONE NO
+                dialog.cancel();
+            }
+        });
+        //MUESTRA ALERTA PARA EVENTO ONCLICK DEL BOTON
+        alerta.show();
     }
 
     public void actulizarAlRegresar() {

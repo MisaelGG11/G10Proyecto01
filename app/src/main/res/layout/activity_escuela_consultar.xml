@@ -16,7 +16,7 @@
             android:id="@+id/viewIdEscuela"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="id: " />
+            android:text="@string/idEscuela" />
 
         <EditText
             android:id="@+id/txtIdEscuela"
@@ -31,7 +31,7 @@
             android:id="@+id/viewAcronimo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Acronimo" />
+            android:text="@string/acronimoEscuela" />
 
         <EditText
             android:id="@+id/txtAcronimo"
@@ -46,7 +46,7 @@
             android:id="@+id/viewNombre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nombre: " />
+            android:text="@string/nombreEscuela" />
 
         <EditText
             android:id="@+id/txtNombre"
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Actualizar" />
+            android:text="@string/actualizar" />
 
         <Button
             android:onClick="eliminarEscuela"
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Eliminar" />
+            android:text="@string/eliminar" />
 
     </LinearLayout>
 

@@ -30,12 +30,15 @@
     <string name="consultar">Lire</string>
     <string name="actualizar_registro">Mettre à jour l’enregistrement</string>
     <string name="actualizar">mettre à jour</string>
-    <string name="limpiar">propre</string>
+    <string name="limpiar">Propre</string>
+    <string name="guardar">Sauvegarder</string>
+
 
     <!--Clase Controladora-->
     <string name="error">Erreur lors de l’insertion de l’enregistrement. Enregistrement en double. Vérifier l’insertion</string>
     <string name="regInsertado">Enregistrement inséré Nº= </string>
     <string name="regActualizado">Enregistrement mis à jour avec succès</string>
+    <string name="regNoActualizado">L’enregistrement n’a pas été mis à jour, vérifiez vos champs</string>
     <string name="regEliminados">Lignes concernées = </string>
     <string name="referencia">Il y a une référence dans un autre tableau de</string>
     <string name="llenadoBD">Enregistré avec succès</string>
@@ -109,4 +112,9 @@
     <string name="txtNombreUsuario">Nom de l\'utilisateur:</string>
     <string name="txtPasswordUsuario">Mot de passe:</string>
     <string name="txtOpcionesCrudUsuario">Permis:</string>
+
+    <!--EscuelaActivity-->
+    <string name="idEscuela">idEscuela</string>
+    <string name="acronimoEscuela">Acronimo</string>
+    <string name="nombreEscuela">Nombre</string>
 </resources>

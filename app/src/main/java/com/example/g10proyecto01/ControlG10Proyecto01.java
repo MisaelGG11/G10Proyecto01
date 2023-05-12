@@ -450,7 +450,7 @@ public class ControlG10Proyecto01 {
 
     /* Insertar escuela */
     public String insertar(Escuela escuela) {
-        String regInsertados = "Registro Insertado Nº= ";
+        String regInsertados = "";
 
         long contador = 0;
 
@@ -463,7 +463,7 @@ public class ControlG10Proyecto01 {
         contador = db.insert("escuela", null, escu);
 
         if (contador == -1 || contador == 0) {
-            regInsertados = "Error al Insertar el registro, RegistroDuplicado.Verificar inserción";
+            regInsertados = "Error";
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -504,16 +504,16 @@ public class ControlG10Proyecto01 {
 
             db.update("escuela", cv, "id_escuela = ?", id);
 
-            return "Registro Actualizado Correctamente";
+            return "Correcto";
         } else {
-            return "Registro con carnet " + escuela.getId_escuela() + " no existe en la DB";
+            return "";
         }
     }
 
     /*  Actualizar escuela  */
 
     public String eliminar(Escuela escuela) {
-        String regAfectados = "filas afectadas= ";
+        String regAfectados = "";
 
         int contador = 0;
 

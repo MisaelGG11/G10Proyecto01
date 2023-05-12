@@ -29,7 +29,7 @@ public class EscuelaMenuActivity extends AppCompatActivity implements SearchView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escuela_menu);
 
-        txtBuscar = findViewById(R.id.txtBuscar);
+        txtBuscar = findViewById(R.id.editBuscar);
         listaEscuelas = findViewById(R.id.lvEscuelas);
         btnAgregar = findViewById(R.id.btnAgregar);
 

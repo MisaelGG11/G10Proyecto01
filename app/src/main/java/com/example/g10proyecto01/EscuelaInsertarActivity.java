@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 public class EscuelaInsertarActivity extends AppCompatActivity {
     ControlG10Proyecto01 helper;
-    EditText editId;
+    EditText editIdEscuela;
     EditText editAcronimo;
     EditText editNombre;
 
@@ -19,38 +19,49 @@ public class EscuelaInsertarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escuela_insertar);
         helper = new ControlG10Proyecto01(this);
-        editId = (EditText) findViewById(R.id.editId);
+        editIdEscuela = (EditText) findViewById(R.id.editIdEscuela);
         editAcronimo = (EditText) findViewById(R.id.editAcronimo);
         editNombre = (EditText) findViewById(R.id.editNombre);
     }
 
     public void insertarEscuela(View v) {
-        String id_escuela = editId.getText().toString();
-        String acronimo = editAcronimo.getText().toString();
-        String nombre = editNombre.getText().toString();
+        if (editIdEscuela.getText().toString().isEmpty() ||
+                editAcronimo.getText().toString().isEmpty() ||
+                editNombre.getText().toString().isEmpty()) {
 
-        String regInsertados;
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        } else {
+            String id_escuela = editIdEscuela.getText().toString();
+            String acronimo = editAcronimo.getText().toString();
+            String nombre = editNombre.getText().toString();
 
-        Escuela escuela = new Escuela();
-        escuela.setId_escuela(Integer.valueOf(id_escuela));
-        escuela.setAcronimo(acronimo);
-        escuela.setNombre(nombre);
+            String regInsertados;
 
-        helper.abrir();
+            Escuela escuela = new Escuela();
+            escuela.setId_escuela(Integer.valueOf(id_escuela));
+            escuela.setAcronimo(acronimo);
+            escuela.setNombre(nombre);
 
-        regInsertados = helper.insertar(escuela);
+            helper.abrir();
 
-        helper.cerrar();
+            regInsertados = helper.insertar(escuela);
 
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+            helper.cerrar();
 
-        Intent intent = new Intent();
-        setResult(RESULT_OK, intent);
-        finish();
+            if (regInsertados.contains("Error")) {
+                Toast.makeText(this, getResources().getString(R.string.error), Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.regInsertado) + regInsertados, Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+        }
     }
 
     public void limpiarTexto(View v) {
-        editId.setText("");
+        editIdEscuela.setText("");
         editAcronimo.setText("");
         editNombre.setText("");
     }
