@@ -454,7 +454,7 @@ public class ControlG10Proyecto01 {
 
     /*********************************** Tabla Escuela ***********************************/
 
-    /* Metodos Insertar aqui */
+    /* Insertar escuela */
 
     public String insertar(Escuela escuela) {
         String regInsertados = "Registro Insertado Nº= ";
@@ -477,6 +477,71 @@ public class ControlG10Proyecto01 {
 
         return regInsertados;
     }
+
+    /*  Consultar escuela  */
+    public Escuela consultarEscuela(String id_escuela){
+        String[] id = {id_escuela};
+
+        Cursor cursor = db.query("escuela", camposEscuela, "id_escuela = ?", id, null, null, null);
+
+        if(cursor.moveToFirst()){
+            Escuela escuela = new Escuela();
+
+            escuela.setId_escuela(cursor.getInt(0));
+            escuela.setAcronimo(cursor.getString(1));
+            escuela.setNombre(cursor.getString(2));
+
+            return escuela;
+        }else{
+            return null;
+        }
+    }
+
+    /*  Actualizar escuela  */
+
+    public String actualizar(Escuela escuela){
+
+        if(true){
+            String[] id = {String.valueOf(escuela.getId_escuela())};
+
+            ContentValues cv = new ContentValues();
+
+            cv.put("Acronimo", escuela.getAcronimo());
+            cv.put("Nombre", escuela.getNombre());
+
+            db.update("escuela", cv, "id_escuela = ?", id);
+
+            return "Registro Actualizado Correctamente";
+        }else{
+            return "Registro con carnet " + escuela.getId_escuela() + " no existe en la DB";
+        }
+    }
+
+    /*  muestra todas las escuelas  */
+
+    public ArrayList<Escuela> mostrarEscuelas() {
+
+        ArrayList<Escuela> listaEscuelas = new ArrayList<>();
+        Escuela escuela;
+        Cursor cursorEscuelas;
+
+        cursorEscuelas = db.rawQuery("SELECT * FROM " + "escuela" + " ORDER BY id_escuela ASC", null);
+
+        if (cursorEscuelas.moveToFirst()) {
+            do {
+                escuela = new Escuela();
+                escuela.setId_escuela(cursorEscuelas.getInt(0));
+                escuela.setAcronimo(cursorEscuelas.getString(1));
+                escuela.setNombre(cursorEscuelas.getString(2));
+
+                listaEscuelas.add(escuela);
+            } while (cursorEscuelas.moveToNext());
+        }
+
+        return listaEscuelas;
+    }
+
+
     /*********************************** Tabla Local ***********************************/
     // CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
 
