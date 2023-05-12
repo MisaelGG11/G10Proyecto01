@@ -1,5 +1,6 @@
 package com.example.g10proyecto01.adaptadores;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -93,7 +94,7 @@ public class ListaEscuelaAdapter extends RecyclerView.Adapter<ListaEscuelaAdapte
                     Context context = view.getContext();
                     Intent intent = new Intent(context, EscuelaConsultarActivity.class);
                     intent.putExtra("ID", listaEscuela.get(getAdapterPosition()).getId_escuela());
-                    context.startActivity(intent);
+                    ((Activity) context).startActivityForResult(intent,1);
                 }
             });
         }

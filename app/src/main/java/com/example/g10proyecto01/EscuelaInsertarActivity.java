@@ -2,6 +2,7 @@ package com.example.g10proyecto01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -42,6 +43,10 @@ public class EscuelaInsertarActivity extends AppCompatActivity {
         helper.cerrar();
 
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     public void limpiarTexto(View v) {

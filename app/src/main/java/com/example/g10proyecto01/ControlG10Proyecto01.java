@@ -205,10 +205,9 @@ public class ControlG10Proyecto01 {
     }
     /******************************************** Tabla EmpleadoUES ********************************************/
     // CAMPOS: {"id_empleado", "id_tipo_empleado", "nombre_empleado", "apellido_empleado", "email_empleado", "telefono_empleado"}
-
     /*  Insertar EmpleadoUES  */
     public String insertar(EmpleadoUES empleadoUES){
-        String regInsertados = context.getResources().getString(R.string.regInsertado);
+        String regInsertados="Registro Insertado Nº= ";
         long contador = 0;
         if (verificarIntegridad(empleadoUES, 1)) {
             ContentValues empleado = new ContentValues();
@@ -222,7 +221,7 @@ public class ControlG10Proyecto01 {
         }
         if(contador == -1 || contador == 0)
         {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
         }
         else {
             regInsertados=regInsertados+contador;
@@ -259,22 +258,20 @@ public class ControlG10Proyecto01 {
         empleado.put("email_empleado", empleadoUES.getEmail_empleado());
         empleado.put("telefono_empleado", empleadoUES.getTelefono_empleado());
         db.update("Empleado_UES", empleado, "id_empleado = ?", id);
-        return context.getResources().getString(R.string.regActualizado);
+        return "Registro Actualizado Correctamente";
     }
 
-    /*  Eliminar EmpleadoUES  */
+    /*  Inserta EmpleadoUES  */
     public String eliminar(EmpleadoUES empleadoUES){
-        String regAfectados=context.getResources().getString(R.string.regEliminados);
+        String regAfectados="filas afectadas= ";
         int contador=0;
-        if (verificarIntegridad(empleadoUES, 5)){
+        //if (verificarIntegridad(tipoEmpleado, 2)){
             String where="id_empleado=" + empleadoUES.getId_empleado();
             contador += db.delete("Empleado_UES", where, null);
             regAfectados+=contador;
             return regAfectados;
-        }
-        else return context.getResources().getString(R.string.referencia) + " " +
-                    context.getResources().getString(R.string.IdEmpleado) + " " +
-                    empleadoUES.getId_empleado();
+        //}
+        //else return "Hay una referencia en Empleado UES de id tipo de empleado " + tipoEmpleado.getId_tipo_empleado();
     }
 
     /******************************************** Tabla Docente ********************************************/
@@ -282,7 +279,7 @@ public class ControlG10Proyecto01 {
 
     /*  Insertar Docente  */
     public String insertar(Docente docente){
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+        String regInsertados="Registro Insertado Nº= ";
         long contador=0;
         if (verificarIntegridad(docente, 3)){
             ContentValues docent = new ContentValues();
@@ -294,7 +291,7 @@ public class ControlG10Proyecto01 {
         }
         if(contador==-1 || contador==0)
         {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
         }
         else {
             regInsertados=regInsertados+contador;
@@ -326,23 +323,21 @@ public class ControlG10Proyecto01 {
         docent.put("nip_docente", docente.getNip_docente());
         docent.put("categoria_docente", docente.getCategoria_docente());
         db.update("Docente",docent,"id_docente= ?", id);
-        return context.getResources().getString(R.string.regActualizado);
+        return "Registro Actualizado Correctamente";
     }
 
 
     /*  Eliminar Docente  */
     public String eliminar(Docente docente){
-        String regAfectados=context.getResources().getString(R.string.regEliminados);
+        String regAfectados="filas afectadas= ";
         int contador=0;
-        if (verificarIntegridad(docente, 4)) {
+        //if (verificarIntegridad(docente, 4)) {
             String where = "id_Docente=" + docente.getId_docente();
             contador += db.delete("Docente", where, null);
             regAfectados += contador;
             return regAfectados;
-        }
-        else return context.getResources().getString(R.string.referencia) + " " +
-                    context.getResources().getString(R.string.IdDocente) + " " +
-                    docente.getId_docente();
+        //}
+        //else return "Hay una referencia en Empleado UES de id tipo de empleado " + docente.getId_docente();
     }
 
     /******************************************** Tabla TipoEmpleado ********************************************/
@@ -350,16 +345,17 @@ public class ControlG10Proyecto01 {
 
     /*  Insertar EmpleadoUES  */
     public String insertar(TipoEmpleado tipoEmpleado){
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+        String regInsertados="Registro Insertado Nº= ";
         long contador=0;
         ContentValues tEmpleado = new ContentValues();
         tEmpleado.put("id_tipo_empleado", tipoEmpleado.getId_tipo_empleado());
         tEmpleado.put("ocupacion", tipoEmpleado.getOcupacion());
 
+        ;
         contador = db.insert("Tipo_de_Empleado", null, tEmpleado);
         if(contador==-1 || contador==0)
         {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
         }
         else {
             regInsertados=regInsertados+contador;
@@ -387,12 +383,12 @@ public class ControlG10Proyecto01 {
         ContentValues cv = new ContentValues();
         cv.put("ocupacion", tipoEmpleado.getOcupacion());
         db.update("Tipo_de_Empleado",cv,"id_tipo_empleado = ?", id);
-        return context.getResources().getString(R.string.regActualizado);
+        return "Registro Actualizado Correctamente";
     }
 
     /*  Eliminar tipoEmpleado  */
     public String eliminar(TipoEmpleado tipoEmpleado){
-        String regAfectados=context.getResources().getString(R.string.regEliminados);
+        String regAfectados="filas afectadas= ";
         int contador=0;
         if (verificarIntegridad(tipoEmpleado, 2)){
             String where="id_tipo_empleado=" + tipoEmpleado.getId_tipo_empleado();
@@ -400,9 +396,7 @@ public class ControlG10Proyecto01 {
             regAfectados+=contador;
             return regAfectados;
         }
-        else return context.getResources().getString(R.string.referencia) + " " +
-                    context.getResources().getString(R.string.tvIdTipoEmpleado) + " " +
-                    tipoEmpleado.getId_tipo_empleado();
+        else return "Hay una referencia en Empleado UES de id tipo de empleado " + tipoEmpleado.getId_tipo_empleado();
     }
     /******************************************** Tabla OpcionCrud ********************************************/
     // CAMPOS: {"id_opcion_crud", "des_opcion"}
@@ -455,7 +449,6 @@ public class ControlG10Proyecto01 {
     /*********************************** Tabla Escuela ***********************************/
 
     /* Insertar escuela */
-
     public String insertar(Escuela escuela) {
         String regInsertados = "Registro Insertado Nº= ";
 
@@ -465,7 +458,7 @@ public class ControlG10Proyecto01 {
 
         escu.put("id_escuela", escuela.getId_escuela());
         escu.put("acronimo", escuela.getAcronimo());
-        escu.put("nombre",escuela.getNombre());
+        escu.put("nombre", escuela.getNombre());
 
         contador = db.insert("escuela", null, escu);
 
@@ -479,12 +472,12 @@ public class ControlG10Proyecto01 {
     }
 
     /*  Consultar escuela  */
-    public Escuela consultarEscuela(String id_escuela){
+    public Escuela consultar(String id_escuela) {
         String[] id = {id_escuela};
 
         Cursor cursor = db.query("escuela", camposEscuela, "id_escuela = ?", id, null, null, null);
 
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             Escuela escuela = new Escuela();
 
             escuela.setId_escuela(cursor.getInt(0));
@@ -492,16 +485,16 @@ public class ControlG10Proyecto01 {
             escuela.setNombre(cursor.getString(2));
 
             return escuela;
-        }else{
+        } else {
             return null;
         }
     }
 
     /*  Actualizar escuela  */
 
-    public String actualizar(Escuela escuela){
+    public String actualizar(Escuela escuela) {
 
-        if(true){
+        if (true) {
             String[] id = {String.valueOf(escuela.getId_escuela())};
 
             ContentValues cv = new ContentValues();
@@ -512,14 +505,34 @@ public class ControlG10Proyecto01 {
             db.update("escuela", cv, "id_escuela = ?", id);
 
             return "Registro Actualizado Correctamente";
-        }else{
+        } else {
             return "Registro con carnet " + escuela.getId_escuela() + " no existe en la DB";
         }
     }
 
+    /*  Actualizar escuela  */
+
+    public String eliminar(Escuela escuela) {
+        String regAfectados = "filas afectadas= ";
+
+        int contador = 0;
+
+        /*
+        if (verificarIntegridad(alumno,3)) {
+            contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
+        }
+        */
+
+        contador += db.delete("escuela", "id_escuela='" + escuela.getId_escuela() + "'", null);
+
+        regAfectados += contador;
+
+        return regAfectados;
+    }
+
     /*  muestra todas las escuelas  */
 
-    public ArrayList<Escuela> mostrarEscuelas() {
+    public ArrayList<Escuela> mostrar() {
 
         ArrayList<Escuela> listaEscuelas = new ArrayList<>();
         Escuela escuela;
@@ -540,7 +553,6 @@ public class ControlG10Proyecto01 {
 
         return listaEscuelas;
     }
-
 
     /*********************************** Tabla Local ***********************************/
     // CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
@@ -720,7 +732,7 @@ public class ControlG10Proyecto01 {
                 return false;
             }
             case 2: {
-                //VERIFICA QUE NO SE ELIMINE UN TIPO EMPLEADO MIENTRA EXISTA UNA REFERENCIA DE EL EN LA TABLA EMPLEADO UES
+                //VERIFICA QUE NO SE ELIMINE UN TIPO EMPLEADO MIENTRA EXiISTA UNA REFERENCIA DE EL EN LA TABLA EMPLEADO UES
                 TipoEmpleado tipoEmpleado = (TipoEmpleado) dato;
                 Cursor cursor = db.query(true, "Empleado_UES", new String[]{"id_tipo_empleado"}, "id_tipo_empleado ='" + tipoEmpleado.getId_tipo_empleado() + "'", null, null, null, null, null);
                 if (cursor.moveToFirst())
@@ -741,26 +753,6 @@ public class ControlG10Proyecto01 {
                 }
                 return false;
             }
-            case 4: {
-                //VERIFICA QUE NO SE ELIMINE UN DOCENTE MIENTRA EXISTA UNA REFERENCIA DE EL EN LA TABLA OFERTA ACADEMICA
-                Docente docente = (Docente) dato;
-                Cursor cursor = db.query(true, "Oferta_Academica", new String[]{"id_docente"}, "id_docente ='" + docente.getId_docente() + "'", null, null, null, null, null);
-                if (cursor.moveToFirst())
-                    return false;
-                else
-                    return true;
-            }
-            case 5:{
-                //VERIFICA QUE NO SE ELIMINE UN EMPLEADO UES MIENTRA EXISTA UNA REFERENCIA DE EL EN LAS TABLAS DOCENTE Y LOCAL ADMINISTRADO
-                EmpleadoUES empleado = (EmpleadoUES) dato;
-                Cursor cursor1 = db.query(true, "Docente", new String[]{"id_empleado"}, "id_empleado ='" + empleado.getId_empleado() + "'", null, null, null, null, null);
-                Cursor cursor2 = db.query(true, "Local_Administrado", new String[]{"id_empleado"}, "id_empleado ='" + empleado.getId_empleado() + "'", null, null, null, null, null);
-                if (cursor1.moveToFirst() || cursor2.moveToFirst())
-                    return false;
-                else
-                    return true;
-
-            }
             default: return false;
         }
     }
@@ -771,14 +763,13 @@ public class ControlG10Proyecto01 {
 
     //Usuarios iniciales
     public void permisosUsuarios(){
-        db.execSQL("DELETE FROM Usuario");
-        db.execSQL("DELETE FROM OpcionCrud");
-        db.execSQL("DELETE FROM AccesoUsuario");
 
-        //Usuarios
         final String[] IDusuario = {"01", "02", "03", "04", "05"};
         final String[] nomUsuario = {"Misael", "Fabio", "Claudia", "Leonardo", "Alexander"};
         final String[] clave = {"GG20031", "FM19038", "AC17033", "EL19004", "HS19011"};
+
+
+        db.execSQL("DELETE FROM Usuario");
 
         Usuario user = new Usuario();
 
@@ -788,27 +779,6 @@ public class ControlG10Proyecto01 {
             user.setClave(clave[i]);
             insertar(user);
         }
-
-        //ACCESO USUARIO
-
-        final int[] idsAccesoUsuario= {1,2,3,4,5,6,7,8};
-        final String[] IDusuarios = {"01", "02", "03", "04","05", "01", "01", "01"};
-        final int [] idOpcionCrud_Access = {1,2,3,4,1,2,3,4};
-        for (int i = 0; i < idsAccesoUsuario.length; i++) {
-            AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idOpcionCrud_Access[i]);
-            insertar(accesoUsuario);
-        }
-
-        //OPCIONCRUD
-
-        final int[] idOpcionCrud= {1,2,3,4};
-        final String[] opcionCrud = {"Insertar","Actualizar","Eliminar","Consultar"};
-        for (int i = 0; i < opcionCrud.length; i++) {
-            OpcionCrud opcion = new OpcionCrud(idOpcionCrud[i],opcionCrud[i]);
-            insertar(opcion);
-        }
-
-
     }
 
     // Método para rescatar datos de de la base para el Spinner
@@ -836,6 +806,8 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM Evento_Especial");
 
         //CICLO
+        //DOCENTE
+        //EMPLEADO_UES
         //ESCUELA
         final int[] EscuelaId = {1,2,3,4};
         final String[] EscuelaAcronimo = {"EISI","UCB","EII","EIE"};
@@ -871,25 +843,17 @@ public class ControlG10Proyecto01 {
         //MATERIA
 
         //OFERTAACADEMICA
-        //PROPUESTAESPECIFICA
-        //PROPUESTAGENERAL
-
-        //ACCESO USUARIO
-        final int[] idsAccesoUsuario= {1,2,3,4,5,6,7,8};
-        final String[] IDusuarios = {"01", "02", "03", "04","05", "01", "01", "01"};
-        final int [] idOpcionCrud_Access = {1,2,3,4,1,2,3,4};
-        for (int i = 0; i < idsAccesoUsuario.length; i++) {
-            AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idOpcionCrud_Access[i]);
-            insertar(accesoUsuario);
-        }
 
         //OPCIONCRUD
         final int[] idOpcionCrud= {1,2,3,4};
-        final String[] opcionCrud = {"Insertar","Actualizar","Eliminar","Consultar"};
+        final String[] opcionCrud = {"insertar","actualizar","eliminar","ver detalle"};
         for (int i = 0; i < opcionCrud.length; i++) {
             OpcionCrud opcion = new OpcionCrud(idOpcionCrud[i],opcionCrud[i]);
             insertar(opcion);
         }
+
+        //PROPUESTAESPECIFICA
+        //PROPUESTAGENERAL
 
         //TIPO EMPLEADO
         final int[] idTipoEmpleado = {1,2,3,4};
@@ -936,6 +900,14 @@ public class ControlG10Proyecto01 {
             insertar(docente);
         }
 
+        //ACCESO USUARIO
+        final int[] idsAccesoUsuario= {1,2,3,4};
+        final String[] IDusuarios = {"01", "02", "03", "04","05"};
+        for (int i = 0; i < idsAccesoUsuario.length; i++) {
+            AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idsAccesoUsuario[i]);
+            insertar(accesoUsuario);
+        }
+
         //TIPO DE EVENTO
         final int[] idTipoEvento = {1,2,3,4};
         final String[] nombre = {"Foro", "Conferencia", "Examen Parcial", "Capacitacion"};
@@ -949,8 +921,7 @@ public class ControlG10Proyecto01 {
 
         cerrar();
 
-        return context.getResources().getString(R.string.llenadoBD);
-        //return "LLenado bien";
+        return "Guardo Correctamente";
     }
 }
 

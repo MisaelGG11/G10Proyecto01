@@ -4,14 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.ListActivity;
+import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SearchView;
 
 import com.example.g10proyecto01.adaptadores.ListaEscuelaAdapter;
@@ -44,7 +41,7 @@ public class EscuelaMenuActivity extends AppCompatActivity implements SearchView
 
         helper.abrir();
 
-        adapter = new ListaEscuelaAdapter(helper.mostrarEscuelas());
+        adapter = new ListaEscuelaAdapter(helper.mostrar());
 
         helper.cerrar();
 
@@ -62,7 +59,7 @@ public class EscuelaMenuActivity extends AppCompatActivity implements SearchView
 
     private void insertarRegistro(){
         Intent intent = new Intent(this, EscuelaInsertarActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,1);
     }
 
     @Override
@@ -74,5 +71,22 @@ public class EscuelaMenuActivity extends AppCompatActivity implements SearchView
     public boolean onQueryTextChange(String s) {
         adapter.filtrado(s);
         return false;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+
+            helper.abrir();
+
+            adapter = new ListaEscuelaAdapter(helper.mostrar());
+
+            helper.cerrar();
+
+            listaEscuelas.setAdapter(adapter);
+
+            adapter.notifyDataSetChanged();
+        }
     }
 }

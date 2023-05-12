@@ -2,6 +2,7 @@ package com.example.g10proyecto01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ public class EscuelaConsultarActivity extends AppCompatActivity {
     Button btnActualizar;
     Escuela escuela;
     ControlG10Proyecto01 helper;
+    int edicion = 0;
     int id = 0;
 
     @Override
@@ -29,9 +31,9 @@ public class EscuelaConsultarActivity extends AppCompatActivity {
         btnActualizar = findViewById(R.id.btnActualizar);
         //btnAgregar.setVisibility(View.INVISIBLE);
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
-            if(extras == null){
+            if (extras == null) {
                 id = Integer.parseInt(null);
             } else {
                 id = extras.getInt("ID");
@@ -44,11 +46,11 @@ public class EscuelaConsultarActivity extends AppCompatActivity {
 
         helper.abrir();
 
-        Escuela escuela = helper.consultarEscuela(String.valueOf(id));
+        Escuela escuela = helper.consultar(String.valueOf(id));
 
         helper.cerrar();
 
-        if(escuela == null) {
+        if (escuela == null) {
             Toast.makeText(this, "Escuela no encontrada en la DB", Toast.LENGTH_LONG).show();
         } else {
             editIdEscuela.setEnabled(false);
@@ -64,23 +66,56 @@ public class EscuelaConsultarActivity extends AppCompatActivity {
         }
     }
 
-    public  void habilitarEdicion(View v) {
-        editAcronimo .setEnabled(true);
-        editNombre.setEnabled(true);
+    public void habilitarEdicion(View v) {
+        if (edicion == 0) {
+            editAcronimo.setEnabled(true);
+            editNombre.setEnabled(true);
+            btnActualizar.setText("Guardar");
 
-        btnActualizar.setText("Guardar");
+            edicion = 1;
+
+        } else {
+            editAcronimo.setEnabled(false);
+            editNombre.setEnabled(false);
+            btnActualizar.setText("Actulizar");
+
+            actualizarEscuela(v);
+
+            actulizarAlRegresar();
+        }
     }
 
     public void actualizarEscuela(View v) {
         Escuela escuela = new Escuela();
         escuela.setId_escuela(Integer.parseInt(editIdEscuela.getText().toString()));
         escuela.setAcronimo(editAcronimo.getText().toString());
-        escuela.setNombre(editIdEscuela.getText().toString());
+        escuela.setNombre(editNombre.getText().toString());
 
         helper.abrir();
         String estado = helper.actualizar(escuela);
         helper.cerrar();
 
         Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+    }
+
+    public void eliminarEscuela(View v) {
+        String regEliminadas;
+
+        Escuela escuela = new Escuela();
+        escuela.setId_escuela(Integer.parseInt(editIdEscuela.getText().toString()));
+
+        helper.abrir();
+        regEliminadas = helper.eliminar(escuela);
+        helper.cerrar();
+
+        Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+
+        actulizarAlRegresar();
+    }
+
+    public void actulizarAlRegresar() {
+        Intent intent = new Intent();
+        setResult(RESULT_OK, intent);
+        finish();
     }
 }
