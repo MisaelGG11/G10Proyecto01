@@ -205,9 +205,10 @@ public class ControlG10Proyecto01 {
     }
     /******************************************** Tabla EmpleadoUES ********************************************/
     // CAMPOS: {"id_empleado", "id_tipo_empleado", "nombre_empleado", "apellido_empleado", "email_empleado", "telefono_empleado"}
+
     /*  Insertar EmpleadoUES  */
     public String insertar(EmpleadoUES empleadoUES){
-        String regInsertados="Registro Insertado Nº= ";
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
         long contador = 0;
         if (verificarIntegridad(empleadoUES, 1)) {
             ContentValues empleado = new ContentValues();
@@ -221,7 +222,7 @@ public class ControlG10Proyecto01 {
         }
         if(contador == -1 || contador == 0)
         {
-            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+            regInsertados= context.getResources().getString(R.string.error);
         }
         else {
             regInsertados=regInsertados+contador;
@@ -258,20 +259,22 @@ public class ControlG10Proyecto01 {
         empleado.put("email_empleado", empleadoUES.getEmail_empleado());
         empleado.put("telefono_empleado", empleadoUES.getTelefono_empleado());
         db.update("Empleado_UES", empleado, "id_empleado = ?", id);
-        return "Registro Actualizado Correctamente";
+        return context.getResources().getString(R.string.regActualizado);
     }
 
-    /*  Inserta EmpleadoUES  */
+    /*  Eliminar EmpleadoUES  */
     public String eliminar(EmpleadoUES empleadoUES){
-        String regAfectados="filas afectadas= ";
+        String regAfectados=context.getResources().getString(R.string.regEliminados);
         int contador=0;
-        //if (verificarIntegridad(tipoEmpleado, 2)){
+        if (verificarIntegridad(empleadoUES, 5)){
             String where="id_empleado=" + empleadoUES.getId_empleado();
             contador += db.delete("Empleado_UES", where, null);
             regAfectados+=contador;
             return regAfectados;
-        //}
-        //else return "Hay una referencia en Empleado UES de id tipo de empleado " + tipoEmpleado.getId_tipo_empleado();
+        }
+        else return context.getResources().getString(R.string.referencia) + " " +
+                context.getResources().getString(R.string.IdEmpleado) + " " +
+                empleadoUES.getId_empleado();
     }
 
     /******************************************** Tabla Docente ********************************************/
@@ -279,7 +282,7 @@ public class ControlG10Proyecto01 {
 
     /*  Insertar Docente  */
     public String insertar(Docente docente){
-        String regInsertados="Registro Insertado Nº= ";
+        String regInsertados=context.getResources().getString(R.string.regInsertado);
         long contador=0;
         if (verificarIntegridad(docente, 3)){
             ContentValues docent = new ContentValues();
@@ -291,7 +294,7 @@ public class ControlG10Proyecto01 {
         }
         if(contador==-1 || contador==0)
         {
-            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+            regInsertados= context.getResources().getString(R.string.error);
         }
         else {
             regInsertados=regInsertados+contador;
@@ -323,21 +326,23 @@ public class ControlG10Proyecto01 {
         docent.put("nip_docente", docente.getNip_docente());
         docent.put("categoria_docente", docente.getCategoria_docente());
         db.update("Docente",docent,"id_docente= ?", id);
-        return "Registro Actualizado Correctamente";
+        return context.getResources().getString(R.string.regActualizado);
     }
 
 
     /*  Eliminar Docente  */
     public String eliminar(Docente docente){
-        String regAfectados="filas afectadas= ";
+        String regAfectados=context.getResources().getString(R.string.regEliminados);
         int contador=0;
-        //if (verificarIntegridad(docente, 4)) {
+        if (verificarIntegridad(docente, 4)) {
             String where = "id_Docente=" + docente.getId_docente();
             contador += db.delete("Docente", where, null);
             regAfectados += contador;
             return regAfectados;
-        //}
-        //else return "Hay una referencia en Empleado UES de id tipo de empleado " + docente.getId_docente();
+        }
+        else return context.getResources().getString(R.string.referencia) + " " +
+                context.getResources().getString(R.string.IdDocente) + " " +
+                docente.getId_docente();
     }
 
     /******************************************** Tabla TipoEmpleado ********************************************/
@@ -345,17 +350,16 @@ public class ControlG10Proyecto01 {
 
     /*  Insertar EmpleadoUES  */
     public String insertar(TipoEmpleado tipoEmpleado){
-        String regInsertados="Registro Insertado Nº= ";
+        String regInsertados=context.getResources().getString(R.string.regInsertado);
         long contador=0;
         ContentValues tEmpleado = new ContentValues();
         tEmpleado.put("id_tipo_empleado", tipoEmpleado.getId_tipo_empleado());
         tEmpleado.put("ocupacion", tipoEmpleado.getOcupacion());
 
-        ;
         contador = db.insert("Tipo_de_Empleado", null, tEmpleado);
         if(contador==-1 || contador==0)
         {
-            regInsertados= "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
+            regInsertados= context.getResources().getString(R.string.error);
         }
         else {
             regInsertados=regInsertados+contador;
@@ -383,12 +387,12 @@ public class ControlG10Proyecto01 {
         ContentValues cv = new ContentValues();
         cv.put("ocupacion", tipoEmpleado.getOcupacion());
         db.update("Tipo_de_Empleado",cv,"id_tipo_empleado = ?", id);
-        return "Registro Actualizado Correctamente";
+        return context.getResources().getString(R.string.regActualizado);
     }
 
     /*  Eliminar tipoEmpleado  */
     public String eliminar(TipoEmpleado tipoEmpleado){
-        String regAfectados="filas afectadas= ";
+        String regAfectados=context.getResources().getString(R.string.regEliminados);
         int contador=0;
         if (verificarIntegridad(tipoEmpleado, 2)){
             String where="id_tipo_empleado=" + tipoEmpleado.getId_tipo_empleado();
@@ -396,7 +400,9 @@ public class ControlG10Proyecto01 {
             regAfectados+=contador;
             return regAfectados;
         }
-        else return "Hay una referencia en Empleado UES de id tipo de empleado " + tipoEmpleado.getId_tipo_empleado();
+        else return context.getResources().getString(R.string.referencia) + " " +
+                context.getResources().getString(R.string.tvIdTipoEmpleado) + " " +
+                tipoEmpleado.getId_tipo_empleado();
     }
     /******************************************** Tabla OpcionCrud ********************************************/
     // CAMPOS: {"id_opcion_crud", "des_opcion"}
@@ -559,7 +565,7 @@ public class ControlG10Proyecto01 {
 
     /*  Insertar Localidad  */
     public String insertar(Localidad localidad) {
-        String regInsertados = "Registro Insertado Nº= ";
+        String regInsertados=context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
@@ -573,7 +579,7 @@ public class ControlG10Proyecto01 {
         contador = db.insert("localidad", null, loc);
 
         if (contador == -1 || contador == 0) {
-            regInsertados = "Error al Insertar el registro, RegistroDuplicado.Verificar inserción";
+            regInsertados= context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -585,7 +591,7 @@ public class ControlG10Proyecto01 {
     public Localidad consultarlocalidad(String id_localidad){
         String[] id = {id_localidad};
         Cursor cursorLoc = db.query("localidad", camposLocalidad, "id_localidad = ?", id, null, null, null);
-        //System.out.println(cursorLoc);
+
         if(cursorLoc.moveToFirst()){
             Localidad localidad = new Localidad(cursorLoc.getInt(0),cursorLoc.getString(1),cursorLoc.getString(2),cursorLoc.getInt(3));
             return localidad;
@@ -604,29 +610,64 @@ public class ControlG10Proyecto01 {
         loc.put("capacidad_localidad", localidad.getCapacidad_localidad());
 
         db.update("localidad",loc,"id_localidad = ?", id);
-        return "Registro Actualizado Correctamente";
+        return context.getResources().getString(R.string.regActualizado);
     }
 
     /*  Eliminar Localidad  */
     public String eliminar(Localidad localidad){
-        String regAfectados="filas afectadas= ";
+        String regAfectados=context.getResources().getString(R.string.regEliminados);
+
         int contador=0;
-        String where="id_localidad=" + localidad.getId_localidad();
-        contador += db.delete("Localidad", where, null);
-        regAfectados+=contador;
-        return regAfectados;
+        if (verificarIntegridad(localidad, 8)){
+            String where="id_localidad=" + localidad.getId_localidad();
+            contador += db.delete("Localidad", where, null);
+            regAfectados+=contador;
+            return regAfectados;
+        }
+        else return context.getResources().getString(R.string.referencia) + " " +
+                context.getResources().getString(R.string.txtViewIdLocal) + " " +
+                localidad.getId_localidad();
     }
 
-    /*********************************** Tabla Localidad Administrado ***********************************/
+    /*********************************** Tabla Local Administrado ***********************************/
     // CAMPOS: {"id_local_admin", "id_localidad", "id_empleado"}
 
-    /*  Insertar Localidad Administrado */
+    /*  Insertar Local Administrado */
+    public String insertar(LocalAdministrado localAdministrado){
+        String regInsertados="Registro Insertado Nº= ";
+        long contador=0;
+        if (verificarIntegridad(localAdministrado,6)||verificarIntegridad(localAdministrado,7)){
+            ContentValues localAdmin = new ContentValues();
+            localAdmin.put("id_local_admin", localAdministrado.getId_local_admin());
+            localAdmin.put("id_localidad", localAdministrado.getId_local());
+            localAdmin.put("id_empleado", localAdministrado.getId_empleadoadministrador());
+            contador = db.insert("Local_Administrado", null, localAdmin);
+        }
+        if(contador==-1 || contador==0)
+        {
+            regInsertados= "ERROR al Insertar el registro, Registro Duplicado.Verificar inserción";
+        }
+        else {
+            regInsertados=regInsertados+contador;
+        }
+        return regInsertados;
+    }
 
-    /*  Consultar Localidad Administrado*/
+    /*  Consultar Local Administrado*/
+    public LocalAdministrado consultarlocalAdmin(String id_local_admin){
+        String[] id = {id_local_admin};
+        Cursor cursorLoc = db.query("Local_Administrado", camposLocalAdministrado, "id_local_admin = ?", id, null, null, null);
+        if(cursorLoc.moveToFirst()){
+            LocalAdministrado localAdministrado = new LocalAdministrado(cursorLoc.getInt(0),cursorLoc.getInt(1),cursorLoc.getInt(2));
+            return localAdministrado;
+        }else{
+            return null;
+        }
+    }
 
-    /*  Actualizar Localidad Administrado */
+    /*  Actualizar Local Administrado */
 
-    /*  Eliminar Localidad Administrado */
+    /*  Eliminar Local Administrado*/
     public String eliminar(LocalAdministrado localAdministrado){
         String regAfectados="filas afectadas= ";
         int contador=0;
@@ -715,7 +756,6 @@ public class ControlG10Proyecto01 {
 
 
 
-    /********************************************************* Verificar integridad *******************************************************/
     private boolean verificarIntegridad(Object dato, int relacion) throws SQLException {
         switch (relacion){
             case 1: {
@@ -732,7 +772,7 @@ public class ControlG10Proyecto01 {
                 return false;
             }
             case 2: {
-                //VERIFICA QUE NO SE ELIMINE UN TIPO EMPLEADO MIENTRA EXiISTA UNA REFERENCIA DE EL EN LA TABLA EMPLEADO UES
+                //VERIFICA QUE NO SE ELIMINE UN TIPO EMPLEADO MIENTRA EXISTA UNA REFERENCIA DE EL EN LA TABLA EMPLEADO UES
                 TipoEmpleado tipoEmpleado = (TipoEmpleado) dato;
                 Cursor cursor = db.query(true, "Empleado_UES", new String[]{"id_tipo_empleado"}, "id_tipo_empleado ='" + tipoEmpleado.getId_tipo_empleado() + "'", null, null, null, null, null);
                 if (cursor.moveToFirst())
@@ -753,6 +793,68 @@ public class ControlG10Proyecto01 {
                 }
                 return false;
             }
+            case 4: {
+                //VERIFICA QUE NO SE ELIMINE UN DOCENTE MIENTRA EXISTA UNA REFERENCIA DE EL EN LA TABLA OFERTA ACADEMICA
+                Docente docente = (Docente) dato;
+                Cursor cursor = db.query(true, "Oferta_Academica", new String[]{"id_docente"}, "id_docente ='" + docente.getId_docente() + "'", null, null, null, null, null);
+                if (cursor.moveToFirst())
+                    return false;
+                else
+                    return true;
+            }
+            case 5:{
+                //VERIFICA QUE NO SE ELIMINE UN EMPLEADO UES MIENTRA EXISTA UNA REFERENCIA DE EL EN LAS TABLAS DOCENTE Y LOCAL ADMINISTRADO
+                EmpleadoUES empleado = (EmpleadoUES) dato;
+                Cursor cursor1 = db.query(true, "Docente", new String[]{"id_empleado"}, "id_empleado ='" + empleado.getId_empleado() + "'", null, null, null, null, null);
+                Cursor cursor2 = db.query(true, "Local_Administrado", new String[]{"id_empleado"}, "id_empleado ='" + empleado.getId_empleado() + "'", null, null, null, null, null);
+                if (cursor1.moveToFirst() || cursor2.moveToFirst())
+                    return false;
+                else
+                    return true;
+            }
+            case 6: {
+                //  VERIFICA QUE EXISTA UNA LOCALIDAD AL INSERTAR UN LOCAL ADMINISTRADO
+
+                LocalAdministrado localidadadmin = (LocalAdministrado) dato;
+                String[] idLocal = {String.valueOf(localidadadmin.getId_local())};
+
+                Cursor cursorL = db.query("localidad", null, "id_localidad = ?", idLocal , null, null,null);
+
+                if (cursorL.moveToFirst()){
+                    //SE ENCUENTRAN DATOS
+                    return true;
+                }
+                return false;
+            }
+
+            case 7: {
+                //  VERIFICA QUE EXISTA UN EMPLEADO UES AL INSERTAR UN LOCAL ADMINISTRADO
+                LocalAdministrado locadmin = (LocalAdministrado) dato;
+                String[] idEmpleado = {String.valueOf(locadmin.getId_empleadoadministrador())};
+
+                Cursor cursorE = db.query("Empleado_UES", null, "id_empleado = ?", idEmpleado , null, null,null);
+
+                if (cursorE.moveToFirst()){
+                    //SE ENCUENTRAN DATOS
+                    return true;
+                }
+                return false;
+            }
+
+            case 8: {
+                //VERIFICA QUE NO SE ELIMINE UNA LOCALIDAD MIENTRA EXISTA UNA REFERENCIA EN LAS TABLAS: LOCAL ADMINISTRADO, EVENTO ESPECIAL y PROPUESTA ESPECIFICA
+                Localidad localidad = (Localidad) dato;
+                Cursor cursorL1 = db.query(true, "Local_Administrado", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
+                Cursor cursorL2 = db.query(true, "Evento_Especial", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
+                Cursor cursorL3 = db.query(true, "Propuesta_Especifica", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
+
+                if (cursorL1.moveToFirst() || cursorL2.moveToFirst()|| cursorL3.moveToFirst())
+
+                    return false;
+                else
+                    return true;
+            }
+
             default: return false;
         }
     }
@@ -824,7 +926,9 @@ public class ControlG10Proyecto01 {
         //GRUPO
         //GRUPOHORARIO
         //HORARIO
-        //LOCALADMINISTRADO
+
+
+
         //LOCALIDAD
         final int[] idlocal = {1,2,3,4,5,6,7};
         final String[] edificio= {"Auditorio Miguel Mármol", "Biblioteca FIA", "Edificio B", "Edificio B", "Edificio C","Labcomp EISI", "Labcomp EISI"};
@@ -906,6 +1010,19 @@ public class ControlG10Proyecto01 {
         for (int i = 0; i < idsAccesoUsuario.length; i++) {
             AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idsAccesoUsuario[i]);
             insertar(accesoUsuario);
+        }
+        //LOCALADMINISTRADO
+        final int[] idLocaladmin = {1,2,3,4};
+        final int [] idLocal = {4,2,1,3};
+        final int [] idEncargado= {2,2,1,4};
+
+        LocalAdministrado locAdmin = new LocalAdministrado();
+        for (int i = 0; i < 4; i++){
+            locAdmin.setId_local_admin(idLocaladmin[i]);
+            locAdmin.setId_local(idLocal[i]);
+            locAdmin.setId_empleadoadministrador(idEncargado[i]);
+
+            insertar(locAdmin);
         }
 
         //TIPO DE EVENTO
