@@ -20,17 +20,23 @@ public class TipoEmpleadoInsertarActivity extends Activity {
         editOcupacion = (EditText) findViewById(R.id.editOcupacion);
     }
     public void insertarTipoEmpleado(View v) {
-        String idTipoEmpleado = editIdTipoEmpleado.getText().toString();
-        String ocupacion = editOcupacion.getText().toString();
-        String regInsertados;
-        TipoEmpleado tipoEmp = new TipoEmpleado();
-        tipoEmp.setId_tipo_empleado(Integer.valueOf(idTipoEmpleado));
-        tipoEmp.setOcupacion(ocupacion);
+        if (editIdTipoEmpleado.getText().toString().isEmpty() ||
+            editOcupacion.getText().toString().isEmpty()){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            String idTipoEmpleado = editIdTipoEmpleado.getText().toString();
+            String ocupacion = editOcupacion.getText().toString();
+            String regInsertados;
+            TipoEmpleado tipoEmp = new TipoEmpleado();
+            tipoEmp.setId_tipo_empleado(Integer.valueOf(idTipoEmpleado));
+            tipoEmp.setOcupacion(ocupacion);
 
-        helper.abrir();
-        regInsertados=helper.insertar(tipoEmp);
-        helper.cerrar();
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+            helper.abrir();
+            regInsertados=helper.insertar(tipoEmp);
+            helper.cerrar();
+            Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        }
     }
     public void limpiarTexto(View v) {
         editIdTipoEmpleado.setText("");

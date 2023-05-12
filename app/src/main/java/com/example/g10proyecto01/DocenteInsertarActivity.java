@@ -47,25 +47,32 @@ public class DocenteInsertarActivity extends Activity {
         spinnerEmp.setAdapter(adapter);
     }
     public void insertarDocente(View v) {
-        String regInsertados;
+        if (editIdDocente.getText().toString().isEmpty() ||
+            editNip.getText().toString().isEmpty() ||
+            editCategoria.getText().toString().isEmpty()){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        } else {
+            String regInsertados;
 
-        int idDocente = Integer.valueOf(editIdDocente.getText().toString());
-        int nip = Integer.valueOf(editNip.getText().toString());
-        String categoria = editCategoria.getText().toString();
-        int idEmpleado = listIdEmp.get(spinnerEmp.getSelectedItemPosition());
+            int idDocente = Integer.valueOf(editIdDocente.getText().toString());
+            int nip = Integer.valueOf(editNip.getText().toString());
+            String categoria = editCategoria.getText().toString();
+            int idEmpleado = listIdEmp.get(spinnerEmp.getSelectedItemPosition());
 
 
-        Docente docente = new Docente();
-        docente.setId_docente(idDocente);
-        docente.setId_empleado(idEmpleado);
-        docente.setNip_docente(nip);
-        docente.setCategoria_docente(categoria);
+            Docente docente = new Docente();
+            docente.setId_docente(idDocente) ;
+            docente.setId_empleado(idEmpleado);
+            docente.setNip_docente(nip);
+            docente.setCategoria_docente(categoria);
 
-        helper.abrir();
-        regInsertados=helper.insertar(docente);
-        helper.cerrar();
+            helper.abrir();
+            regInsertados=helper.insertar(docente);
+            helper.cerrar();
 
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v) {
         editIdDocente.setText("");

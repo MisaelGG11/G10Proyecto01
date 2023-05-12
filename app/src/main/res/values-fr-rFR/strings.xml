@@ -32,6 +32,20 @@
     <string name="actualizar">mettre à jour</string>
     <string name="limpiar">propre</string>
 
+    <!--Clase Controladora-->
+    <string name="error">Erreur lors de l’insertion de l’enregistrement. Enregistrement en double. Vérifier l’insertion</string>
+    <string name="regInsertado">Enregistrement inséré Nº= </string>
+    <string name="regActualizado">Enregistrement mis à jour avec succès</string>
+    <string name="regEliminados">Lignes concernées = </string>
+    <string name="referencia">Il y a une référence dans un autre tableau de</string>
+    <string name="llenadoBD">Enregistré avec succès</string>
+
+    <!--AlertDialog-->
+    <string name="mensajeAlerta">Voulez-vous supprimer cet enregistrement?</string>
+    <string name="si">Oui</string>
+    <string name="no">Non</string>
+    <string name="vacio">Remplissez tous les champs obligatoires!</string>
+
     <!--LoginActivity-->
     <string name="user">Utilisateur</string>
     <string name="password">Mot de passe</string>

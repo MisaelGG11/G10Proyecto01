@@ -49,29 +49,37 @@ public class EmpleadoUESInsertarActivity extends Activity {
         spinnerTipoEmp.setAdapter(adapter);
     }
     public void insertarEmpleadoUES(View v) {
-        String regInsertados;
+        if (editIdEmpleado.getText().toString().isEmpty() ||
+            editNombre.getText().toString().isEmpty() ||
+            editApellido.getText().toString().isEmpty() ||
+            editCorreo.getText().toString().isEmpty() ||
+            editTelefono.getText().toString().isEmpty()){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            String regInsertados;
+            int idEmpleado = Integer.valueOf(editIdEmpleado.getText().toString());
+            String nombre = editNombre.getText().toString();
+            String apellido = editApellido.getText().toString();
+            String correo = editCorreo.getText().toString();
+            int telefono = Integer.valueOf(editTelefono.getText().toString());
+            int id_TE = idTipoEmp.get(spinnerTipoEmp.getSelectedItemPosition());
 
-        int idEmpleado = Integer.valueOf(editIdEmpleado.getText().toString());
-        String nombre = editNombre.getText().toString();
-        String apellido = editApellido.getText().toString();
-        String correo = editCorreo.getText().toString();
-        int telefono = Integer.valueOf(editTelefono.getText().toString());
-        int id_TE = idTipoEmp.get(spinnerTipoEmp.getSelectedItemPosition());
 
+            EmpleadoUES empleado = new EmpleadoUES();
+            empleado.setId_empleado(idEmpleado);
+            empleado.setId_tipo_empleado(id_TE);
+            empleado.setNombre_empleado(nombre);
+            empleado.setApellido_empleado(apellido);
+            empleado.setEmail_empleado(correo);
+            empleado.setTelefono_empleado(telefono);
 
-        EmpleadoUES empleado = new EmpleadoUES();
-        empleado.setId_empleado(idEmpleado);
-        empleado.setId_tipo_empleado(id_TE);
-        empleado.setNombre_empleado(nombre);
-        empleado.setApellido_empleado(apellido);
-        empleado.setEmail_empleado(correo);
-        empleado.setTelefono_empleado(telefono);
+            helper.abrir();
+            regInsertados=helper.insertar(empleado);
+            helper.cerrar();
 
-        helper.abrir();
-        regInsertados=helper.insertar(empleado);
-        helper.cerrar();
-
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        }
     }
     public void limpiarTexto(View v) {
         editIdEmpleado.setText("");

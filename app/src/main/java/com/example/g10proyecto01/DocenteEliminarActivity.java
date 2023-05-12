@@ -48,8 +48,8 @@ public class DocenteEliminarActivity extends Activity {
         int idDocente;
         idDocente =listIdDocente.get(spinnerIdDocente.getSelectedItemPosition());
 
-        alerta.setMessage("¿Desea todos los registros asociados a Id Docente:  " + idDocente +"?");
-        alerta.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+        alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
+        alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //ACCIONES SI RESPONDE QUE SI A LA ALERTA
@@ -62,7 +62,7 @@ public class DocenteEliminarActivity extends Activity {
                 Toast.makeText(DocenteEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
             }
         });
-        alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //ACCIONES SI PONE NO

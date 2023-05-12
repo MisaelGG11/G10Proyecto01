@@ -63,28 +63,36 @@ public class EmpleadoUESActualizarActivity extends Activity {
         spinnerIdTipoEmpleado.setAdapter(adapter2);
     }
     public void actualizarEmpleadoUES(View v) {
-        EmpleadoUES empleado = new EmpleadoUES();
+        if( editNombre.getText().toString().isEmpty() ||
+            editApellido.getText().toString().isEmpty() ||
+            editCorreo.getText().toString().isEmpty() ||
+            editTelefono.getText().toString().isEmpty()){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            EmpleadoUES empleado = new EmpleadoUES();
 
-        int idEmpleado, idTipoEmpleado;
-        idEmpleado =listIdEmp.get(spinnerIdEmpleado.getSelectedItemPosition());
-        idTipoEmpleado = listIdTipoEmp.get(spinnerIdTipoEmpleado.getSelectedItemPosition());
+            int idEmpleado, idTipoEmpleado;
+            idEmpleado =listIdEmp.get(spinnerIdEmpleado.getSelectedItemPosition());
+            idTipoEmpleado = listIdTipoEmp.get(spinnerIdTipoEmpleado.getSelectedItemPosition());
 
-        String nombre = editNombre.getText().toString();
-        String apellido = editApellido.getText().toString();
-        String correo = editCorreo.getText().toString();
-        int telefono = Integer.valueOf(editTelefono.getText().toString());
+            String nombre = editNombre.getText().toString();
+            String apellido = editApellido.getText().toString();
+            String correo = editCorreo.getText().toString();
+            int telefono = Integer.valueOf(editTelefono.getText().toString());
 
-        empleado.setId_empleado(idEmpleado);
-        empleado.setId_tipo_empleado(idTipoEmpleado);
-        empleado.setNombre_empleado(nombre);
-        empleado.setApellido_empleado(apellido);
-        empleado.setEmail_empleado(correo);
-        empleado.setTelefono_empleado(telefono);
+            empleado.setId_empleado(idEmpleado);
+            empleado.setId_tipo_empleado(idTipoEmpleado);
+            empleado.setNombre_empleado(nombre);
+            empleado.setApellido_empleado(apellido);
+            empleado.setEmail_empleado(correo);
+            empleado.setTelefono_empleado(telefono);
 
-        helper.abrir();
-        String estado = helper.actualizar(empleado);
-        helper.cerrar();
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+            helper.abrir();
+            String estado = helper.actualizar(empleado);
+            helper.cerrar();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        }
     }
     public void limpiarTexto(View v) {
         editIdTipoEmpleado.setText("");

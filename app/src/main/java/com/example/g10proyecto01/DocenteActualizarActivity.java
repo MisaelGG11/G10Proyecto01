@@ -60,24 +60,30 @@ public class DocenteActualizarActivity extends Activity {
         spinnerIdDocente.setAdapter(adapter2);
     }
     public void actualizarDocente(View v) {
-        Docente docente = new Docente();
+        if(editNip.getText().toString().isEmpty() || editCategoria.getText().toString().isEmpty()){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Docente docente = new Docente();
 
-        int idEmpleado, idDocente;
-        idEmpleado =listIdEmp.get(spinnerIdEmpleado.getSelectedItemPosition());
-        idDocente = listIdDocente.get(spinnerIdDocente.getSelectedItemPosition());
+            int idEmpleado, idDocente;
+            idEmpleado =listIdEmp.get(spinnerIdEmpleado.getSelectedItemPosition());
+            idDocente = listIdDocente.get(spinnerIdDocente.getSelectedItemPosition());
 
-        int nip = Integer.valueOf(editNip.getText().toString());
-        String categoria = editCategoria.getText().toString();
+            int nip = Integer.valueOf(editNip.getText().toString());
+            String categoria = editCategoria.getText().toString();
 
-        docente.setId_docente(idDocente);
-        docente.setId_empleado(idEmpleado);
-        docente.setNip_docente(nip);
-        docente.setCategoria_docente(categoria);
+            docente.setId_docente(idDocente);
+            docente.setId_empleado(idEmpleado);
+            docente.setNip_docente(nip);
+            docente.setCategoria_docente(categoria);
 
-        helper.abrir();
-        String estado = helper.actualizar(docente);
-        helper.cerrar();
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+            helper.abrir();
+            String estado = helper.actualizar(docente);
+            helper.cerrar();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v) {
         editNip.setText("");

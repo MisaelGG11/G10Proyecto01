@@ -32,6 +32,20 @@
     <string name="actualizar">Actualizar</string>
     <string name="limpiar">Limpiar</string>
 
+    <!--Clase Controladora-->
+    <string name="error">Error al insertar el registro. Registro Duplicado. Verificar inserción</string>
+    <string name="regInsertado">Registro insertado Nº= </string>
+    <string name="regActualizado">Registro actualizado correctamente</string>
+    <string name="regEliminados">Filas afectadas = </string>
+    <string name="referencia">Hay una referencia en otra tabla de</string>
+    <string name="llenadoBD">Guardo correctamente</string>
+
+    <!--AlertDialog-->
+    <string name="mensajeAlerta">¿Desea eliminar este registro?"</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="vacio">¡Llena todos los campos requeridos!</string>
+
     <!--LoginActivity-->
     <string name="user">Usuario</string>
     <string name="password">Contraseña</string>

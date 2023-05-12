@@ -44,8 +44,8 @@ public class TipoEmpleadoEliminarActivity extends Activity {
     public void eliminarTipoEmpleado(View v){
         AlertDialog.Builder alerta = new AlertDialog.Builder(TipoEmpleadoEliminarActivity.this);
         alerta.setCancelable(false);
-        alerta.setMessage("¿Desea eliminar este registro?");
-        alerta.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+        alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
+        alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //ACCIONES SI RESPONDE QUE SI A LA ALERTA
@@ -60,7 +60,7 @@ public class TipoEmpleadoEliminarActivity extends Activity {
                 Toast.makeText(TipoEmpleadoEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
             }
         });
-        alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 //ACCIONES SI PONE NO
