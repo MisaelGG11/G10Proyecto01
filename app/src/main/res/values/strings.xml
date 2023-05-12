@@ -41,7 +41,7 @@
     <string name="bienvenida">Bienvenido,</string>
     <string name="logout">Cerrar sesión</string>
     <string name="llenadoBaseDatos">LLenar base de datos</string>
- 
+
     <!--TipoEmpleadoActivities-->
     <string name="tvIdTipoEmpleado">Id de tipo de empleado:</string>
     <string name="ocupacion">Ocupacion:</string>
@@ -57,7 +57,7 @@
     <string name="apellidoEmpleado">Apellido de empleado:</string>
     <string name="emailEmpleado">Correo electrónico:</string>
     <string name="Telefono">Teléfono:</string>
-    
+
     <!--OpcionCrudActivity-->
     <string name="IdOpcionCrud">Id opcion CRUD:</string>
     <string name="descripcionOpcionCrud">Descripción:</string>
