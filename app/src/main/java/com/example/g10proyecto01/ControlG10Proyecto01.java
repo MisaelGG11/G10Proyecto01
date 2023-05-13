@@ -6,10 +6,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ControlG10Proyecto01 {
 
@@ -23,7 +21,7 @@ public class ControlG10Proyecto01 {
     private static final String[] camposHorario = new String[]{"id_horario", "id_evento", "hora_inicio", "hora_finalizacion"};
     private static final String[] camposLocalAdministrado = new String[]{"id_local_admin", "id_localidad", "id_empleado"};
     private static final String[] camposLocalidad = new String[]{"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"};
-    private static final String[] camposMateria = new String[]{"id_materia", "id_escuela", "cod_materia", "ciclo_materia", "nombre_materia"};
+    private static final String[] camposMateria = new String[]{"id_materia", "cod_materia", "nombre_materia", "id_escuela"};
     private static final String[] camposOfertaAcademica = new String[]{"id_oferta_a", "id_ciclo", "id_docente", "id_materia"};
     private static final String[] camposOpcionCrud = new String[]{"id_opcion_crud", "des_opcion"};
     private static final String[] camposPropuestaEspecifica = new String[]{"id_especifica", "id_propuesta", "id_gh", "id_localidad", "estado_especifica"};
@@ -64,7 +62,7 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER NOT NULL PRIMARY KEY, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Local_Administrado(id_local_admin INTEGER NOT NULL PRIMARY KEY, id_localidad INTEGER NOT NULL, id_empleado INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Localidad(id_localidad INTEGER NOT NULL, edificio_localidad VARCHAR2(60) NOT NULL, nombre_localidad VARCHAR2(30) NOT NULL, capacidad_localidad INTEGER NOT NULL, CONSTRAINT PK_LOCALIDAD PRIMARY KEY (id_localidad));");
-                db.execSQL("CREATE TABLE Materia(id_materia INTEGER NOT NULL PRIMARY KEY, id_escuela INTEGER NOT NULL, cod_materia VARCHAR2(6) NOT NULL, ciclo_materia VARCHAR2(50) NOT NULL, nombre_materia VARCHAR2(30) NOT NULL);");
+                db.execSQL("CREATE TABLE Materia(id_materia INTEGER NOT NULL PRIMARY KEY, cod_materia VARCHAR2(6) NOT NULL, nombre_materia VARCHAR2(30) NOT NULL, id_escuela INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Oferta_Academica(id_oferta_a INTEGER NOT NULL PRIMARY KEY, id_ciclo NUMBER(6) NOT NULL, id_docente INTEGER NOT NULL, id_materia INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE OpcionCrud(id_opcion_crud INTEGER NOT NULL PRIMARY KEY, des_opcion VARCHAR2(30) NOT NULL);");
                 db.execSQL("CREATE TABLE Propuesta_Especifica(id_especifica INTEGER NOT NULL, id_propuesta INTEGER NOT NULL, id_gh INTEGER NOT NULL, id_localidad INTEGER NOT NULL, estado_especifica VARCHAR2(1) NOT NULL, CONSTRAINT PK_PROPUESTA_ESPECIFICA PRIMARY KEY (id_especifica));");
@@ -668,6 +666,121 @@ public class ControlG10Proyecto01 {
     }
 
 
+
+    /*********************************** Tabla Materia ***********************************/
+
+    /* Insertar materia */
+    public String insertar(Materia materia) {
+        String regInsertados = "";
+
+        long contador = 0;
+
+        ContentValues mat = new ContentValues();
+
+        mat.put("id_materia", materia.getId_materia());
+        mat.put("cod_materia", materia.getCod_materia());
+        mat.put("nombre_materia", materia.getNom_materia());
+        mat.put("id_escuela", materia.getId_escuela());
+
+        contador = db.insert("materia", null, mat);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+
+        return regInsertados;
+    }
+
+    /*  Consultar materia  */
+    public Materia consultarMateria(String id_materia) {
+        String[] id = {id_materia};
+
+        Cursor cursor = db.query("materia", camposMateria, "id_materia = ?", id, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            Materia materia = new Materia();
+
+            materia.setId_materia(cursor.getInt(0));
+            materia.setCod_materia(cursor.getString(1));
+            materia.setNom_materia(cursor.getString(2));
+            materia.setId_escuela(cursor.getInt(3));
+
+            return materia;
+        } else {
+            return null;
+        }
+    }
+
+    /*  Actualizar ciclo  */
+
+    public String actualizar(Materia materia) {
+
+        if (true) {
+            String[] id = {String.valueOf(materia.getId_materia())};
+
+            ContentValues cv = new ContentValues();
+
+            cv.put("cod_materia", materia.getCod_materia());
+            cv.put("nombre_materia", materia.getNom_materia());
+            cv.put("id_escuela", materia.getId_escuela());
+
+            db.update("materia", cv, "id_materia = ?", id);
+
+            return "Correcto";
+        } else {
+            return "";
+        }
+    }
+
+    /*  Eliminar materia  */
+
+    public String eliminar(Materia materia) {
+        String regAfectados = "";
+
+        int contador = 0;
+
+        /*
+        if (verificarIntegridad(alumno,3)) {
+            contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
+        }
+        */
+
+        contador += db.delete("materia", "id_materia='" + materia.getId_materia() + "'", null);
+
+        regAfectados += contador;
+
+        return regAfectados;
+    }
+
+    /*  muestra todas las materias  */
+
+    public ArrayList<Materia> mostrarMaterias() {
+
+        ArrayList<Materia> listaMaterias = new ArrayList<>();
+        Materia materia;
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT * FROM " + "materia" + " ORDER BY id_materia ASC", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                materia = new Materia();
+                materia.setId_materia(cursor.getInt(0));
+                materia.setCod_materia(cursor.getString(1));
+                materia.setNom_materia(cursor.getString(2));
+                materia.setId_escuela(cursor.getInt(3));
+
+                listaMaterias.add(materia);
+            } while (cursor.moveToNext());
+        }
+
+        return listaMaterias;
+    }
+
+
+
     /*********************************** Tabla Local ***********************************/
     // CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
 
@@ -1032,10 +1145,6 @@ public class ControlG10Proyecto01 {
         }
     }
 
-
-
-
-
     //Usuarios iniciales
     public void permisosUsuarios(){
 
@@ -1135,6 +1244,21 @@ public class ControlG10Proyecto01 {
         //HORARIO
 
         //MATERIA
+
+        final int[] MateraiaId = {1,2,3,4};
+        final String[] MateriaCod = {"MAT115","MAT215","MAT315","MAT415"};
+        final String[] MateriaNombre = {"Matematica I", "Matematica II","Matematica III","Matematica IV"};
+        final int[] MateriaIdEscuela = {1,1,2,2};
+
+        Materia materia = new Materia();
+        for (int i = 0; i < 4; i++){
+            materia.setId_materia(MateraiaId[i]);
+            materia.setCod_materia(MateriaCod[i]);
+            materia.setNom_materia(MateriaNombre[i]);
+            materia.setId_escuela(MateriaIdEscuela[i]);
+            insertar(escuela);
+        }
+
 
         //OFERTAACADEMICA
 

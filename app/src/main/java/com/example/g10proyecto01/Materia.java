@@ -1,24 +1,27 @@
 package com.example.g10proyecto01;
 
 public class Materia {
-    private int id_integer;
+    private int id_materia;
     private String cod_materia;
     private String nom_materia;
-    private Escuela escuela;
+    private int id_escuela;
 
-    public Materia(int id_integer, String cod_materia, String nom_materia, Escuela escuela) {
-        this.id_integer = id_integer;
+    public Materia() {
+    }
+
+    public Materia(int id_materia, String cod_materia, String nom_materia, int id_escuela) {
+        this.id_materia = id_materia;
         this.cod_materia = cod_materia;
         this.nom_materia = nom_materia;
-        this.escuela = escuela;
+        this.id_escuela = id_escuela;
     }
 
-    public int getId_integer() {
-        return id_integer;
+    public int getId_materia() {
+        return id_materia;
     }
 
-    public void setId_integer(int id_integer) {
-        this.id_integer = id_integer;
+    public void setId_materia(int id_materia) {
+        this.id_materia = id_materia;
     }
 
     public String getCod_materia() {
@@ -37,11 +40,11 @@ public class Materia {
         this.nom_materia = nom_materia;
     }
 
-    public Escuela getEscuela() {
-        return escuela;
+    public int getId_escuela() {
+        return id_escuela;
     }
 
-    public void setEscuela(Escuela escuela) {
-        this.escuela = escuela;
+    public void setId_escuela(int id_escuela) {
+        this.id_escuela = id_escuela;
     }
 }
