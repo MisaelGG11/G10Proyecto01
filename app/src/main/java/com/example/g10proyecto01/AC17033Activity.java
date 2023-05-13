@@ -9,10 +9,15 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 public class AC17033Activity extends ListActivity {
 
+    String userPermisos;
     String[] activities={"LocalMenuActivity","LocalAdministradoMenuActivity","EventoEspecialMenuActivity", "TipoEventoMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        userPermisos = intent.getStringExtra("usuarioPermisos");
+
         String[] menu={ getResources().getString(R.string.tablaLocalidad),
                 getResources().getString(R.string.tablaLocalAdministrado),
                 getResources().getString(R.string.tablaEventoEspecial),
@@ -34,6 +39,7 @@ public class AC17033Activity extends ListActivity {
         try{
             Class<?> clase=Class.forName("com.example.g10proyecto01." + nombreValue);
             Intent inte = new Intent(this,clase);
+            inte.putExtra("usuarioPermisos", userPermisos);
             this.startActivity(inte);
         }catch(ClassNotFoundException e){
             e.printStackTrace();
