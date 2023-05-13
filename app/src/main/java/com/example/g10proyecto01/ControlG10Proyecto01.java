@@ -633,7 +633,7 @@ public class ControlG10Proyecto01 {
     // CAMPOS: {"id_local_admin", "id_localidad", "id_empleado"}
 
     /*  Insertar Local Administrado */
-    public String insertar(LocalAdministrado localAdministrado){
+    /*public String insertar(LocalAdministrado localAdministrado){
         String regInsertados="Registro Insertado Nº= ";
         long contador=0;
         if (verificarIntegridad(localAdministrado,6)||verificarIntegridad(localAdministrado,7)){
@@ -651,10 +651,10 @@ public class ControlG10Proyecto01 {
             regInsertados=regInsertados+contador;
         }
         return regInsertados;
-    }
+    }*/
 
     /*  Consultar Local Administrado*/
-    public LocalAdministrado consultarlocalAdmin(String id_local_admin){
+    /*public LocalAdministrado consultarlocalAdmin(String id_local_admin){
         String[] id = {id_local_admin};
         Cursor cursorLoc = db.query("Local_Administrado", camposLocalAdministrado, "id_local_admin = ?", id, null, null, null);
         if(cursorLoc.moveToFirst()){
@@ -663,7 +663,7 @@ public class ControlG10Proyecto01 {
         }else{
             return null;
         }
-    }
+    }*/
 
     /*  Actualizar Local Administrado */
 
@@ -812,7 +812,7 @@ public class ControlG10Proyecto01 {
                 else
                     return true;
             }
-            case 6: {
+            /*case 6: {
                 //  VERIFICA QUE EXISTA UNA LOCALIDAD AL INSERTAR UN LOCAL ADMINISTRADO
 
                 LocalAdministrado localidadadmin = (LocalAdministrado) dato;
@@ -826,8 +826,8 @@ public class ControlG10Proyecto01 {
                 }
                 return false;
             }
-
-            case 7: {
+            */
+            /*case 7: {
                 //  VERIFICA QUE EXISTA UN EMPLEADO UES AL INSERTAR UN LOCAL ADMINISTRADO
                 LocalAdministrado locadmin = (LocalAdministrado) dato;
                 String[] idEmpleado = {String.valueOf(locadmin.getId_empleadoadministrador())};
@@ -839,9 +839,9 @@ public class ControlG10Proyecto01 {
                     return true;
                 }
                 return false;
-            }
+            }*/
 
-            case 8: {
+            /*case 8: {
                 //VERIFICA QUE NO SE ELIMINE UNA LOCALIDAD MIENTRA EXISTA UNA REFERENCIA EN LAS TABLAS: LOCAL ADMINISTRADO, EVENTO ESPECIAL y PROPUESTA ESPECIFICA
                 Localidad localidad = (Localidad) dato;
                 Cursor cursorL1 = db.query(true, "Local_Administrado", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
@@ -853,7 +853,7 @@ public class ControlG10Proyecto01 {
                     return false;
                 else
                     return true;
-            }
+            }*/
 
             default: return false;
         }
@@ -866,12 +866,16 @@ public class ControlG10Proyecto01 {
     //Usuarios iniciales
     public void permisosUsuarios(){
 
+        db.execSQL("DELETE FROM Usuario");
+        db.execSQL("DELETE FROM OpcionCrud");
+        db.execSQL("DELETE FROM AccesoUsuario");
+
+        //USUARIOS
+
         final String[] IDusuario = {"01", "02", "03", "04", "05"};
         final String[] nomUsuario = {"Misael", "Fabio", "Claudia", "Leonardo", "Alexander"};
         final String[] clave = {"GG20031", "FM19038", "AC17033", "EL19004", "HS19011"};
 
-
-        db.execSQL("DELETE FROM Usuario");
 
         Usuario user = new Usuario();
 
@@ -881,6 +885,26 @@ public class ControlG10Proyecto01 {
             user.setClave(clave[i]);
             insertar(user);
         }
+
+        //ACCESOUSUARIO
+
+        final int[] idsAccesoUsuario= {1,2,3,4,5,6,7,8};
+        final String[] IDusuarios = {"01", "02", "03", "04","05", "01", "01", "01"};
+        final int [] idOpcionCrud_Access = {1,2,3,4,1,2,3,4};
+        for (int i = 0; i < idsAccesoUsuario.length; i++) {
+            AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idOpcionCrud_Access[i]);
+            insertar(accesoUsuario);
+        }
+
+        //OPCIONCRUD
+
+        final int[] idOpcionCrud= {1,2,3,4};
+        final String[] opcionCrud = {"Insertar","Actualizar","Eliminar","Consultar"};
+        for (int i = 0; i < opcionCrud.length; i++) {
+            OpcionCrud opcion = new OpcionCrud(idOpcionCrud[i],opcionCrud[i]);
+            insertar(opcion);
+        }
+
     }
 
     // Método para rescatar datos de de la base para el Spinner
@@ -950,7 +974,7 @@ public class ControlG10Proyecto01 {
 
         //OPCIONCRUD
         final int[] idOpcionCrud= {1,2,3,4};
-        final String[] opcionCrud = {"insertar","actualizar","eliminar","ver detalle"};
+        final String[] opcionCrud = {"Insertar","Actualizar","Eliminar","Consultar"};
         for (int i = 0; i < opcionCrud.length; i++) {
             OpcionCrud opcion = new OpcionCrud(idOpcionCrud[i],opcionCrud[i]);
             insertar(opcion);
@@ -1005,13 +1029,14 @@ public class ControlG10Proyecto01 {
         }
 
         //ACCESO USUARIO
-        final int[] idsAccesoUsuario= {1,2,3,4};
-        final String[] IDusuarios = {"01", "02", "03", "04","05"};
+        final int[] idsAccesoUsuario= {1,2,3,4,5,6,7,8};
+        final String[] IDusuarios = {"01", "02", "03", "04","05", "01", "01", "01"};
+        final int [] idOpcionCrud_Access = {1,2,3,4,1,2,3,4};
         for (int i = 0; i < idsAccesoUsuario.length; i++) {
-            AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idsAccesoUsuario[i]);
+            AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idOpcionCrud_Access[i]);
             insertar(accesoUsuario);
         }
-        //LOCALADMINISTRADO
+        /*//LOCALADMINISTRADO
         final int[] idLocaladmin = {1,2,3,4};
         final int [] idLocal = {4,2,1,3};
         final int [] idEncargado= {2,2,1,4};
@@ -1024,7 +1049,7 @@ public class ControlG10Proyecto01 {
 
             insertar(locAdmin);
         }
-
+    */
         //TIPO DE EVENTO
         final int[] idTipoEvento = {1,2,3,4};
         final String[] nombre = {"Foro", "Conferencia", "Examen Parcial", "Capacitacion"};
@@ -1038,7 +1063,7 @@ public class ControlG10Proyecto01 {
 
         cerrar();
 
-        return "Guardo Correctamente";
+        return context.getResources().getString(R.string.llenadoBD);
     }
 }
 
