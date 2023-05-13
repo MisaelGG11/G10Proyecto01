@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 
-
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class ControlG10Proyecto01 {
     private static final String[] camposEventoEspecial = new String[]{"id_evento", "id_tipo_evento", "nombre_evento", "organizador", "fecha", "id_horario", "id_localidad"};
     private static final String[] camposGrupo = new String[]{"id_grupo", "id_oferta_a", "num_grupo", "tipo_grupo", "cupo"};
     private static final String[] camposGrupoHorario = new String[]{"id_gh", "id_horario", "id_grupo"};
-    private static final String[] camposHorario = new String[]{"id_horario", "id_evento", "hora_inicio", "hora_finalizacion"};
+    private static final String[] camposHorario = new String[]{"id_horario", "id_evento", "hora_inicio", "hora_finalizacion", "dia"};
     private static final String[] camposLocalAdministrado = new String[]{"id_local_admin", "id_localidad", "id_empleado"};
     private static final String[] camposLocalidad = new String[]{"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"};
     private static final String[] camposMateria = new String[]{"id_materia", "id_escuela", "cod_materia", "ciclo_materia", "nombre_materia"};
@@ -62,9 +62,9 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Empleado_UES(id_empleado INTEGER NOT NULL PRIMARY KEY, id_tipo_empleado INTEGER NOT NULL, nombre_empleado VARCHAR2(30) NOT NULL, apellido_empleado VARCHAR2(30) NOT NULL, email_empleado VARCHAR2(50) NOT NULL, telefono_empleado INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Escuela(id_escuela INTEGER NOT NULL PRIMARY KEY, acronimo VARCHAR2(10) NOT NULL, nombre VARCHAR2(30) NOT NULL);");
                 db.execSQL("CREATE TABLE Evento_Especial(id_evento INTEGER NOT NULL PRIMARY KEY, id_tipo_evento INTEGER NOT NULL, nombre_evento VARCHAR2(100) NOT NULL, organizador INTEGER NOT NULL, fecha VARCHAR2(8) NOT NULL, id_horario INTEGER NOT NULL, id_localidad INTEGER NOT NULL);");
-                db.execSQL("CREATE TABLE Grupo(id_grupo INTEGER NOT NULL PRIMARY KEY, id_oferta_a INTEGER NOT NULL, num_grupo INTEGER NOT NULL, tipo_grupo VARCHAR2(11) NOT NULL, cupo INTEGER NOT NULL);");
+                db.execSQL("CREATE TABLE Grupo(id_grupo INTEGER NOT NULL PRIMARY KEY, id_oferta_a INTEGER , num_grupo INTEGER NOT NULL, tipo_grupo VARCHAR2(11) NOT NULL, cupo INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Horario(id_horario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, hora_inicio TIMESTAMP NOT NULL, hora_finalizacion TIMESTAMP NOT NULL, dia TEXT NOT NULL)");
-                db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL);");
+                db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL, FOREIGN KEY(id_horario) REFERENCES Horario ON DELETE CASCADE, FOREIGN KEY(id_grupo) REFERENCES Grupo);");
                 db.execSQL("CREATE TABLE Local_Administrado(id_local_admin INTEGER NOT NULL PRIMARY KEY, id_localidad INTEGER NOT NULL, id_empleado INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Localidad(id_localidad INTEGER NOT NULL, edificio_localidad VARCHAR2(60) NOT NULL, nombre_localidad VARCHAR2(30) NOT NULL, capacidad_localidad INTEGER NOT NULL, CONSTRAINT PK_LOCALIDAD PRIMARY KEY (id_localidad));");
                 db.execSQL("CREATE TABLE Materia(id_materia INTEGER NOT NULL PRIMARY KEY, id_escuela INTEGER NOT NULL, cod_materia VARCHAR2(6) NOT NULL, ciclo_materia VARCHAR2(50) NOT NULL, nombre_materia VARCHAR2(30) NOT NULL);");
@@ -791,6 +791,75 @@ public class ControlG10Proyecto01 {
         regAfectados+=contador;
         return regAfectados;
     }*/
+    /*********************************** Tabla Grupo ***********************************/
+    // CAMPOS: {"id_grupo", "id_oferta_a", "num_grupo", "tipo_grupo", "cupo"}
+
+    public String insertar(Grupo grupo) {
+        String regInsertados=context.getResources().getString(R.string.regInsertado);
+
+        long contador = 0;
+
+        ContentValues values = new ContentValues();
+
+        values.put("num_grupo", grupo.getNum_grupo());
+        values.put("tipo_grupo",grupo.getTipo_grupo());
+        values.put("id_oferta_a",grupo.getId_oferta_a());
+        values.put("cupo",grupo.getCupo());
+
+        contador = db.insert("Grupo", null, values);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados= context.getResources().getString(R.string.error);
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
+    /*********************************** Tabla Horario ***********************************/
+    //CAMPOS: "id_horario", "id_evento", "hora_inicio", "hora_finalizacion", "dia"
+    public String insertar(Horario horario) {
+        String regInsertados=context.getResources().getString(R.string.regInsertado);
+
+        long contador = 0;
+
+        ContentValues values = new ContentValues();
+
+        values.put("id_horario", horario.getId_horario());
+        values.put("hora_inicio", horario.getHora_inicio().toString());
+        values.put("hora_finalizacion",horario.getHora_finalizacion().toString());
+        values.put("dia",horario.getDia());
+
+        contador = db.insert("Horario", null, values);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados= context.getResources().getString(R.string.error);
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+    /*********************************** Tabla GrupoHorario ***********************************/
+    //CAMPOS: "id_gh", "id_horario", "id_grupo"
+    public String insertar(GrupoHorario grupoHorario) {
+        String regInsertados=context.getResources().getString(R.string.regInsertado);
+
+        long contador = 0;
+
+        ContentValues values = new ContentValues();
+
+        values.put("id_horario", grupoHorario.getId_horario());
+        values.put("id_grupo",grupoHorario.getId_grupo());
+
+        contador = db.insert("Grupo_Horario", null, values);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados= context.getResources().getString(R.string.error);
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
 
     private boolean verificarIntegridad(Object dato, int relacion) throws SQLException {
         switch (relacion){
@@ -990,12 +1059,16 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM Docente");
 
         db.execSQL("DELETE FROM OpcionCrud");
-        //db.execSQL("DELETE FROM AccesoUsuario");
+        db.execSQL("DELETE FROM AccesoUsuario");
 
         db.execSQL("DELETE FROM Localidad");
         db.execSQL("DELETE FROM Local_Administrado");
         db.execSQL("DELETE FROM Tipo_evento");
         db.execSQL("DELETE FROM Evento_Especial");
+        db.execSQL("DELETE FROM Grupo_Horario");
+        db.execSQL("DELETE FROM Grupo");
+
+
 
         //CICLO
 
@@ -1013,9 +1086,30 @@ public class ControlG10Proyecto01 {
         }
 
         //GRUPO
-        //GRUPOHORARIO
+        final int[] grupoId = {1};
+        final int[] num_grupo = {1};
+        final int[] id_oferta = {1};
+        final String[] tipo_grupo = {"Teorico"};
+        final int[] cupoGrupo = {25};
+        for (int i = 0; i < grupoId.length; i++) {
+            Grupo grupo = new Grupo(grupoId[i],num_grupo[i],id_oferta[i],cupoGrupo[i],tipo_grupo[i]);
+            insertar(grupo);
+        }
         //HORARIO
-
+        final int[] idHorario = {1};
+        final Timestamp[] horaInicio = {new Timestamp(2023,2,20,9,50,0,0)};
+        final Timestamp[] horaFinalizacion = {new Timestamp(2023,2,20,11,30,0,0)};
+        final String[] dias = {"Lunes"};
+        for (int i = 0; i < idHorario.length; i++) {
+            Horario horario = new Horario(idHorario[i],horaInicio[i],horaFinalizacion[i],dias[i]);
+            insertar(horario);
+        }
+        //GRUPOHORARIO
+        final int[] idGrupoHorario = {1};
+        for (int i = 0; i < idGrupoHorario.length; i++) {
+            GrupoHorario grupoHorario = new GrupoHorario(idGrupoHorario[i],idHorario[i],grupoId[i]);
+            insertar(grupoHorario);
+        }
         //MATERIA
 
         //OFERTAACADEMICA

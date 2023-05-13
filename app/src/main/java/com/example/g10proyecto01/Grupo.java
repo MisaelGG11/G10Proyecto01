@@ -18,6 +18,12 @@ public class Grupo {
         this.cupo = cupo;
         this.tipo_grupo = tipo_grupo;
     }
+    public Grupo(int id_grupo, int num_grupo,String tipo_grupo,int cupo) {
+        this.id_grupo = id_grupo;
+        this.tipo_grupo = tipo_grupo;
+        this.num_grupo = num_grupo;
+        this.cupo = cupo;
+    }
 
     public int getId_grupo() {
         return id_grupo;
