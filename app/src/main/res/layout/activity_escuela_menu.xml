@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <SearchView
-            android:id="@+id/editBuscar"
+            android:id="@+id/editBuscarEscuela"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -26,7 +26,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnAgregar"
+        android:id="@+id/btnInsertarEscuela"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/insertar_registro"

@@ -2,9 +2,11 @@ package com.example.g10proyecto01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,27 +14,33 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class EscuelaConsultarActivity extends AppCompatActivity {
 
     EditText editIdEscuela, editAcronimo, editNombre;
-    Button btnActualizar;
+    Button btnActualizar, btnEliminar;
     Escuela escuela;
     ControlG10Proyecto01 helper;
     int edicion = 0;
     int id = 0;
+    String userPermisos;
+    List<Integer> permisos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_escuela_consultar);
 
-        editIdEscuela = findViewById(R.id.txtIdEscuela);
-        editAcronimo = findViewById(R.id.txtAcronimo);
-        editNombre = findViewById(R.id.txtNombre);
+        editIdEscuela = findViewById(R.id.editIdEscuela);
+        editAcronimo = findViewById(R.id.editAcronimo);
+        editNombre = findViewById(R.id.editNombreEscuela);
 
-        btnActualizar = findViewById(R.id.btnActualizar);
-        //btnAgregar.setVisibility(View.INVISIBLE);
+        btnActualizar = findViewById(R.id.btnActualizarEscuela);
+        btnEliminar = findViewById(R.id.btnEliminarEscuela);
 
+        //Metodo para obtener el id
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if (extras == null) {
@@ -42,6 +50,30 @@ public class EscuelaConsultarActivity extends AppCompatActivity {
             }
         } else {
             id = (int) savedInstanceState.getSerializable("ID");
+        }
+
+        //Pregunta por los permisos
+        AppGlobal global = (AppGlobal) getApplicationContext();
+        userPermisos = global.getUserPermisos();
+
+        helper = new ControlG10Proyecto01(this);
+
+        String sql = "SELECT id_opcion_crud FROM AccesoUsuario WHERE id_usuario = '"+ userPermisos+"'";
+
+        Cursor cursor = helper.llenarSpinner(sql);
+
+        while (cursor.moveToNext()) {
+            @SuppressLint("Range")
+            int permiso = cursor.getInt(cursor.getColumnIndex("id_opcion_crud"));
+            permisos.add(permiso);
+        }
+
+        if (!permisos.contains(2)){
+            btnActualizar.setEnabled(false);
+        }
+
+        if (!permisos.contains(3)){
+            btnEliminar.setEnabled(false);
         }
 
         helper = new ControlG10Proyecto01(this);
@@ -56,11 +88,8 @@ public class EscuelaConsultarActivity extends AppCompatActivity {
             Toast.makeText(this, "Escuela no encontrada en la DB", Toast.LENGTH_LONG).show();
         } else {
             editIdEscuela.setEnabled(false);
-            editIdEscuela.setTextColor(Color.BLACK);
             editAcronimo.setEnabled(false);
-            editAcronimo.setTextColor(Color.BLACK);
             editNombre.setEnabled(false);
-            editNombre.setTextColor(Color.BLACK);
 
             editIdEscuela.setText(String.valueOf(escuela.getId_escuela()));
             editAcronimo.setText(escuela.getAcronimo());

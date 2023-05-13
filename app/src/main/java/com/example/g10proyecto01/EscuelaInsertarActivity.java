@@ -21,7 +21,7 @@ public class EscuelaInsertarActivity extends AppCompatActivity {
         helper = new ControlG10Proyecto01(this);
         editIdEscuela = (EditText) findViewById(R.id.editIdEscuela);
         editAcronimo = (EditText) findViewById(R.id.editAcronimo);
-        editNombre = (EditText) findViewById(R.id.editNombre);
+        editNombre = (EditText) findViewById(R.id.editNombreEscuela);
     }
 
     public void insertarEscuela(View v) {

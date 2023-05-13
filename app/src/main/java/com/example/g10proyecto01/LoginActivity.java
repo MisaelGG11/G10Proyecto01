@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                /* INICIAR CON LOGUEO
+                // INICIAR CON LOGUEO
                 usuario = editUsuario.getText().toString();
                 contrasenia = editClave.getText().toString();
                 for (int i = 0; i < users.size(); i++){
@@ -76,13 +76,9 @@ public class LoginActivity extends AppCompatActivity {
                         global.setUserPermisos(userPermisos);
                     }
                     else  {messageError = "Usuario o contrasea incorrecto.";}
-                }*/
+                }
 
-                /* INICIAR SIN LOGUEO */
-                usuario = "UserLogueado";
-                correct = true;
-                userPermisos = "01";
-                global.setUserPermisos(userPermisos);
+
 
                 if (correct){
                     try{

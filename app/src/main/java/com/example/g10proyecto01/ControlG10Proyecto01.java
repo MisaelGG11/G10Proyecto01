@@ -880,7 +880,7 @@ public class ControlG10Proyecto01 {
 
         Usuario user = new Usuario();
 
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 5; i++){
             user.setId_usuario(IDusuario[i]);
             user.setNom_usuario(nomUsuario[i]);
             user.setClave(clave[i]);
@@ -889,9 +889,9 @@ public class ControlG10Proyecto01 {
 
         //ACCESOUSUARIO
 
-        final int[] idsAccesoUsuario= {1,2,3,4,5,6,7,8};
-        final String[] IDusuarios = {"01", "02", "03", "04","05", "01", "01", "01"};
-        final int [] idOpcionCrud_Access = {1,2,3,4,1,2,3,4};
+        final int[] idsAccesoUsuario= {1,2,3,4,5,6,7,8,9,10};
+        final String[] IDusuarios = {"01", "02", "03", "04", "01", "01", "01","05","05","05"};
+        final int [] idOpcionCrud_Access = {1,2,3,4,2,3,4,4,2,3};
         for (int i = 0; i < idsAccesoUsuario.length; i++) {
             AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i],IDusuarios[i],idOpcionCrud_Access[i]);
             insertar(accesoUsuario);
