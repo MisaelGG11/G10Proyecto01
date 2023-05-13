@@ -117,4 +117,20 @@
     <string name="idEscuela">idEscuela</string>
     <string name="acronimoEscuela">Acronimo</string>
     <string name="nombreEscuela">Nombre</string>
+
+    <!--GrupoActivity-->
+    <string name="idgrupo">ID de group:</string>
+    <string name="idoferta">ID de l\'offre académique:</string>
+    <string name="numgrupo">Numéro du groupe:</string>
+    <string name="cupo">Quota:</string>
+    <string name="tipogrupo">Type de groupe:</string>
+
+    <!--HorarioActivity-->
+    <string name="idhorario">ID de planification:</string>
+    <string name="idevento">ID d\'événement:</string>
+    <string name="horainicio">Heure de début:</string>
+    <string name="horafinalizacion">Heure de fin:</string>
+
+    <!--HorarioActivity-->
+    <string name="idgh">ID du groupe de planification:</string>
 </resources>

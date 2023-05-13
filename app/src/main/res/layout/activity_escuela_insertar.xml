@@ -21,7 +21,7 @@
     <TableRow>
         <TextView android:text="@string/nombreEscuela" />
         <EditText
-            android:id="@+id/editNombre"
+            android:id="@+id/editidoferta"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
