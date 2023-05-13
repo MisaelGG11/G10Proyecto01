@@ -42,7 +42,7 @@ public class TipoEmpleadoActualizarActivity extends Activity {
         spinIdTipoEmpleado.setAdapter(adapter);
     }
     public void actualizarTipoDeEmpleado(View v) {
-        if (editOcupacion.getText().toString().isEmpty()){
+        if (editOcupacion.getText().toString().isEmpty() || ids.size() == 0){
             Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
         }
         else {

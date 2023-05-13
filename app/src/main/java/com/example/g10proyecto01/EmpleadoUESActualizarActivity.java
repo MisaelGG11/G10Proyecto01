@@ -66,7 +66,8 @@ public class EmpleadoUESActualizarActivity extends Activity {
         if( editNombre.getText().toString().isEmpty() ||
             editApellido.getText().toString().isEmpty() ||
             editCorreo.getText().toString().isEmpty() ||
-            editTelefono.getText().toString().isEmpty()){
+            editTelefono.getText().toString().isEmpty() ||
+            listIdEmp.size() == 0 || listIdTipoEmp.size() == 0){
             Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
         }
         else {

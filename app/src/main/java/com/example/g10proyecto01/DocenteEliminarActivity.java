@@ -42,34 +42,39 @@ public class DocenteEliminarActivity extends Activity {
     }
 
     public void eliminarDocente(View v){
-        AlertDialog.Builder alerta = new AlertDialog.Builder(DocenteEliminarActivity.this);
-        alerta.setCancelable(false);
+        if(listIdDocente.size() == 0){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            AlertDialog.Builder alerta = new AlertDialog.Builder(DocenteEliminarActivity.this);
+            alerta.setCancelable(false);
 
-        int idDocente;
-        idDocente =listIdDocente.get(spinnerIdDocente.getSelectedItemPosition());
+            int idDocente;
+            idDocente =listIdDocente.get(spinnerIdDocente.getSelectedItemPosition());
 
-        alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
-        alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //ACCIONES SI RESPONDE QUE SI A LA ALERTA
-                String regEliminadas;
-                Docente docente = new Docente();
-                docente.setId_docente(idDocente);
-                helper.abrir();
-                regEliminadas=helper.eliminar(docente);
-                helper.cerrar();
-                Toast.makeText(DocenteEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
-            }
-        });
-        alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //ACCIONES SI PONE NO
-                dialog.cancel();
-            }
-        });
-        //MUESTRA ALERTA PARA EVENTO ONCLICK DEL BOTON
-        alerta.show();
+            alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
+            alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //ACCIONES SI RESPONDE QUE SI A LA ALERTA
+                    String regEliminadas;
+                    Docente docente = new Docente();
+                    docente.setId_docente(idDocente);
+                    helper.abrir();
+                    regEliminadas=helper.eliminar(docente);
+                    helper.cerrar();
+                    Toast.makeText(DocenteEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
+                }
+            });
+            alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //ACCIONES SI PONE NO
+                    dialog.cancel();
+                }
+            });
+            //MUESTRA ALERTA PARA EVENTO ONCLICK DEL BOTON
+            alerta.show();
+        }
     }
 }
