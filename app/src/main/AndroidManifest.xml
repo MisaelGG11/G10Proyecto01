@@ -225,6 +225,60 @@
             android:name=".AC17033Activity"
             android:exported="false" />
         <activity
+            android:name=".Grupo"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoActualizarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoConsultarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoEliminarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoHorario"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoHorarioActualizarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoHorarioConsultarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoHorarioEliminarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoHorarioInsertarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoHorarioMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoInsertarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GrupoMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Horario"
+            android:exported="false" />
+        <activity
+            android:name=".HorarioActualizarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HorarioConsultarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HorarioMenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HorarioEliminarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HorarioInsertarActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>

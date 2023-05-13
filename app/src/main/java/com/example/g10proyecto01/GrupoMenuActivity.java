@@ -7,28 +7,31 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-public class EL19004Activity extends ListActivity {
 
-    String[] activities={"GrupoMenuActivity","GrupoHorarioMenuActivity","HorarioMenuActivity"};
+public class GrupoMenuActivity extends ListActivity {
+    String[] activities = {"GrupoInsertarActivity", "GrupoEliminarActivity", "GrupoConsultarActivity", "GrupoActualizarActivity"};
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String[] menu={ getResources().getString(R.string.tablaGrupo),
-                getResources().getString(R.string.tablaGrupoHorario),
-                getResources().getString(R.string.tablaHorario)};
+        String[] menu={ getResources().getString(R.string.insertar_registro),
+                getResources().getString(R.string.consultar_registro),
+                getResources().getString(R.string.actualizar_registro),
+                getResources().getString(R.string.eliminar_registro)};
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));
         ListView listView = getListView();
-        listView.setBackgroundColor(Color.parseColor("#6495ED"));
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, menu);
+        listView.setBackgroundColor(Color.parseColor("#85C1E9"));
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu);
         setListAdapter(adapter);
     }
+
     @Override
     protected void onListItemClick(ListView l,View v,int position,long id){
         super.onListItemClick(l, v, position, id);
 
         String nombreValue=activities[position];
 
-        l.getChildAt(position).setBackgroundColor(Color.parseColor("#00755c"));
+        l.getChildAt(position).setBackgroundColor(Color.parseColor("#99c9bd"));
 
         try{
             Class<?> clase=Class.forName("com.example.g10proyecto01." + nombreValue);
@@ -37,5 +40,7 @@ public class EL19004Activity extends ListActivity {
         }catch(ClassNotFoundException e){
             e.printStackTrace();
         }
+
     }
+
 }
