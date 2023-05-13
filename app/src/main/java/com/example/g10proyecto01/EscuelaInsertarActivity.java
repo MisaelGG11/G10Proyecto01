@@ -30,7 +30,7 @@ public class EscuelaInsertarActivity extends AppCompatActivity {
                 editNombre.getText().toString().isEmpty()) {
 
             Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
-        } else {
+        } else if (editIdEscuela.getText().toString().matches("\\d+")){
             String id_escuela = editIdEscuela.getText().toString();
             String acronimo = editAcronimo.getText().toString();
             String nombre = editNombre.getText().toString();
@@ -57,6 +57,8 @@ public class EscuelaInsertarActivity extends AppCompatActivity {
                 setResult(RESULT_OK, intent);
                 finish();
             }
+        } else {
+            Toast.makeText(this, getResources().getString(R.string.soloNumeros), Toast.LENGTH_SHORT).show();
         }
     }
 

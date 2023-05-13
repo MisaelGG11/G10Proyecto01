@@ -48,6 +48,7 @@
     <string name="si">Yes</string>
     <string name="no">No</string>
     <string name="vacio">Fill in all the required fields!</string>
+    <string name="soloNumeros">¡The record id must be a numeric value.!</string>
 
     <!--LoginActivity-->
     <string name="user">User</string>
