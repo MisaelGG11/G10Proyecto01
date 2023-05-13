@@ -10,15 +10,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 public class GG20031Activity extends ListActivity {
-
-    String userPermisos;
     String[] activities={"EmpleadoUESMenuActivity","DocenteMenuActivity","TipoEmpleadoMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Intent intent = getIntent();
-        userPermisos = intent.getStringExtra("usuarioPermisos");
 
         String[] menu={ getResources().getString(R.string.tablaEmpleadoUES),
                         getResources().getString(R.string.tablaDocente),
@@ -41,7 +36,6 @@ public class GG20031Activity extends ListActivity {
         try{
             Class<?> clase=Class.forName("com.example.g10proyecto01." + nombreValue);
             Intent inte = new Intent(this,clase);
-            inte.putExtra("usuarioPermisos", userPermisos);
             this.startActivity(inte);
         }catch(ClassNotFoundException e){
             e.printStackTrace();

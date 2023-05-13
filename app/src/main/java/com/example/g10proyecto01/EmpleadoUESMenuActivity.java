@@ -25,8 +25,8 @@ public class EmpleadoUESMenuActivity extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = getIntent();
-        userPermisos = intent.getStringExtra("usuarioPermisos");
+        AppGlobal global = (AppGlobal) getApplicationContext();
+        userPermisos = global.getUserPermisos();
         helper = new ControlG10Proyecto01(this);
 
         String sql = "SELECT id_opcion_crud FROM AccesoUsuario WHERE id_usuario = '"+ userPermisos+"'";

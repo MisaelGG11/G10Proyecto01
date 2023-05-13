@@ -1,10 +1,8 @@
 package com.example.g10proyecto01;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -36,6 +34,8 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        AppGlobal global = (AppGlobal) getApplicationContext();
+
         correct = false;
 
         login = findViewById(R.id.btnLogin);
@@ -65,24 +65,30 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //usuario = editUsuario.getText().toString();
-                usuario = "UserLogueado";
+
+                /* INICIAR CON LOGUEO
+                usuario = editUsuario.getText().toString();
                 contrasenia = editClave.getText().toString();
-                /*for (int i = 0; i < users.size(); i++){
+                for (int i = 0; i < users.size(); i++){
                     if (contrasenia.equals(passwords.get(i)) && usuario.equals(users.get(i))){
                         correct = true;
                         userPermisos = idUsers.get(i);
+                        global.setUserPermisos(userPermisos);
                     }
                     else  {messageError = "Usuario o contrasea incorrecto.";}
                 }*/
+
+                /* INICIAR SIN LOGUEO */
+                usuario = "UserLogueado";
                 correct = true;
                 userPermisos = "01";
+                global.setUserPermisos(userPermisos);
+
                 if (correct){
                     try{
                         Class<?> clase=Class.forName("com.example.g10proyecto01.MenuActivity");
                         Intent inte = new Intent(LoginActivity.this,clase);
                         inte.putExtra("usuarioLogeado", usuario);
-                        inte.putExtra("usuarioPermisos", userPermisos);
                         startActivity(inte);
                         finish();
 
