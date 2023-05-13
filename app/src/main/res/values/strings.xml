@@ -31,6 +31,23 @@
     <string name="actualizar_registro">Actualizar Registro</string>
     <string name="actualizar">Actualizar</string>
     <string name="limpiar">Limpiar</string>
+    <string name="guardar">Guardar</string>
+
+    <!--Clase Controladora-->
+    <string name="error">Error al insertar el registro. Registro Duplicado. Verificar inserción</string>
+    <string name="regInsertado">Registro insertado Nº= </string>
+    <string name="regActualizado">Registro actualizado correctamente</string>
+    <string name="regNoActualizado">Registro no se actualizo, revise sus campos</string>
+    <string name="regEliminados">Filas afectadas = </string>
+    <string name="referencia">Hay una referencia en otra tabla de</string>
+    <string name="llenadoBD">Guardo correctamente</string>
+
+    <!--AlertDialog-->
+    <string name="mensajeAlerta">¿Desea eliminar este registro?"</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="vacio">¡Llena todos los campos requeridos!</string>
+    <string name="soloNumeros">¡El id del registro debe ser un valor numerico!</string>
 
     <!--LoginActivity-->
     <string name="user">Usuario</string>
@@ -46,25 +63,35 @@
     <string name="tvIdTipoEmpleado">Id de tipo de empleado:</string>
     <string name="ocupacion">Ocupacion:</string>
 
+    <!--DocenteActivities-->
+    <string name="IdDocente">Id docente:</string>
+    <string name="nipDocente">NIP docente:</string>
+    <string name="categoria">Categoría:</string>
+
+    <!--EmpleadoUESActivities-->
+    <string name="IdEmpleado">Id empleado:</string>
+    <string name="nombreEmpleado">Nombre de empleado:</string>
+    <string name="apellidoEmpleado">Apellido de empleado:</string>
+    <string name="emailEmpleado">Correo electrónico:</string>
+    <string name="Telefono">Teléfono:</string>
+
     <!--OpcionCrudActivity-->
     <string name="IdOpcionCrud">Id opcion CRUD:</string>
     <string name="descripcionOpcionCrud">Descripción:</string>
 
     <!--Evento Especial Activity-->
-    <string name="txtViewidTipoEventoEspecial">Id Tipo de evento:</string>
-    <string name="txtViewNombreEventoEspecial">Nombre del evento:</string>
+    <string name="txtidEventoEspecial">Id Evento Especial:</string>
+    <string name="txtViewidTipoEventoEspecial">Id Tipo de Evento:</string>
+    <string name="txtViewNombreEventoEspecial">Nombre del Evento:</string>
     <string name="txtViewTipoEventoEspecial">Tipo de evento especial:</string>
-    <string name="txtViewEdificioEventoEspecial">Edificio:</string>
-    <string name="txtViewLocalidadEventoEspecial">Localidad:</string>
+    <string name="txtViewOrganizadorEvento">Id Organizador:</string>
+    <string name="txtViewLocalidadEventoEspecial">Id Localidad:</string>
     <string name="txtViewFechaEventoEspecial">Fecha:</string>
-    <string-array name="spinnerHorariosEventoEspecial">
-        <item>Horario 1</item>
-        <item>Horario 2</item>
+    <string name="txtViewHorarioEventoEspecial">Id Horario:</string>
 
-    </string-array>
-
-    <!--Localidad Activity-->
+    <!--Localidad y Local Administrado Activity-->
     <string name="txtViewIdLocal">Id Local:</string>
+    <string name="txtViewIdLocalAdmin">Id Local Administrado:</string>
     <string name="txtViewNombreLocal">Localidad:</string>
     <string name="txtViewCupoLocal">Capacidad:</string>
     <string name="txtViewEdificio">Edificio:</string>
@@ -96,4 +123,9 @@
     <string name="txtPropuetaGeneralPropuestaEspecifica">Propuesta General:</string>
     <string name="txtHorarioPropuestaEspecifica">Horario:</string>
     <string name="txtEstadoPropuestaEspecifica">Estado:</string>
+
+    <!--EscuelaActivity-->
+    <string name="idEscuela">idEscuela</string>
+    <string name="acronimoEscuela">Acronimo</string>
+    <string name="nombreEscuela">Nombre</string>
 </resources>

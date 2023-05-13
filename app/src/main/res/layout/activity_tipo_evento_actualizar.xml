@@ -40,23 +40,24 @@
         <Button
             android:id="@+id/TEVactualizar"
             android:layout_width="150dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginRight="20dp"
-            android:background="@color/botones"
+            android:backgroundTint="@color/botonA"
             android:onClick="ActualizarTEV"
             android:text="@string/actualizar"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
         <Button
             android:id="@+id/btLimpiarTEV"
             android:layout_width="150dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
+            android:textSize="17dp"
             android:layout_marginRight="20dp"
-            android:background="@color/botones"
+            android:backgroundTint="@color/botonL"
             android:onClick="limpiarTextoTEV"
             android:text="@string/limpiar"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+             />
     </LinearLayout>
 </LinearLayout>

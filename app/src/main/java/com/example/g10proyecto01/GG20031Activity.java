@@ -7,12 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-public class GG20031Activity extends ListActivity {
+import android.widget.Toast;
 
+public class GG20031Activity extends ListActivity {
     String[] activities={"EmpleadoUESMenuActivity","DocenteMenuActivity","TipoEmpleadoMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         String[] menu={ getResources().getString(R.string.tablaEmpleadoUES),
                         getResources().getString(R.string.tablaDocente),
                         getResources().getString(R.string.tablaTipoDeEmpleado)};
@@ -21,6 +23,7 @@ public class GG20031Activity extends ListActivity {
         listView.setBackgroundColor(Color.parseColor("#99c9bd"));
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, menu);
         setListAdapter(adapter);
+        //Toast.makeText(this, "Bienvenido " + userPermisos, Toast.LENGTH_LONG).show();
     }
     @Override
     protected void onListItemClick(ListView l,View v,int position,long id){

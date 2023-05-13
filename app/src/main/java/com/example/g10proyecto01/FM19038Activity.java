@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 public class FM19038Activity extends ListActivity {
-
     String[] activities={"PropuestaGeneralMenuActivity","PropuestaEspecificaMenuActivity","UsuarioMenuActivity", "OpcionCrudMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {

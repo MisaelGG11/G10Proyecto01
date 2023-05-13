@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 public class AC17033Activity extends ListActivity {
-
     String[] activities={"LocalMenuActivity","LocalAdministradoMenuActivity","EventoEspecialMenuActivity", "TipoEventoMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         String[] menu={ getResources().getString(R.string.tablaLocalidad),
                 getResources().getString(R.string.tablaLocalAdministrado),
                 getResources().getString(R.string.tablaEventoEspecial),

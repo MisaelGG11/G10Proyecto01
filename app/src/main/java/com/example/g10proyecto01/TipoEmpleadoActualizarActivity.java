@@ -42,15 +42,21 @@ public class TipoEmpleadoActualizarActivity extends Activity {
         spinIdTipoEmpleado.setAdapter(adapter);
     }
     public void actualizarTipoDeEmpleado(View v) {
-        TipoEmpleado tipoEmpleado = new TipoEmpleado();
-        int id_TE;
-        id_TE =ids.get(spinIdTipoEmpleado.getSelectedItemPosition());
-        tipoEmpleado.setId_tipo_empleado(id_TE);
-        tipoEmpleado.setOcupacion(editOcupacion.getText().toString());
-        helper.abrir();
-        String estado = helper.actualizar(tipoEmpleado);
-        helper.cerrar();
-        Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        if (editOcupacion.getText().toString().isEmpty() || ids.size() == 0){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            TipoEmpleado tipoEmpleado = new TipoEmpleado();
+            int id_TE;
+            id_TE =ids.get(spinIdTipoEmpleado.getSelectedItemPosition());
+            tipoEmpleado.setId_tipo_empleado(id_TE);
+            tipoEmpleado.setOcupacion(editOcupacion.getText().toString());
+            helper.abrir();
+            String estado = helper.actualizar(tipoEmpleado);
+            helper.cerrar();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+        }
+
     }
     public void limpiarTexto(View v) {
         editOcupacion.setText("");

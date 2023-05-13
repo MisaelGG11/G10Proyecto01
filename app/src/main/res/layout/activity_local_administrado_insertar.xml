@@ -6,4 +6,101 @@
     android:layout_height="match_parent"
     tools:context=".LocalAdministradoInsertarActivity">
 
+
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="36dp"
+        android:orientation="horizontal"
+        android:paddingTop="30dip"
+        android:stretchColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewIdLocalAdmin"
+                android:layout_marginBottom="20dp"/>
+
+            <EditText
+                android:id="@+id/editidLocadmin"
+                android:layout_width="213dp"
+                android:inputType="number"
+                android:maxLength="4"
+                 />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_marginBottom="20dp"
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewIdLocal" />
+            <Spinner
+                android:id="@+id/SpinnerLocal"
+                android:inputType="text"
+                android:layout_height="35dp"
+                />
+
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/IdEmpleado"
+                android:layout_marginBottom="10dp"/>
+
+            <Spinner
+                android:id="@+id/SpinnerEncargado"
+                android:inputType="text"
+                android:layout_height="35dp"
+                />
+        </TableRow>
+
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="308dp"
+        android:layout_height="59dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout1"
+        app:layout_constraintVertical_bias="0.103">
+
+        <Button
+            android:id="@+id/btnInsertarLocal"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/botonI"
+            android:onClick="insertarLocalAdmin"
+            android:text="@string/insertar"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
+        <Button
+            android:id="@+id/btnLimpiarInsertarLocal"
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/botonL"
+            android:onClick="limpiarTextoLocA"
+            android:text="@string/limpiar"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

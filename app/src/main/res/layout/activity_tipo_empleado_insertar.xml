@@ -3,20 +3,19 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:paddingTop="30dip"
+    android:paddingHorizontal="20dip"
     android:stretchColumns="1" >
     <TableRow>
         <TextView
-            android:text="@string/tvIdTipoEmpleado"
-            android:paddingHorizontal="10dip"/>
+            android:text="@string/tvIdTipoEmpleado"/>
         <EditText
-            android:id="@+id/editIdEmpleado"
-            android:inputType="text"
+            android:id="@+id/editIdTipoEmpleado"
+            android:inputType="number"
             android:maxLength="4" />
     </TableRow>
     <TableRow>
         <TextView
-            android:text="@string/ocupacion"
-            android:paddingHorizontal="10dip"/>
+            android:text="@string/ocupacion" />
         <EditText
             android:id="@+id/editOcupacion"
             android:inputType="text"

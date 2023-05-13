@@ -79,19 +79,9 @@ public class MenuActivity extends AppCompatActivity {
 
             }
         });
-        Toast.makeText(this, "Bienvenido " + user, Toast.LENGTH_LONG).show();
+        //Toast.makeText(this, "Bienvenido " + userPermisos, Toast.LENGTH_LONG).show();
     }
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("¿Desea salir de su sesión")
-                .setMessage("Presione \"Aceptar\" para salir o \"Cancelar\" para continuar.")
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                })
-                .setNegativeButton("Cancelar", null)
-                .show();
+        finish();
     }
 }

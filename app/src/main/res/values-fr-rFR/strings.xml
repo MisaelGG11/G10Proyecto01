@@ -30,7 +30,26 @@
     <string name="consultar">Lire</string>
     <string name="actualizar_registro">Mettre à jour l’enregistrement</string>
     <string name="actualizar">mettre à jour</string>
-    <string name="limpiar">propre</string>
+    <string name="limpiar">Propre</string>
+    <string name="guardar">Sauvegarder</string>
+
+
+    <!--Clase Controladora-->
+    <string name="error">Erreur lors de l’insertion de l’enregistrement. Enregistrement en double. Vérifier l’insertion</string>
+    <string name="regInsertado">Enregistrement inséré Nº= </string>
+    <string name="regActualizado">Enregistrement mis à jour avec succès</string>
+    <string name="regNoActualizado">L’enregistrement n’a pas été mis à jour, vérifiez vos champs</string>
+    <string name="regEliminados">Lignes concernées = </string>
+    <string name="referencia">Il y a une référence dans un autre tableau de</string>
+    <string name="llenadoBD">Enregistré avec succès</string>
+
+    <!--AlertDialog-->
+    <string name="mensajeAlerta">Voulez-vous supprimer cet enregistrement?</string>
+    <string name="si">Oui</string>
+    <string name="no">Non</string>
+    <string name="vacio">Remplissez tous les champs obligatoires!</string>
+    <string name="soloNumeros">¡L’ID d’enregistrement doit être une valeur numérique!</string>
+
 
     <!--LoginActivity-->
     <string name="user">Utilisateur</string>
@@ -46,6 +65,17 @@
     <string name="tvIdTipoEmpleado">ID de la catégorie de salarié:</string>
     <string name="ocupacion">Occupation:</string>
 
+    <!--DocenteActivities-->
+    <string name="IdDocente">Id de l’enseignant:</string>
+    <string name="nipDocente">NIP de l’enseignant:</string>
+    <string name="categoria">Catégorie:</string>
+
+    <!--EmpleadoUESActivities-->
+    <string name="IdEmpleado">ID de l’employé:</string>
+    <string name="nombreEmpleado">Nom de l’employé:</string>
+    <string name="apellidoEmpleado">Nom de famille de l’employé:</string>
+    <string name="emailEmpleado">Messagerie électronique:</string>
+    <string name="Telefono">Téléphone:</string>
 
     <!--OpcionCrudActivity-->
     <string name="IdOpcionCrud">ID de l\'option CRUD:</string>
@@ -53,19 +83,18 @@
     <string name="registro_no_encontrado">Registro no encontrado</string>
 
     <!--Evento Especial Activity-->
-    <string name="txtViewFechaEventoEspecial">Date:</string>
-    <string name="txtViewLocalidadEventoEspecial">Localisation:</string>
+    <string name="txtidEventoEspecial">Id d\'événement spécial:</string>
+    <string name="txtViewidTipoEventoEspecial">Id Type d\'événement:</string>
     <string name="txtViewNombreEventoEspecial">Nom de l\'événement:</string>
     <string name="txtViewTipoEventoEspecial">Type d\'événement:</string>
-    <string name="txtViewidTipoEventoEspecial">Id Type d\'événement:</string>
-    <string name="txtViewEdificioEventoEspecial">Bâtiment:</string>
-    <string-array name="spinnerHorariosEventoEspecial">
-        <item>Horario 1</item>
-        <item>Horario 2</item>
-    </string-array>
+    <string name="txtViewOrganizadorEvento">Id de l\'organisateur:</string>
+    <string name="txtViewLocalidadEventoEspecial">Id Localisation:</string>
+    <string name="txtViewFechaEventoEspecial">Date:</string>
+    <string name="txtViewHorarioEventoEspecial">Id de planification:</string>
 
     <!--Localidad Activity-->
     <string name="txtViewIdLocal">Id de la place:</string>
+    <string name="txtViewIdLocalAdmin">ID local géré:</string>
     <string name="txtViewNombreLocal">Nom de la place:</string>
     <string name="txtViewCupoLocal">Quota:</string>
     <string name="txtViewEdificio">Bâtiment:</string>
@@ -96,4 +125,9 @@
     <string name="txtPropuetaGeneralPropuestaEspecifica">Proposition générale:</string>
     <string name="txtHorarioPropuestaEspecifica">Calendrier:</string>
     <string name="txtEstadoPropuestaEspecifica">Statut:</string>
+
+    <!--EscuelaActivity-->
+    <string name="idEscuela">idEscuela</string>
+    <string name="acronimoEscuela">Acronimo</string>
+    <string name="nombreEscuela">Nombre</string>
 </resources>

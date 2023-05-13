@@ -30,7 +30,7 @@
 
             <EditText
                 android:id="@+id/edittidLocal"
-                android:inputType="text"
+                android:inputType="number"
                 android:maxLength="4" />
         </TableRow>
 
@@ -66,14 +66,14 @@
 
             <EditText
                 android:id="@+id/editTextCupoLocal"
-                android:inputType="text"
+                android:inputType="number"
                 android:maxLength="3" />
         </TableRow>
     </TableLayout>
 
     <LinearLayout
-        android:layout_width="264dp"
-        android:layout_height="53dp"
+        android:layout_width="297dp"
+        android:layout_height="55dp"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,23 +85,25 @@
 
         <Button
             android:id="@+id/btnInsertarLocal"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:layout_gravity="left"
             android:layout_marginRight="20dp"
-            android:background="@color/botones"
+            android:backgroundTint="@color/botonI"
             android:onClick="insertar"
             android:text="@string/insertar"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
         <Button
             android:id="@+id/btnLimpiarInsertarLocal"
-            android:layout_width="120dp"
-            android:layout_height="40dp"
-            android:background="@color/botones"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/botonL"
             android:onClick="limpiarTextoLocal"
             android:text="@string/limpiar"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,33 +5,33 @@
     android:paddingTop="30dip"
     android:stretchColumns="1" >
     <TableRow>
-        <TextView android:text="id"/>
+        <TextView android:text="@string/idEscuela"/>
         <EditText
-            android:id="@+id/editId"
+            android:id="@+id/editIdEscuela"
             android:inputType="text"
             android:maxLength="7" />
     </TableRow>
     <TableRow>
-        <TextView android:text="acronimo" />
+        <TextView android:text="@string/acronimoEscuela" />
         <EditText
             android:id="@+id/editAcronimo"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
     <TableRow>
-        <TextView android:text="nombre" />
+        <TextView android:text="@string/nombreEscuela" />
         <EditText
-            android:id="@+id/editNombre"
+            android:id="@+id/editNombreEscuela"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
     <TableRow>
         <Button
             android:onClick="insertarEscuela"
-            android:text="insertar" />
+            android:text="@string/insertar" />
 
         <Button
             android:onClick="limpiarTexto"
-            android:text="limpiar" />
+            android:text="@string/limpiar" />
     </TableRow>
 </TableLayout>

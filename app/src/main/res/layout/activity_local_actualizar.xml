@@ -27,6 +27,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:paddingHorizontal="10dip"
         android:maxLength="60"/>
 
     <TextView
@@ -39,6 +40,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:paddingHorizontal="10dip"
         android:maxLength="30"/>
 
     <TextView
@@ -51,34 +53,35 @@
         android:id="@+id/editCupoLoc"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="text"
+        android:inputType="number"
+        android:paddingHorizontal="10dip"
         android:maxLength="3"/>
 
     <LinearLayout
         android:id="@+id/linearLayout1"
-        android:layout_width="304dp"
+        android:layout_width="326dp"
         android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/TEVactualizar"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:layout_marginRight="20dp"
-            android:background="@color/botones"
+            android:backgroundTint="@color/botonA"
             android:onClick="ActualizarLOC"
             android:text="@string/actualizar"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
         <Button
             android:id="@+id/btLimpiarTEV"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:layout_marginRight="20dp"
-            android:background="@color/botones"
+            android:backgroundTint="@color/botonL"
             android:onClick="limpiarTextoLOC"
             android:text="@string/limpiar"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
     </LinearLayout>
 </LinearLayout>
