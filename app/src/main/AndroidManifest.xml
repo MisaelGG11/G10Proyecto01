@@ -58,6 +58,7 @@
             android:exported="false" />
         <activity
             android:name=".UsuarioMenuActivity"
+            android:label="@string/labelCrudUsuario"
             android:exported="false" />
         <activity
             android:name=".PropuestaEspecificaEliminarActivity"
@@ -133,6 +134,7 @@
             android:exported="false" />
         <activity
             android:name=".FM19038Activity"
+            android:label="@string/labelMenuFM19038"
             android:exported="false" />
         <activity
             android:name=".TipoEmpleadoMenuActivity"

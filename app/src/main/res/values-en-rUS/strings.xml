@@ -85,4 +85,15 @@
     <string name="txtPasswordUsuario">Password:</string>
     <string name="txtOpcionesCrudUsuario">Permissions:</string>
 
+    <!--LabelsHeader-->
+    <string name="labelMenuFM19038">Tables FM19038</string>
+    <string name="labelCrudOpocion">CRUD Option Crud CRUD</string>
+    <string name="labelCrudUsuario">CRUD User Table</string>
+    <string name="labelCrudPropositoEspcificico">CRUD General Proporsal Table</string>
+    <string name="labelCrudPropositoGeneral">CRUD Specific Proporsal Table</string>
+
+    <!--PropuestaEspecificaActivity-->
+    <string name="txtPropuetaGeneralPropuestaEspecifica">General Propusal:</string>
+    <string name="txtHorarioPropuestaEspecifica">Schedule:</string>
+    <string name="txtEstadoPropuestaEspecifica">Status:</string>
 </resources>

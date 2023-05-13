@@ -84,4 +84,16 @@
     <string name="txtNombreUsuario">Nom de l\'utilisateur:</string>
     <string name="txtPasswordUsuario">Mot de passe:</string>
     <string name="txtOpcionesCrudUsuario">Permis:</string>
+
+    <!--LabelsHeader-->
+    <string name="labelMenuFM19038">Tableaux FM19038</string>
+    <string name="labelCrudOpocion">Table CRUD Options CRUD</string>
+    <string name="labelCrudUsuario">Table CRUD Utilisateur</string>
+    <string name="labelCrudPropositoEspcificico">Tableau général CRUD</string>
+    <string name="labelCrudPropositoGeneral">Table CRUD Objectif spécifique</string>
+
+    <!--PropuestaEspecificaActivity-->
+    <string name="txtPropuetaGeneralPropuestaEspecifica">Proposition générale:</string>
+    <string name="txtHorarioPropuestaEspecifica">Calendrier:</string>
+    <string name="txtEstadoPropuestaEspecifica">Statut:</string>
 </resources>
