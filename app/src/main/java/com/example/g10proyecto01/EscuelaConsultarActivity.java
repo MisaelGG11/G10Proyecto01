@@ -80,7 +80,7 @@ public class EscuelaConsultarActivity extends AppCompatActivity {
 
         helper.abrir();
 
-        Escuela escuela = helper.consultar(String.valueOf(id));
+        Escuela escuela = helper.consultarEscuela(String.valueOf(id));
 
         helper.cerrar();
 

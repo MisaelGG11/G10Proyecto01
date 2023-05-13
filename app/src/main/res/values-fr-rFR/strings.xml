@@ -118,4 +118,9 @@
     <string name="idEscuela">idEscuela</string>
     <string name="acronimoEscuela">Acronimo</string>
     <string name="nombreEscuela">Nombre</string>
+
+    <!--CicloActivity-->
+    <string name="idCiclo">idCiclo</string>
+    <string name="cicloCiclo">Ciclo</string>
+    <string name="cicloAnio">Año</string>
 </resources>

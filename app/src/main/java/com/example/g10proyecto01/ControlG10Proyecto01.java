@@ -8,11 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class ControlG10Proyecto01 {
 
@@ -479,7 +476,7 @@ public class ControlG10Proyecto01 {
     }
 
     /*  Consultar escuela  */
-    public Escuela consultar(String id_escuela) {
+    public Escuela consultarEscuela(String id_escuela) {
         String[] id = {id_escuela};
 
         Cursor cursor = db.query("escuela", camposEscuela, "id_escuela = ?", id, null, null, null);
@@ -517,7 +514,7 @@ public class ControlG10Proyecto01 {
         }
     }
 
-    /*  Actualizar escuela  */
+    /*  Eliminar escuela  */
 
     public String eliminar(Escuela escuela) {
         String regAfectados = "";
@@ -539,7 +536,7 @@ public class ControlG10Proyecto01 {
 
     /*  muestra todas las escuelas  */
 
-    public ArrayList<Escuela> mostrar() {
+    public ArrayList<Escuela> mostrarEscuelas() {
 
         ArrayList<Escuela> listaEscuelas = new ArrayList<>();
         Escuela escuela;
@@ -560,6 +557,116 @@ public class ControlG10Proyecto01 {
 
         return listaEscuelas;
     }
+
+
+    /*********************************** Tabla Ciclo ***********************************/
+
+    /* Insertar ciclo */
+    public String insertar(Ciclo ciclo) {
+        String regInsertados = "";
+
+        long contador = 0;
+
+        ContentValues cic = new ContentValues();
+
+        cic.put("id_ciclo", ciclo.getId_ciclo());
+        cic.put("ciclo", ciclo.getCiclo());
+        cic.put("año", ciclo.getAño());
+
+        contador = db.insert("ciclo", null, cic);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+
+        return regInsertados;
+    }
+
+    /*  Consultar ciclo  */
+    public Ciclo consultarCiclo(String id_ciclo) {
+        String[] id = {id_ciclo};
+
+        Cursor cursor = db.query("ciclo", camposCiclo, "id_ciclo = ?", id, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            Ciclo ciclo = new Ciclo();
+
+            ciclo.setId_ciclo(cursor.getInt(0));
+            ciclo.setCiclo(cursor.getString(1));
+            ciclo.setAño(cursor.getString(2));
+
+            return ciclo;
+        } else {
+            return null;
+        }
+    }
+
+    /*  Actualizar ciclo  */
+
+    public String actualizar(Ciclo ciclo) {
+
+        if (true) {
+            String[] id = {String.valueOf(ciclo.getId_ciclo())};
+
+            ContentValues cv = new ContentValues();
+
+            cv.put("ciclo", ciclo.getCiclo());
+            cv.put("año", ciclo.getAño());
+
+            db.update("ciclo", cv, "id_ciclo = ?", id);
+
+            return "Correcto";
+        } else {
+            return "";
+        }
+    }
+
+    /*  Eliminar escuela  */
+
+    public String eliminar(Ciclo ciclo) {
+        String regAfectados = "";
+
+        int contador = 0;
+
+        /*
+        if (verificarIntegridad(alumno,3)) {
+            contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
+        }
+        */
+
+        contador += db.delete("ciclo", "id_ciclo='" + ciclo.getId_ciclo() + "'", null);
+
+        regAfectados += contador;
+
+        return regAfectados;
+    }
+
+    /*  muestra todas las escuelas  */
+
+    public ArrayList<Ciclo> mostrarCiclos() {
+
+        ArrayList<Ciclo> listaCiclos = new ArrayList<>();
+        Ciclo ciclo;
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT * FROM " + "ciclo" + " ORDER BY id_ciclo ASC", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ciclo = new Ciclo();
+                ciclo.setId_ciclo(cursor.getInt(0));
+                ciclo.setCiclo(cursor.getString(1));
+                ciclo.setAño(cursor.getString(2));
+
+                listaCiclos.add(ciclo);
+            } while (cursor.moveToNext());
+        }
+
+        return listaCiclos;
+    }
+
 
     /*********************************** Tabla Local ***********************************/
     // CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
@@ -998,6 +1105,17 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM Evento_Especial");
 
         //CICLO
+        final int[] CicloId = {1,2,3,4};
+        final String[] CicloCiclo = {"1","1","2","2"};
+        final String[] CicloAño = {"2021","2022","2021","2022"};
+
+        Ciclo ciclo = new Ciclo();
+        for (int i = 0; i < 4; i++){
+            ciclo.setId_ciclo(CicloId[i]);
+            ciclo.setCiclo(CicloCiclo[i]);
+            ciclo.setAño(CicloAño[i]);
+            insertar(ciclo);
+        }
 
         //ESCUELA
         final int[] EscuelaId = {1,2,3,4};
