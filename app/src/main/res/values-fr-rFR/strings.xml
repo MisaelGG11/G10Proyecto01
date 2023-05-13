@@ -83,19 +83,18 @@
     <string name="registro_no_encontrado">Registro no encontrado</string>
 
     <!--Evento Especial Activity-->
-    <string name="txtViewFechaEventoEspecial">Date:</string>
-    <string name="txtViewLocalidadEventoEspecial">Localisation:</string>
+    <string name="txtidEventoEspecial">Id d\'événement spécial:</string>
+    <string name="txtViewidTipoEventoEspecial">Id Type d\'événement:</string>
     <string name="txtViewNombreEventoEspecial">Nom de l\'événement:</string>
     <string name="txtViewTipoEventoEspecial">Type d\'événement:</string>
-    <string name="txtViewidTipoEventoEspecial">Id Type d\'événement:</string>
-    <string name="txtViewEdificioEventoEspecial">Bâtiment:</string>
-    <string-array name="spinnerHorariosEventoEspecial">
-        <item>Horario 1</item>
-        <item>Horario 2</item>
-    </string-array>
+    <string name="txtViewOrganizadorEvento">Id de l\'organisateur:</string>
+    <string name="txtViewLocalidadEventoEspecial">Id Localisation:</string>
+    <string name="txtViewFechaEventoEspecial">Date:</string>
+    <string name="txtViewHorarioEventoEspecial">Id de planification:</string>
 
     <!--Localidad Activity-->
     <string name="txtViewIdLocal">Id de la place:</string>
+    <string name="txtViewIdLocalAdmin">ID local géré:</string>
     <string name="txtViewNombreLocal">Nom de la place:</string>
     <string name="txtViewCupoLocal">Quota:</string>
     <string name="txtViewEdificio">Bâtiment:</string>

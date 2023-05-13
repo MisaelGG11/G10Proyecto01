@@ -49,14 +49,14 @@
         <Button
             android:id="@+id/btnEliminarLocal"
             android:layout_width="150dp"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_gravity="left"
             android:layout_marginRight="20dp"
-            android:background="@color/botones"
+            android:backgroundTint="@color/botones"
             android:onClick="eliminarLocal"
             android:text="@string/eliminar"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
     </LinearLayout>
 

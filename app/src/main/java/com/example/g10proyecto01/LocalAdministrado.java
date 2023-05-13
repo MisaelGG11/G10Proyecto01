@@ -3,21 +3,16 @@ package com.example.g10proyecto01;
 
 public class LocalAdministrado {
     private int id_local_admin;
-    private Localidad Edificios;
-    private Localidad nombrelocalidad;
-    private EmpleadoUES nombreempleado;
-    private EmpleadoUES apellidoempleado;
+    private int id_local;
+    private int id_empleadoadministrador;
 
     public LocalAdministrado(){
     }
     //Constructor
-
-    public LocalAdministrado(int id_local_admin, Localidad edificios, Localidad nombrelocalidad, EmpleadoUES nombreempleado, EmpleadoUES apellidoempleado) {
+    public LocalAdministrado(int id_local_admin, int id_local, int id_empleadoadministrador) {
         this.id_local_admin = id_local_admin;
-        Edificios = edificios;
-        this.nombrelocalidad = nombrelocalidad;
-        this.nombreempleado = nombreempleado;
-        this.apellidoempleado = apellidoempleado;
+        this.id_local = id_local;
+        this.id_empleadoadministrador = id_empleadoadministrador;
     }
 
     // Getter y Setter
@@ -30,35 +25,19 @@ public class LocalAdministrado {
         this.id_local_admin = id_local_admin;
     }
 
-    public Localidad getEdificios() {
-        return Edificios;
+    public int getId_local() {
+        return id_local;
     }
 
-    public void setEdificios(Localidad edificios) {
-        Edificios = edificios;
+    public void setId_local(int id_local) {
+        this.id_local = id_local;
     }
 
-    public Localidad getNombrelocalidad() {
-        return nombrelocalidad;
+    public int getId_empleadoadministrador() {
+        return id_empleadoadministrador;
     }
 
-    public void setNombrelocalidad(Localidad nombrelocalidad) {
-        this.nombrelocalidad = nombrelocalidad;
-    }
-
-    public EmpleadoUES getNombreempleado() {
-        return nombreempleado;
-    }
-
-    public void setNombreempleado(EmpleadoUES nombreempleado) {
-        this.nombreempleado = nombreempleado;
-    }
-
-    public EmpleadoUES getApellidoempleado() {
-        return apellidoempleado;
-    }
-
-    public void setApellidoempleado(EmpleadoUES apellidoempleado) {
-        this.apellidoempleado = apellidoempleado;
+    public void setId_empleadoadministrador(int id_empleadoadministrador) {
+        this.id_empleadoadministrador = id_empleadoadministrador;
     }
 }

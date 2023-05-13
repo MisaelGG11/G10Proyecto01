@@ -50,7 +50,7 @@ public class LocalMenuActivity extends ListActivity {
         }
         if (permisos.contains(3)){
             menu.add(getResources().getString(R.string.eliminar_registro));
-            activities.add("Local EliminarActivity");
+            activities.add("LocalEliminarActivity");
         }
 
         setListAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu));

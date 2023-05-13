@@ -5,5 +5,132 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".EventoEspecialInsertarActivity">
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="36dp"
+        android:orientation="horizontal"
+        android:paddingTop="30dip"
+        android:stretchColumns="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtidEventoEspecial" />
+
+            <EditText
+                android:id="@+id/edittidEventoE"
+                android:inputType="number"
+                android:maxLength="4" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewNombreEventoEspecial" />
+
+            <EditText
+                android:id="@+id/editTextNombreEvento"
+                android:inputType="text"
+                android:maxLength="100" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewidTipoEventoEspecial" />
+            <Spinner
+                android:id="@+id/editTextidtipoevento"
+                android:inputType="text"
+                android:layout_height="35dp"/>
+
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewOrganizadorEvento" />
+            <Spinner
+                android:id="@+id/editTextorganizador"
+                android:inputType="text"
+                android:layout_height="35dp"/>
+
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewIdLocal" />
+            <Spinner
+                android:id="@+id/editTextidlocal"
+                android:inputType="text"
+                android:layout_height="35dp"/>
+
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewFechaEventoEspecial" />
+
+            <EditText
+                android:id="@+id/editTextfecha"
+                android:inputType="number"
+                android:maxLength="8" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewHorarioEventoEspecial" />
+
+            <EditText
+                android:id="@+id/editTextHorario"
+                android:inputType="number"
+                android:maxLength="8" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="297dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout1"
+        app:layout_constraintVertical_bias="0.103">
+
+        <Button
+            android:id="@+id/btnInsertarLocal"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/botonI"
+            android:onClick="insertar"
+            android:text="@string/insertar"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
+        <Button
+            android:id="@+id/btnLimpiarInsertarLocal"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/botonL"
+            android:onClick="limpiarTextoLocal"
+            android:text="@string/limpiar"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
