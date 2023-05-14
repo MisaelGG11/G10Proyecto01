@@ -136,11 +136,6 @@
     <string name="txtSelectPropuestaEscifica">Propuestas Especificas</string>
 
 
-    <!--EscuelaActivity-->
-    <string name="idEscuela">idEscuela</string>
-    <string name="acronimoEscuela">Acronimo</string>
-    <string name="nombreEscuela">Nombre</string>
-
     <!--GrupoActivity-->
     <string name="idgrupo">ID del grupo:</string>
     <string name="idoferta">ID de la oferta académica:</string>
