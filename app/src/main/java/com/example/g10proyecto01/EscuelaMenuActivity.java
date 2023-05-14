@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -21,7 +20,6 @@ import java.util.List;
 public class EscuelaMenuActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     SearchView txtBuscar;
     RecyclerView listaEscuelas;
-    ArrayList<Escuela> listaArrayEscuelas;
     Button btnInsertar;
     ControlG10Proyecto01 helper;
 
@@ -71,11 +69,9 @@ public class EscuelaMenuActivity extends AppCompatActivity implements SearchView
 
             helper = new ControlG10Proyecto01(this);
 
-            listaArrayEscuelas = new ArrayList<>();
-
             helper.abrir();
 
-            adapter = new ListaEscuelaAdapter(helper.mostrar());
+            adapter = new ListaEscuelaAdapter(helper.mostrarEscuelas());
 
             helper.cerrar();
 
@@ -109,7 +105,7 @@ public class EscuelaMenuActivity extends AppCompatActivity implements SearchView
             if (permisos.contains(4)){
                 helper.abrir();
 
-                adapter = new ListaEscuelaAdapter(helper.mostrar());
+                adapter = new ListaEscuelaAdapter(helper.mostrarEscuelas());
 
                 helper.cerrar();
 

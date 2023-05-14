@@ -2,10 +2,13 @@ package com.example.g10proyecto01;
 
 public class Ciclo {
     private int id_ciclo;
-    private char ciclo;
-    private short año;
+    private String ciclo = " ";
+    private String año = "    ";
 
-    public Ciclo(int id_ciclo, char ciclo, short año) {
+    public Ciclo() {
+    }
+
+    public Ciclo(int id_ciclo, String ciclo, String año) {
         this.id_ciclo = id_ciclo;
         this.ciclo = ciclo;
         this.año = año;
@@ -19,19 +22,25 @@ public class Ciclo {
         this.id_ciclo = id_ciclo;
     }
 
-    public char getCiclo() {
+    public String getCiclo() {
         return ciclo;
     }
 
-    public void setCiclo(char ciclo) {
+    public void setCiclo(String ciclo) {
+        if (ciclo.length() != 1) {
+            throw new IllegalArgumentException("El atributo debe tener una longitud de un caractere");
+        }
         this.ciclo = ciclo;
     }
 
-    public short getAño() {
+    public String getAño() {
         return año;
     }
 
-    public void setAño(short año) {
+    public void setAño(String año) {
+        if (año.length() != 4) {
+            throw new IllegalArgumentException("El atributo debe tener una longitud de cuatro caracteres");
+        }
         this.año = año;
     }
 }

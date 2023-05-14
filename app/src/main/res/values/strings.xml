@@ -130,8 +130,19 @@
     <string name="horainicio">Hora de Inicio:</string>
     <string name="horafinalizacion">Hora de finalización:</string>
 
-    <!--HorarioActivity-->
+    <!--GrupoHorarioActivity-->
     <string name="idgh">ID del Grupo Horario:</string>
 
-    <!--GrupoHorarioActivity-->
+    <!--CicloActivity-->
+    <string name="idCiclo">Id Ciclo:</string>
+    <string name="cicloCiclo">Ciclo:</string>
+    <string name="cicloAnio">Año:</string>
+
+    <!--MateriaActivity-->
+    <string name="idMateria">Id Materia:</string>
+    <string name="codMateria">Cod Materia:</string>
+    <string name="MateriaNombre">Nombre:</string>
+    <string name="materiaEscuela">Escuela:</string>
+
+
 </resources>

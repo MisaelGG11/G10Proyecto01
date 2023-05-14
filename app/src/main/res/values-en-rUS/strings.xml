@@ -134,4 +134,15 @@
     <!--HorarioActivity-->
     <string name="idgh">Schedule Group ID:</string>
 
+    <!--CicloActivity-->
+    <string name="idCiclo">idCiclo</string>
+    <string name="cicloCiclo">Ciclo</string>
+    <string name="cicloAnio">Año</string>
+
+    <!--MateriaActivity-->
+    <string name="idMateria">Id Materia:</string>
+    <string name="codMateria">Cod Materia:</string>
+    <string name="MateriaNombre">Nombre:</string>
+    <string name="materiaEscuela">Escuela:</string>
+
 </resources>

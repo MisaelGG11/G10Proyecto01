@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 public class HS19011Activity extends ListActivity {
 
-    String[] activities={"EscuelaMenuActivity","CicloHorarioMenuActivity","OfertaAcademicaMenuActivity", "MateriaMenuActivity"};
+    String[] activities={"EscuelaMenuActivity","CicloMenuActivity","OfertaAcademicaMenuActivity", "MateriaMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

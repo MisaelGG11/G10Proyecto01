@@ -5,33 +5,44 @@
     android:paddingTop="30dip"
     android:stretchColumns="1" >
     <TableRow>
-        <TextView android:text="@string/idEscuela"/>
+        <TextView android:text="@string/idMateria"/>
         <EditText
-            android:id="@+id/editIdEscuela"
+            android:id="@+id/editIdMateria"
             android:inputType="number"
             android:maxLength="7" />
     </TableRow>
+
     <TableRow>
-        <TextView android:text="@string/acronimoEscuela" />
+        <TextView android:text="@string/codMateria" />
         <EditText
-            android:id="@+id/editAcronimo"
+            android:id="@+id/editCodMateria"
+            android:inputType="text"
+            android:maxLength="6" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/MateriaNombre" />
+        <EditText
+            android:id="@+id/editNombreMateria"
             android:inputType="text"
             android:maxLength="30" />
     </TableRow>
+
     <TableRow>
-        <TextView android:text="@string/nombreEscuela" />
-        <EditText
-            android:id="@+id/editNombreEscuela"
-            android:inputType="text"
-            android:maxLength="30" />
+        <TextView android:text="@string/materiaEscuela" />
+        <Spinner
+            android:id="@+id/spinnerMateria"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
     </TableRow>
+
     <TableRow>
         <Button
-            android:onClick="insertarEscuela"
+            android:onClick="insertarCiclo"
             android:text="@string/insertar" />
 
         <Button
             android:onClick="limpiarTexto"
             android:text="@string/limpiar" />
     </TableRow>
+
 </TableLayout>
