@@ -17,8 +17,8 @@
             android:layout_height="match_parent"
             android:layout_weight=".1"
             android:padding="2dp"
-            app:srcCompat="@drawable/ic_escuela"
-            tools:srcCompat="@drawable/ic_escuela" />
+            app:srcCompat="@drawable/ic_ciclo"
+            tools:srcCompat="@drawable/ic_ciclo" />
 
         <LinearLayout
             android:layout_width="match_parent"
