@@ -121,11 +121,13 @@ public class CicloConsultarActivity extends AppCompatActivity {
             edicion = 1;
 
         } else {
+            String regex = "^(2000|2[0-9]{3}|3000)$";
+
             if (editIdCiclo.getText().toString().isEmpty() ||
                     editAño.getText().toString().isEmpty()) {
 
                 Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
-            } else {
+            } else if (editAño.getText().toString().matches(regex)){
                 Ciclo ciclo = new Ciclo();
 
                 ciclo.setId_ciclo(Integer.valueOf(editIdCiclo.getText().toString()));
@@ -139,6 +141,8 @@ public class CicloConsultarActivity extends AppCompatActivity {
                 Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
 
                 actulizarAlRegresar();
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.anioValido), Toast.LENGTH_SHORT).show();
             }
         }
     }

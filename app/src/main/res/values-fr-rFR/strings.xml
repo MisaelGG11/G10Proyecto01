@@ -53,7 +53,7 @@
     <string name="si">Oui</string>
     <string name="no">Non</string>
     <string name="vacio">Remplissez tous les champs obligatoires!</string>
-    <string name="soloNumeros">¡L’ID d’enregistrement doit être une valeur numérique!</string>
+    <string name="anioValido">L’année doit être valide !</string>
 
 
     <!--LoginActivity-->

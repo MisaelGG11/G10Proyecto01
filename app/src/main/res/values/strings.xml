@@ -52,7 +52,7 @@
     <string name="si">Sí</string>
     <string name="no">No</string>
     <string name="vacio">¡Llena todos los campos requeridos!</string>
-    <string name="soloNumeros">¡El id del registro debe ser un valor numerico!</string>
+    <string name="anioValido">¡El año debe ser valido!</string>
 
     <!--LoginActivity-->
     <string name="user">Usuario</string>
