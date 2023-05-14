@@ -20,7 +20,6 @@ import java.util.List;
 public class CicloMenuActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     SearchView txtBuscar;
     RecyclerView listaCiclos;
-    ArrayList<Ciclo> listaArrayCiclos;
     Button btnInsertar;
     ControlG10Proyecto01 helper;
 
@@ -68,8 +67,6 @@ public class CicloMenuActivity extends AppCompatActivity implements SearchView.O
             listaCiclos.setLayoutManager(new LinearLayoutManager(this));
 
             helper = new ControlG10Proyecto01(this);
-
-            listaArrayCiclos = new ArrayList<>();
 
             helper.abrir();
 

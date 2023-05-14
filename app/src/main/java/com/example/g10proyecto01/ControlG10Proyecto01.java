@@ -1150,7 +1150,7 @@ public class ControlG10Proyecto01 {
 
         db.execSQL("DELETE FROM Usuario");
         db.execSQL("DELETE FROM OpcionCrud");
-        //db.execSQL("DELETE FROM AccesoUsuario");
+        db.execSQL("DELETE FROM AccesoUsuario");
 
         //USUARIOS
 
@@ -1200,13 +1200,15 @@ public class ControlG10Proyecto01 {
 
         //Limpia Base
         db.execSQL("DELETE FROM Escuela");
+        db.execSQL("DELETE FROM Ciclo");
+        db.execSQL("DELETE FROM Materia");
 
         db.execSQL("DELETE FROM Tipo_de_Empleado");
         db.execSQL("DELETE FROM Empleado_UES");
         db.execSQL("DELETE FROM Docente");
 
         db.execSQL("DELETE FROM OpcionCrud");
-        //db.execSQL("DELETE FROM AccesoUsuario");
+        db.execSQL("DELETE FROM AccesoUsuario");
 
         db.execSQL("DELETE FROM Localidad");
         db.execSQL("DELETE FROM Local_Administrado");
@@ -1256,7 +1258,7 @@ public class ControlG10Proyecto01 {
             materia.setCod_materia(MateriaCod[i]);
             materia.setNom_materia(MateriaNombre[i]);
             materia.setId_escuela(MateriaIdEscuela[i]);
-            insertar(escuela);
+            insertar(materia);
         }
 
 

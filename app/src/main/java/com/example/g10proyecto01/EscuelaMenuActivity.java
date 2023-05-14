@@ -20,7 +20,6 @@ import java.util.List;
 public class EscuelaMenuActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     SearchView txtBuscar;
     RecyclerView listaEscuelas;
-    ArrayList<Escuela> listaArrayEscuelas;
     Button btnInsertar;
     ControlG10Proyecto01 helper;
 
@@ -69,8 +68,6 @@ public class EscuelaMenuActivity extends AppCompatActivity implements SearchView
             listaEscuelas.setLayoutManager(new LinearLayoutManager(this));
 
             helper = new ControlG10Proyecto01(this);
-
-            listaArrayEscuelas = new ArrayList<>();
 
             helper.abrir();
 
