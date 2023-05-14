@@ -60,7 +60,7 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Escuela(id_escuela INTEGER NOT NULL PRIMARY KEY, acronimo VARCHAR2(10) NOT NULL, nombre VARCHAR2(30) NOT NULL);");
                 db.execSQL("CREATE TABLE Evento_Especial(id_evento INTEGER NOT NULL PRIMARY KEY, id_tipo_evento INTEGER NOT NULL, nombre_evento VARCHAR2(100) NOT NULL, organizador INTEGER NOT NULL, fecha VARCHAR2(8) NOT NULL, id_horario INTEGER NOT NULL, id_localidad INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Grupo(id_grupo INTEGER NOT NULL PRIMARY KEY, id_oferta_a INTEGER , num_grupo INTEGER NOT NULL, tipo_grupo VARCHAR2(11) NOT NULL, cupo INTEGER NOT NULL);");
-                db.execSQL("CREATE TABLE Horario(id_horario INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, hora_inicio TIMESTAMP NOT NULL, hora_finalizacion TIMESTAMP NOT NULL, dia TEXT NOT NULL)");
+                db.execSQL("CREATE TABLE Horario(id_horario INTEGER PRIMARY KEY NOT NULL, hora_inicio TIMESTAMP NOT NULL, hora_finalizacion TIMESTAMP NOT NULL, dia TEXT NOT NULL)");
                 db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL, FOREIGN KEY(id_horario) REFERENCES Horario ON DELETE CASCADE, FOREIGN KEY(id_grupo) REFERENCES Grupo);");
                 db.execSQL("CREATE TABLE Local_Administrado(id_local_admin INTEGER NOT NULL PRIMARY KEY, id_localidad INTEGER NOT NULL, id_empleado INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Localidad(id_localidad INTEGER NOT NULL, edificio_localidad VARCHAR2(60) NOT NULL, nombre_localidad VARCHAR2(30) NOT NULL, capacidad_localidad INTEGER NOT NULL, CONSTRAINT PK_LOCALIDAD PRIMARY KEY (id_localidad));");
@@ -163,8 +163,8 @@ public class ControlG10Proyecto01 {
         ContentValues horar = new ContentValues();
         horar.put("id_horario", horario.getId_horario());
         horar.put("id_evento", horario.getId_evento());
-        horar.put("hora_inicio", horario.getHora_inicio());
-        horar.put("hora_finalizacion", horario.getHora_finalizacion());
+        horar.put("hora_inicio", horario.getHora_inicio().toString());
+        horar.put("hora_finalizacion", horario.getHora_finalizacion().toString());
         contador = db.insert("horario", null, horar);
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al insertar el registro: Registro duplicado, verifique la inserción.";
@@ -179,8 +179,8 @@ public class ControlG10Proyecto01 {
             String[] id = {String.valueOf(horario.getId_horario())};
             ContentValues cv = new ContentValues();
             cv.put("id_evento", horario.getId_evento());
-            cv.put("hora_inicio", horario.getHora_inicio());
-            cv.put("hora_finalizacion", horario.getHora_finalizacion());
+            cv.put("hora_inicio", horario.getHora_inicio().toString());
+            cv.put("hora_finalizacion", horario.getHora_finalizacion().toString());
             db.update("horario", cv, "id_horario = ?", id);
             return "Registro actualizado correctamente";
         } else {
@@ -208,8 +208,8 @@ public class ControlG10Proyecto01 {
             Horario horario = new Horario();
             horario.setId_horario(cursor.getInt(0));
             horario.setId_evento(cursor.getInt(1));
-            horario.setHora_inicio(cursor.getString(2));
-            horario.setHora_finalizacion(cursor.getString(3));
+            horario.setHora_inicio(new Timestamp(cursor.getLong(2)));
+            horario.setHora_finalizacion(new Timestamp(cursor.getLong(3)));
             return horario;
         } else {
             return null;
@@ -277,10 +277,9 @@ public class ControlG10Proyecto01 {
         String regInsertados = "Registro Insertado Nº= ";
         long contador = 0;
         ContentValues user = new ContentValues();
-        user.put("ID del usuario:", usuario.getId_usuario());
-        user.put("Nombre del usuario:", usuario.getNom_usuario());
-        user.put("Clave:", usuario.getClave());
-
+        user.put("id_usuario", usuario.getId_usuario());
+        user.put("nombre_usuario", usuario.getNom_usuario());
+        user.put("clave", usuario.getClave());
         contador = db.insert("Usuario", null, user);
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al Insertar el registro, Registro Duplicado. Verificar inserción";
@@ -1322,7 +1321,7 @@ public class ControlG10Proyecto01 {
     /*********************************** Tabla Grupo ***********************************/
     // CAMPOS: {"id_grupo", "id_oferta_a", "num_grupo", "tipo_grupo", "cupo"}
 
-    public String insertar(Grupo grupo) {
+    public String insertarGrupo(Grupo grupo) {
         String regInsertados=context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
@@ -1346,7 +1345,7 @@ public class ControlG10Proyecto01 {
 
     /*********************************** Tabla Horario ***********************************/
     //CAMPOS: "id_horario", "id_evento", "hora_inicio", "hora_finalizacion", "dia"
-    public String insertar(Horario horario) {
+    public String insertarHorario(Horario horario) {
         String regInsertados=context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
@@ -1369,7 +1368,7 @@ public class ControlG10Proyecto01 {
     }
     /*********************************** Tabla GrupoHorario ***********************************/
     //CAMPOS: "id_gh", "id_horario", "id_grupo"
-    public String insertar(GrupoHorario grupoHorario) {
+    public String insertarGrupoHorario(GrupoHorario grupoHorario) {
         String regInsertados=context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
@@ -1724,8 +1723,8 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM Evento_Especial");
         db.execSQL("DELETE FROM Grupo_Horario");
         db.execSQL("DELETE FROM Grupo");
+        db.execSQL("DELETE FROM Horario");
         db.execSQL("DELETE FROM Propuesta_General");
-
 
 
         //CICLO
@@ -1762,22 +1761,22 @@ public class ControlG10Proyecto01 {
         final int[] cupoGrupo = {25};
         for (int i = 0; i < grupoId.length; i++) {
             Grupo grupo = new Grupo(grupoId[i],num_grupo[i],id_oferta[i],cupoGrupo[i],tipo_grupo[i]);
-            insertar(grupo);
+            insertarGrupo(grupo);
         }
         //HORARIO
-        final int[] idHorario = {1};
+        final int[] idHorario = {33};
         final Timestamp[] horaInicio = {new Timestamp(2023,2,20,9,50,0,0)};
         final Timestamp[] horaFinalizacion = {new Timestamp(2023,2,20,11,30,0,0)};
         final String[] dias = {"Lunes"};
         for (int i = 0; i < idHorario.length; i++) {
             Horario horario = new Horario(idHorario[i],horaInicio[i],horaFinalizacion[i],dias[i]);
-            insertar(horario);
+            insertarHorario(horario);
         }
         //GRUPOHORARIO
         final int[] idGrupoHorario = {1};
         for (int i = 0; i < idGrupoHorario.length; i++) {
             GrupoHorario grupoHorario = new GrupoHorario(idGrupoHorario[i],idHorario[i],grupoId[i]);
-            insertar(grupoHorario);
+            insertarGrupoHorario(grupoHorario);
         }
         //MATERIA
         final int[] MateraiaId = {1, 2, 3, 4};

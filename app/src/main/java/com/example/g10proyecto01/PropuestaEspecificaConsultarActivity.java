@@ -28,7 +28,7 @@ public class PropuestaEspecificaConsultarActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propuesta_especifica_consultar);
         helper = new ControlG10Proyecto01(this);
-        spinIdPropuesta = findViewById(R.id.spinCunsultaIdPropuestaEspecifica);
+        spinIdPropuesta = findViewById(R.id.spinConsultarIdPropuestaEspecifica);
         editPropuestaGeneral = findViewById(R.id.editConsultaGeneralPropuestaEspecifica);
         editEstadoPropuesta = findViewById(R.id.editConsultarEstadoPropuestaEspecifica);
         editGrupoHorario = findViewById(R.id.editConsultarHorarioPropuestaEspecifica);
@@ -59,7 +59,6 @@ public class PropuestaEspecificaConsultarActivity extends Activity {
         editLocalidad.setText(String.valueOf(localidad.getNombre_localidad()));
 
         String estadoPropuesta = propuestaEspecifica.getEstado_especifica().substring(0,1);
-        Log.wtf("Test",estadoPropuesta);
         if(estadoPropuesta.equals("D")){
             editEstadoPropuesta.setText("Denegada");
         } else if (estadoPropuesta.equals("P")) {

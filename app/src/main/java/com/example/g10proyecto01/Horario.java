@@ -14,6 +14,12 @@ public class Horario {
     public Horario() {
     }
 
+    public Horario(Timestamp hora_inicio, Timestamp hora_finalizacion, String dia) {
+        this.hora_inicio = hora_inicio;
+        this.hora_finalizacion = hora_finalizacion;
+        this.dia = dia;
+    }
+
     public Horario(int id_horario, Timestamp hora_inicio, Timestamp hora_finalizacion, String dia) {
         this.id_horario = id_horario;
         this.hora_inicio = hora_inicio;

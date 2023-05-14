@@ -12,7 +12,7 @@
         android:text="@string/txtIdPropuestaEspecifica"/>
 
     <Spinner
-        android:id="@+id/spinCunsultaIdPropuestaEspecifica"
+        android:id="@+id/spinConsultarIdPropuestaEspecifica"
         android:layout_width="match_parent"
         android:layout_height="48dp" />
 
