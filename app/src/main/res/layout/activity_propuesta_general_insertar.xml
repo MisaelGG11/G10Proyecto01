@@ -4,31 +4,13 @@
     android:layout_height="wrap_content"
     android:paddingTop="30dip"
     android:stretchColumns="1" >
-
-    <TableRow>
-        <TextView
-            android:text="@string/txtIdPropuestaEspecifica"
-            android:paddingHorizontal="10dip"
-            android:paddingTop="30dp"
-            />
-    </TableRow>
-    <TextView
-        android:id="@+id/txtPropuestaEspecificaSeleccionada"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:background="@android:drawable/editbox_background"
-        android:drawableRight="@android:drawable/arrow_down_float"
-        android:drawablePadding="16dp"
-        android:hint="@string/txtSelectPropuestaEscifica"
-        android:padding="12dp" />
     <TableRow
         android:paddingTop="10dp"
         >
 
         <Button
             android:backgroundTint="#0a996f"
-            android:onClick="insertarUsuario"
+            android:onClick="crearPropuestaGeneral"
             android:text="@string/insertar"
 
             />
@@ -37,4 +19,19 @@
             android:onClick="limpiarTexto"
             android:text="@string/limpiar" />
     </TableRow>
+    <!--
+    <TableRow>
+        <TextView
+            android:text="@string/txtPropuetaGeneralPropuestaEspecifica"
+            android:paddingHorizontal="10dip"
+            android:paddingTop="30dp"
+            />
+        <TextView
+            android:id="@+id/txtIdGeneradoPropuestaGeneral"
+            android:paddingHorizontal="10dip"
+            android:paddingTop="30dp"
+            />
+    </TableRow>
+    -->
+
 </TableLayout>

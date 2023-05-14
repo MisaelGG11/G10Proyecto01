@@ -135,6 +135,12 @@
     <string name="alertNoData">Vous devez remplir un champ pour mettre à jour</string>
     <!--PropuestaGeneralActivity-->
     <string name="txtSelectPropuestaEscifica">Propuestas Especificas</string>
+    <string name="estadoAprobado">Approuvé</string>
+    <string name="estadoDenegado">Defusé</string>
+    <string name="estadoRevision">Révision</string>
+    <string name="estadoParcialmente">Partiellement approuvé</string>
+    <string name="btnCrear">Créer</string>
+
 
     <!--GrupoActivity-->
     <string name="idgrupo">ID de group:</string>

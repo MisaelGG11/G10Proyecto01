@@ -1428,7 +1428,20 @@ public class ControlG10Proyecto01 {
         }
         return regInsertados;
     }
-
+    public String crearPropuestaGeneral(){
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
+        long contador = 0;
+        ContentValues values = new ContentValues();
+        PropuestaGeneral propuestaGeneral = new PropuestaGeneral("R");
+        values.put("estado_propuesta", propuestaGeneral.getEstado_propuesta());
+        contador = db.insert("Propuesta_General", null,values);
+        if (contador == -1 || contador == 0) {
+            regInsertados = context.getResources().getString(R.string.error);
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
     public String consularHorarioPropuestaEspcifica(String idGrupoHorario) {
         String[] id = {idGrupoHorario};
         String consulta = "SELECT h.dia, h.hora_inicio, h.hora_finalizacion FROM Grupo_Horario gh INNER JOIN Horario h ON h.id_horario = gh.id_horario WHERE gh.id_gh = ?";
