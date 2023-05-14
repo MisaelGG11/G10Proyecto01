@@ -1,6 +1,8 @@
 package com.example.g10proyecto01;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -20,12 +22,27 @@ public class HorarioEliminarActivity extends Activity {
     }
 
     public void eliminarHorario(View v) {
-        String regEliminadas;
-        Horario horario = new Horario();
-        horario.setId_horario(Integer.parseInt(editidgh3.getText().toString()));
-        controlhelper.abrir();
-        regEliminadas = controlhelper.eliminar(horario);
-        controlhelper.cerrar();
-        Toast.makeText(this, regEliminadas, Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder alerta = new AlertDialog.Builder(HorarioEliminarActivity.this);
+        alerta.setCancelable(false);
+        alerta.setMessage("¿Desea eliminar este registro?");
+
+        alerta.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                String regEliminadas;
+                Horario horario = new Horario();
+                horario.setId_horario(Integer.parseInt(editidgh3.getText().toString()));
+                controlhelper.abrir();
+                regEliminadas = controlhelper.eliminar(horario);
+                controlhelper.cerrar();
+                Toast.makeText(HorarioEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
+            }
+        });
+        alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        alerta.show();
     }
 }

@@ -129,14 +129,16 @@ public class ControlG10Proyecto01 {
     }
 
     public String eliminar(Grupo grupo) {
-        String regAfectados = "Fila afectada #";
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
         int contador = 0;
-        if (verificarIntegridad(grupo, 11)) {
-            contador += db.delete("Grupo_Horario", "id_grupo='" + grupo.getId_grupo() + "'", null);
-        }
-        contador += db.delete("Grupo", "id_grupo='" + grupo.getId_grupo() + "'", null);
-        regAfectados += contador;
-        return regAfectados;
+        if (verificarIntegridad(grupo, 18)) {
+            String where = "id_grupo=" + grupo.getId_grupo();
+            contador += db.delete("Grupo", where, null);
+            regAfectados += contador;
+            return regAfectados;
+        } else return context.getResources().getString(R.string.referencia) + " " +
+                context.getResources().getString(R.string.txtViewIdLocal) + " " +
+                grupo.getId_grupo();
     }
 
     //db.execSQL("CREATE TABLE Grupo(id_grupo INTEGER NOT NULL PRIMARY KEY, id_oferta_a INTEGER NOT NULL, num_grupo INTEGER NOT NULL, tipo_grupo VARCHAR2(11) NOT NULL, cupo INTEGER NOT NULL);");
@@ -191,14 +193,17 @@ public class ControlG10Proyecto01 {
     }
 
     public String eliminar(Horario horario) {
-        String regAfectados = "Fila afectada #";
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
         int contador = 0;
-        if (verificarIntegridad(horario, 12)) {
-            contador += db.delete("Grupo_Horario", "id_horario='" + horario.getId_horario() + "'", null);
-        }
-        contador += db.delete("Horario", "id_horario='" + horario.getId_horario() + "'", null);
-        regAfectados += contador;
-        return regAfectados;
+        if (verificarIntegridad(horario, 19)) {
+            String where = "id_horario=" + horario.getId_horario();
+            contador += db.delete("Horario", where, null);
+            regAfectados += contador;
+            return regAfectados;
+        } else return context.getResources().getString(R.string.referencia) + " " +
+                context.getResources().getString(R.string.txtViewIdLocal) + " " +
+                horario.getId_horario();
+
     }
 
     //db.execSQL("CREATE TABLE Horario(id_horario INTEGER NOT NULL PRIMARY KEY, id_evento INTEGER NOT NULL, hora_inicio TIMESTAMP NOT NULL, hora_finalizacion TIMESTAMP NOT NULL);");
@@ -221,6 +226,7 @@ public class ControlG10Proyecto01 {
 
     /******************************************** Tabla Grupo Horario ********************************************/
     public String insertar(GrupoHorario grupohorario) {
+
         String regInsertados = "Registro insertado # ";
         long contador = 0;
         ContentValues grupohorar = new ContentValues();
