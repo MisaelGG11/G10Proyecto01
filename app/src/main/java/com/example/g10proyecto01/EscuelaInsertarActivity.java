@@ -48,7 +48,7 @@ public class EscuelaInsertarActivity extends AppCompatActivity {
 
             helper.cerrar();
 
-            if (regInsertados.contains("Error")) {
+            if (regInsertados.contains("Err")) {
                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();

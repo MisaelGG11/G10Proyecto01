@@ -42,6 +42,10 @@
     <string name="regNoEliminados">FALLO al eliminar, existe una relacion con </string>
     <string name="referencia">Hay una referencia en otra tabla de</string>
     <string name="llenadoBD">Guardo correctamente</string>
+    <string name="elimGrupo">Grupo</string>
+    <string name="elimOferta">Oferta Academica</string>
+    <string name="elimMateria">Materia</string>
+
 
     <!--AlertDialog-->
     <string name="mensajeAlerta">¿Desea eliminar este registro?"</string>
@@ -128,11 +132,6 @@
     <string name="txtLocalidadPropuestaEspecifica">Localidad:</string>
     <string name="alertNoData">Debes rellenar un campo para actualizar</string>
 
-    <!--EscuelaActivity-->
-    <string name="idEscuela">idEscuela</string>
-    <string name="acronimoEscuela">Acronimo</string>
-    <string name="nombreEscuela">Nombre</string>
-
     <!--GrupoActivity-->
     <string name="idgrupo">ID del grupo:</string>
     <string name="idoferta">ID de la oferta académica:</string>
@@ -149,19 +148,24 @@
     <!--GrupoHorarioActivity-->
     <string name="idgh">ID del Grupo Horario:</string>
 
+    <!--EscuelaActivity-->
+    <string name="idEscuela">ID Escuela</string>
+    <string name="acronimoEscuela">Acronimo</string>
+    <string name="nombreEscuela">Nombre</string>
+
     <!--CicloActivity-->
-    <string name="idCiclo">Id Ciclo:</string>
+    <string name="idCiclo">ID Ciclo:</string>
     <string name="cicloCiclo">Ciclo:</string>
     <string name="cicloAnio">Año:</string>
 
     <!--MateriaActivity-->
-    <string name="idMateria">Id Materia:</string>
+    <string name="idMateria">ID Materia:</string>
     <string name="codMateria">Cod Materia:</string>
     <string name="MateriaNombre">Nombre:</string>
     <string name="materiaEscuela">Escuela:</string>
 
     <!--OfertaActivity-->
-    <string name="id_oferta">Id Oferta:</string>
+    <string name="id_oferta">ID Oferta:</string>
     <string name="OfertaCiclo">Ciclo:</string>
     <string name="ofertaDocente">Docente:</string>
     <string name="OfertaMateria">Materia:</string>

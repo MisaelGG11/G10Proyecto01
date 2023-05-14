@@ -84,7 +84,7 @@ public class OfertaAcademicaInsertarActivity extends AppCompatActivity {
             regInsertados = helper.insertar(ofertaAcademica);
             helper.cerrar();
 
-            if (regInsertados.contains("Error")) {
+            if (regInsertados.contains("Err")) {
                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();

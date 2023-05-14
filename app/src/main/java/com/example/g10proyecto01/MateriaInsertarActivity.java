@@ -72,7 +72,7 @@ public class MateriaInsertarActivity extends AppCompatActivity {
             regInsertados = helper.insertar(materia);
             helper.cerrar();
 
-            if (regInsertados.contains("Error")) {
+            if (regInsertados.contains("Err")) {
                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();

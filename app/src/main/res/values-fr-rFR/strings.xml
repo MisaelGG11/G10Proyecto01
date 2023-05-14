@@ -43,6 +43,10 @@
     <string name="regNoEliminados">ÉCHEC de la suppression, il existe une relation avec </string>
     <string name="referencia">Il y a une référence dans un autre tableau de</string>
     <string name="llenadoBD">Enregistré avec succès</string>
+    <string name="elimGrupo">Groupe</string>
+    <string name="elimOferta">Offre académique</string>
+    <string name="elimMateria">Materia</string>
+
 
     <!--AlertDialog-->
     <string name="mensajeAlerta">Voulez-vous supprimer cet enregistrement?</string>
@@ -130,11 +134,6 @@
     <string name="txtLocalidadPropuestaEspecifica">Localisation:</string>
     <string name="alertNoData">Vous devez remplir un champ pour mettre à jour</string>
 
-    <!--EscuelaActivity-->
-    <string name="idEscuela">idEscuela</string>
-    <string name="acronimoEscuela">Acronimo</string>
-    <string name="nombreEscuela">Nombre</string>
-
     <!--GrupoActivity-->
     <string name="idgrupo">ID de group:</string>
     <string name="idoferta">ID de l\'offre académique:</string>
@@ -151,21 +150,26 @@
     <!--HorarioActivity-->
     <string name="idgh">ID du groupe de planification:</string>
 
+    <!--EscuelaActivity-->
+    <string name="idEscuela">ID École</string>
+    <string name="acronimoEscuela">Acronyme</string>
+    <string name="nombreEscuela">Nom</string>
+
     <!--CicloActivity-->
     <string name="idCiclo">idCiclo</string>
-    <string name="cicloCiclo">Ciclo</string>
-    <string name="cicloAnio">Año</string>
+    <string name="cicloCiclo">Cycle</string>
+    <string name="cicloAnio">Année</string>
 
     <!--MateriaActivity-->
-    <string name="idMateria">Id Materia:</string>
-    <string name="codMateria">Cod Materia:</string>
-    <string name="MateriaNombre">Nombre:</string>
-    <string name="materiaEscuela">Escuela:</string>
+    <string name="idMateria">ID La matière:</string>
+    <string name="codMateria">Cod La matière:</string>
+    <string name="MateriaNombre">Nom:</string>
+    <string name="materiaEscuela">École:</string>
 
     <!--OfertaActivity-->
-    <string name="id_oferta">Id Oferta:</string>
-    <string name="OfertaCiclo">Ciclo:</string>
-    <string name="ofertaDocente">Docente:</string>
-    <string name="OfertaMateria">Materia:</string>
+    <string name="id_oferta">ID Offre:</string>
+    <string name="OfertaCiclo">Cycle:</string>
+    <string name="ofertaDocente">professeur:</string>
+    <string name="OfertaMateria">La matière:</string>
 
 </resources>

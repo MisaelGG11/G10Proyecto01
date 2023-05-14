@@ -43,6 +43,10 @@
     <string name="regNoEliminados">FAILED to delete, there is a relationship with </string>
     <string name="referencia">There is a reference in another table of</string>
     <string name="llenadoBD">Saved successfully</string>
+    <string name="elimGrupo">Group</string>
+    <string name="elimOferta">Academic Offer</string>
+    <string name="elimMateria">Subject</string>
+
 
     <!--AlertDialog-->
     <string name="mensajeAlerta">Do you want to delete this record?</string>
@@ -126,15 +130,9 @@
     <string name="txtIdPropuestaEspecifica">Id specific proposal:</string>
     <string name="txtLocalidadPropuestaEspecifica">Location:</string>
     <string name="alertNoData">You must fill in a field to update</string>
-
-
-    <!--EscuelaActivity-->
-    <string name="idEscuela">idEscuela</string>
-    <string name="acronimoEscuela">Acronimo</string>
-    <string name="nombreEscuela">Nombre</string>
-
     <string name="labelCrudPropositoEspcificico">CRUD General Proporsal Table</string>
     <string name="labelCrudPropositoGeneral">CRUD Specific Proporsal Table</string>
+
     <!--GrupoActivity-->
     <string name="idgrupo">Group ID:</string>
     <string name="idoferta">ID of the academic offer:</string>
@@ -151,21 +149,26 @@
     <!--HorarioActivity-->
     <string name="idgh">Schedule Group ID:</string>
 
+    <!--EscuelaActivity-->
+    <string name="idEscuela">School ID</string>
+    <string name="acronimoEscuela">Acronym</string>
+    <string name="nombreEscuela">Name</string>
+
     <!--CicloActivity-->
-    <string name="idCiclo">idCiclo</string>
-    <string name="cicloCiclo">Ciclo</string>
-    <string name="cicloAnio">Año</string>
+    <string name="idCiclo">Cycle ID</string>
+    <string name="cicloCiclo">Cycle</string>
+    <string name="cicloAnio">Year</string>
 
     <!--MateriaActivity-->
-    <string name="idMateria">Id Materia:</string>
-    <string name="codMateria">Cod Materia:</string>
-    <string name="MateriaNombre">Nombre:</string>
-    <string name="materiaEscuela">Escuela:</string>
+    <string name="idMateria">Subject ID:</string>
+    <string name="codMateria">Subject Cod:</string>
+    <string name="MateriaNombre">Name:</string>
+    <string name="materiaEscuela">School:</string>
 
     <!--OfertaActivity-->
-    <string name="id_oferta">Id Oferta:</string>
-    <string name="OfertaCiclo">Ciclo:</string>
-    <string name="ofertaDocente">Docente:</string>
-    <string name="OfertaMateria">Materia:</string>
+    <string name="id_oferta">Offer_A ID</string>
+    <string name="OfertaCiclo">Cycle:</string>
+    <string name="ofertaDocente">Teacher:</string>
+    <string name="OfertaMateria">Subject:</string>
 
 </resources>

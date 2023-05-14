@@ -725,7 +725,7 @@ public class ControlG10Proyecto01 {
             return regAfectados;
         } else
             return context.getResources().getString(R.string.regNoEliminados) + " " +
-                    context.getResources().getString(R.string.idMateria).substring(3).toUpperCase();
+                    context.getResources().getString(R.string.elimMateria).toUpperCase();
     }
 
     /*  muestra todas las escuelas  */
@@ -778,6 +778,7 @@ public class ControlG10Proyecto01 {
         return regInsertados;
     }
 
+
     /*  Consultar ciclo  */
     public Ciclo consultarCiclo(String id_ciclo) {
         String[] id = {id_ciclo};
@@ -828,7 +829,7 @@ public class ControlG10Proyecto01 {
             return regAfectados;
         } else
             return context.getResources().getString(R.string.regNoEliminados) + " " +
-                    context.getResources().getString(R.string.id_oferta).substring(3).toUpperCase();
+                    context.getResources().getString(R.string.elimOferta).toUpperCase();
     }
 
     /*  muestra todas las escuelas  */
@@ -932,7 +933,7 @@ public class ControlG10Proyecto01 {
             return regAfectados;
         } else
             return context.getResources().getString(R.string.regNoEliminados) + " " +
-                    context.getResources().getString(R.string.id_oferta).substring(3).toUpperCase();
+                    context.getResources().getString(R.string.elimOferta).toUpperCase();
     }
 
     /*  muestra todas las materias  */
@@ -1038,7 +1039,7 @@ public class ControlG10Proyecto01 {
             return regAfectados;
         } else
             return context.getResources().getString(R.string.regNoEliminados) + " " +
-                    context.getResources().getString(R.string.idgrupo).substring(7).toUpperCase();
+                    context.getResources().getString(R.string.elimGrupo).toUpperCase();
     }
 
     /*  muestra todas las ofertas  */
