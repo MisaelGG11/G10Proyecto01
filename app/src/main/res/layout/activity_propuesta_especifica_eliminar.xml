@@ -20,7 +20,7 @@
         android:id="@+id/btnEliminarPropuestaEspecifica"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="EliminarPropuestaEspecifica"
+        android:onClick="EliminarPropuestaGeneral"
         android:backgroundTint="#E84D5B"
         android:text="@string/eliminar" />
 </LinearLayout>

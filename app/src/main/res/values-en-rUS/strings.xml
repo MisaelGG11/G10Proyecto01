@@ -130,6 +130,16 @@
     <string name="txtIdPropuestaEspecifica">Id specific proposal:</string>
     <string name="txtLocalidadPropuestaEspecifica">Location:</string>
     <string name="alertNoData">You must fill in a field to update</string>
+
+    <!--PropuestaGeneralActivity-->
+    <string name="txtSelectPropuestaEscifica">Propuestas Especificas</string>
+
+
+    <!--EscuelaActivity-->
+    <string name="idEscuela">idEscuela</string>
+    <string name="acronimoEscuela">Acronimo</string>
+    <string name="nombreEscuela">Nombre</string>
+
     <string name="labelCrudPropositoEspcificico">CRUD General Proporsal Table</string>
     <string name="labelCrudPropositoGeneral">CRUD Specific Proporsal Table</string>
 

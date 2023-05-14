@@ -133,6 +133,8 @@
     <string name="txtIdPropuestaEspecifica">Id proposition spécifique:</string>
     <string name="txtLocalidadPropuestaEspecifica">Localisation:</string>
     <string name="alertNoData">Vous devez remplir un champ pour mettre à jour</string>
+    <!--PropuestaGeneralActivity-->
+    <string name="txtSelectPropuestaEscifica">Propuestas Especificas</string>
 
     <!--GrupoActivity-->
     <string name="idgrupo">ID de group:</string>
