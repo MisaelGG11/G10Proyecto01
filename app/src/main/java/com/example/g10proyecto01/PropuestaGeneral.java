@@ -8,6 +8,11 @@ public class PropuestaGeneral {
         this.id_propuesta = id_propuesta;
     }
 
+    public PropuestaGeneral(int id_propuesta, String estado_propuesta) {
+        this.id_propuesta = id_propuesta;
+        this.estado_propuesta = estado_propuesta;
+    }
+
     public int getId_propuesta() {
         return id_propuesta;
     }

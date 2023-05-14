@@ -35,8 +35,8 @@ public class PropuestaEspecificaInsertarActivity extends Activity {
 
     public void InsertarPropuestaEspecifica(View V){
         int idPropuestaGeneral = Integer.parseInt(spinnerIdPropuestaGeneral.getSelectedItem().toString());
-        int idGrupoHorario = Integer.parseInt(spinnerIdGrupoHorario.getSelectedItem().toString().substring(0,1));
-        int idLocalidad = Integer.parseInt(spinnerIdLocalidad.getSelectedItem().toString().substring(0,1));
+        int idGrupoHorario = ManejarString.extraerNumero(spinnerIdGrupoHorario.getSelectedItem().toString());
+        int idLocalidad = ManejarString.extraerNumero(spinnerIdLocalidad.getSelectedItem().toString());
         String regInsertados = "";
         PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(idPropuestaGeneral,idGrupoHorario,idLocalidad);
 
