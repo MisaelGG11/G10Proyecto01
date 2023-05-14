@@ -1954,26 +1954,26 @@ public class ControlG10Proyecto01 {
         }
 
         //GRUPO
-        final int[] grupoId = {1};
-        final int[] num_grupo = {1};
-        final int[] id_oferta = {1};
-        final String[] tipo_grupo = {"Teorico"};
-        final int[] cupoGrupo = {25};
+        final int[] grupoId = {1,2};
+        final int[] num_grupo = {1,2};
+        final int[] id_oferta = {1,2};
+        final String[] tipo_grupo = {"Teorico","Discusion"};
+        final int[] cupoGrupo = {25,10};
         for (int i = 0; i < grupoId.length; i++) {
             Grupo grupo = new Grupo(grupoId[i], num_grupo[i], id_oferta[i], cupoGrupo[i], tipo_grupo[i]);
             insertarGrupo(grupo);
         }
         //HORARIO
-        final int[] idHorario = {33};
-        final Timestamp[] horaInicio = {new Timestamp(2023, 2, 20, 9, 50, 0, 0)};
-        final Timestamp[] horaFinalizacion = {new Timestamp(2023, 2, 20, 11, 30, 0, 0)};
-        final String[] dias = {"Lunes"};
+        final int[] idHorario = {33,34};
+        final Timestamp[] horaInicio = {new Timestamp(2023, 2, 20, 9, 50, 0, 0), new Timestamp(2023, 2, 20, 8, 5, 0, 0)};
+        final Timestamp[] horaFinalizacion = {new Timestamp(2023, 2, 20, 11, 30, 0, 0),new Timestamp(2023, 2, 20, 9, 45, 0, 0)};
+        final String[] dias = {"Lunes","Martes"};
         for (int i = 0; i < idHorario.length; i++) {
             Horario horario = new Horario(idHorario[i], horaInicio[i], horaFinalizacion[i], dias[i]);
             insertarHorario(horario);
         }
         //GRUPOHORARIO
-        final int[] idGrupoHorario = {1};
+        final int[] idGrupoHorario = {1,2};
         for (int i = 0; i < idGrupoHorario.length; i++) {
             GrupoHorario grupoHorario = new GrupoHorario(idGrupoHorario[i], idHorario[i], grupoId[i]);
             insertarGrupoHorario(grupoHorario);
