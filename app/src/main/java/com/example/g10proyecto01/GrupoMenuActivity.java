@@ -19,7 +19,7 @@ public class GrupoMenuActivity extends ListActivity {
     List<Integer> permisos = new ArrayList<>();
     List<String> menu = new ArrayList<>();
     List<String> activities = new ArrayList<>();
-    String[] activities = {"GrupoInsertarActivity", "GrupoConsultarActivity", "GrupoActualizarActivity", "GrupoEliminarActivity"};
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class GrupoMenuActivity extends ListActivity {
         userPermisos = global.getUserPermisos();
         helper = new ControlG10Proyecto01(this);
 
-        String sql = "SELECT id_opcion_crud FROM AccesoUsuario WHERE id_usuario = '"+ userPermisos+"'";
+        String sql = "SELECT id_opcion_crud FROM AccesoUsuario WHERE id_usuario = '" + userPermisos + "'";
         Cursor cursor = helper.llenarSpinner(sql);
         while (cursor.moveToNext()) {
             @SuppressLint("Range")
@@ -37,7 +37,7 @@ public class GrupoMenuActivity extends ListActivity {
             permisos.add(permiso);
         }
 
-        if (permisos.contains(1)){
+        if (permisos.contains(1)) {
             menu.add(getResources().getString(R.string.insertar_registro));
             activities.add("GrupoInsertarActivity");
         }
@@ -45,11 +45,11 @@ public class GrupoMenuActivity extends ListActivity {
             menu.add(getResources().getString(R.string.consultar_registro));
             activities.add("GrupoConsultarActivity");
         }
-        if (permisos.contains(2)){
+        if (permisos.contains(2)) {
             menu.add(getResources().getString(R.string.actualizar_registro));
             activities.add("GrupoActualizarActivity");
         }
-        if (permisos.contains(3)){
+        if (permisos.contains(3)) {
             menu.add(getResources().getString(R.string.eliminar_registro));
             activities.add("GrupoEliminarActivity");
         }
@@ -62,18 +62,18 @@ public class GrupoMenuActivity extends ListActivity {
     }
 
     @Override
-    protected void onListItemClick(ListView l,View v,int position,long id){
+    protected void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        String nombreValue=activities.get(position);
+        String nombreValue = activities.get(position);
 
         l.getChildAt(position).setBackgroundColor(Color.parseColor("#99c9bd"));
 
-        try{
-            Class<?> clase=Class.forName("com.example.g10proyecto01." + nombreValue);
-            Intent inte = new Intent(this,clase);
+        try {
+            Class<?> clase = Class.forName("com.example.g10proyecto01." + nombreValue);
+            Intent inte = new Intent(this, clase);
             this.startActivity(inte);
-        }catch(ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 

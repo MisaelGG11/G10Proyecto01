@@ -756,7 +756,6 @@ public class ControlG10Proyecto01 {
     }
 
 
-
     /*********************************** Tabla Materia ***********************************/
 
     /* Insertar materia */
@@ -870,7 +869,6 @@ public class ControlG10Proyecto01 {
     }
 
 
-
     /*********************************** Tabla Local ***********************************/
     // CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
 
@@ -943,55 +941,53 @@ public class ControlG10Proyecto01 {
     // CAMPOS: {"id_local_admin", "id_localidad", "id_empleado"}
 
     /*  Insertar Local Administrado */
-    public String insertar(LocalAdministrado localAdministrado){
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+    public String insertar(LocalAdministrado localAdministrado) {
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
-        long contador=0;
-        if (verificarIntegridad(localAdministrado,6)||verificarIntegridad(localAdministrado,7)){
+        long contador = 0;
+        if (verificarIntegridad(localAdministrado, 6) || verificarIntegridad(localAdministrado, 7)) {
             ContentValues localAdmin = new ContentValues();
             localAdmin.put("id_local_admin", localAdministrado.getId_local_admin());
             localAdmin.put("id_localidad", localAdministrado.getId_local());
             localAdmin.put("id_empleado", localAdministrado.getId_empleadoadministrador());
             contador = db.insert("Local_Administrado", null, localAdmin);
         }
-        if(contador==-1 || contador==0)
-        {
-            regInsertados= context.getResources().getString(R.string.error);
-        }
-        else {
-            regInsertados=regInsertados+contador;
+        if (contador == -1 || contador == 0) {
+            regInsertados = context.getResources().getString(R.string.error);
+        } else {
+            regInsertados = regInsertados + contador;
         }
         return regInsertados;
     }
 
     /*  Consultar Local Administrado*/
-    public LocalAdministrado consultarlocalAdmin(String id_local_admin){
+    public LocalAdministrado consultarlocalAdmin(String id_local_admin) {
         String[] id = {id_local_admin};
         Cursor cursorLoc = db.query("Local_Administrado", camposLocalAdministrado, "id_local_admin = ?", id, null, null, null);
-        if(cursorLoc.moveToFirst()){
-            LocalAdministrado localAdministrado = new LocalAdministrado(cursorLoc.getInt(0),cursorLoc.getInt(1),cursorLoc.getInt(2));
+        if (cursorLoc.moveToFirst()) {
+            LocalAdministrado localAdministrado = new LocalAdministrado(cursorLoc.getInt(0), cursorLoc.getInt(1), cursorLoc.getInt(2));
             return localAdministrado;
-        }else{
+        } else {
             return null;
         }
     }
 
     /*  Actualizar Local Administrado */
-    public String actualizar(LocalAdministrado localAdministrado){
+    public String actualizar(LocalAdministrado localAdministrado) {
         String[] id = {String.valueOf(localAdministrado.getId_local())};
         ContentValues locAd = new ContentValues();
         locAd.put("id_localidad", localAdministrado.getId_local());
         locAd.put("id_empleado", localAdministrado.getId_empleadoadministrador());
 
-        db.update("Local_Administrado",locAd,"id_local_admin = ?", id);
+        db.update("Local_Administrado", locAd, "id_local_admin = ?", id);
         return context.getResources().getString(R.string.regActualizado);
     }
 
     /*  Eliminar Local Administrado*/
-    public String eliminar(LocalAdministrado localAdministrado){
-        String regAfectados=context.getResources().getString(R.string.regEliminados);
-        int contador=0;
-        String where="id_local_admin=" + localAdministrado.getId_local_admin();
+    public String eliminar(LocalAdministrado localAdministrado) {
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
+        int contador = 0;
+        String where = "id_local_admin=" + localAdministrado.getId_local_admin();
         contador += db.delete("Local_Administrado", where, null);
         regAfectados += contador;
         return regAfectados;
@@ -1002,7 +998,7 @@ public class ControlG10Proyecto01 {
 
     /*  Insertar Tipo de Evento  */
     public String insertar(TipoEvento tipoEvento) {
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
@@ -1014,7 +1010,7 @@ public class ControlG10Proyecto01 {
         contador = db.insert("Tipo_evento", null, teven);
 
         if (contador == -1 || contador == 0) {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -1041,22 +1037,21 @@ public class ControlG10Proyecto01 {
         ContentValues cv = new ContentValues();
         cv.put("nombre_tipo_evento", tipoEvento.getNombre_tipo_evento());
 
-        db.update("Tipo_evento",cv,"id_tipo_evento = ?", id);
+        db.update("Tipo_evento", cv, "id_tipo_evento = ?", id);
         return context.getResources().getString(R.string.regActualizado);
     }
 
     /*  Eliminar Tipo de Evento  */
 
-    public String eliminar(TipoEvento tipoEvento){
-        String regAfectados=context.getResources().getString(R.string.regEliminados);
-        int contador=0;
-        if (verificarIntegridad(tipoEvento, 10)){
-            String where="id_tipo_evento=" + tipoEvento.getId_tipo_evento();
+    public String eliminar(TipoEvento tipoEvento) {
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
+        int contador = 0;
+        if (verificarIntegridad(tipoEvento, 10)) {
+            String where = "id_tipo_evento=" + tipoEvento.getId_tipo_evento();
             contador += db.delete("Tipo_evento", where, null);
-            regAfectados+=contador;
+            regAfectados += contador;
             return regAfectados;
-        }
-        else return context.getResources().getString(R.string.referencia) + " " +
+        } else return context.getResources().getString(R.string.referencia) + " " +
                 context.getResources().getString(R.string.txtViewIdLocal) + " " +
                 tipoEvento.getId_tipo_evento();
     }
@@ -1065,11 +1060,11 @@ public class ControlG10Proyecto01 {
     // CAMPOS: {"id_evento", "id_tipo_evento", "nombre_evento", "organizador", "fecha", "id_horario", "id_localidad"}
 
     /*  Insertar Evento Especial  */
-    public String insertar(EventoEspecial eventoEspecial){
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+    public String insertar(EventoEspecial eventoEspecial) {
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
-        long contador=0;
-        if (verificarIntegridad(eventoEspecial,9)){
+        long contador = 0;
+        if (verificarIntegridad(eventoEspecial, 9)) {
             ContentValues eventoE = new ContentValues();
             eventoE.put("id_evento", eventoEspecial.getId_evento());
             eventoE.put("id_tipo_evento", eventoEspecial.getId_tipo_evento());
@@ -1080,12 +1075,10 @@ public class ControlG10Proyecto01 {
             eventoE.put("id_localidad", eventoEspecial.getId_localidad());
             contador = db.insert("Evento_Especial", null, eventoE);
         }
-        if(contador==-1 || contador==0)
-        {
-            regInsertados= context.getResources().getString(R.string.error);
-        }
-        else {
-            regInsertados=regInsertados+contador;
+        if (contador == -1 || contador == 0) {
+            regInsertados = context.getResources().getString(R.string.error);
+        } else {
+            regInsertados = regInsertados + contador;
         }
         return regInsertados;
     }
@@ -1164,9 +1157,9 @@ public class ControlG10Proyecto01 {
                 LocalAdministrado localidadadmin = (LocalAdministrado) dato;
                 String[] idLocal = {String.valueOf(localidadadmin.getId_local())};
 
-                Cursor cursorL = db.query("localidad", null, "id_localidad = ?", idLocal , null, null,null);
+                Cursor cursorL = db.query("localidad", null, "id_localidad = ?", idLocal, null, null, null);
 
-                if (cursorL.moveToFirst()){
+                if (cursorL.moveToFirst()) {
                     //SE ENCUENTRAN DATOS
                     return true;
                 }
@@ -1178,9 +1171,9 @@ public class ControlG10Proyecto01 {
                 LocalAdministrado locadmin = (LocalAdministrado) dato;
                 String[] idEmpleado = {String.valueOf(locadmin.getId_empleadoadministrador())};
 
-                Cursor cursorE = db.query("Empleado_UES", null, "id_empleado = ?", idEmpleado , null, null,null);
+                Cursor cursorE = db.query("Empleado_UES", null, "id_empleado = ?", idEmpleado, null, null, null);
 
-                if (cursorE.moveToFirst()){
+                if (cursorE.moveToFirst()) {
                     //SE ENCUENTRAN DATOS
                     return true;
                 }
@@ -1194,7 +1187,7 @@ public class ControlG10Proyecto01 {
                 Cursor cursorL2 = db.query(true, "Evento_Especial", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
                 //Cursor cursorL3 = db.query(true, "Propuesta_Especifica", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
 
-                if (cursorL1.moveToFirst()||cursorL2.moveToFirst())
+                if (cursorL1.moveToFirst() || cursorL2.moveToFirst())
                     return false;
                 else
                     return true;
@@ -1208,12 +1201,12 @@ public class ControlG10Proyecto01 {
                 String[] idLocal = {String.valueOf(evento.getId_localidad())};
                 String[] idHorario = {String.valueOf(evento.getHorario())};
 
-                Cursor cursorT = db.query("Tipo_evento", null, "id_tipo_evento = ?", idTipoE , null, null,null);
-                Cursor cursorE = db.query("Empleado_UES", null, "id_empleado = ?", idEmpleado , null, null,null);
-                Cursor cursorL = db.query("Localidad", null, "id_localidad = ?", idLocal , null, null,null);
+                Cursor cursorT = db.query("Tipo_evento", null, "id_tipo_evento = ?", idTipoE, null, null, null);
+                Cursor cursorE = db.query("Empleado_UES", null, "id_empleado = ?", idEmpleado, null, null, null);
+                Cursor cursorL = db.query("Localidad", null, "id_localidad = ?", idLocal, null, null, null);
                 //Cursor cursorH = db.query("Horario", null, "id_Horario = ?", idHorario , null, null,null);
 
-                if (cursorT.moveToFirst()||cursorE.moveToFirst()||cursorL.moveToFirst()){
+                if (cursorT.moveToFirst() || cursorE.moveToFirst() || cursorL.moveToFirst()) {
                     //SE ENCUENTRAN DATOS
                     return true;
                 }
@@ -1230,7 +1223,7 @@ public class ControlG10Proyecto01 {
                     return false;
                 else
                     return true;
-            }*/
+            }
             case 666: {
                 //Verificar que exista grupo
                 Grupo grupo2 = (Grupo) dato;
@@ -1243,10 +1236,13 @@ public class ControlG10Proyecto01 {
                 }
                 return false;
             }
-            }
-            default: return false;
+            default:
+                return false;
         }
+
+
     }
+
 
     //Usuarios iniciales
     public void permisosUsuarios() {
@@ -1264,7 +1260,7 @@ public class ControlG10Proyecto01 {
 
         Usuario user = new Usuario();
 
-        for (int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             user.setId_usuario(IDusuario[i]);
             user.setNom_usuario(nomUsuario[i]);
             user.setClave(clave[i]);
@@ -1273,9 +1269,9 @@ public class ControlG10Proyecto01 {
 
         //ACCESOUSUARIO
 
-        final int[] idsAccesoUsuario= {1,2,3,4,5,6,7,8,9,10};
-        final String[] IDusuarios = {"01", "02", "03", "04", "01", "01", "01","05","05","05"};
-        final int [] idOpcionCrud_Access = {1,2,3,4,2,3,4,4,2,3};
+        final int[] idsAccesoUsuario = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        final String[] IDusuarios = {"01", "02", "03", "04", "01", "01", "01", "05", "05", "05"};
+        final int[] idOpcionCrud_Access = {1, 2, 3, 4, 2, 3, 4, 4, 2, 3};
         for (int i = 0; i < idsAccesoUsuario.length; i++) {
             AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i], IDusuarios[i], idOpcionCrud_Access[i]);
             insertar(accesoUsuario);
@@ -1320,12 +1316,12 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM Evento_Especial");
 
         //CICLO
-        final int[] CicloId = {1,2,3,4};
-        final String[] CicloCiclo = {"1","1","2","2"};
-        final String[] CicloAño = {"2021","2022","2021","2022"};
+        final int[] CicloId = {1, 2, 3, 4};
+        final String[] CicloCiclo = {"1", "1", "2", "2"};
+        final String[] CicloAño = {"2021", "2022", "2021", "2022"};
 
         Ciclo ciclo = new Ciclo();
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             ciclo.setId_ciclo(CicloId[i]);
             ciclo.setCiclo(CicloCiclo[i]);
             ciclo.setAño(CicloAño[i]);
@@ -1351,13 +1347,13 @@ public class ControlG10Proyecto01 {
 
         //MATERIA
 
-        final int[] MateraiaId = {1,2,3,4};
-        final String[] MateriaCod = {"MAT115","MAT215","MAT315","MAT415"};
-        final String[] MateriaNombre = {"Matematica I", "Matematica II","Matematica III","Matematica IV"};
-        final int[] MateriaIdEscuela = {1,1,2,2};
+        final int[] MateraiaId = {1, 2, 3, 4};
+        final String[] MateriaCod = {"MAT115", "MAT215", "MAT315", "MAT415"};
+        final String[] MateriaNombre = {"Matematica I", "Matematica II", "Matematica III", "Matematica IV"};
+        final int[] MateriaIdEscuela = {1, 1, 2, 2};
 
         Materia materia = new Materia();
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             materia.setId_materia(MateraiaId[i]);
             materia.setCod_materia(MateriaCod[i]);
             materia.setNom_materia(MateriaNombre[i]);
@@ -1434,13 +1430,13 @@ public class ControlG10Proyecto01 {
         }
 
         //LOCALIDAD
-        final int[] idlocal = {1,2,3,4,5,6,7};
-        final String[] edificio= {"Auditorio Miguel Mármol", "Biblioteca FIA", "Edificio B", "Edificio B", "Edificio C","Labcomp EISI", "Labcomp EISI"};
+        final int[] idlocal = {1, 2, 3, 4, 5, 6, 7};
+        final String[] edificio = {"Auditorio Miguel Mármol", "Biblioteca FIA", "Edificio B", "Edificio B", "Edificio C", "Labcomp EISI", "Labcomp EISI"};
         final String[] localnom = {"Auditorio Miguel Mármol", "BIB-201", "B11", "B32", "C12", "LCOMP1", "LCOMP3"};
-        final int[] cupo = {100,50,100,100,100,20,20};
+        final int[] cupo = {100, 50, 100, 100, 100, 20, 20};
 
         Localidad localidad = new Localidad();
-        for (int i = 0; i < 7; i++){
+        for (int i = 0; i < 7; i++) {
             localidad.setId_localidad(idlocal[i]);
             localidad.setEdificio_localidad(edificio[i]);
             localidad.setNombre_localidad(localnom[i]);
@@ -1450,12 +1446,12 @@ public class ControlG10Proyecto01 {
 
         //LOCALADMINISTRADO
 
-        final int[] idLocaladmin = {1,2,3,4};
-        final int [] idLocal = {4,2,1,3};
-        final int [] idEncargado= {2,2,1,4};
+        final int[] idLocaladmin = {1, 2, 3, 4};
+        final int[] idLocal = {4, 2, 1, 3};
+        final int[] idEncargado = {2, 2, 1, 4};
 
         LocalAdministrado locAdmin = new LocalAdministrado();
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             locAdmin.setId_local_admin(idLocaladmin[i]);
             locAdmin.setId_local(idLocal[i]);
             locAdmin.setId_empleadoadministrador(idEncargado[i]);
@@ -1475,16 +1471,16 @@ public class ControlG10Proyecto01 {
         }
 
         //EVENTOESPECIAL
-       final int[] idevento = {1,2,3,4};
-        final int[] idTipooEvento = {3,3,1,4};
+        final int[] idevento = {1, 2, 3, 4};
+        final int[] idTipooEvento = {3, 3, 1, 4};
         final String[] nombreEvento = {"Examen Parcial 1 MAT115", "Examen Parcial 1 MAT3115", "Japon en El Salvador", "Capacitacion de Salud Mental"};
-        final int[] organizador = {1,2,3,4};
-        final String[] fecha = {"03/03/23","15/03/23","12/05/23","12/06/23"};
-        final int[] horario = {1,2,3,4};
-        final int[] local = {1,3,2,1};
+        final int[] organizador = {1, 2, 3, 4};
+        final String[] fecha = {"03/03/23", "15/03/23", "12/05/23", "12/06/23"};
+        final int[] horario = {1, 2, 3, 4};
+        final int[] local = {1, 3, 2, 1};
 
         EventoEspecial eventoEspecial = new EventoEspecial();
-        for (int i = 0; i < 4; i++){
+        for (int i = 0; i < 4; i++) {
             eventoEspecial.setId_evento(idevento[i]);
             eventoEspecial.setId_tipo_evento(idTipooEvento[i]);
             eventoEspecial.setNombre_evento(nombreEvento[i]);

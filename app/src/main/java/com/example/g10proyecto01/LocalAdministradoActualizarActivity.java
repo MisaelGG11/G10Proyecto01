@@ -13,14 +13,16 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class LocalAdministradoActualizarActivity extends Activity {
     ControlG10Proyecto01 helper;
     List<Integer> LOCSpinner = new ArrayList<>();
-    Spinner spinIdLocAdmin,spinIdLoc,spinEncargado;
+    Spinner spinIdLocAdmin, spinIdLoc, spinEncargado;
     List<Integer> listIdLocal = new ArrayList<>();
     List<Integer> listIdEncargado = new ArrayList<>();
 
     final String ID_LOCAL_ADMIN = "id_local_admin";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,19 +34,67 @@ public class LocalAdministradoActualizarActivity extends Activity {
 
         String query = "SELECT id_local_admin FROM Local_Administrado";
         Cursor cursor = helper.llenarSpinner(query);
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             @SuppressLint("Range")
             int id = cursor.getInt(cursor.getColumnIndex(ID_LOCAL_ADMIN));
             LOCSpinner.add(id);
         }
-        ArrayAdapter<Integer> adapterLOCSpinner = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,LOCSpinner);
+        ArrayAdapter<Integer> adapterLOCSpinner = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, LOCSpinner);
         adapterLOCSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinIdLocAdmin.setAdapter(adapterLOCSpinner);
         SpinnerLoc();
         SpinnerEmpleado();
     }
 
-    public void ActualizarLocAdmin(View v){
+    public void ActualizarLocAdmin(View v) {
+        String idLocalAd = spinIdLocAdmin.getSelectedItem().toString();
+        String idLocal = spinIdLoc.getSelectedItem().toString();
+        String IdEncargado = spinEncargado.getSelectedItem().toString();
+
+
+        if (idLocalAd.isEmpty() || idLocal.isEmpty() || IdEncargado.isEmpty()) {
+            Toast.makeText(LocalAdministradoActualizarActivity.this, "Ingresar datos obligatorios", Toast.LENGTH_SHORT).show();
+        } else {
+            LocalAdministrado localAdministrado = new LocalAdministrado(Integer.parseInt(idLocalAd), Integer.parseInt(idLocal), Integer.parseInt(IdEncargado));
+            System.out.println(localAdministrado.toString());
+            helper.abrir();
+            String estado = helper.actualizar(localAdministrado);
+            helper.cerrar();
+
+            Toast.makeText(this, estado, Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public void SpinnerLoc() {
+        String sql = "SELECT id_localidad FROM Localidad WHERE id_localidad NOT IN (SELECT id_localidad FROM Local_Administrado)";
+        Cursor cursorL = helper.llenarSpinner(sql);
+        while (cursorL.moveToNext()) {
+            @SuppressLint("Range")
+            int idLoc = cursorL.getInt(cursorL.getColumnIndex("id_localidad"));
+            listIdLocal.add(idLoc);
+        }
+        ArrayAdapter<Integer> adapterL = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdLocal);
+        adapterL.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinIdLoc.setAdapter(adapterL);
+
+    }
+
+    /*public void SpinnerEmpleado(){
+        String sql = "SELECT id_empleado FROM Empleado_UES";
+        Cursor cursorE = helper.llenarSpinner(sql);
+
+        while (cursorE.moveToNext()) {
+            @SuppressLint("Range")
+            int idEn = cursorE.getInt(cursorE.getColumnIndex("id_empleado"));
+            listIdEncargado.add(idEn);
+        }
+        ArrayAdapter<Integer> adapterE = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdEncargado);
+        adapterE.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinEncargado.setAdapter(adapterE);
+    }
+
+   public void ActualizarLocAdmin(View v){
         String idLocalAd = spinIdLocAdmin.getSelectedItem().toString();
         String idLocal = spinIdLoc.getSelectedItem().toString();
         String IdEncargado = spinEncargado.getSelectedItem().toString();
@@ -76,9 +126,9 @@ public class LocalAdministradoActualizarActivity extends Activity {
         adapterL.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinIdLoc.setAdapter(adapterL);
 
-    }
+    }*/
 
-    public void SpinnerEmpleado(){
+    public void SpinnerEmpleado() {
         String sql = "SELECT id_empleado FROM Empleado_UES";
         Cursor cursorE = helper.llenarSpinner(sql);
 
