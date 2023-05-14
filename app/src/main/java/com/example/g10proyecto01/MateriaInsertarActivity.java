@@ -58,7 +58,6 @@ public class MateriaInsertarActivity extends AppCompatActivity {
             String nombre_materia = editNomMateria.getText().toString();
 
             int seleccion = spinnerMateria.getSelectedItemPosition();
-
             int id_escuela = listaEscuelas.get(seleccion).getId_escuela();
 
             String regInsertados;
