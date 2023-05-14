@@ -1,9 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MateriaInsertarActivity">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1" >
+    <TableRow>
+        <TextView android:text="@string/idMateria"/>
+        <EditText
+            android:id="@+id/editIdMateria"
+            android:inputType="number"
+            android:maxLength="7" />
+    </TableRow>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TableRow>
+        <TextView android:text="@string/codMateria" />
+        <EditText
+            android:id="@+id/editCodMateria"
+            android:inputType="text"
+            android:maxLength="6" />
+    </TableRow>
+    <TableRow>
+        <TextView android:text="@string/MateriaNombre" />
+        <EditText
+            android:id="@+id/editNombreMateria"
+            android:inputType="text"
+            android:maxLength="30" />
+    </TableRow>
+
+    <TableRow>
+        <TextView android:text="@string/materiaEscuela" />
+        <Spinner
+            android:id="@+id/spinnerMateria"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+    </TableRow>
+
+    <TableRow>
+        <Button
+            android:onClick="insertarCiclo"
+            android:text="@string/insertar" />
+
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+
+</TableLayout>
