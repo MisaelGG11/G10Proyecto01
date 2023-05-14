@@ -11,7 +11,7 @@
         <TextView android:text="@string/idgrupo" />
 
         <EditText
-            android:id="@+id/editidgrupo3"
+            android:id="@+id/editidgh"
             android:inputType="text"
             android:maxLength="7"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -22,7 +22,7 @@
         <TextView android:text="@string/idoferta" />
 
         <EditText
-            android:id="@+id/editofertaa3"
+            android:id="@+id/editidhorario"
             android:inputType="text"
             android:maxLength="30"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -33,7 +33,7 @@
         <TextView android:text="@string/numgrupo" />
 
         <EditText
-            android:id="@+id/editnumgrupo3"
+            android:id="@+id/editidgrupo5"
             android:inputType="text"
             android:maxLength="30"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
@@ -44,7 +44,7 @@
         <TextView android:text="@string/tipogrupo" />
 
         <EditText
-            android:id="@+id/edittipogrupo3"
+            android:id="@+id/edithorafin"
             android:inputType="text"
             android:maxLength="1"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />

@@ -16,7 +16,7 @@ public class GrupoEliminarActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grupo_eliminar);
         controlhelper = new ControlG10Proyecto01(this);
-        editidgrupo4 = (EditText) findViewById(R.id.editidgrupo4);
+        editidgrupo4 = (EditText) findViewById(R.id.editidgh3);
     }
 
     public void eliminarGrupo(View v) {
