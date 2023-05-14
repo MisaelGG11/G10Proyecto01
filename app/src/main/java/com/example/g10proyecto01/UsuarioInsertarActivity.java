@@ -21,7 +21,7 @@ public class UsuarioInsertarActivity extends Activity {
     EditText editInsertarIdUsuario;
     EditText editInsertarNombreUsuario;
     EditText editInsertaContraseñaUsuario;
-    List<Integer> opcionesSpinner = new ArrayList<>();
+    List<String> opcionesSpinner = new ArrayList<>();
     Spinner spinnerIdOpcionCrud;
     final String ID_OPCION_CRUD = "id_opcion_crud";
     final String DES_OPTION = "desc_option";
@@ -36,14 +36,15 @@ public class UsuarioInsertarActivity extends Activity {
         editInsertarNombreUsuario = findViewById(R.id.editInsertarNombreUsuario);
         editInsertaContraseñaUsuario = findViewById(R.id.editInsertaContraseñaUsuario);
 
-        String queryId = "SELECT id_opcion_crud FROM OpcionCrud";
-        Cursor cursorId = helper.llenarSpinner(queryId);
-        while(cursorId.moveToNext()){
+        String queryId = "SELECT id_opcion_crud, des_opcion FROM OpcionCrud";
+        Cursor cursor = helper.llenarSpinner(queryId);
+        while(cursor.moveToNext()){
             @SuppressLint("Range")
-            int id = cursorId.getInt(cursorId.getColumnIndex(ID_OPCION_CRUD));
-            opcionesSpinner.add(id);
+            String id = cursor.getString(0);
+            String descripcion = cursor.getString(1);
+            opcionesSpinner.add(id + ": " + descripcion);
         }
-        ArrayAdapter<Integer> adapterOpcionesSpinner = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,opcionesSpinner);
+        ArrayAdapter<String> adapterOpcionesSpinner = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,opcionesSpinner);
         adapterOpcionesSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerIdOpcionCrud.setAdapter(adapterOpcionesSpinner);
     }
@@ -52,7 +53,7 @@ public class UsuarioInsertarActivity extends Activity {
         String idUsuario = editInsertarIdUsuario.getText().toString();
         String nombreUsuario = editInsertarNombreUsuario.getText().toString();
         String contraseñaUsuario = editInsertaContraseñaUsuario.getText().toString();
-        String idOpcionCrud = spinnerIdOpcionCrud.getSelectedItem().toString();
+        String idOpcionCrud = spinnerIdOpcionCrud.getSelectedItem().toString().substring(0,2);
         String regInsertados;
         Usuario usuario = new Usuario(idUsuario,nombreUsuario,contraseñaUsuario);
 
@@ -60,5 +61,11 @@ public class UsuarioInsertarActivity extends Activity {
         regInsertados=helper.insertar(usuario,idOpcionCrud);
         helper.cerrar();
         Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+    }
+
+    public void limpiarTexto(View v){
+        editInsertarIdUsuario.setText("");
+        editInsertarNombreUsuario.setText("");
+        editInsertaContraseñaUsuario.setText("");
     }
 }

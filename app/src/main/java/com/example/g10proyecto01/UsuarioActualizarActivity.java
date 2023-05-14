@@ -47,17 +47,19 @@ public class UsuarioActualizarActivity extends Activity {
         String nombre = editNombre.getText().toString();
         String password = editContraseña.getText().toString();
         Usuario usuario = new Usuario(idOpcionSeleccionada);
+        if(nombre.isEmpty() && password.isEmpty()){
+            Toast.makeText(this,R.string.alertNoData,Toast.LENGTH_LONG).show();
+            return;
+        }
         if(!nombre.isEmpty()){
             usuario.setNom_usuario(nombre);
         }
         if(!password.isEmpty()){
             usuario.setClave(password);
         }
-        Log.wtf("Test","Entro al metodo");
         helper.abrir();
         String estado = helper.actualizar(usuario);
         helper.cerrar();
-        Log.wtf("Test","Salgo al metodo");
         Toast.makeText(this,estado,Toast.LENGTH_LONG).show();
     }
 

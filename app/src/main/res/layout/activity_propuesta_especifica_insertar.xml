@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PropuestaEspecificaInsertarActivity">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1" >
+    <TableRow>
+        <TextView
+            android:text="@string/txtPropuetaGeneralPropuestaEspecifica"
+            android:paddingHorizontal="10dip"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Spinner
+            android:id="@+id/spinPropuestaGeneralPropuestaEspecifica"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:text="@string/txtHorarioPropuestaEspecifica"
+            android:paddingHorizontal="10dip"/>
+        <Spinner
+            android:id="@+id/spinHorarioPropuestaEspecifica"
+            android:layout_width="match_parent"
+            android:layout_height="58dp" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:text="@string/txtViewLocalidadEventoEspecial"
+            android:paddingHorizontal="10dip"/>
+        <Spinner
+            android:id="@+id/spinLocalidadPropuestaEspecifica"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+    </TableRow>
+    <TableRow>
+
+        <Button
+            android:backgroundTint="#0a996f"
+            android:onClick="InsertarPropuestaEspecifica"
+            android:text="@string/insertar" />
+
+    </TableRow>
+</TableLayout>

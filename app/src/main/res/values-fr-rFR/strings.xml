@@ -114,6 +114,21 @@
     <string name="txtPasswordUsuario">Mot de passe:</string>
     <string name="txtOpcionesCrudUsuario">Permis:</string>
 
+    <!--LabelsHeader-->
+    <string name="labelMenuFM19038">Tableaux FM19038</string>
+    <string name="labelCrudOpocion">Table CRUD Options CRUD</string>
+    <string name="labelCrudUsuario">Table CRUD Utilisateur</string>
+    <string name="labelCrudPropositoEspcificico">Tableau général CRUD</string>
+    <string name="labelCrudPropositoGeneral">Table CRUD Objectif spécifique</string>
+
+    <!--PropuestaEspecificaActivity-->
+    <string name="txtPropuetaGeneralPropuestaEspecifica">Proposition générale:</string>
+    <string name="txtHorarioPropuestaEspecifica">Calendrier:</string>
+    <string name="txtEstadoPropuestaEspecifica">Statut:</string>
+    <string name="txtIdPropuestaEspecifica">Id proposition spécifique:</string>
+    <string name="txtLocalidadPropuestaEspecifica">Localisation:</string>
+    <string name="alertNoData">Vous devez remplir un champ pour mettre à jour</string>
+
     <!--EscuelaActivity-->
     <string name="idEscuela">idEscuela</string>
     <string name="acronimoEscuela">Acronimo</string>

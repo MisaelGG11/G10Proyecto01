@@ -1,10 +1,9 @@
 package com.example.g10proyecto01;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -38,6 +37,31 @@ public class UsuarioEliminarActivity extends Activity {
     }
 
     public void EliminarUsuario(View v){
-        Toast.makeText(this,"Aún no estoy programado", Toast.LENGTH_SHORT).show();
+        AlertDialog.Builder alerta = new AlertDialog.Builder(UsuarioEliminarActivity.this);
+        alerta.setCancelable(false);
+        alerta.setMessage(R.string.mensajeAlerta);
+        alerta.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //ACCIONES SI RESPONDE QUE SI A LA ALERTA
+                String regEliminadas;
+
+                String idUsuario =spinnerIdUsuario.getSelectedItem().toString().substring(0,2);
+                Usuario usuario = new Usuario(idUsuario);
+                helper.abrir();
+                regEliminadas=helper.eliminar(usuario);
+                helper.cerrar();
+                Toast.makeText(UsuarioEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
+            }
+        });
+        alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                //ACCIONES SI PONE NO
+                dialog.cancel();
+            }
+        });
+        //MUESTRA ALERTA PARA EVENTO ONCLICK DEL BOTON
+        alerta.show();
     }
 }
