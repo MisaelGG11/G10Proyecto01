@@ -47,4 +47,9 @@ public class Materia {
     public void setId_escuela(int id_escuela) {
         this.id_escuela = id_escuela;
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + id_materia + " (" + cod_materia +")";
+    }
 }

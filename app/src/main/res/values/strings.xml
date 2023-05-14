@@ -144,5 +144,11 @@
     <string name="MateriaNombre">Nombre:</string>
     <string name="materiaEscuela">Escuela:</string>
 
+    <!--OfertaActivity-->
+    <string name="id_oferta">Id Oferta:</string>
+    <string name="OfertaCiclo">Ciclo:</string>
+    <string name="ofertaDocente">Docente:</string>
+    <string name="OfertaMateria">Materia:</string>
+
 
 </resources>

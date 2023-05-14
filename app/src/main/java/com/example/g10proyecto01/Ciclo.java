@@ -43,4 +43,9 @@ public class Ciclo {
         }
         this.año = año;
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + id_ciclo + " (" + ciclo + "_" + año +")";
+    }
 }

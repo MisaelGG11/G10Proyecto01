@@ -456,6 +456,32 @@ public class ControlG10Proyecto01 {
                 docente.getId_docente();
     }
 
+    /*  Mostrar Docentes  */
+    public ArrayList<Docente> mostrarDocentes() {
+
+        ArrayList<Docente> listaDocentes = new ArrayList<>();
+        Docente docente;
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT * FROM " + "docente" + " ORDER BY id_docente ASC", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+
+                docente = new Docente();
+                docente.setId_docente(cursor.getInt(0));
+                docente.setId_empleado(cursor.getInt(1));
+                docente.setNip_docente(cursor.getInt(2));
+                docente.setCategoria_docente(cursor.getString(3));
+
+                listaDocentes.add(docente);
+            } while (cursor.moveToNext());
+        }
+
+        return listaDocentes;
+    }
+
+
     /******************************************** Tabla TipoEmpleado ********************************************/
     // CAMPOS: {"id_tipo_empleado", "ocupacion"}
 
@@ -907,7 +933,7 @@ public class ControlG10Proyecto01 {
         ofer.put("id_docente", ofertaAcademica.getId_docente());
         ofer.put("id_materia", ofertaAcademica.getId_materia());
 
-        contador = db.insert("Oferta_Acemica", null, ofer);
+        contador = db.insert("Oferta_Academica", null, ofer);
 
         if (contador == -1 || contador == 0) {
             regInsertados = "Error";

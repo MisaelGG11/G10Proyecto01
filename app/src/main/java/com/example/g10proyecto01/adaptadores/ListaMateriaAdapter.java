@@ -12,8 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.g10proyecto01.Ciclo;
-import com.example.g10proyecto01.CicloConsultarActivity;
 import com.example.g10proyecto01.Materia;
 import com.example.g10proyecto01.MateriaConsultarActivity;
 import com.example.g10proyecto01.R;

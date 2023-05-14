@@ -42,4 +42,9 @@ public class Docente {
     public void setCategoria_docente(String categoria_docente){
         this.categoria_docente = categoria_docente;
     }
+
+    @Override
+    public String toString() {
+        return "Id: " + id_docente + " (" + nip_docente + ", " + categoria_docente +")";
+    }
 }
