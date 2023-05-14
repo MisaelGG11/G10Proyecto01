@@ -125,6 +125,9 @@
     <string name="txtPropuetaGeneralPropuestaEspecifica">Proposition générale:</string>
     <string name="txtHorarioPropuestaEspecifica">Calendrier:</string>
     <string name="txtEstadoPropuestaEspecifica">Statut:</string>
+    <string name="txtIdPropuestaEspecifica">Id proposition spécifique:</string>
+    <string name="txtLocalidadPropuestaEspecifica">Localisation:</string>
+
 
     <!--EscuelaActivity-->
     <string name="idEscuela">idEscuela</string>

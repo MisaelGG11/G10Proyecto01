@@ -861,6 +861,70 @@ public class ControlG10Proyecto01 {
         return regInsertados;
     }
 
+    /*********************************** Tabla PropuestaEspecifica ***********************************/
+    //CAMPOS: "id_especifica", "id_propuesta", "id_gh", "id_localidad", "estado_especifica"
+    public String insertar(PropuestaEspecifica propuestaEspecifica) {
+        String regInsertados=context.getResources().getString(R.string.regInsertado);
+
+        long contador = 0;
+
+        ContentValues values = new ContentValues();
+
+        values.put("id_propuesta",propuestaEspecifica.getId_propuesta_general());
+        values.put("id_gh", propuestaEspecifica.getId_grupo_horario());
+        values.put("id_localidad",propuestaEspecifica.getId_localidad());
+
+        contador = db.insert("Propuesta_Especifica", null, values);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados= context.getResources().getString(R.string.error);
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+    public String consularHorarioPropuestaEspcifica(String idGrupoHorario){
+        String[] id = {idGrupoHorario};
+        String consulta = "SELECT h.dia, h.hora_inicio, h.hora_finalizacion FROM Grupo_Horario gh INNER JOIN Horario h ON h.id_horario = gh.id_horario WHERE gh.id_gh = ?";
+        Cursor cursor1 = DBHelper.getReadableDatabase().rawQuery(consulta,id);
+        String horario = "";
+        while(cursor1.moveToNext()){
+            horario += cursor1.getString(0) +" "+ cursor1.getString(1).substring(10,19) + " -" + cursor1.getString(2).substring(10,19);
+        }
+        return horario;
+    }
+
+    public PropuestaEspecifica consultarPropuestaEspecifica(String idPropuesta){
+        String[] id = {idPropuesta};
+        Cursor cursor = db.query("Propuesta_Especifica", camposPropuestaEspecifica, "id_especifica = ?", id, null, null, null);
+        if(cursor.moveToFirst()){
+            PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3),cursor.getString(4));
+            return propuestaEspecifica;
+        }else{
+            return null;
+        }
+    }
+    /*********************************** Tabla GrupoHorario ***********************************/
+    //CAMPOS: "id_propuesta", "estado_propuesta"
+    public String insertar(PropuestaGeneral propuestaGeneral) {
+        String regInsertados=context.getResources().getString(R.string.regInsertado);
+
+        long contador = 0;
+
+        ContentValues values = new ContentValues();
+
+        values.put("id_propuesta", propuestaGeneral.getId_propuesta());
+
+        contador = db.insert("Propuesta_General", null, values);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados= context.getResources().getString(R.string.error);
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
+    }
+
     private boolean verificarIntegridad(Object dato, int relacion) throws SQLException {
         switch (relacion){
             case 1: {
@@ -1067,6 +1131,7 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM Evento_Especial");
         db.execSQL("DELETE FROM Grupo_Horario");
         db.execSQL("DELETE FROM Grupo");
+        db.execSQL("DELETE FROM Propuesta_General");
 
 
 
@@ -1122,8 +1187,15 @@ public class ControlG10Proyecto01 {
             insertar(opcion);
         }
 
-        //PROPUESTAESPECIFICA
         //PROPUESTAGENERAL
+        final int[] idPropuestaGeneral = {1,2,3,4,5};
+        for (int i = 0; i < idPropuestaGeneral.length; i++) {
+            PropuestaGeneral propuestaGeneral = new PropuestaGeneral(idPropuestaGeneral[i]);
+            insertar(propuestaGeneral);
+        }
+
+        //PROPUESTAESPECIFICA
+
 
         //TIPO EMPLEADO
         final int[] idTipoEmpleado = {1,2,3,4};

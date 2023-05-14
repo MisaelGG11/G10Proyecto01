@@ -36,11 +36,8 @@
 
         <Button
             android:backgroundTint="#0a996f"
-            android:onClick="insertarPropuestaEspecifica"
+            android:onClick="InsertarPropuestaEspecifica"
             android:text="@string/insertar" />
 
-        <Button
-            android:onClick="limpiarTexto"
-            android:text="@string/limpiar" />
     </TableRow>
 </TableLayout>
