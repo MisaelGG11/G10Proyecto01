@@ -869,6 +869,118 @@ public class ControlG10Proyecto01 {
     }
 
 
+    /*********************************** Tabla Oferta_Acedemica ***********************************/
+
+    /* Insertar oferta */
+    public String insertar(OfertaAcademica ofertaAcademica) {
+        String regInsertados = "";
+
+        long contador = 0;
+
+        ContentValues ofer = new ContentValues();
+
+        ofer.put("id_oferta_a", ofertaAcademica.getId_oferta_a());
+        ofer.put("id_ciclo", ofertaAcademica.getId_ciclo());
+        ofer.put("id_docente", ofertaAcademica.getId_docente());
+        ofer.put("id_materia", ofertaAcademica.getId_materia());
+
+        contador = db.insert("Oferta_Acemica", null, ofer);
+
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+
+        return regInsertados;
+    }
+
+    /*  Consultar oferta  */
+    public OfertaAcademica consultarOfertaAcdemica(String id_oferta_a) {
+        String[] id = {id_oferta_a};
+
+        Cursor cursor = db.query("Oferta_Academica", camposOfertaAcademica, "id_oferta_a = ?", id, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            OfertaAcademica ofertaAcademica = new OfertaAcademica();
+
+            ofertaAcademica.setId_oferta_a(cursor.getInt(0));
+            ofertaAcademica.setId_ciclo(cursor.getInt(1));
+            ofertaAcademica.setId_docente(cursor.getInt(2));
+            ofertaAcademica.setId_materia(cursor.getInt(3));
+
+            return ofertaAcademica;
+        } else {
+            return null;
+        }
+    }
+
+    /*  Actualizar oferta  */
+
+    public String actualizar(OfertaAcademica ofertaAcademica) {
+
+        if (true) {
+            String[] id = {String.valueOf(ofertaAcademica.getId_oferta_a())};
+
+            ContentValues cv = new ContentValues();
+
+            cv.put("id_ciclo", ofertaAcademica.getId_ciclo());
+            cv.put("id_docente", ofertaAcademica.getId_docente());
+            cv.put("id_materia", ofertaAcademica.getId_materia());
+
+            db.update("Oferta_Academica", cv, "id_oferta_a = ?", id);
+
+            return "Correcto";
+        } else {
+            return "";
+        }
+    }
+
+    /*  Eliminar oferta  */
+
+    public String eliminar(OfertaAcademica ofertaAcademica) {
+        String regAfectados = "";
+
+        int contador = 0;
+
+        /*
+        if (verificarIntegridad(alumno,3)) {
+            contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
+        }
+        */
+
+        contador += db.delete("Oferta_Academica", "id_oferta_a='" + ofertaAcademica.getId_oferta_a() + "'", null);
+
+        regAfectados += contador;
+
+        return regAfectados;
+    }
+
+    /*  muestra todas las ofertas  */
+
+    public ArrayList<OfertaAcademica> mostrarOfertas() {
+
+        ArrayList<OfertaAcademica> listaOfertas = new ArrayList<>();
+        OfertaAcademica ofertaAcademica;
+        Cursor cursor;
+
+        cursor = db.rawQuery("SELECT * FROM " + "oferta_academica" + " ORDER BY id_oferta_a ASC", null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                ofertaAcademica = new OfertaAcademica();
+                ofertaAcademica.setId_oferta_a(cursor.getInt(0));
+                ofertaAcademica.setId_ciclo(cursor.getInt(1));
+                ofertaAcademica.setId_docente(cursor.getInt(2));
+                ofertaAcademica.setId_materia(cursor.getInt(3));
+
+                listaOfertas.add(ofertaAcademica);
+            } while (cursor.moveToNext());
+        }
+
+        return listaOfertas;
+    }
+
     /*********************************** Tabla Local ***********************************/
     // CAMPOS: {"id_localidad", "edificio_localidad", "nombre_localidad", "capacidad_localidad"}
 
@@ -1302,6 +1414,7 @@ public class ControlG10Proyecto01 {
         db.execSQL("DELETE FROM Escuela");
         db.execSQL("DELETE FROM Ciclo");
         db.execSQL("DELETE FROM Materia");
+        db.execSQL("DELETE FROM Oferta_Academica");
 
         db.execSQL("DELETE FROM Tipo_de_Empleado");
         db.execSQL("DELETE FROM Empleado_UES");
@@ -1346,7 +1459,6 @@ public class ControlG10Proyecto01 {
         //HORARIO
 
         //MATERIA
-
         final int[] MateraiaId = {1, 2, 3, 4};
         final String[] MateriaCod = {"MAT115", "MAT215", "MAT315", "MAT415"};
         final String[] MateriaNombre = {"Matematica I", "Matematica II", "Matematica III", "Matematica IV"};
@@ -1363,6 +1475,20 @@ public class ControlG10Proyecto01 {
 
 
         //OFERTAACADEMICA
+        final int[] OfertaId = {1, 2, 3, 4};
+        final int[] OfertaCiclo = {1, 2, 3, 4};
+        final int[] OfertaDocente = {1, 2, 3, 4};
+        final int[] OfertaMateria = {1, 1, 2, 2};
+
+        OfertaAcademica ofertaAcademica = new OfertaAcademica();
+        for (int i = 0; i < 4; i++) {
+            ofertaAcademica.setId_oferta_a(OfertaId[i]);
+            ofertaAcademica.setId_ciclo(OfertaCiclo[i]);
+            ofertaAcademica.setId_docente(OfertaDocente[i]);
+            ofertaAcademica.setId_materia(OfertaMateria[i]);
+            insertar(ofertaAcademica);
+        }
+
 
         //OPCIONCRUD
         final int[] idOpcionCrud = {1, 2, 3, 4};
