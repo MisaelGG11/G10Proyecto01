@@ -165,7 +165,7 @@ public class ControlG10Proyecto01 {
         horar.put("id_evento", horario.getId_evento());
         horar.put("hora_inicio", horario.getHora_inicio().toString());
         horar.put("hora_finalizacion", horario.getHora_finalizacion().toString());
-        contador = db.insert("horario", null, horar);
+        contador = db.insert("Horario", null, horar);
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al insertar el registro: Registro duplicado, verifique la inserción.";
         } else {
@@ -224,7 +224,7 @@ public class ControlG10Proyecto01 {
         grupohorar.put("id_gh", grupohorario.getId_gh());
         grupohorar.put("id_horario", grupohorario.getId_horario());
         grupohorar.put("id_grupo", grupohorario.getId_grupo());
-        contador = db.insert("grupohorario", null, grupohorar);
+        contador = db.insert("Grupo_Horario", null, grupohorar);
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al insertar el registro: Registro duplicado, verifique la inserción.";
         } else {
@@ -239,7 +239,7 @@ public class ControlG10Proyecto01 {
             ContentValues cv = new ContentValues();
             cv.put("id_horario", grupohorario.getId_horario());
             cv.put("id_grupo", grupohorario.getId_grupo());
-            db.update("grupohorario", cv, "id_gh = ?", id);
+            db.update("grupo_horario", cv, "id_gh = ?", id);
             return "Registro actualizado correctamente";
         } else {
             return "Registro con ID " + grupohorario.getId_gh() + " no existe.";
@@ -249,7 +249,7 @@ public class ControlG10Proyecto01 {
     public String eliminar(GrupoHorario grupohorario) {
         String regAfectados = "Fila afectada #";
         int contador = 0;
-        contador += db.delete("GrupoHorario", "id_gh='" + grupohorario.getId_gh() + "'", null);
+        contador += db.delete("Grupo_Horario", "id_gh='" + grupohorario.getId_gh() + "'", null);
         regAfectados += contador;
         return regAfectados;
     }
@@ -257,7 +257,7 @@ public class ControlG10Proyecto01 {
     //db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER NOT NULL PRIMARY KEY, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL);");
     public GrupoHorario consultarGrupoHorario(String id_gh) {
         String[] id = {id_gh};
-        Cursor cursor = db.query("grupohorario", camposGrupoHorario, "id_gh = ?", id, null, null, null);
+        Cursor cursor = db.query("grupo_horario", camposGrupoHorario, "id_gh = ?", id, null, null, null);
         if (cursor.moveToFirst()) {
             GrupoHorario grupohorario = new GrupoHorario();
             grupohorario.setId_gh(cursor.getInt(0));
@@ -1647,7 +1647,7 @@ public class ControlG10Proyecto01 {
                 GrupoHorario grupohorario2 = (GrupoHorario) dato;
                 String[] id = {String.valueOf(grupohorario2.getId_gh())};
                 abrir();
-                Cursor c2 = db.query("GrupoHorario", null, "id_gh = ?", id, null, null, null);
+                Cursor c2 = db.query("Grupo_Horario", null, "id_gh = ?", id, null, null, null);
                 if (c2.moveToFirst()) {
                     //Se encontró Grupo Horario
                     return true;
