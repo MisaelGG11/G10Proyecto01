@@ -32,11 +32,11 @@ public class EventoEspecialInsertarActivity extends Activity {
     List<Integer> listIdLocal = new ArrayList<>();
         List<Integer> listIdEncargado = new ArrayList<>();
         List<Integer> listIdTipo = new ArrayList<>();
-        //List<Integer> listIdHorario = new ArrayList<>();
+        List<Integer> listIdHorario = new ArrayList<>();
 
         Spinner spinnerEmpleado;
         Spinner spinnerLocal;
-        //Spinner spinnerHorario;
+        Spinner spinnerHorario;
         Spinner spinnerTipo;
 
         @SuppressLint("MissingInflatedId")
@@ -54,14 +54,14 @@ public class EventoEspecialInsertarActivity extends Activity {
             editFecha = (EditText) findViewById(R.id.editTextfecha);
             dateFormatter = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
 
-            editIdHorario= (EditText) findViewById(R.id.editTextHorario);
-            //spinnerHorario = findViewById(R.id.editTextHorario);
+            //editIdHorario= (EditText) findViewById(R.id.editTextHorario);
+            spinnerHorario = findViewById(R.id.editTextHorario);
             spinnerLocal = findViewById(R.id.spinidlocal);
 
             SpinnerLoc();
             SpinnerEmpleado();
             SpinnerTipo();
-            //SpinnerHorario();
+            SpinnerHorario();
             // Configurar el DatePickerDialog para el campo de fecha
             editFecha.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,8 +76,8 @@ public class EventoEspecialInsertarActivity extends Activity {
             int TipoEve = listIdTipo.get(spinnerTipo.getSelectedItemPosition());
             int OrganizadorEve = listIdEncargado.get(spinnerEmpleado.getSelectedItemPosition());
             String FechaEve = editFecha.getText().toString();
-            String HorarioEve = editIdHorario.getText().toString();
-            //int HorarioEve = listIdHorario.get(spinnerHorario.getSelectedItemPosition());
+            //String HorarioEve = editIdHorario.getText().toString();
+            int HorarioEve = listIdHorario.get(spinnerHorario.getSelectedItemPosition());
             int LocalEve = listIdLocal.get(spinnerLocal.getSelectedItemPosition());
             String regInsertados;
 
@@ -152,7 +152,7 @@ public class EventoEspecialInsertarActivity extends Activity {
     }
 
 
-   /* public void SpinnerHorario(){
+   public void SpinnerHorario(){
         String sql = "SELECT id_horario FROM Horario";
         Cursor cursorH = helper.llenarSpinner(sql);
 
@@ -164,7 +164,7 @@ public class EventoEspecialInsertarActivity extends Activity {
         ArrayAdapter<Integer> adapterH = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdHorario);
         adapterH.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerHorario.setAdapter(adapterH);
-    }*/
+    }
    private void showDatePickerDialog() {
        Calendar newCalendar = Calendar.getInstance();
        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {

@@ -88,10 +88,10 @@
                 android:paddingHorizontal="10dip"
                 android:text="@string/txtViewHorarioEventoEspecial" />
 
-            <EditText
+            <Spinner
                 android:id="@+id/editTextHorario"
-                android:inputType="number"
-                android:maxLength="4" />
+                android:inputType="text"
+                android:layout_height="35dp"/>
         </TableRow>
         <TableRow>
 

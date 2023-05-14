@@ -43,8 +43,8 @@ public class  EventoEspecialActualizarActivity extends Activity {
         spinnerTipo = findViewById(R.id.spinidtipoevento);
         spinnerEmpleado = findViewById(R.id.spinorganizador);
         editFecha = (EditText) findViewById(R.id.editTextfecha);
-        editIdHorario= (EditText) findViewById(R.id.editTextHorario);
-        //spinnerHorario = findViewById(R.id.editTextHorario);
+        //editIdHorario= (EditText) findViewById(R.id.editTextHorario);
+        spinnerHorario = findViewById(R.id.editTextHorario);
         spinnerLocal = findViewById(R.id.spinidlocal);
 
         String query = "SELECT id_evento FROM Evento_Especial";
@@ -60,7 +60,7 @@ public class  EventoEspecialActualizarActivity extends Activity {
         SpinnerLoc();
         SpinnerEmpleado();
         SpinnerTipo();
-        //SpinnerHorario();
+        SpinnerHorario();
     }
 
     public void ActualizarEventoE(View v){
@@ -69,8 +69,8 @@ public class  EventoEspecialActualizarActivity extends Activity {
         String TipoEve = spinnerTipo.getSelectedItem().toString();
         String OrganizadorEve = spinnerEmpleado.getSelectedItem().toString();
         String FechaEve = editFecha.getText().toString();
-        String HorarioEve = editIdHorario.getText().toString();
-        //String HorarioEve = spinnerHorario.getSelectedItem().toString();
+        //String HorarioEve = editIdHorario.getText().toString();
+        String HorarioEve = spinnerHorario.getSelectedItem().toString();
         String LocalEve = spinnerLocal.getSelectedItem().toString();
 
 
@@ -136,7 +136,7 @@ public class  EventoEspecialActualizarActivity extends Activity {
     }
 
 
-    /*public void SpinnerHorario(){
+    public void SpinnerHorario(){
         String sql = "SELECT id_horario FROM Horario";
         Cursor cursorH = helper.llenarSpinner(sql);
 
@@ -148,6 +148,6 @@ public class  EventoEspecialActualizarActivity extends Activity {
         ArrayAdapter<Integer> adapterH = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdHorario);
         adapterH.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerHorario.setAdapter(adapterH);
-    }*/
+    }
 }
 

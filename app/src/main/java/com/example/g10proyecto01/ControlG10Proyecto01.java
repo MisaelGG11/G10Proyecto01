@@ -1668,14 +1668,14 @@ public class ControlG10Proyecto01 {
                 String[] idTipoE = {String.valueOf(evento.getId_tipo_evento())};
                 String[] idEmpleado = {String.valueOf(evento.getId_organizador())};
                 String[] idLocal = {String.valueOf(evento.getId_localidad())};
-                //String[] idHorario = {String.valueOf(evento.getHorario())};
+                String[] idHorario = {String.valueOf(evento.getHorario())};
 
                 Cursor cursorT = db.query("Tipo_evento", null, "id_tipo_evento = ?", idTipoE, null, null, null);
                 Cursor cursorE = db.query("Empleado_UES", null, "id_empleado = ?", idEmpleado, null, null, null);
                 Cursor cursorL = db.query("Localidad", null, "id_localidad = ?", idLocal, null, null, null);
-                //Cursor cursorH = db.query("Horario", null, "id_Horario = ?", idHorario , null, null,null);
+                Cursor cursorH = db.query("Horario", null, "id_Horario = ?", idHorario , null, null,null);
 
-                if (cursorT.moveToFirst() || cursorE.moveToFirst() || cursorL.moveToFirst()) {
+                if (cursorT.moveToFirst() || cursorE.moveToFirst() || cursorL.moveToFirst()|| cursorH.moveToFirst()) {
                     //SE ENCUENTRAN DATOS
                     return true;
                 }
@@ -1970,10 +1970,10 @@ public class ControlG10Proyecto01 {
             insertarGrupo(grupo);
         }
         //HORARIO
-        final int[] idHorario = {33,34};
-        final Timestamp[] horaInicio = {new Timestamp(2023, 2, 20, 9, 50, 0, 0), new Timestamp(2023, 2, 20, 8, 5, 0, 0)};
-        final Timestamp[] horaFinalizacion = {new Timestamp(2023, 2, 20, 11, 30, 0, 0),new Timestamp(2023, 2, 20, 9, 45, 0, 0)};
-        final String[] dias = {"Lunes","Martes"};
+        final int[] idHorario = {33,34,35};
+        final Timestamp[] horaInicio = {new Timestamp(2023, 2, 20, 9, 50, 0, 0), new Timestamp(2023, 2, 20, 8, 5, 0, 0), new Timestamp(2023, 2, 20, 9, 50, 0, 0)};
+        final Timestamp[] horaFinalizacion = {new Timestamp(2023, 2, 20, 11, 30, 0, 0),new Timestamp(2023, 2, 20, 9, 45, 0, 0), new Timestamp(2023, 2, 20, 11, 30, 0, 0)};
+        final String[] dias = {"Lunes","Martes","Miercoles"};
         for (int i = 0; i < idHorario.length; i++) {
             Horario horario = new Horario(idHorario[i], horaInicio[i], horaFinalizacion[i], dias[i]);
             insertarHorario(horario);
