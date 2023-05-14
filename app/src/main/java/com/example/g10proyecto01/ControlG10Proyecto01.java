@@ -17,7 +17,7 @@ public class ControlG10Proyecto01 {
     private static final String[] camposDocente = new String[]{"id_docente", "id_empleado", "nip_docente", "categoria_docente"};
     private static final String[] camposEmpleado = new String[]{"id_empleado", "id_tipo_empleado", "nombre_empleado", "apellido_empleado", "email_empleado", "telefono_empleado"};
     private static final String[] camposEscuela = new String[]{"id_escuela", "acronimo", "nombre"};
-    private static final String[] camposEventoEspecial = new String[]{"id_evento", "id_tipo_evento", "nombre_evento", "organizador", "fecha", "id_horario", "id_localidad"};
+    private static final String[] camposEventoEspecial = new String[]{"id_evento", "nombre_evento", "id_tipo_evento", "organizador", "fecha", "id_horario", "id_localidad"};
     private static final String[] camposGrupo = new String[]{"id_grupo", "id_oferta_a", "num_grupo", "tipo_grupo", "cupo"};
     private static final String[] camposGrupoHorario = new String[]{"id_gh", "id_horario", "id_grupo"};
     private static final String[] camposHorario = new String[]{"id_horario", "id_evento", "hora_inicio", "hora_finalizacion", "dia"};
@@ -58,7 +58,7 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Docente(id_docente INTEGER NOT NULL PRIMARY KEY, id_empleado INTEGER NOT NULL, nip_docente INTEGER NOT NULL, categoria_docente VARCHAR2(10) NOT NULL);");
                 db.execSQL("CREATE TABLE Empleado_UES(id_empleado INTEGER NOT NULL PRIMARY KEY, id_tipo_empleado INTEGER NOT NULL, nombre_empleado VARCHAR2(30) NOT NULL, apellido_empleado VARCHAR2(30) NOT NULL, email_empleado VARCHAR2(50) NOT NULL, telefono_empleado INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Escuela(id_escuela INTEGER NOT NULL PRIMARY KEY, acronimo VARCHAR2(10) NOT NULL, nombre VARCHAR2(30) NOT NULL);");
-                db.execSQL("CREATE TABLE Evento_Especial(id_evento INTEGER NOT NULL PRIMARY KEY, id_tipo_evento INTEGER NOT NULL, nombre_evento VARCHAR2(100) NOT NULL, organizador INTEGER NOT NULL, fecha VARCHAR2(8) NOT NULL, id_horario INTEGER NOT NULL, id_localidad INTEGER NOT NULL);");
+                db.execSQL("CREATE TABLE Evento_Especial(id_evento INTEGER NOT NULL PRIMARY KEY, nombre_evento VARCHAR2(100) NOT NULL, id_tipo_evento INTEGER NOT NULL, organizador INTEGER NOT NULL, fecha VARCHAR2(8) NOT NULL, id_horario INTEGER NOT NULL, id_localidad INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Grupo(id_grupo INTEGER NOT NULL PRIMARY KEY, id_oferta_a INTEGER , num_grupo INTEGER NOT NULL, tipo_grupo VARCHAR2(11) NOT NULL, cupo INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Horario(id_horario INTEGER PRIMARY KEY NOT NULL, hora_inicio TIMESTAMP NOT NULL, hora_finalizacion TIMESTAMP NOT NULL, dia TEXT NOT NULL)");
                 db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL, FOREIGN KEY(id_horario) REFERENCES Horario ON DELETE CASCADE, FOREIGN KEY(id_grupo) REFERENCES Grupo);");
@@ -981,7 +981,7 @@ public class ControlG10Proyecto01 {
     }
 
 
-    /*********************************** Tabla Oferta_Acedemica ***********************************/
+    /*********************************** Tabla Oferta_Academica ***********************************/
 
     /* Insertar oferta */
     public String insertar(OfertaAcademica ofertaAcademica) {
@@ -1281,7 +1281,7 @@ public class ControlG10Proyecto01 {
     }
 
     /*********************************** Tabla Evento Especial ***********************************/
-    // CAMPOS: {"id_evento", "id_tipo_evento", "nombre_evento", "organizador", "fecha", "id_horario", "id_localidad"}
+    // CAMPOS: {"id_evento", "nombre_evento", "id_tipo_evento",  "organizador", "fecha", "id_horario", "id_localidad"}
 
     /*  Insertar Evento Especial  */
     public String insertar(EventoEspecial eventoEspecial) {
@@ -1291,8 +1291,8 @@ public class ControlG10Proyecto01 {
         if (verificarIntegridad(eventoEspecial, 9)) {
             ContentValues eventoE = new ContentValues();
             eventoE.put("id_evento", eventoEspecial.getId_evento());
-            eventoE.put("id_tipo_evento", eventoEspecial.getId_tipo_evento());
             eventoE.put("nombre_evento", eventoEspecial.getNombre_evento());
+            eventoE.put("id_tipo_evento", eventoEspecial.getId_tipo_evento());
             eventoE.put("organizador", eventoEspecial.getId_organizador());
             eventoE.put("fecha", eventoEspecial.getFecha_evento());
             eventoE.put("id_horario", eventoEspecial.getHorario());
@@ -1308,16 +1308,48 @@ public class ControlG10Proyecto01 {
     }
 
     /*  Consultar Evento Especial  */
+    public EventoEspecial consultarEventoEspecial(String id_evento){
+        String[] id = {id_evento};
+        Cursor cursorEvE = db.query("Evento_Especial", camposEventoEspecial, "id_evento = ?", id, null, null, null);
+        if(cursorEvE.moveToFirst()){
+            EventoEspecial eventoEspecial = new EventoEspecial();
+            eventoEspecial.setId_evento(cursorEvE.getInt(0));
+            eventoEspecial.setNombre_evento(cursorEvE.getString(1));
+            eventoEspecial.setId_tipo_evento(cursorEvE.getInt(2));
+            eventoEspecial.setId_organizador(cursorEvE.getInt(3));
+            eventoEspecial.setFecha_evento(cursorEvE.getString(4));
+            eventoEspecial.setHorario(cursorEvE.getInt(5));
+            eventoEspecial.setId_localidad(cursorEvE.getInt(6));
+
+            return eventoEspecial;
+        }else{
+            return null;
+        }
+    }
     /*  Actualizar Evento Especial  */
+    public String actualizarEventoEspecial(EventoEspecial eventoEspecial) {
+        String[] id = {String.valueOf(eventoEspecial.getId_evento())};
+        ContentValues EvEs = new ContentValues();
+        EvEs.put("nombre_evento", eventoEspecial.getNombre_evento());
+        EvEs.put("id_tipo_evento", eventoEspecial.getId_tipo_evento());
+        EvEs.put("organizador", eventoEspecial.getId_organizador());
+        EvEs.put("fecha", eventoEspecial.getFecha_evento());
+        EvEs.put("id_horario", eventoEspecial.getHorario());
+        EvEs.put("id_localidad", eventoEspecial.getId_localidad());
+
+
+        db.update("Evento_Especial", EvEs, "id_evento = ?", id);
+        return context.getResources().getString(R.string.regActualizado);
+    }
     /*  Eliminar Evento Especial  */
-    /*public String eliminar(EventoEspecial eventoEspecial){
-        String regAfectados="filas afectadas= ";
+    public String eliminar(EventoEspecial eventoEspecial){
+        String regAfectados=context.getResources().getString(R.string.regEliminados);
         int contador=0;
-        String where="id_local_admin=" + eventoEspecial.getId_evento();
+        String where="id_evento=" + eventoEspecial.getId_evento();
         contador += db.delete("Evento_Especial", where, null);
         regAfectados+=contador;
         return regAfectados;
-    }*/
+    }
     /*********************************** Tabla Grupo ***********************************/
     // CAMPOS: {"id_grupo", "id_oferta_a", "num_grupo", "tipo_grupo", "cupo"}
 
@@ -1475,6 +1507,7 @@ public class ControlG10Proyecto01 {
         return regInsertados;
     }
 
+
     private boolean verificarIntegridad(Object dato, int relacion) throws SQLException {
         switch (relacion) {
             case 1: {
@@ -1565,9 +1598,9 @@ public class ControlG10Proyecto01 {
                 Localidad localidad = (Localidad) dato;
                 Cursor cursorL1 = db.query(true, "Local_Administrado", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
                 Cursor cursorL2 = db.query(true, "Evento_Especial", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
-                //Cursor cursorL3 = db.query(true, "Propuesta_Especifica", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
+                Cursor cursorL3 = db.query(true, "Propuesta_Especifica", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
 
-                if (cursorL1.moveToFirst() || cursorL2.moveToFirst())
+                if (cursorL1.moveToFirst() || cursorL2.moveToFirst()|| cursorL3.moveToFirst())
                     return false;
                 else
                     return true;
@@ -1579,7 +1612,7 @@ public class ControlG10Proyecto01 {
                 String[] idTipoE = {String.valueOf(evento.getId_tipo_evento())};
                 String[] idEmpleado = {String.valueOf(evento.getId_organizador())};
                 String[] idLocal = {String.valueOf(evento.getId_localidad())};
-                String[] idHorario = {String.valueOf(evento.getHorario())};
+                //String[] idHorario = {String.valueOf(evento.getHorario())};
 
                 Cursor cursorT = db.query("Tipo_evento", null, "id_tipo_evento = ?", idTipoE, null, null, null);
                 Cursor cursorE = db.query("Empleado_UES", null, "id_empleado = ?", idEmpleado, null, null, null);
@@ -1926,27 +1959,26 @@ public class ControlG10Proyecto01 {
         //EVENTOESPECIAL
         final int[] idevento = {1, 2, 3, 4};
         final int[] idTipooEvento = {3, 3, 1, 4};
-        final String[] nombreEvento = {"Examen Parcial 1 MAT115", "Examen Parcial 1 MAT3115", "Japon en El Salvador", "Capacitacion de Salud Mental"};
+        final String[] nombreEvento = {"Examen Parcial 1 MAT115", "Examen Parcial 1 MAT3115", "Conferencia Japon en El Salvador", "Capacitacion de Salud Mental"};
         final int[] organizador = {1, 2, 3, 4};
-        final String[] fecha = {"03/03/23", "15/03/23", "12/05/23", "12/06/23"};
-        final int[] horario = {1, 2, 3, 4};
+        final String[] fecha = {"03 03 23", "15 03 23", "12 05 23", "12 06 23"};
+        final int[] horario = {1, 6, 3, 4};
         final int[] local = {1, 3, 2, 1};
 
         EventoEspecial eventoEspecial = new EventoEspecial();
         for (int i = 0; i < 4; i++) {
             eventoEspecial.setId_evento(idevento[i]);
-            eventoEspecial.setId_tipo_evento(idTipooEvento[i]);
             eventoEspecial.setNombre_evento(nombreEvento[i]);
+            eventoEspecial.setId_tipo_evento(idTipooEvento[i]);
             eventoEspecial.setId_organizador(organizador[i]);
             eventoEspecial.setFecha_evento(fecha[i]);
             eventoEspecial.setHorario(horario[i]);
             eventoEspecial.setId_localidad(local[i]);
             insertar(eventoEspecial);
         }
+
         cerrar();
 
         return context.getResources().getString(R.string.llenadoBD);
     }
 }
-
-

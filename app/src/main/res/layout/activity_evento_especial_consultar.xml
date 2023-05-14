@@ -6,4 +6,239 @@
     android:layout_height="match_parent"
     tools:context=".EventoEspecialConsultarActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayoutce1"
+        android:layout_width="348dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="56dp"
+        android:cursorVisible="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:longClickable="false"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="15dip"
+            android:text="@string/txtidEventoEspecial" />
+
+        <Spinner
+            android:id="@+id/spinIdEvento"
+            android:layout_width="197dp"
+            android:layout_height="34dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutce2"
+        android:layout_width="345dp"
+        android:layout_height="46dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutce1"
+        app:layout_constraintVertical_bias="0.104">
+
+        <Button
+            android:id="@+id/btnConsultarLocal"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/botonC"
+            android:onClick="consultarEventoE"
+            android:text="@string/consultar"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
+        <Button
+            android:id="@+id/btnLimpiarLocal"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/botonL"
+            android:onClick="limpiarTextoEVE"
+            android:text="@string/limpiar"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tNom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewNombreEventoEspecial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutce2" />
+    <EditText
+        android:id="@+id/ENom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tNom"
+        android:textAlignment="center"
+        android:enabled ="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:longClickable="false"/>
+
+
+    <TextView
+        android:id="@+id/tIdTipoEve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewidTipoEventoEspecial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ENom" />
+
+    <EditText
+        android:id="@+id/eidTipoEve"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/tIdTipoEve"
+        android:enabled ="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:longClickable="false"/>
+
+    <TextView
+        android:id="@+id/torganizador"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewOrganizadorEvento"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eidTipoEve" />
+    <EditText
+        android:id="@+id/eOrganizador"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="0dp"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/torganizador"
+        android:textAlignment="center"
+        android:enabled ="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:longClickable="false"/>
+
+
+    <TextView
+        android:id="@+id/tlocal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewIdLocal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eHorario" />
+
+    <EditText
+        android:id="@+id/elocal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="text"
+        android:longClickable="false"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tlocal"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/tfecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewFechaEventoEspecial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eOrganizador" />
+
+
+    <EditText
+        android:id="@+id/efecha"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/tfecha"
+        android:enabled ="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:longClickable="false"/>
+
+    <TextView
+        android:id="@+id/thorario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewHorarioEventoEspecial"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/efecha" />
+
+    <EditText
+        android:id="@+id/eHorario"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:cursorVisible="false"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:inputType="text"
+        android:longClickable="false"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/thorario" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -64,32 +64,4 @@ public class LocalAdministradoEliminarActivity extends Activity {
         });
         alerta.show();
     }
-
-   /* public void eliminarLocaladmin(View v){
-        AlertDialog.Builder alerta = new AlertDialog.Builder(LocalAdministradoEliminarActivity.this);
-        alerta.setCancelable(false);
-        alerta.setMessage("¿Desea eliminar este registro?");
-        alerta.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //ACCIONES SI RESPONDE QUE SI A LA ALERTA
-                String regEliminadas;
-                LocalAdministrado localAdministrado= new LocalAdministrado();
-                int id_Loc;
-                id_Loc =LocSpinner.get(spinnerIdLoc.getSelectedItemPosition());
-                localAdministrado.setId_local_admin(id_Loc);
-                helper.abrir();
-                regEliminadas=helper.eliminar(localAdministrado);
-                helper.cerrar();
-                Toast.makeText(LocalAdministradoEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
-            }
-        });
-        alerta.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        alerta.show();
-    } */
 }

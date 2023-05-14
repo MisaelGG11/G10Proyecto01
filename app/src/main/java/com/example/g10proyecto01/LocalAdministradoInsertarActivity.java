@@ -42,7 +42,6 @@ public class LocalAdministradoInsertarActivity extends Activity {
     }
     public void insertarLocalAdmin(View v) {
         String idLocalAdmin = editIdLocalAdmin.getText().toString();
-        //int idLocalAdmin = Integer.valueOf(editIdLocalAdmin.getText().toString());
         int idLocal = listIdLocal.get(spinnerLocal.getSelectedItemPosition());
         int idEmpleado = listIdEncargado.get(spinnerEmpleado.getSelectedItemPosition());
         String regInsertados;

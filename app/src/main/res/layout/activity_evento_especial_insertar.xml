@@ -50,7 +50,7 @@
                 android:paddingHorizontal="10dip"
                 android:text="@string/txtViewidTipoEventoEspecial" />
             <Spinner
-                android:id="@+id/editTextidtipoevento"
+                android:id="@+id/spinidtipoevento"
                 android:inputType="text"
                 android:layout_height="35dp"/>
 
@@ -61,22 +61,12 @@
                 android:paddingHorizontal="10dip"
                 android:text="@string/txtViewOrganizadorEvento" />
             <Spinner
-                android:id="@+id/editTextorganizador"
+                android:id="@+id/spinorganizador"
                 android:inputType="text"
                 android:layout_height="35dp"/>
 
         </TableRow>
-        <TableRow>
 
-            <TextView
-                android:paddingHorizontal="10dip"
-                android:text="@string/txtViewIdLocal" />
-            <Spinner
-                android:id="@+id/editTextidlocal"
-                android:inputType="text"
-                android:layout_height="35dp"/>
-
-        </TableRow>
         <TableRow>
             <TextView
                 android:paddingHorizontal="10dip"
@@ -84,18 +74,34 @@
 
             <EditText
                 android:id="@+id/editTextfecha"
-                android:inputType="number"
-                android:maxLength="8" />
+                android:maxLength="8"
+                android:ems="10"
+                android:inputType="none"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                />
         </TableRow>
         <TableRow>
             <TextView
                 android:paddingHorizontal="10dip"
                 android:text="@string/txtViewHorarioEventoEspecial" />
-
             <EditText
                 android:id="@+id/editTextHorario"
                 android:inputType="number"
-                android:maxLength="8" />
+                android:maxLength="4" />
+        </TableRow>
+        <TableRow>
+
+            <TextView
+                android:paddingHorizontal="10dip"
+                android:text="@string/txtViewIdLocal" />
+
+            <Spinner
+                android:id="@+id/spinidlocal"
+                android:inputType="text"
+                android:layout_height="35dp"/>
+
         </TableRow>
     </TableLayout>
 
@@ -112,23 +118,23 @@
         app:layout_constraintVertical_bias="0.103">
 
         <Button
-            android:id="@+id/btnInsertarLocal"
+            android:id="@+id/btnInsertarEvento"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_gravity="left"
             android:layout_marginRight="20dp"
             android:backgroundTint="@color/botonI"
-            android:onClick="insertar"
+            android:onClick="insertarEventoEspecial"
             android:text="@string/insertar"
             android:textColor="@color/black"
             android:textSize="17dp" />
 
         <Button
-            android:id="@+id/btnLimpiarInsertarLocal"
+            android:id="@+id/btnLimpiarInsertarEvento"
             android:layout_width="130dp"
             android:layout_height="50dp"
             android:backgroundTint="@color/botonL"
-            android:onClick="limpiarTextoLocal"
+            android:onClick="limpiarTextoEve"
             android:text="@string/limpiar"
             android:textColor="@color/black"
             android:textSize="17dp" />

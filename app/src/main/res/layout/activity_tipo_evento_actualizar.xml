@@ -28,6 +28,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="text"
+        android:paddingHorizontal="10dip"
         android:maxLength="50"/>
 
 

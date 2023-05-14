@@ -5,24 +5,24 @@ public class EventoEspecial{
     private String nombre_evento;
     private int id_tipo_evento;
     private int id_organizador;
-    private int id_localidad;
     private String fecha_evento;
     private int horario;
-
+    private int id_localidad;
     public EventoEspecial(){
     }
 
     //Constructor
 
-    public EventoEspecial(int id_evento, String nombre_evento, int id_tipo_evento, int id_organizador, int id_localidad, String fecha_evento, int horario) {
+    public EventoEspecial(int id_evento, String nombre_evento, int id_tipo_evento, int id_organizador, String fecha_evento, int horario, int id_localidad) {
         this.id_evento = id_evento;
         this.nombre_evento = nombre_evento;
         this.id_tipo_evento = id_tipo_evento;
         this.id_organizador = id_organizador;
-        this.id_localidad = id_localidad;
         this.fecha_evento = fecha_evento;
         this.horario = horario;
+        this.id_localidad = id_localidad;
     }
+
 
     // Getter y Setter
 
