@@ -79,8 +79,8 @@ public class ListaOfertaAdapter extends RecyclerView.Adapter<ListaOfertaAdapter.
             }
         }
 
-        String ciclo = listaCiclos.get(posCiclo).getCiclo() + "_" + listaCiclos.get(posCiclo).getAño();
-        String docente = String.valueOf(listaDocentes.get(posDocente).getNip_docente());
+        String ciclo = "Ciclo: " + listaCiclos.get(posCiclo).getCiclo() + "_" + listaCiclos.get(posCiclo).getAño();
+        String docente = "NIP: " + String.valueOf(listaDocentes.get(posDocente).getNip_docente());
         String materia = listaMaterias.get(posMateria).getCod_materia();
 
         holder.viewIdOferta.setText(String.valueOf(oferta.getId_oferta_a()));

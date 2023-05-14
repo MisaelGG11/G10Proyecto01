@@ -74,7 +74,7 @@ public class MateriaConsultarActivity extends AppCompatActivity {
 
         helper = new ControlG10Proyecto01(this);
 
-        String sql = "SELECT id_opcion_crud FROM AccesoUsuario WHERE id_usuario = '"+ userPermisos+"'";
+        String sql = "SELECT id_opcion_crud FROM AccesoUsuario WHERE id_usuario = '" + userPermisos + "'";
 
         Cursor cursor = helper.llenarSpinner(sql);
 
@@ -84,11 +84,11 @@ public class MateriaConsultarActivity extends AppCompatActivity {
             permisos.add(permiso);
         }
 
-        if (!permisos.contains(2)){
+        if (!permisos.contains(2)) {
             btnActualizar.setEnabled(false);
         }
 
-        if (!permisos.contains(3)){
+        if (!permisos.contains(3)) {
             btnEliminar.setEnabled(false);
         }
 
@@ -154,13 +154,9 @@ public class MateriaConsultarActivity extends AppCompatActivity {
                 String estado = helper.actualizar(materia);
                 helper.cerrar();
 
-                if (estado.contains("Correcto")) {
-                    Toast.makeText(this, getResources().getString(R.string.regActualizado), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
 
-                    actulizarAlRegresar();
-                } else {
-                    Toast.makeText(this, getResources().getString(R.string.regNoActualizado), Toast.LENGTH_SHORT).show();
-                }
+                actulizarAlRegresar();
             }
         }
     }
@@ -184,7 +180,7 @@ public class MateriaConsultarActivity extends AppCompatActivity {
                 regEliminadas = helper.eliminar(materia);
                 helper.cerrar();
 
-                Toast.makeText(v.getContext(), getResources().getString(R.string.regEliminados) + regEliminadas, Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), regEliminadas, Toast.LENGTH_SHORT).show();
 
                 actulizarAlRegresar();
             }

@@ -41,8 +41,8 @@ public class ListaCicloAdapter extends RecyclerView.Adapter<ListaCicloAdapter.Ci
     @Override
     public void onBindViewHolder(@NonNull CicloViewHolder holder, int position) {
         holder.viewAño.setText(listaCiclo.get(position).getAño());
-        holder.viewIdCiclo.setText(String.valueOf(listaCiclo.get(position).getId_ciclo()));
-        holder.viewCiclo.setText(listaCiclo.get(position).getCiclo());
+        holder.viewIdCiclo.setText("Id: " + listaCiclo.get(position).getId_ciclo());
+        holder.viewCiclo.setText("Ciclo: " + listaCiclo.get(position).getCiclo());
     }
 
     public void filtrado(final String txtBuscar) {

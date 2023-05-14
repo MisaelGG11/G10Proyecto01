@@ -340,15 +340,16 @@ public class ControlG10Proyecto01 {
         return "Registro Actualizado Correctamente";
     }
 
-    public String eliminar(Usuario usuario){
+    public String eliminar(Usuario usuario) {
         String[] id = {usuario.getId_usuario()};
-        String regAfectados=context.getResources().getString(R.string.regEliminados);
-        int contador=0;
-        contador += DBHelper.getWritableDatabase().delete("Usuario","id_usuario=?",id);
-        regAfectados+=contador;
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
+        int contador = 0;
+        contador += DBHelper.getWritableDatabase().delete("Usuario", "id_usuario=?", id);
+        regAfectados += contador;
         return regAfectados;
 
     }
+
     /******************************************** Tabla AccesoUsuario ********************************************/
     // CAMPOS: {"id_acceso", "id_usuario","id_opcion_crud"}
     public String insertar(AccesoUsuario accesoUsuario) {
@@ -654,7 +655,7 @@ public class ControlG10Proyecto01 {
 
     /* Insertar escuela */
     public String insertar(Escuela escuela) {
-        String regInsertados = "";
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
@@ -667,7 +668,7 @@ public class ControlG10Proyecto01 {
         contador = db.insert("escuela", null, escu);
 
         if (contador == -1 || contador == 0) {
-            regInsertados = "Error";
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -698,40 +699,33 @@ public class ControlG10Proyecto01 {
 
     public String actualizar(Escuela escuela) {
 
-        if (true) {
-            String[] id = {String.valueOf(escuela.getId_escuela())};
+        String[] id = {String.valueOf(escuela.getId_escuela())};
 
-            ContentValues cv = new ContentValues();
+        ContentValues cv = new ContentValues();
 
-            cv.put("Acronimo", escuela.getAcronimo());
-            cv.put("Nombre", escuela.getNombre());
+        cv.put("Acronimo", escuela.getAcronimo());
+        cv.put("Nombre", escuela.getNombre());
 
-            db.update("escuela", cv, "id_escuela = ?", id);
+        db.update("escuela", cv, "id_escuela = ?", id);
 
-            return "Correcto";
-        } else {
-            return "";
-        }
+        return context.getResources().getString(R.string.regActualizado);
     }
 
     /*  Eliminar escuela  */
 
     public String eliminar(Escuela escuela) {
-        String regAfectados = "";
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
 
         int contador = 0;
 
-        /*
-        if (verificarIntegridad(alumno,3)) {
-            contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
-        }
-        */
-
-        contador += db.delete("escuela", "id_escuela='" + escuela.getId_escuela() + "'", null);
-
-        regAfectados += contador;
-
-        return regAfectados;
+        if (verificarIntegridad(escuela, 14)) {
+            String where = "id_escuela=" + escuela.getId_escuela();
+            contador += db.delete("escuela", where, null);
+            regAfectados += contador;
+            return regAfectados;
+        } else
+            return context.getResources().getString(R.string.regNoEliminados) + " " +
+                    context.getResources().getString(R.string.idMateria).substring(3).toUpperCase();
     }
 
     /*  muestra todas las escuelas  */
@@ -763,7 +757,7 @@ public class ControlG10Proyecto01 {
 
     /* Insertar ciclo */
     public String insertar(Ciclo ciclo) {
-        String regInsertados = "";
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
@@ -776,7 +770,7 @@ public class ControlG10Proyecto01 {
         contador = db.insert("ciclo", null, cic);
 
         if (contador == -1 || contador == 0) {
-            regInsertados = "Error";
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -807,40 +801,34 @@ public class ControlG10Proyecto01 {
 
     public String actualizar(Ciclo ciclo) {
 
-        if (true) {
-            String[] id = {String.valueOf(ciclo.getId_ciclo())};
+        String[] id = {String.valueOf(ciclo.getId_ciclo())};
 
-            ContentValues cv = new ContentValues();
+        ContentValues cv = new ContentValues();
 
-            cv.put("ciclo", ciclo.getCiclo());
-            cv.put("año", ciclo.getAño());
+        cv.put("ciclo", ciclo.getCiclo());
+        cv.put("año", ciclo.getAño());
 
-            db.update("ciclo", cv, "id_ciclo = ?", id);
+        db.update("ciclo", cv, "id_ciclo = ?", id);
 
-            return "Correcto";
-        } else {
-            return "";
-        }
+        return context.getResources().getString(R.string.regActualizado);
+
     }
 
     /*  Eliminar escuela  */
 
     public String eliminar(Ciclo ciclo) {
-        String regAfectados = "";
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
 
         int contador = 0;
 
-        /*
-        if (verificarIntegridad(alumno,3)) {
-            contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
-        }
-        */
-
-        contador += db.delete("ciclo", "id_ciclo='" + ciclo.getId_ciclo() + "'", null);
-
-        regAfectados += contador;
-
-        return regAfectados;
+        if (verificarIntegridad(ciclo, 15)) {
+            String where = "id_ciclo=" + ciclo.getId_ciclo();
+            contador += db.delete("ciclo", where, null);
+            regAfectados += contador;
+            return regAfectados;
+        } else
+            return context.getResources().getString(R.string.regNoEliminados) + " " +
+                    context.getResources().getString(R.string.id_oferta).substring(3).toUpperCase();
     }
 
     /*  muestra todas las escuelas  */
@@ -872,7 +860,7 @@ public class ControlG10Proyecto01 {
 
     /* Insertar materia */
     public String insertar(Materia materia) {
-        String regInsertados = "";
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
@@ -886,7 +874,7 @@ public class ControlG10Proyecto01 {
         contador = db.insert("materia", null, mat);
 
         if (contador == -1 || contador == 0) {
-            regInsertados = "Error";
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -917,42 +905,34 @@ public class ControlG10Proyecto01 {
     /*  Actualizar ciclo  */
 
     public String actualizar(Materia materia) {
+        String[] id = {String.valueOf(materia.getId_materia())};
 
-        if (true) {
-            String[] id = {String.valueOf(materia.getId_materia())};
+        ContentValues cv = new ContentValues();
 
-            ContentValues cv = new ContentValues();
+        cv.put("cod_materia", materia.getCod_materia());
+        cv.put("nombre_materia", materia.getNom_materia());
+        cv.put("id_escuela", materia.getId_escuela());
 
-            cv.put("cod_materia", materia.getCod_materia());
-            cv.put("nombre_materia", materia.getNom_materia());
-            cv.put("id_escuela", materia.getId_escuela());
+        db.update("materia", cv, "id_materia = ?", id);
 
-            db.update("materia", cv, "id_materia = ?", id);
-
-            return "Correcto";
-        } else {
-            return "";
-        }
+        return context.getResources().getString(R.string.regActualizado);
     }
 
     /*  Eliminar materia  */
 
     public String eliminar(Materia materia) {
-        String regAfectados = "";
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
 
         int contador = 0;
 
-        /*
-        if (verificarIntegridad(alumno,3)) {
-            contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
-        }
-        */
-
-        contador += db.delete("materia", "id_materia='" + materia.getId_materia() + "'", null);
-
-        regAfectados += contador;
-
-        return regAfectados;
+        if (verificarIntegridad(materia, 16)) {
+            String where = "id_materia=" + materia.getId_materia();
+            contador += db.delete("materia", where, null);
+            regAfectados += contador;
+            return regAfectados;
+        } else
+            return context.getResources().getString(R.string.regNoEliminados) + " " +
+                    context.getResources().getString(R.string.id_oferta).substring(3).toUpperCase();
     }
 
     /*  muestra todas las materias  */
@@ -985,7 +965,7 @@ public class ControlG10Proyecto01 {
 
     /* Insertar oferta */
     public String insertar(OfertaAcademica ofertaAcademica) {
-        String regInsertados = "";
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
@@ -999,7 +979,7 @@ public class ControlG10Proyecto01 {
         contador = db.insert("Oferta_Academica", null, ofer);
 
         if (contador == -1 || contador == 0) {
-            regInsertados = "Error";
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -1031,41 +1011,34 @@ public class ControlG10Proyecto01 {
 
     public String actualizar(OfertaAcademica ofertaAcademica) {
 
-        if (true) {
-            String[] id = {String.valueOf(ofertaAcademica.getId_oferta_a())};
+        String[] id = {String.valueOf(ofertaAcademica.getId_oferta_a())};
 
-            ContentValues cv = new ContentValues();
+        ContentValues cv = new ContentValues();
 
-            cv.put("id_ciclo", ofertaAcademica.getId_ciclo());
-            cv.put("id_docente", ofertaAcademica.getId_docente());
-            cv.put("id_materia", ofertaAcademica.getId_materia());
+        cv.put("id_ciclo", ofertaAcademica.getId_ciclo());
+        cv.put("id_docente", ofertaAcademica.getId_docente());
+        cv.put("id_materia", ofertaAcademica.getId_materia());
 
-            db.update("Oferta_Academica", cv, "id_oferta_a = ?", id);
+        db.update("Oferta_Academica", cv, "id_oferta_a = ?", id);
 
-            return "Correcto";
-        } else {
-            return "";
-        }
+        return context.getResources().getString(R.string.regActualizado);
     }
 
     /*  Eliminar oferta  */
 
     public String eliminar(OfertaAcademica ofertaAcademica) {
-        String regAfectados = "";
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
 
         int contador = 0;
 
-        /*
-        if (verificarIntegridad(alumno,3)) {
-            contador+=db.delete("nota", "carnet='"+alumno.getCarnet()+"'", null);
-        }
-        */
-
-        contador += db.delete("Oferta_Academica", "id_oferta_a='" + ofertaAcademica.getId_oferta_a() + "'", null);
-
-        regAfectados += contador;
-
-        return regAfectados;
+        if (verificarIntegridad(ofertaAcademica, 17)) {
+            String where = "id_oferta_a=" + ofertaAcademica.getId_oferta_a();
+            contador += db.delete("Oferta_Academica", where, null);
+            regAfectados += contador;
+            return regAfectados;
+        } else
+            return context.getResources().getString(R.string.regNoEliminados) + " " +
+                    context.getResources().getString(R.string.idgrupo).substring(7).toUpperCase();
     }
 
     /*  muestra todas las ofertas  */
@@ -1308,10 +1281,10 @@ public class ControlG10Proyecto01 {
     }
 
     /*  Consultar Evento Especial  */
-    public EventoEspecial consultarEventoEspecial(String id_evento){
+    public EventoEspecial consultarEventoEspecial(String id_evento) {
         String[] id = {id_evento};
         Cursor cursorEvE = db.query("Evento_Especial", camposEventoEspecial, "id_evento = ?", id, null, null, null);
-        if(cursorEvE.moveToFirst()){
+        if (cursorEvE.moveToFirst()) {
             EventoEspecial eventoEspecial = new EventoEspecial();
             eventoEspecial.setId_evento(cursorEvE.getInt(0));
             eventoEspecial.setNombre_evento(cursorEvE.getString(1));
@@ -1322,10 +1295,11 @@ public class ControlG10Proyecto01 {
             eventoEspecial.setId_localidad(cursorEvE.getInt(6));
 
             return eventoEspecial;
-        }else{
+        } else {
             return null;
         }
     }
+
     /*  Actualizar Evento Especial  */
     public String actualizarEventoEspecial(EventoEspecial eventoEspecial) {
         String[] id = {String.valueOf(eventoEspecial.getId_evento())};
@@ -1341,34 +1315,35 @@ public class ControlG10Proyecto01 {
         db.update("Evento_Especial", EvEs, "id_evento = ?", id);
         return context.getResources().getString(R.string.regActualizado);
     }
+
     /*  Eliminar Evento Especial  */
-    public String eliminar(EventoEspecial eventoEspecial){
-        String regAfectados=context.getResources().getString(R.string.regEliminados);
-        int contador=0;
-        String where="id_evento=" + eventoEspecial.getId_evento();
+    public String eliminar(EventoEspecial eventoEspecial) {
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
+        int contador = 0;
+        String where = "id_evento=" + eventoEspecial.getId_evento();
         contador += db.delete("Evento_Especial", where, null);
-        regAfectados+=contador;
+        regAfectados += contador;
         return regAfectados;
     }
+
     /*********************************** Tabla Grupo ***********************************/
     // CAMPOS: {"id_grupo", "id_oferta_a", "num_grupo", "tipo_grupo", "cupo"}
-
     public String insertarGrupo(Grupo grupo) {
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
         ContentValues values = new ContentValues();
 
         values.put("num_grupo", grupo.getNum_grupo());
-        values.put("tipo_grupo",grupo.getTipo_grupo());
-        values.put("id_oferta_a",grupo.getId_oferta_a());
-        values.put("cupo",grupo.getCupo());
+        values.put("tipo_grupo", grupo.getTipo_grupo());
+        values.put("id_oferta_a", grupo.getId_oferta_a());
+        values.put("cupo", grupo.getCupo());
 
         contador = db.insert("Grupo", null, values);
 
         if (contador == -1 || contador == 0) {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -1378,7 +1353,7 @@ public class ControlG10Proyecto01 {
     /*********************************** Tabla Horario ***********************************/
     //CAMPOS: "id_horario", "id_evento", "hora_inicio", "hora_finalizacion", "dia"
     public String insertarHorario(Horario horario) {
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
@@ -1386,34 +1361,35 @@ public class ControlG10Proyecto01 {
 
         values.put("id_horario", horario.getId_horario());
         values.put("hora_inicio", horario.getHora_inicio().toString());
-        values.put("hora_finalizacion",horario.getHora_finalizacion().toString());
-        values.put("dia",horario.getDia());
+        values.put("hora_finalizacion", horario.getHora_finalizacion().toString());
+        values.put("dia", horario.getDia());
 
         contador = db.insert("Horario", null, values);
 
         if (contador == -1 || contador == 0) {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
         return regInsertados;
     }
+
     /*********************************** Tabla GrupoHorario ***********************************/
     //CAMPOS: "id_gh", "id_horario", "id_grupo"
     public String insertarGrupoHorario(GrupoHorario grupoHorario) {
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
         ContentValues values = new ContentValues();
 
         values.put("id_horario", grupoHorario.getId_horario());
-        values.put("id_grupo",grupoHorario.getId_grupo());
+        values.put("id_grupo", grupoHorario.getId_grupo());
 
         contador = db.insert("Grupo_Horario", null, values);
 
         if (contador == -1 || contador == 0) {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -1423,73 +1399,76 @@ public class ControlG10Proyecto01 {
     /*********************************** Tabla PropuestaEspecifica ***********************************/
     //CAMPOS: "id_especifica", "id_propuesta", "id_gh", "id_localidad", "estado_especifica"
     public String insertar(PropuestaEspecifica propuestaEspecifica) {
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
         ContentValues values = new ContentValues();
 
-        values.put("id_propuesta",propuestaEspecifica.getId_propuesta_general());
+        values.put("id_propuesta", propuestaEspecifica.getId_propuesta_general());
         values.put("id_gh", propuestaEspecifica.getId_grupo_horario());
-        values.put("id_localidad",propuestaEspecifica.getId_localidad());
+        values.put("id_localidad", propuestaEspecifica.getId_localidad());
 
         contador = db.insert("Propuesta_Especifica", null, values);
 
         if (contador == -1 || contador == 0) {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
         return regInsertados;
     }
-    public String consularHorarioPropuestaEspcifica(String idGrupoHorario){
+
+    public String consularHorarioPropuestaEspcifica(String idGrupoHorario) {
         String[] id = {idGrupoHorario};
         String consulta = "SELECT h.dia, h.hora_inicio, h.hora_finalizacion FROM Grupo_Horario gh INNER JOIN Horario h ON h.id_horario = gh.id_horario WHERE gh.id_gh = ?";
-        Cursor cursor1 = DBHelper.getReadableDatabase().rawQuery(consulta,id);
+        Cursor cursor1 = DBHelper.getReadableDatabase().rawQuery(consulta, id);
         String horario = "";
-        while(cursor1.moveToNext()){
-            horario += cursor1.getString(0) +" "+ cursor1.getString(1).substring(10,19) + " -" + cursor1.getString(2).substring(10,19);
+        while (cursor1.moveToNext()) {
+            horario += cursor1.getString(0) + " " + cursor1.getString(1).substring(10, 19) + " -" + cursor1.getString(2).substring(10, 19);
         }
         return horario;
     }
 
-    public Cursor opcioneSpinnerGrupoHorario(String sqlQuery){
-        Cursor cursor = DBHelper.getReadableDatabase().rawQuery(sqlQuery,null);
+    public Cursor opcioneSpinnerGrupoHorario(String sqlQuery) {
+        Cursor cursor = DBHelper.getReadableDatabase().rawQuery(sqlQuery, null);
         return cursor;
     }
 
-    public PropuestaEspecifica consultarPropuestaEspecifica(String idPropuesta){
+    public PropuestaEspecifica consultarPropuestaEspecifica(String idPropuesta) {
         String[] id = {idPropuesta};
         Cursor cursor = db.query("Propuesta_Especifica", camposPropuestaEspecifica, "id_especifica = ?", id, null, null, null);
-        if(cursor.moveToFirst()){
-            PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(cursor.getInt(0),cursor.getInt(1),cursor.getInt(2),cursor.getInt(3),cursor.getString(4));
+        if (cursor.moveToFirst()) {
+            PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3), cursor.getString(4));
             return propuestaEspecifica;
-        }else{
+        } else {
             return null;
         }
     }
-    public String actualizar(PropuestaEspecifica propuestaEspecifica){
+
+    public String actualizar(PropuestaEspecifica propuestaEspecifica) {
         String[] id = {String.valueOf(propuestaEspecifica.getId_especifica())};
         ContentValues cv = new ContentValues();
-        cv.put("estado_especifica",propuestaEspecifica.getEstado_especifica());
+        cv.put("estado_especifica", propuestaEspecifica.getEstado_especifica());
 
-        db.update("Propuesta_Especifica",cv,"id_especifica = ?", id);
+        db.update("Propuesta_Especifica", cv, "id_especifica = ?", id);
         return context.getResources().getString(R.string.regActualizado);
     }
 
-    public String eliminar(PropuestaEspecifica propuestaEspecifica){
+    public String eliminar(PropuestaEspecifica propuestaEspecifica) {
         String[] id = {String.valueOf(propuestaEspecifica.getId_especifica())};
-        String regAfectados=context.getResources().getString(R.string.regEliminados);
-        int contador=0;
-        contador += DBHelper.getWritableDatabase().delete("Propuesta_Especifica","id_especifica=?",id);
-        regAfectados+=contador;
+        String regAfectados = context.getResources().getString(R.string.regEliminados);
+        int contador = 0;
+        contador += DBHelper.getWritableDatabase().delete("Propuesta_Especifica", "id_especifica=?", id);
+        regAfectados += contador;
         return regAfectados;
 
     }
+
     /*********************************** Tabla GrupoHorario ***********************************/
     //CAMPOS: "id_propuesta", "estado_propuesta"
     public String insertar(PropuestaGeneral propuestaGeneral) {
-        String regInsertados=context.getResources().getString(R.string.regInsertado);
+        String regInsertados = context.getResources().getString(R.string.regInsertado);
 
         long contador = 0;
 
@@ -1500,7 +1479,7 @@ public class ControlG10Proyecto01 {
         contador = db.insert("Propuesta_General", null, values);
 
         if (contador == -1 || contador == 0) {
-            regInsertados= context.getResources().getString(R.string.error);
+            regInsertados = context.getResources().getString(R.string.error);
         } else {
             regInsertados = regInsertados + contador;
         }
@@ -1600,7 +1579,7 @@ public class ControlG10Proyecto01 {
                 Cursor cursorL2 = db.query(true, "Evento_Especial", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
                 Cursor cursorL3 = db.query(true, "Propuesta_Especifica", new String[]{"id_localidad"}, "id_localidad ='" + localidad.getId_localidad() + "'", null, null, null, null, null);
 
-                if (cursorL1.moveToFirst() || cursorL2.moveToFirst()|| cursorL3.moveToFirst())
+                if (cursorL1.moveToFirst() || cursorL2.moveToFirst() || cursorL3.moveToFirst())
                     return false;
                 else
                     return true;
@@ -1675,6 +1654,47 @@ public class ControlG10Proyecto01 {
                 }
                 return false;
             }
+
+            case 14: {
+//              VERIFICA QUE NO SE ELIMINE UNA ESCUELA MIENTRAS EXISTA UNA REFERENCIA DE EL EN LA TABLA MATERIA
+                Escuela escuela = (Escuela) dato;
+                Cursor cursor = db.query(true, "materia", new String[]{"id_escuela"}, "id_escuela ='" + escuela.getId_escuela() + "'", null, null, null, null, null);
+                if (cursor.moveToFirst())
+                    return false;
+                else
+                    return true;
+            }
+
+            case 15: {
+//              VERIFICA QUE NO SE ELIMINE UN CICLO MIENTRAS EXISTA UNA REFERENCIA DE EL EN LA TABLA Oferta_Academica
+                Ciclo ciclo = (Ciclo) dato;
+                Cursor cursor = db.query(true, "Oferta_Academica", new String[]{"id_ciclo"}, "id_ciclo ='" + ciclo.getId_ciclo() + "'", null, null, null, null, null);
+                if (cursor.moveToFirst())
+                    return false;
+                else
+                    return true;
+            }
+
+            case 16: {
+//              VERIFICA QUE NO SE ELIMINE UNA MATERIA MIENTRAS EXISTA UNA REFERENCIA DE EL EN LA TABLA Oferta_Academica
+                Materia materia = (Materia) dato;
+                Cursor cursor = db.query(true, "Oferta_Academica", new String[]{"id_materia"}, "id_materia ='" + materia.getId_materia() + "'", null, null, null, null, null);
+                if (cursor.moveToFirst())
+                    return false;
+                else
+                    return true;
+            }
+
+            case 17: {
+//              VERIFICA QUE NO SE ELIMINE UNA OFERTA MIENTRAS EXISTA UNA REFERENCIA DE EL EN LA TABLA Grupo
+                OfertaAcademica ofertaAcademica = (OfertaAcademica) dato;
+                Cursor cursor = db.query(true, "Grupo", new String[]{"id_oferta_a"}, "id_oferta_a ='" + ofertaAcademica.getId_oferta_a() + "'", null, null, null, null, null);
+                if (cursor.moveToFirst())
+                    return false;
+                else
+                    return true;
+            }
+
             default:
                 return false;
         }
@@ -1793,22 +1813,22 @@ public class ControlG10Proyecto01 {
         final String[] tipo_grupo = {"Teorico"};
         final int[] cupoGrupo = {25};
         for (int i = 0; i < grupoId.length; i++) {
-            Grupo grupo = new Grupo(grupoId[i],num_grupo[i],id_oferta[i],cupoGrupo[i],tipo_grupo[i]);
+            Grupo grupo = new Grupo(grupoId[i], num_grupo[i], id_oferta[i], cupoGrupo[i], tipo_grupo[i]);
             insertarGrupo(grupo);
         }
         //HORARIO
         final int[] idHorario = {33};
-        final Timestamp[] horaInicio = {new Timestamp(2023,2,20,9,50,0,0)};
-        final Timestamp[] horaFinalizacion = {new Timestamp(2023,2,20,11,30,0,0)};
+        final Timestamp[] horaInicio = {new Timestamp(2023, 2, 20, 9, 50, 0, 0)};
+        final Timestamp[] horaFinalizacion = {new Timestamp(2023, 2, 20, 11, 30, 0, 0)};
         final String[] dias = {"Lunes"};
         for (int i = 0; i < idHorario.length; i++) {
-            Horario horario = new Horario(idHorario[i],horaInicio[i],horaFinalizacion[i],dias[i]);
+            Horario horario = new Horario(idHorario[i], horaInicio[i], horaFinalizacion[i], dias[i]);
             insertarHorario(horario);
         }
         //GRUPOHORARIO
         final int[] idGrupoHorario = {1};
         for (int i = 0; i < idGrupoHorario.length; i++) {
-            GrupoHorario grupoHorario = new GrupoHorario(idGrupoHorario[i],idHorario[i],grupoId[i]);
+            GrupoHorario grupoHorario = new GrupoHorario(idGrupoHorario[i], idHorario[i], grupoId[i]);
             insertarGrupoHorario(grupoHorario);
         }
         //MATERIA
@@ -1852,7 +1872,7 @@ public class ControlG10Proyecto01 {
         }
 
         //PROPUESTAGENERAL
-        final int[] idPropuestaGeneral = {1,2,3,4,5};
+        final int[] idPropuestaGeneral = {1, 2, 3, 4, 5};
         for (int i = 0; i < idPropuestaGeneral.length; i++) {
             PropuestaGeneral propuestaGeneral = new PropuestaGeneral(idPropuestaGeneral[i]);
             insertar(propuestaGeneral);

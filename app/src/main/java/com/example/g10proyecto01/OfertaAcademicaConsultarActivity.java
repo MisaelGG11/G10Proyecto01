@@ -178,14 +178,9 @@ public class OfertaAcademicaConsultarActivity extends AppCompatActivity {
             String estado = helper.actualizar(ofertaAcademica);
             helper.cerrar();
 
-            if (estado.contains("Correcto")) {
-                Toast.makeText(this, getResources().getString(R.string.regActualizado), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
 
-                actulizarAlRegresar();
-            } else {
-                Toast.makeText(this, getResources().getString(R.string.regNoActualizado), Toast.LENGTH_SHORT).show();
-            }
-
+            actulizarAlRegresar();
         }
     }
 
@@ -208,7 +203,7 @@ public class OfertaAcademicaConsultarActivity extends AppCompatActivity {
                 regEliminadas = helper.eliminar(ofertaAcademica);
                 helper.cerrar();
 
-                Toast.makeText(v.getContext(), getResources().getString(R.string.regEliminados) + regEliminadas, Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), regEliminadas, Toast.LENGTH_SHORT).show();
 
                 actulizarAlRegresar();
             }

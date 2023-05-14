@@ -16,7 +16,7 @@
         <EditText
             android:id="@+id/editAcronimo"
             android:inputType="text"
-            android:maxLength="30" />
+            android:maxLength="7" />
     </TableRow>
     <TableRow>
         <TextView android:text="@string/nombreEscuela" />

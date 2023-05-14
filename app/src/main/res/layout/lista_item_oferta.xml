@@ -53,7 +53,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/viewIdDocente"
+                    android:id="@+id/viewIdMateria"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="left"
@@ -61,12 +61,13 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/viewIdMateria"
+                    android:id="@+id/viewIdDocente"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_gravity="left"
                     android:paddingLeft="8dp"
                     android:textSize="16sp" />
+
             </LinearLayout>
 
         </LinearLayout>

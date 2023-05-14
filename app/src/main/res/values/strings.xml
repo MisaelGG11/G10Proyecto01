@@ -39,6 +39,7 @@
     <string name="regActualizado">Registro actualizado correctamente</string>
     <string name="regNoActualizado">Registro no se actualizo, revise sus campos</string>
     <string name="regEliminados">Filas afectadas = </string>
+    <string name="regNoEliminados">FALLO al eliminar, existe una relacion con </string>
     <string name="referencia">Hay una referencia en otra tabla de</string>
     <string name="llenadoBD">Guardo correctamente</string>
 

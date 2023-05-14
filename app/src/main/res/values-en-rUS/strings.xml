@@ -40,6 +40,7 @@
     <string name="regActualizado">Successfully updated record</string>
     <string name="regNoActualizado">Record was not updated, check your fields</string>
     <string name="regEliminados">Affected rows =</string>
+    <string name="regNoEliminados">FAILED to delete, there is a relationship with </string>
     <string name="referencia">There is a reference in another table of</string>
     <string name="llenadoBD">Saved successfully</string>
 
