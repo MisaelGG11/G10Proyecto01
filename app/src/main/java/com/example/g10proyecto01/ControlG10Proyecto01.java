@@ -111,7 +111,7 @@ public class ControlG10Proyecto01 {
     }
 
     public String actualizar(Grupo grupo) {
-        if (verificarIntegridad(grupo, 666)) {
+        if (verificarIntegridad(grupo, 11)) {
             String[] id = {String.valueOf(grupo.getId_grupo())};
             ContentValues cv = new ContentValues();
             cv.put("id_oferta_a", grupo.getId_oferta_a());
@@ -129,7 +129,7 @@ public class ControlG10Proyecto01 {
     public String eliminar(Grupo grupo) {
         String regAfectados = "Fila afectada #";
         int contador = 0;
-        if (verificarIntegridad(grupo, 666)) {
+        if (verificarIntegridad(grupo, 11)) {
             contador += db.delete("Grupo_Horario", "id_grupo='" + grupo.getId_grupo() + "'", null);
         }
         contador += db.delete("Grupo", "id_grupo='" + grupo.getId_grupo() + "'", null);
@@ -156,11 +156,34 @@ public class ControlG10Proyecto01 {
 
     /******************************************** Tabla Horario ********************************************/
     public String insertar(Horario horario) {
-        return null;
+        String regInsertados = "Registro insertado # ";
+        long contador = 0;
+        ContentValues horar = new ContentValues();
+        horar.put("id_horario", horario.getId_horario());
+        horar.put("id_evento", horario.getId_evento());
+        horar.put("hora_inicio", horario.getHora_inicio());
+        horar.put("hora_finalizacion", horario.getHora_finalizacion());
+        contador = db.insert("horario", null, horar);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al insertar el registro: Registro duplicado, verifique la inserción.";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
     }
 
     public String actualizar(Horario horario) {
-        return null;
+        if (verificarIntegridad(horario, 12)) {
+            String[] id = {String.valueOf(horario.getId_horario())};
+            ContentValues cv = new ContentValues();
+            cv.put("id_evento", horario.getId_evento());
+            cv.put("hora_inicio", horario.getHora_inicio());
+            cv.put("hora_finalizacion", horario.getHora_finalizacion());
+            db.update("horario", cv, "id_horario = ?", id);
+            return "Registro actualizado correctamente";
+        } else {
+            return "Registro con ID " + horario.getId_horario() + " no existe.";
+        }
     }
 
     public String eliminar(Horario horario) {
@@ -1336,7 +1359,7 @@ public class ControlG10Proyecto01 {
                 else
                     return true;
             }
-            case 666: {
+            case 11: {
                 //Verificar que exista grupo
                 Grupo grupo2 = (Grupo) dato;
                 String[] id = {String.valueOf(grupo2.getId_grupo())};
@@ -1344,6 +1367,32 @@ public class ControlG10Proyecto01 {
                 Cursor c2 = db.query("Grupo", null, "id_grupo = ?", id, null, null, null);
                 if (c2.moveToFirst()) {
                     //Se encontro Grupo
+                    return true;
+                }
+                return false;
+            }
+
+            case 12: {
+                //Verificar que exista horario
+                Horario horario2 = (Horario) dato;
+                String[] id = {String.valueOf(horario2.getId_horario())};
+                abrir();
+                Cursor c2 = db.query("Horario", null, "id_horario = ?", id, null, null, null);
+                if (c2.moveToFirst()) {
+                    //Se encontro Horario
+                    return true;
+                }
+                return false;
+            }
+
+            case 13: {
+                //Verificar que exista grupo horario
+                GrupoHorario grupohorario2 = (GrupoHorario) dato;
+                String[] id = {String.valueOf(grupohorario2.getId_gh())};
+                abrir();
+                Cursor c2 = db.query("GrupoHorario", null, "id_gh = ?", id, null, null, null);
+                if (c2.moveToFirst()) {
+                    //Se encontró Grupo Horario
                     return true;
                 }
                 return false;
