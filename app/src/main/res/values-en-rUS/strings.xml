@@ -124,7 +124,7 @@
     <string name="txtEstadoPropuestaEspecifica">Status:</string>
     <string name="txtIdPropuestaEspecifica">Id specific proposal:</string>
     <string name="txtLocalidadPropuestaEspecifica">Location:</string>
-
+    <string name="alertNoData">You must fill in a field to update</string>
 
 
     <!--EscuelaActivity-->
