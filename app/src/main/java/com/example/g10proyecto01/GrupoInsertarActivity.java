@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 public class GrupoInsertarActivity extends Activity {
     ControlG10Proyecto01 helper;
     EditText editidgrupo;
@@ -32,16 +33,21 @@ public class GrupoInsertarActivity extends Activity {
         String cupo = editcupo.getText().toString();
         String tipogrupo = edittipogrupo.getText().toString();
         String regInsertados;
-        Grupo grupo = new Grupo();
-        grupo.setId_grupo(Integer.valueOf(idgrupo));
-        grupo.setId_oferta_a(Integer.valueOf(idoferta));
-        grupo.setNum_grupo(Integer.valueOf(numgrupo));
-        grupo.setCupo(Integer.valueOf(cupo));
-        grupo.setTipo_grupo(tipogrupo);
-        helper.abrir();
-        regInsertados = helper.insertar(grupo);
-        helper.cerrar();
-        Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+
+        if (idgrupo.isEmpty()||idoferta.isEmpty()||numgrupo.isEmpty()||cupo.isEmpty()||tipogrupo.isEmpty()) {
+            Toast.makeText(com.example.g10proyecto01.GrupoInsertarActivity.this, "Ingresar datos obligatorios", Toast.LENGTH_SHORT).show();
+        } else {
+            Grupo grupo = new Grupo();
+            grupo.setId_grupo(Integer.valueOf(idgrupo));
+            grupo.setId_oferta_a(Integer.valueOf(idoferta));
+            grupo.setNum_grupo(Integer.valueOf(numgrupo));
+            grupo.setCupo(Integer.valueOf(cupo));
+            grupo.setTipo_grupo(tipogrupo);
+            helper.abrir();
+            regInsertados = helper.insertar(grupo);
+            helper.cerrar();
+            Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void limpiarTexto(View v) {
