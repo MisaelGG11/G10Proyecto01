@@ -53,7 +53,8 @@ public class PropuestaGeneralActualizarActivity extends Activity {
     }
 
     public void llenarSpinnerEstado(){
-        String[] opcionesEstado = {"Aprobada", "Denegada","Parcialmente Aprobada"};
+
+        String[] opcionesEstado = {getResources().getString(R.string.estadoAprobado), getResources().getString(R.string.estadoDenegado),getResources().getString(R.string.estadoParcialmente),getResources().getString(R.string.estadoRevision)};
         for (int i = 0; i < opcionesEstado.length; i++) {
             opcSpinEstado.add(opcionesEstado[i]);
         }

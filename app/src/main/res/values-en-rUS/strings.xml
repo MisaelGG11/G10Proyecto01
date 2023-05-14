@@ -133,6 +133,11 @@
 
     <!--PropuestaGeneralActivity-->
     <string name="txtSelectPropuestaEscifica">Propuestas Especificas</string>
+    <string name="estadoAprobado">Approved</string>
+    <string name="estadoDenegado">Denied</string>
+    <string name="estadoRevision">Revision</string>
+    <string name="estadoParcialmente">Partially Approved</string>
+    <string name="btnCrear">Create</string>
 
 
     <string name="labelCrudPropositoEspcificico">CRUD General Proporsal Table</string>

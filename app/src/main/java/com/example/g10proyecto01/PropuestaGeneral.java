@@ -13,6 +13,10 @@ public class PropuestaGeneral {
         this.estado_propuesta = estado_propuesta;
     }
 
+    public PropuestaGeneral(String estado_propuesta) {
+        this.estado_propuesta = estado_propuesta;
+    }
+
     public int getId_propuesta() {
         return id_propuesta;
     }

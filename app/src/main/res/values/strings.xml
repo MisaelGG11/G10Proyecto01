@@ -134,6 +134,11 @@
 
     <!--PropuestaGeneralActivity-->
     <string name="txtSelectPropuestaEscifica">Propuestas Especificas</string>
+    <string name="estadoAprobado">Aprobado</string>
+    <string name="estadoDenegado">Denegado</string>
+    <string name="estadoRevision">Revision</string>
+    <string name="estadoParcialmente">Parcialmente Aprobada</string>
+    <string name="btnCrear">Crear</string>
 
 
     <!--GrupoActivity-->
