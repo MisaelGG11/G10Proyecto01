@@ -56,6 +56,17 @@
 
     <TableRow>
 
+        <TextView android:text="Dia:" />
+
+        <EditText
+            android:id="@+id/editdia"
+            android:inputType="text"
+            android:maxLength="10"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </TableRow>
+
+    <TableRow>
+
         <Button
             android:layout_width="173dp"
             android:onClick="insertarHorario"
