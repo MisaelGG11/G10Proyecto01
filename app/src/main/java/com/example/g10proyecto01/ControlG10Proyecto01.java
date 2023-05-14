@@ -187,31 +187,84 @@ public class ControlG10Proyecto01 {
     }
 
     public String eliminar(Horario horario) {
-        return null;
+        String regAfectados = "Fila afectada #";
+        int contador = 0;
+        if (verificarIntegridad(horario, 12)) {
+            contador += db.delete("Grupo_Horario", "id_horario='" + horario.getId_horario() + "'", null);
+        }
+        contador += db.delete("Horario", "id_horario='" + horario.getId_horario() + "'", null);
+        regAfectados += contador;
+        return regAfectados;
     }
 
     //db.execSQL("CREATE TABLE Horario(id_horario INTEGER NOT NULL PRIMARY KEY, id_evento INTEGER NOT NULL, hora_inicio TIMESTAMP NOT NULL, hora_finalizacion TIMESTAMP NOT NULL);");
 
-    public Grupo consultarHorario(int id_horario, int id_evento, String hora_inicio, String hora_finalizacion) {
-        return null;
+    public Horario consultarHorario(String id_horario) {
+        String[] id = {id_horario};
+        Cursor cursor = db.query("horario", camposHorario, "id_horario = ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+            Horario horario = new Horario();
+            horario.setId_horario(cursor.getInt(0));
+            horario.setId_evento(cursor.getInt(1));
+            horario.setHora_inicio(cursor.getString(2));
+            horario.setHora_finalizacion(cursor.getString(3));
+            return horario;
+        } else {
+            return null;
+        }
     }
 
     /******************************************** Tabla Grupo Horario ********************************************/
     public String insertar(GrupoHorario grupohorario) {
-        return null;
+        String regInsertados = "Registro insertado # ";
+        long contador = 0;
+        ContentValues grupohorar = new ContentValues();
+        grupohorar.put("id_gh", grupohorario.getId_gh());
+        grupohorar.put("id_horario", grupohorario.getId_horario());
+        grupohorar.put("id_grupo", grupohorario.getId_grupo());
+        contador = db.insert("grupohorario", null, grupohorar);
+        if (contador == -1 || contador == 0) {
+            regInsertados = "Error al insertar el registro: Registro duplicado, verifique la inserción.";
+        } else {
+            regInsertados = regInsertados + contador;
+        }
+        return regInsertados;
     }
 
     public String actualizar(GrupoHorario grupohorario) {
-        return null;
+        if (verificarIntegridad(grupohorario, 13)) {
+            String[] id = {String.valueOf(grupohorario.getId_gh())};
+            ContentValues cv = new ContentValues();
+            cv.put("id_horario", grupohorario.getId_horario());
+            cv.put("id_grupo", grupohorario.getId_grupo());
+            db.update("grupohorario", cv, "id_gh = ?", id);
+            return "Registro actualizado correctamente";
+        } else {
+            return "Registro con ID " + grupohorario.getId_gh() + " no existe.";
+        }
     }
 
     public String eliminar(GrupoHorario grupohorario) {
-        return null;
+        String regAfectados = "Fila afectada #";
+        int contador = 0;
+        contador += db.delete("GrupoHorario", "id_gh='" + grupohorario.getId_gh() + "'", null);
+        regAfectados += contador;
+        return regAfectados;
     }
 
     //db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER NOT NULL PRIMARY KEY, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL);");
-    public Grupo consultarGrupoHorario(int id_gh, int id_horario, int num_grupo, int id_grupo) {
-        return null;
+    public GrupoHorario consultarGrupoHorario(String id_gh) {
+        String[] id = {id_gh};
+        Cursor cursor = db.query("grupohorario", camposGrupoHorario, "id_gh = ?", id, null, null, null);
+        if (cursor.moveToFirst()) {
+            GrupoHorario grupohorario = new GrupoHorario();
+            grupohorario.setId_gh(cursor.getInt(0));
+            grupohorario.setId_horario(cursor.getInt(1));
+            grupohorario.setId_grupo(cursor.getInt(2));
+            return grupohorario;
+        } else {
+            return null;
+        }
     }
 
 
