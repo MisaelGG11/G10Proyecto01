@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,25 +17,17 @@ public class PropuestaEspecificaActualizarActivity extends Activity {
     ControlG10Proyecto01 helper;
     Spinner spinIdPropuestaEspecifica;
     List<Integer> opcSpiIdPropuestaEspecifica = new ArrayList<>();
-    Spinner spinIdPropuestaGeneral;
-    List<Integer> opcSpiIdPropuestaGeneral = new ArrayList<>();
     Spinner spinEstadoPropuesta;
-    Spinner spinHorarioSpinner;
-    Spinner spinLocalidad;
+    List<String> opcSpinEstado = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_propuesta_especifica_actualizar);
         helper = new ControlG10Proyecto01(this);
         spinIdPropuestaEspecifica = findViewById(R.id.spinActualizarIdPropuestaEspecifica);
-        spinIdPropuestaGeneral = findViewById(R.id.spinActualizarGeneralPropuestaEspecifica);
         spinEstadoPropuesta = findViewById(R.id.spinActualizarEstadoPropuestaEspecifica);
-        spinHorarioSpinner = findViewById(R.id.spinActualizarHorarioPropuestaEspecifica);
-        spinLocalidad = findViewById(R.id.spinActualizarLocalidadPropuestaEspecifica);
         llenarSpinnerIdPropuestaEspecifica();
-        llenarSpinnerIdPropuestaGeneral();
-
-
+        llenarSpinnerEstado();
     }
     public void llenarSpinnerIdPropuestaEspecifica(){
         String query = "SELECT id_especifica FROM Propuesta_Especifica";
@@ -46,16 +41,23 @@ public class PropuestaEspecificaActualizarActivity extends Activity {
         adapterOpcionesSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinIdPropuestaEspecifica.setAdapter(adapterOpcionesSpinner);
     }
-    public void llenarSpinnerIdPropuestaGeneral(){
-        String query = "SELECT id_propuesta FROM Propuesta_General";
-        Cursor cursor = helper.llenarSpinner(query);
-        while(cursor.moveToNext()){
-            @SuppressLint("Range")
-            int idPropuesta = cursor.getInt(cursor.getColumnIndex("id_propuesta"));
-            opcSpiIdPropuestaGeneral.add(idPropuesta);
+    public void llenarSpinnerEstado(){
+        String[] opcionesEstado = {"Aprobada", "Denegada","Pendiente"};
+        for (int i = 0; i < opcionesEstado.length; i++) {
+            opcSpinEstado.add(opcionesEstado[i]);
         }
-        ArrayAdapter<Integer> adapterOpcionesSpinner = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, opcSpiIdPropuestaGeneral);
+        ArrayAdapter<String> adapterOpcionesSpinner = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, opcSpinEstado);
         adapterOpcionesSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinIdPropuestaGeneral.setAdapter(adapterOpcionesSpinner);
+        spinEstadoPropuesta.setAdapter(adapterOpcionesSpinner);
+    }
+
+    public void ActualizarPropuestaEspecifica(View v){
+        int id = Integer.parseInt(spinIdPropuestaEspecifica.getSelectedItem().toString());
+        String estadoPropuesta = spinEstadoPropuesta.getSelectedItem().toString().substring(0,1);
+        PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(id,estadoPropuesta);
+        helper.abrir();
+        String estado = helper.actualizar(propuestaEspecifica);
+        helper.cerrar();
+        Toast.makeText(this,estado,Toast.LENGTH_LONG).show();
     }
 }

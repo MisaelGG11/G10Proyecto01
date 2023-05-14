@@ -18,33 +18,9 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txtPropuetaGeneralPropuestaEspecifica" />
-    <Spinner
-        android:id="@+id/spinActualizarGeneralPropuestaEspecifica"
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/txtEstadoPropuestaEspecifica" />
     <Spinner
         android:id="@+id/spinActualizarEstadoPropuestaEspecifica"
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtHorarioPropuestaEspecifica" />
-    <Spinner
-        android:id="@+id/spinActualizarHorarioPropuestaEspecifica"
-        android:layout_width="match_parent"
-        android:layout_height="48dp" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txtLocalidadPropuestaEspecifica" />
-    <Spinner
-        android:id="@+id/spinActualizarLocalidadPropuestaEspecifica"
         android:layout_width="match_parent"
         android:layout_height="48dp" />
     <LinearLayout

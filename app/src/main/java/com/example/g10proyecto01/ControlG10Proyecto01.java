@@ -169,6 +169,16 @@ public class ControlG10Proyecto01 {
         db.update("Usuario",contentValues,"id_usuario = ?", id);
         return "Registro Actualizado Correctamente";
     }
+
+    public String eliminar(Usuario usuario){
+        String[] id = {usuario.getId_usuario()};
+        String regAfectados=context.getResources().getString(R.string.regEliminados);
+        int contador=0;
+        contador += DBHelper.getWritableDatabase().delete("Usuario","id_usuario=?",id);
+        regAfectados+=contador;
+        return regAfectados;
+
+    }
     /******************************************** Tabla AccesoUsuario ********************************************/
     // CAMPOS: {"id_acceso", "id_usuario","id_opcion_crud"}
 
@@ -894,6 +904,11 @@ public class ControlG10Proyecto01 {
         return horario;
     }
 
+    public Cursor opcioneSpinnerGrupoHorario(String sqlQuery){
+        Cursor cursor = DBHelper.getReadableDatabase().rawQuery(sqlQuery,null);
+        return cursor;
+    }
+
     public PropuestaEspecifica consultarPropuestaEspecifica(String idPropuesta){
         String[] id = {idPropuesta};
         Cursor cursor = db.query("Propuesta_Especifica", camposPropuestaEspecifica, "id_especifica = ?", id, null, null, null);
@@ -903,6 +918,24 @@ public class ControlG10Proyecto01 {
         }else{
             return null;
         }
+    }
+    public String actualizar(PropuestaEspecifica propuestaEspecifica){
+        String[] id = {String.valueOf(propuestaEspecifica.getId_especifica())};
+        ContentValues cv = new ContentValues();
+        cv.put("estado_especifica",propuestaEspecifica.getEstado_especifica());
+
+        db.update("Propuesta_Especifica",cv,"id_especifica = ?", id);
+        return context.getResources().getString(R.string.regActualizado);
+    }
+
+    public String eliminar(PropuestaEspecifica propuestaEspecifica){
+        String[] id = {String.valueOf(propuestaEspecifica.getId_especifica())};
+        String regAfectados=context.getResources().getString(R.string.regEliminados);
+        int contador=0;
+        contador += DBHelper.getWritableDatabase().delete("Propuesta_Especifica","id_especifica=?",id);
+        regAfectados+=contador;
+        return regAfectados;
+
     }
     /*********************************** Tabla GrupoHorario ***********************************/
     //CAMPOS: "id_propuesta", "estado_propuesta"

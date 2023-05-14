@@ -7,7 +7,16 @@ public class PropuestaEspecifica {
     private int id_localidad;
     private  String estado_especifica;
 
-    public PropuestaEspecifica( int id_propuesta_general, int id_grupo_horario, int id_localidad) {
+    public PropuestaEspecifica(int id_especifica) {
+        this.id_especifica = id_especifica;
+    }
+
+    public PropuestaEspecifica(int id_especifica, String estado_especifica) {
+        this.id_especifica = id_especifica;
+        this.estado_especifica = estado_especifica;
+    }
+
+    public PropuestaEspecifica(int id_propuesta_general, int id_grupo_horario, int id_localidad) {
         this.id_propuesta_general = id_propuesta_general;
         this.id_grupo_horario = id_grupo_horario;
         this.id_localidad = id_localidad;

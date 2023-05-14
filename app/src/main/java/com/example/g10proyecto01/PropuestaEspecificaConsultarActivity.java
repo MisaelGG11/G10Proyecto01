@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -56,13 +57,15 @@ public class PropuestaEspecificaConsultarActivity extends Activity {
         editPropuestaGeneral.setText(String.valueOf(propuestaEspecifica.getId_propuesta_general()));
         editGrupoHorario.setText(horario);
         editLocalidad.setText(String.valueOf(localidad.getNombre_localidad()));
-        String estadoPropuesta = propuestaEspecifica.getEstado_especifica();
-        if(estadoPropuesta == "D"){
+
+        String estadoPropuesta = propuestaEspecifica.getEstado_especifica().substring(0,1);
+        Log.wtf("Test",estadoPropuesta);
+        if(estadoPropuesta.equals("D")){
             editEstadoPropuesta.setText("Denegada");
-        } else if (estadoPropuesta == "A") {
-            editEstadoPropuesta.setText("Aprobada");
-        }else {
+        } else if (estadoPropuesta.equals("P")) {
             editEstadoPropuesta.setText("Pendiente");
+        }else {
+            editEstadoPropuesta.setText("Aprobada");
         }
     }
 
