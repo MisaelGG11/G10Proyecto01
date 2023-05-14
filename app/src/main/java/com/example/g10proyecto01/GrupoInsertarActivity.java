@@ -20,7 +20,7 @@ public class GrupoInsertarActivity extends Activity {
         helper = new ControlG10Proyecto01(this);
         editidgrupo = (EditText) findViewById(R.id.editidgh4);
         editidoferta = (EditText) findViewById(R.id.editidhorario3);
-        editnumgrupo = (EditText) findViewById(R.id.editidgrupo);
+        editnumgrupo = (EditText) findViewById(R.id.edithorafin4);
         editcupo = (EditText) findViewById(R.id.edithorafin3);
         edittipogrupo = (EditText) findViewById(R.id.edittipogrupo);
     }

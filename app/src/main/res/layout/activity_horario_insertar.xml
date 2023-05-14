@@ -37,7 +37,7 @@
             android:text="@string/horainicio" />
 
         <EditText
-            android:id="@+id/editidgrupo"
+            android:id="@+id/edithorafin4"
             android:inputType="text"
             android:maxLength="30"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
