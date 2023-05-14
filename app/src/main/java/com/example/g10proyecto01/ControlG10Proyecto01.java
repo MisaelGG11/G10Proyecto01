@@ -278,7 +278,7 @@ public class ControlG10Proyecto01 {
         long contador = 0;
         ContentValues user = new ContentValues();
         user.put("id_usuario", usuario.getId_usuario());
-        user.put("nombre_usuario", usuario.getNom_usuario());
+        user.put("nom_usuario", usuario.getNom_usuario());
         user.put("clave", usuario.getClave());
         contador = db.insert("Usuario", null, user);
         if (contador == -1 || contador == 0) {
