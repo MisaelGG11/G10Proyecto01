@@ -18,10 +18,10 @@ public class GrupoInsertarActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grupo_insertar);
         helper = new ControlG10Proyecto01(this);
-        editidgrupo = (EditText) findViewById(R.id.editidgrupo);
-        editidoferta = (EditText) findViewById(R.id.editidoferta);
-        editnumgrupo = (EditText) findViewById(R.id.editnumgrupo);
-        editcupo = (EditText) findViewById(R.id.editcupo);
+        editidgrupo = (EditText) findViewById(R.id.editidgh4);
+        editidoferta = (EditText) findViewById(R.id.editidhorario3);
+        editnumgrupo = (EditText) findViewById(R.id.editidgrupo);
+        editcupo = (EditText) findViewById(R.id.edithorafin3);
         edittipogrupo = (EditText) findViewById(R.id.edittipogrupo);
     }
 

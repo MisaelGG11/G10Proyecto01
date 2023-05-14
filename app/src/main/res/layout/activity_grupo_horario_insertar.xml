@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="30dip"
+    android:stretchColumns="1">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:text="@string/idgh" />
+
+        <EditText
+            android:id="@+id/editidgh4"
+            android:inputType="text"
+            android:maxLength="7"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/idhorario" />
+
+        <EditText
+            android:id="@+id/editidhorario3"
+            android:inputType="text"
+            android:maxLength="30"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView android:text="@string/idgrupo" />
+
+        <EditText
+            android:id="@+id/editidgrupo"
+            android:inputType="text"
+            android:maxLength="30"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+    </TableRow>
+
+
+    <TableRow>
+
+        <Button
+            android:layout_width="173dp"
+            android:onClick="insertarGrupoHorario"
+            android:text="@string/insertar" />
+
+        <Button
+            android:onClick="limpiarTexto"
+            android:text="@string/limpiar" />
+    </TableRow>
+</TableLayout>

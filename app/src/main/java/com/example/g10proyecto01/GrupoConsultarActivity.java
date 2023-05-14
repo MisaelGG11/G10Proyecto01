@@ -22,10 +22,10 @@ public class GrupoConsultarActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_grupo_consultar);
         helper = new ControlG10Proyecto01(this);
-        editidgrupo2 = (EditText) findViewById(R.id.editidgrupo2);
-        editofertaa = (EditText) findViewById(R.id.editofertaa);
-        editnumgrup = (EditText) findViewById(R.id.editnumgrup);
-        edittipogrupo2 = (EditText) findViewById(R.id.edittipogrupo2);
+        editidgrupo2 = (EditText) findViewById(R.id.editidgh2);
+        editofertaa = (EditText) findViewById(R.id.editidhorario6);
+        editnumgrup = (EditText) findViewById(R.id.editidgrupo6);
+        edittipogrupo2 = (EditText) findViewById(R.id.edithorafin2);
         editcupo2 = (EditText) findViewById(R.id.editcupo2);
     }
 
