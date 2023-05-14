@@ -165,6 +165,7 @@ public class ControlG10Proyecto01 {
         horar.put("id_evento", horario.getId_evento());
         horar.put("hora_inicio", horario.getHora_inicio().toString());
         horar.put("hora_finalizacion", horario.getHora_finalizacion().toString());
+        horar.put("dia", horario.getDia());
         contador = db.insert("Horario", null, horar);
         if (contador == -1 || contador == 0) {
             regInsertados = "Error al insertar el registro: Registro duplicado, verifique la inserción.";
@@ -181,6 +182,7 @@ public class ControlG10Proyecto01 {
             cv.put("id_evento", horario.getId_evento());
             cv.put("hora_inicio", horario.getHora_inicio().toString());
             cv.put("hora_finalizacion", horario.getHora_finalizacion().toString());
+            cv.put("dia", horario.getDia());
             db.update("horario", cv, "id_horario = ?", id);
             return "Registro actualizado correctamente";
         } else {
@@ -210,6 +212,7 @@ public class ControlG10Proyecto01 {
             horario.setId_evento(cursor.getInt(1));
             horario.setHora_inicio(new Timestamp(cursor.getLong(2)));
             horario.setHora_finalizacion(new Timestamp(cursor.getLong(3)));
+            horario.setDia(String.valueOf(cursor.getInt(4)));
             return horario;
         } else {
             return null;
@@ -1696,6 +1699,81 @@ public class ControlG10Proyecto01 {
                     return true;
             }
 
+            case 18: {
+                //VERIFICA QUE NO SE ELIMINE UN GRUPO MIENTRA EXISTA UNA REFERENCIA DE EL EN LA TABLA GRUPOHORARIO
+                Grupo grupo = (Grupo) dato;
+                Cursor cursor = db.query(true, "Grupo_Horario", new String[]{"id_grupo"}, "id_grupo ='" + grupo.getId_grupo() + "'", null, null, null, null, null);
+                if (cursor.moveToFirst())
+                    return false;
+                else
+                    return true;
+            }
+            case 19: {
+                //VERIFICA QUE NO SE ELIMINE UN HORARIO MIENTRA EXISTA UNA REFERENCIA DE EL EN LA TABLA GRUPOHORARIO
+                Horario horario = (Horario) dato;
+                Cursor cursor = db.query(true, "Grupo_Horario", new String[]{"id_horario"}, "id_horario ='" + horario.getId_horario() + "'", null, null, null, null, null);
+                if (cursor.moveToFirst())
+                    return false;
+                else
+                    return true;
+            }
+
+            case 20: {
+                //  VERIFICA QUE EXISTA UN GRUPO AL INSERTAR UN GRUPO HORARIO
+                GrupoHorario grupohorar = (GrupoHorario) dato;
+                String[] idgrupo = {String.valueOf(grupohorar.getId_grupo())};
+
+                Cursor cursorE = db.query("Grupo", null, "id_grupo = ?", idgrupo, null, null, null);
+
+                if (cursorE.moveToFirst()) {
+                    //SE ENCUENTRAN DATOS
+                    return true;
+                }
+                return false;
+            }
+
+            case 21: {
+                //  VERIFICA QUE EXISTA UN HORARIO AL INSERTAR UN GRUPO HORARIO
+                GrupoHorario grupohorar = (GrupoHorario) dato;
+                String[] idhorario = {String.valueOf(grupohorar.getId_horario())};
+
+                Cursor cursorE = db.query("Horario", null, "id_horario = ?", idhorario, null, null, null);
+
+                if (cursorE.moveToFirst()) {
+                    //SE ENCUENTRAN DATOS
+                    return true;
+                }
+                return false;
+            }
+
+            case 22: {
+                //  VERIFICA QUE EXISTA UNA OFERTA ACDÉMICA AL INSERTAR UN GRUPO
+                Grupo grup = (Grupo) dato;
+                String[] id_oferta_a = {String.valueOf(grup.getId_oferta_a())};
+
+                Cursor cursorE = db.query("Oferta_Academica", null, "id_oferta_a = ?", id_oferta_a, null, null, null);
+
+                if (cursorE.moveToFirst()) {
+                    //SE ENCUENTRAN DATOS
+                    return true;
+                }
+                return false;
+            }
+
+            case 23: {
+                //  VERIFICA QUE EXISTA UN EVENTO ESPECIAL AL INSERTAR UN HORARIO
+                //  VERIFICA QUE EXISTA UNA OFERTA ACDÉMICA AL INSERTAR UN GRUPO
+                Horario horar = (Horario) dato;
+                String[] id_evento = {String.valueOf(horar.getId_evento())};
+
+                Cursor cursorE = db.query("Evento_Especial", null, "id_evento = ?", id_evento, null, null, null);
+
+                if (cursorE.moveToFirst()) {
+                    //SE ENCUENTRAN DATOS
+                    return true;
+                }
+                return false;
+            }
             default:
                 return false;
         }
