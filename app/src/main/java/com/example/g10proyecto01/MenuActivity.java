@@ -23,7 +23,6 @@ public class MenuActivity extends AppCompatActivity {
     TextView usuario;
     private ArrayAdapter<String> lvAdpter;
     String user;
-    String userPermisos;
     String[] activities = {"AC17033Activity", "EL19004Activity", "FM19038Activity", "GG20031Activity", "HS19011Activity"};
     ControlG10Proyecto01 helper;
 
@@ -39,7 +38,6 @@ public class MenuActivity extends AppCompatActivity {
 
         helper = new ControlG10Proyecto01(this);
         user = intent.getStringExtra("usuarioLogeado");
-        userPermisos = intent.getStringExtra("usuarioPermisos");
 
         lvAdpter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, menu);
         menuPrincipal = findViewById(R.id.lvMenuPrincipal);
@@ -59,7 +57,6 @@ public class MenuActivity extends AppCompatActivity {
                     try {
                         Class<?> clase = Class.forName("com.example.g10proyecto01." + nombreValue);
                         Intent inte = new Intent(MenuActivity.this, clase);
-                        inte.putExtra("usuarioPermisos", userPermisos);
                         MenuActivity.this.startActivity(inte);
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
@@ -85,16 +82,6 @@ public class MenuActivity extends AppCompatActivity {
         //Toast.makeText(this, "Bienvenido " + userPermisos, Toast.LENGTH_LONG).show();
     }
     public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("¿Desea salir de su sesión")
-                .setMessage("Presione \"Aceptar\" para salir o \"Cancelar\" para continuar.")
-                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                })
-                .setNegativeButton("Cancelar", null)
-                .show();
+        finish();
     }
 }

@@ -6,4 +6,57 @@
     android:layout_height="match_parent"
     tools:context=".LocalAdministradoEliminarActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayoutce1"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dip"
+            android:text="@string/txtViewIdLocalAdmin" />
+
+        <Spinner
+            android:id="@+id/spinIdLocalA"
+            android:layout_width="197dp"
+            android:layout_height="34dp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayoutce2"
+        android:layout_width="152dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayoutce1"
+        app:layout_constraintVertical_bias="0.105">
+
+        <Button
+            android:id="@+id/btnEliminarLocal"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/botones"
+            android:onClick="eliminarLocaladmin"
+            android:text="@string/eliminar"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

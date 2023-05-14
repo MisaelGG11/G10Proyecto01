@@ -14,7 +14,7 @@
         android:layout_marginTop="80dp"
         android:ems="10"
         android:hint="@string/txtViewidTipoEventoEspecial"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:maxLength="4"
         android:textAlignment="center"
         android:textSize="18dp"
@@ -40,8 +40,8 @@
         app:layout_constraintTop_toBottomOf="@+id/editidtipodeevento" />
 
     <LinearLayout
-        android:layout_width="264dp"
-        android:layout_height="53dp"
+        android:layout_width="283dp"
+        android:layout_height="57dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="56dp"
         android:orientation="horizontal"
@@ -54,23 +54,25 @@
 
         <Button
             android:id="@+id/btnInsertarLocal"
-            android:layout_width="120dp"
-            android:layout_height="45dp"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
             android:layout_gravity="left"
             android:layout_marginRight="20dp"
-            android:background="@color/botones"
+            android:backgroundTint="@color/botonI"
             android:onClick="insertarTipoEvento"
             android:text="@string/insertar"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
         <Button
             android:id="@+id/btnLimpiarInsertarLocal"
-            android:layout_width="120dp"
-            android:layout_height="45dp"
-            android:background="@color/botones"
+            android:layout_width="130dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/botonL"
             android:onClick="limpiarTextoTE"
             android:text="@string/limpiar"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
     </LinearLayout>
 
 

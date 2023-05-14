@@ -8,6 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="botones">#E84D5B</color>
+    <color name="botonA">#2c9fa3</color>
+    <color name="botonL">#D5D7D6</color>
+    <color name="botonI">#0a996f</color>
+    <color name="botonC">#00b4fc</color>
     <color name="menu">#eae2cf</color>
     <color name="color1">#B4CCB9</color>
     <color name="color2">#26979F</color>

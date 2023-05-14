@@ -17,7 +17,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.0"
+        android:enabled ="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:longClickable="false">
 
         <TextView
             android:layout_width="wrap_content"
@@ -47,24 +52,24 @@
 
         <Button
             android:id="@+id/btnConsultarLocal"
-            android:layout_width="140dp"
-            android:layout_height="40dp"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
             android:layout_marginRight="20dp"
-            android:background="@color/botones"
+            android:backgroundTint="@color/botonC"
             android:onClick="consultarLocal"
             android:text="@string/consultar"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
         <Button
             android:id="@+id/btnLimpiarLocal"
-            android:layout_width="163dp"
-            android:layout_height="40dp"
-            android:background="@color/botones"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:backgroundTint="@color/botonL"
             android:onClick="limpiarTextoLoc"
             android:text="@string/limpiar"
-            android:textColor="@color/white"
-            android:textSize="16dp" />
+            android:textColor="@color/black"
+            android:textSize="17dp" />
     </LinearLayout>
 
     <TextView
@@ -87,7 +92,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:enabled ="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:longClickable="false"/>
 
 
     <TextView
@@ -110,6 +120,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:textAlignment="center"
+        android:enabled ="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:longClickable="false"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <TextView
@@ -123,7 +138,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNomLoc" />
+        app:layout_constraintTop_toBottomOf="@+id/editNomLoc"
+        />
 
     <EditText
         android:id="@+id/editCupoLo"
@@ -136,6 +152,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         app:layout_constraintVertical_bias="0.0"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:enabled ="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:cursorVisible="false"
+        android:longClickable="false"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -42,34 +42,39 @@ public class EmpleadoUESEliminarActivity extends Activity {
     }
 
     public void eliminarEmpleadoUES(View v){
-        AlertDialog.Builder alerta = new AlertDialog.Builder(EmpleadoUESEliminarActivity.this);
-        alerta.setCancelable(false);
+        if (listIdEmpleado.size() == 0){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            AlertDialog.Builder alerta = new AlertDialog.Builder(EmpleadoUESEliminarActivity.this);
+            alerta.setCancelable(false);
 
-        int idEmpleado;
-        idEmpleado =listIdEmpleado.get(spinnerIdEmpleado.getSelectedItemPosition());
+            int idEmpleado;
+            idEmpleado =listIdEmpleado.get(spinnerIdEmpleado.getSelectedItemPosition());
 
-        alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
-        alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //ACCIONES SI RESPONDE QUE SI A LA ALERTA
-                String regEliminadas;
-                EmpleadoUES empleadoUES = new EmpleadoUES();
-                empleadoUES.setId_empleado(idEmpleado);
-                helper.abrir();
-                regEliminadas=helper.eliminar(empleadoUES);
-                helper.cerrar();
-                Toast.makeText(EmpleadoUESEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
-            }
-        });
-        alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //ACCIONES SI PONE NO
-                dialog.cancel();
-            }
-        });
-        //MUESTRA ALERTA PARA EVENTO ONCLICK DEL BOTON
-        alerta.show();
+            alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
+            alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //ACCIONES SI RESPONDE QUE SI A LA ALERTA
+                    String regEliminadas;
+                    EmpleadoUES empleadoUES = new EmpleadoUES();
+                    empleadoUES.setId_empleado(idEmpleado);
+                    helper.abrir();
+                    regEliminadas=helper.eliminar(empleadoUES);
+                    helper.cerrar();
+                    Toast.makeText(EmpleadoUESEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
+                }
+            });
+            alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //ACCIONES SI PONE NO
+                    dialog.cancel();
+                }
+            });
+            //MUESTRA ALERTA PARA EVENTO ONCLICK DEL BOTON
+            alerta.show();
+        }
     }
 }

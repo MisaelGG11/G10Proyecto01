@@ -8,11 +8,11 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 public class EL19004Activity extends ListActivity {
-
     String[] activities={"GrupoMenuActivity","GrupoHorarioMenuActivity","HorarioMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         String[] menu={ getResources().getString(R.string.tablaGrupo),
                 getResources().getString(R.string.tablaGrupoHorario),
                 getResources().getString(R.string.tablaHorario)};

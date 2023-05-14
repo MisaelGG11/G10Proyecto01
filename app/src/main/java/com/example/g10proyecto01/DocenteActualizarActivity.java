@@ -60,7 +60,9 @@ public class DocenteActualizarActivity extends Activity {
         spinnerIdDocente.setAdapter(adapter2);
     }
     public void actualizarDocente(View v) {
-        if(editNip.getText().toString().isEmpty() || editCategoria.getText().toString().isEmpty()){
+        if(editNip.getText().toString().isEmpty() ||
+            editCategoria.getText().toString().isEmpty() ||
+            listIdEmp.size() == 0 || listIdDocente.size() == 0){
             Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
         }
         else {

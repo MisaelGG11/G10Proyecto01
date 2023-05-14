@@ -48,6 +48,7 @@
     <string name="si">Yes</string>
     <string name="no">No</string>
     <string name="vacio">Fill in all the required fields!</string>
+    <string name="soloNumeros">¡The record id must be a numeric value.!</string>
 
     <!--LoginActivity-->
     <string name="user">User</string>
@@ -81,19 +82,18 @@
     <string name="registro_no_encontrado">Registro no encontrado</string>
 
     <!--Evento Especial Activity-->
-    <string name="txtViewFechaEventoEspecial">Date:</string>
-    <string name="txtViewLocalidadEventoEspecial">Location:</string>
-    <string name="txtViewNombreEventoEspecial">Event Name:</string>
+    <string name="txtidEventoEspecial">Special Event Id:</string>
     <string name="txtViewidTipoEventoEspecial">Type special event Id:</string>
+    <string name="txtViewNombreEventoEspecial">Event Name:</string>
     <string name="txtViewTipoEventoEspecial">Type special event:</string>
-    <string name="txtViewEdificioEventoEspecial">Building:</string>
-    <string-array name="spinnerHorariosEventoEspecial">
-        <item>Horario 1</item>
-        <item>Horario 2</item>
-    </string-array>
+    <string name="txtViewOrganizadorEvento">Event organizer Id:</string>
+    <string name="txtViewLocalidadEventoEspecial">Location Id:</string>
+    <string name="txtViewFechaEventoEspecial">Date:</string>
+    <string name="txtViewHorarioEventoEspecial">Schedule Id:</string>
 
     <!--Localidad Activity-->
     <string name="txtViewIdLocal">Location Id:</string>
+    <string name="txtViewIdLocalAdmin">Managed local id:</string>
     <string name="txtViewNombreLocal">Location name:</string>
     <string name="txtViewCupoLocal">Availability:</string>
     <string name="txtViewEdificio">Building:</string>

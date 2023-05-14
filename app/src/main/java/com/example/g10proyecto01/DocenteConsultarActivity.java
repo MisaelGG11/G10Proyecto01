@@ -47,16 +47,21 @@ public class DocenteConsultarActivity extends Activity {
         spinnerIdDocente.setAdapter(adapter);
     }
     public void consultarDocente(View v) {
-        String idDocente = spinnerIdDocente.getSelectedItem().toString();
-        helper.abrir();
-        Docente docente = helper.consultarDocente(idDocente);
-        helper.cerrar();
-        if(docente == null)
-            Toast.makeText(this, "Registro no encontrado", Toast.LENGTH_LONG).show();
-        else{
-            editIdEmpleado.setText(String.valueOf(docente.getId_empleado()));
-            editNip.setText(String.valueOf(docente.getNip_docente()));
-            editCategoria.setText(docente.getCategoria_docente());
+        if (listIdDocente.size() == 0){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            String idDocente = spinnerIdDocente.getSelectedItem().toString();
+            helper.abrir();
+            Docente docente = helper.consultarDocente(idDocente);
+            helper.cerrar();
+            if(docente == null)
+                Toast.makeText(this, "Registro no encontrado", Toast.LENGTH_LONG).show();
+            else{
+                editIdEmpleado.setText(String.valueOf(docente.getId_empleado()));
+                editNip.setText(String.valueOf(docente.getNip_docente()));
+                editCategoria.setText(docente.getCategoria_docente());
+            }
         }
     }
     public void limpiarTexto(View v) {

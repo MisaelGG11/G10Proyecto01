@@ -49,7 +49,8 @@ public class DocenteInsertarActivity extends Activity {
     public void insertarDocente(View v) {
         if (editIdDocente.getText().toString().isEmpty() ||
             editNip.getText().toString().isEmpty() ||
-            editCategoria.getText().toString().isEmpty()){
+            editCategoria.getText().toString().isEmpty() ||
+            listIdEmp.size() == 0){
             Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
         } else {
             String regInsertados;

@@ -47,6 +47,7 @@
     <string name="si">Sí</string>
     <string name="no">No</string>
     <string name="vacio">¡Llena todos los campos requeridos!</string>
+    <string name="soloNumeros">¡El id del registro debe ser un valor numerico!</string>
 
     <!--LoginActivity-->
     <string name="user">Usuario</string>
@@ -79,19 +80,18 @@
     <string name="descripcionOpcionCrud">Descripción:</string>
 
     <!--Evento Especial Activity-->
-    <string name="txtViewidTipoEventoEspecial">Id Tipo de evento:</string>
-    <string name="txtViewNombreEventoEspecial">Nombre del evento:</string>
+    <string name="txtidEventoEspecial">Id Evento Especial:</string>
+    <string name="txtViewidTipoEventoEspecial">Id Tipo de Evento:</string>
+    <string name="txtViewNombreEventoEspecial">Nombre del Evento:</string>
     <string name="txtViewTipoEventoEspecial">Tipo de evento especial:</string>
-    <string name="txtViewEdificioEventoEspecial">Edificio:</string>
-    <string name="txtViewLocalidadEventoEspecial">Localidad:</string>
+    <string name="txtViewOrganizadorEvento">Id Organizador:</string>
+    <string name="txtViewLocalidadEventoEspecial">Id Localidad:</string>
     <string name="txtViewFechaEventoEspecial">Fecha:</string>
-    <string-array name="spinnerHorariosEventoEspecial">
-        <item>Horario 1</item>
-        <item>Horario 2</item>
-    </string-array>
+    <string name="txtViewHorarioEventoEspecial">Id Horario:</string>
 
-    <!--Localidad Activity-->
+    <!--Localidad y Local Administrado Activity-->
     <string name="txtViewIdLocal">Id Local:</string>
+    <string name="txtViewIdLocalAdmin">Id Local Administrado:</string>
     <string name="txtViewNombreLocal">Localidad:</string>
     <string name="txtViewCupoLocal">Capacidad:</string>
     <string name="txtViewEdificio">Edificio:</string>

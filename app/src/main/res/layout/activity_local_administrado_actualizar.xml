@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".LocalAdministradoActualizarActivity">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingTop="30dip"
+    android:paddingHorizontal="10dip"
+    android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewIdLocalAdmin"/>
+
+    <Spinner
+        android:id="@+id/spinIdLocAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:text="@string/txtViewIdLocal" />
+
+    <Spinner
+        android:id="@+id/spinIdLoc"
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:text="@string/IdEmpleado" />
+    <Spinner
+        android:id="@+id/spinEncargado"
+        android:layout_width="match_parent"
+        android:layout_height="35dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="304dp"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/LocAactualizar"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/botonA"
+            android:onClick="ActualizarLocAdmin"
+            android:text="@string/actualizar"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+    </LinearLayout>
+</LinearLayout>

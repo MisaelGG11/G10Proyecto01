@@ -42,32 +42,37 @@ public class TipoEmpleadoEliminarActivity extends Activity {
     }
 
     public void eliminarTipoEmpleado(View v){
-        AlertDialog.Builder alerta = new AlertDialog.Builder(TipoEmpleadoEliminarActivity.this);
-        alerta.setCancelable(false);
-        alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
-        alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //ACCIONES SI RESPONDE QUE SI A LA ALERTA
-                String regEliminadas;
-                TipoEmpleado tipoEmpleado = new TipoEmpleado();
-                int id_TE;
-                id_TE =ids.get(spinnerIntento.getSelectedItemPosition());
-                tipoEmpleado.setId_tipo_empleado(id_TE);
-                helper.abrir();
-                regEliminadas=helper.eliminar(tipoEmpleado);
-                helper.cerrar();
-                Toast.makeText(TipoEmpleadoEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
-            }
-        });
-        alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                //ACCIONES SI PONE NO
-                dialog.cancel();
-            }
-        });
-        //MUESTRA ALERTA PARA EVENTO ONCLICK DEL BOTON
-        alerta.show();
+        if(ids.size() == 0){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
+        else{
+            AlertDialog.Builder alerta = new AlertDialog.Builder(TipoEmpleadoEliminarActivity.this);
+            alerta.setCancelable(false);
+            alerta.setMessage(getResources().getString(R.string.mensajeAlerta));
+            alerta.setPositiveButton(getResources().getString(R.string.si), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //ACCIONES SI RESPONDE QUE SI A LA ALERTA
+                    String regEliminadas;
+                    TipoEmpleado tipoEmpleado = new TipoEmpleado();
+                    int id_TE;
+                    id_TE =ids.get(spinnerIntento.getSelectedItemPosition());
+                    tipoEmpleado.setId_tipo_empleado(id_TE);
+                    helper.abrir();
+                    regEliminadas=helper.eliminar(tipoEmpleado);
+                    helper.cerrar();
+                    Toast.makeText(TipoEmpleadoEliminarActivity.this, regEliminadas, Toast.LENGTH_SHORT).show();
+                }
+            });
+            alerta.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    //ACCIONES SI PONE NO
+                    dialog.cancel();
+                }
+            });
+            //MUESTRA ALERTA PARA EVENTO ONCLICK DEL BOTON
+            alerta.show();
+        }
     }
 }

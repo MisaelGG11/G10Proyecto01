@@ -49,18 +49,23 @@ public class EmpleadoUESConsultarActivity extends Activity {
         spinnerEmpleado.setAdapter(adapter);
     }
     public void consultarEmpleadoUES(View v) {
-        String idEmpleado = spinnerEmpleado.getSelectedItem().toString();
-        helper.abrir();
-        EmpleadoUES empleado = helper.consultarEmpleadoUES(idEmpleado);
-        helper.cerrar();
-        if(empleado == null)
-            Toast.makeText(this, "Registro no encontrado", Toast.LENGTH_LONG).show();
+        if (idEmp.size() == 0){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        }
         else{
-            editIdTipoEmpleado.setText(String.valueOf(empleado.getId_tipo_empleado()));
-            editNombre.setText(empleado.getNombre_empleado());
-            editApellido.setText(empleado.getApellido_empleado());
-            editCorreo.setText(empleado.getEmail_empleado());
-            editTelefono.setText(String.valueOf(empleado.getTelefono_empleado()));
+            String idEmpleado = spinnerEmpleado.getSelectedItem().toString();
+            helper.abrir();
+            EmpleadoUES empleado = helper.consultarEmpleadoUES(idEmpleado);
+            helper.cerrar();
+            if(empleado == null)
+                Toast.makeText(this, "Registro no encontrado", Toast.LENGTH_LONG).show();
+            else{
+                editIdTipoEmpleado.setText(String.valueOf(empleado.getId_tipo_empleado()));
+                editNombre.setText(empleado.getNombre_empleado());
+                editApellido.setText(empleado.getApellido_empleado());
+                editCorreo.setText(empleado.getEmail_empleado());
+                editTelefono.setText(String.valueOf(empleado.getTelefono_empleado()));
+            }
         }
     }
     public void limpiarTexto(View v) {

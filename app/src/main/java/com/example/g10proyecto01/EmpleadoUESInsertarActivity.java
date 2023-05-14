@@ -53,7 +53,8 @@ public class EmpleadoUESInsertarActivity extends Activity {
             editNombre.getText().toString().isEmpty() ||
             editApellido.getText().toString().isEmpty() ||
             editCorreo.getText().toString().isEmpty() ||
-            editTelefono.getText().toString().isEmpty()){
+            editTelefono.getText().toString().isEmpty() ||
+            idTipoEmp.size() == 0){
             Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
         }
         else {
