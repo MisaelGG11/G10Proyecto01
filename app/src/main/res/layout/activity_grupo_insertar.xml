@@ -23,10 +23,10 @@
 
         <TextView android:text="@string/idoferta" />
 
-        <EditText
-            android:id="@+id/editidhorario3"
+        <Spinner
+            android:id="@+id/SpinnerOferta"
+            android:layout_height="35dp"
             android:inputType="text"
-            android:maxLength="30"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </TableRow>
 
@@ -48,7 +48,7 @@
         <EditText
             android:id="@+id/edithorafin3"
             android:inputType="text"
-            android:maxLength="1"
+            android:maxLength="50"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </TableRow>
 
@@ -59,7 +59,7 @@
         <EditText
             android:id="@+id/edittipogrupo"
             android:inputType="text"
-            android:maxLength="1"
+            android:maxLength="10"
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
     </TableRow>
 
