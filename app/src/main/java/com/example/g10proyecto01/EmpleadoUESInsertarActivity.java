@@ -21,6 +21,8 @@ public class EmpleadoUESInsertarActivity extends Activity {
     EditText editCorreo;
     EditText editTelefono;
     List<Integer> idTipoEmp = new ArrayList<>();
+    List<String> ocupaciones = new ArrayList<>();
+    List <String> spinnerList = new ArrayList<>();
     Spinner spinnerTipoEmp;
 
     @SuppressLint("MissingInflatedId")
@@ -37,14 +39,21 @@ public class EmpleadoUESInsertarActivity extends Activity {
         editTelefono = (EditText) findViewById(R.id.editTelefonoEmpleado);
         spinnerTipoEmp = findViewById(R.id.spinnerIdTipoEmpleado);
 
-        String sql = "SELECT id_tipo_empleado FROM Tipo_de_Empleado";
+        String sql = "SELECT id_tipo_empleado, ocupacion FROM Tipo_de_Empleado";
         Cursor cursor = helper.llenarSpinner(sql);
         while (cursor.moveToNext()) {
             @SuppressLint("Range")
             int id = cursor.getInt(cursor.getColumnIndex("id_tipo_empleado"));
             idTipoEmp.add(id);
+
+            @SuppressLint("Range")
+            String ocu = cursor.getString(cursor.getColumnIndex("ocupacion"));
+            ocupaciones.add(ocu);
+
+            String itemSpinner = id + ": " + ocu;
+            spinnerList.add(itemSpinner);
         }
-        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, idTipoEmp);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerTipoEmp.setAdapter(adapter);
     }

@@ -22,6 +22,9 @@ public class DocenteActualizarActivity extends Activity {
     List<Integer> listIdDocente = new ArrayList<>();
     Spinner spinnerIdDocente;
     List<Integer> listIdEmp = new ArrayList<>();
+
+    List<String> nombresEmp = new ArrayList<>();
+    List <String> spinnerList = new ArrayList<>();
     Spinner spinnerIdEmpleado;
 
 
@@ -37,14 +40,21 @@ public class DocenteActualizarActivity extends Activity {
         spinnerIdDocente = findViewById(R.id.spinnerIdDocente);
         spinnerIdEmpleado = findViewById(R.id.spinnerIdEmpleado);
 
-        String sql1 = "SELECT id_empleado FROM Empleado_UES";
+        String sql1 = "SELECT id_empleado, nombre_empleado, apellido_empleado FROM Empleado_UES";
         Cursor cursor1 = helper.llenarSpinner(sql1);
         while (cursor1.moveToNext()) {
             @SuppressLint("Range")
             int idEmp = cursor1.getInt(cursor1.getColumnIndex("id_empleado"));
             listIdEmp.add(idEmp);
+
+            @SuppressLint("Range")
+            String nom = cursor1.getString(cursor1.getColumnIndex("nombre_empleado")) + " " + cursor1.getString(cursor1.getColumnIndex("apellido_empleado"));
+            nombresEmp.add(nom);
+
+            String itemSpinner = idEmp + ": " + nom;
+            spinnerList.add(itemSpinner);
         }
-        ArrayAdapter<Integer> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdEmp);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerList);
         adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerIdEmpleado.setAdapter(adapter1);
 

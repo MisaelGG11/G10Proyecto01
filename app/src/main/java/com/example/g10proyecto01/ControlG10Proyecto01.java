@@ -132,6 +132,50 @@ public class ControlG10Proyecto01 {
 
                 db.execSQL(createTriggerQuery4);
 
+                //ACTUALIZAR ESTADO DE PRPUESTA GENERAL AL ACTUALIZAR ESPECIFICA
+                String triggerActualizarEstadoPG =
+                        "CREATE TRIGGER actualizar_estado_propuesta" +
+                        "   AFTER UPDATE ON Propuesta_Especifica" +
+                        "   FOR EACH ROW" +
+                        "   BEGIN" +
+                        "       UPDATE Propuesta_General" +
+                        "       SET estado_propuesta = " +
+                        "        CASE" +
+                        "            WHEN (" +
+                        "                SELECT COUNT(*)" +
+                        "                FROM Propuesta_Especifica" +
+                        "                WHERE id_propuesta = NEW.id_propuesta AND estado_especifica = 'A'" +
+                        "            ) = (" +
+                        "                SELECT COUNT(*) " +
+                        "                FROM Propuesta_Especifica" +
+                        "                WHERE id_propuesta = NEW.id_propuesta" +
+                        "            ) THEN 'A'" +
+                        "            WHEN (" +
+                        "                SELECT COUNT(*)" +
+                        "                FROM Propuesta_Especifica " +
+                        "                WHERE id_propuesta = NEW.id_propuesta AND estado_especifica = 'D'" +
+                        "            ) = (" +
+                        "                SELECT COUNT(*)" +
+                        "                FROM Propuesta_Especifica" +
+                        "                WHERE id_propuesta = NEW.id_propuesta" +
+                        "            ) THEN 'D'" +
+                        "            WHEN (" +
+                        "                SELECT COUNT(*) " +
+                        "                FROM Propuesta_Especifica " +
+                        "                WHERE id_propuesta = NEW.id_propuesta AND estado_especifica IN ('P', 'R')" +
+                        "            ) > 0 THEN 'R'" +
+                        "            WHEN (" +
+                        "                SELECT COUNT(*)" +
+                        "                FROM Propuesta_Especifica" +
+                        "                WHERE id_propuesta = NEW.id_propuesta AND estado_especifica = 'A'" +
+                        "            ) > 0 THEN 'P'\n" +
+                        "            ELSE 'Estado no definido'\n" +
+                        "        END\n" +
+                        "    WHERE id_propuesta = NEW.id_propuesta;\n" +
+                        "END;";
+
+                db.execSQL(triggerActualizarEstadoPG);
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }

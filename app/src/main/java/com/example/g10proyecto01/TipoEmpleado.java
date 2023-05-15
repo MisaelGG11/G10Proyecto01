@@ -25,4 +25,7 @@ public class TipoEmpleado {
     public void setOcupacion(String ocupacion){
         this.ocupacion = ocupacion;
     }
+    public String toString() {
+        return "Id " + id_tipo_empleado +  ": " + ocupacion;
+    }
 }
