@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class ControlG10Proyecto01 {
 
-    private static final String[] camposCiclo = new String[]{"id_ciclo", "ciclo", "año"};
+    private static final String[] camposCiclo = new String[]{"id_ciclo", "ciclo", "anio"};
     private static final String[] camposDocente = new String[]{"id_docente", "id_empleado", "nip_docente", "categoria_docente"};
     private static final String[] camposEmpleado = new String[]{"id_empleado", "id_tipo_empleado", "nombre_empleado", "apellido_empleado", "email_empleado", "telefono_empleado"};
     private static final String[] camposEscuela = new String[]{"id_escuela", "acronimo", "nombre"};
@@ -56,7 +56,7 @@ public class ControlG10Proyecto01 {
         @Override
         public void onCreate(SQLiteDatabase db) {
             try {
-                db.execSQL("CREATE TABLE Ciclo(id_ciclo NUMBER(6) NOT NULL PRIMARY KEY, ciclo INTEGER NOT NULL, año INTEGER NOT NULL);");
+                db.execSQL("CREATE TABLE Ciclo(id_ciclo NUMBER(6) NOT NULL PRIMARY KEY, ciclo INTEGER NOT NULL, anio INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Docente(id_docente INTEGER NOT NULL PRIMARY KEY, id_empleado INTEGER NOT NULL, nip_docente INTEGER NOT NULL, categoria_docente VARCHAR2(10) NOT NULL);");
                 db.execSQL("CREATE TABLE Empleado_UES(id_empleado INTEGER NOT NULL PRIMARY KEY, id_tipo_empleado INTEGER NOT NULL, nombre_empleado VARCHAR2(30) NOT NULL, apellido_empleado VARCHAR2(30) NOT NULL, email_empleado VARCHAR2(50) NOT NULL, telefono_empleado INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Escuela(id_escuela INTEGER NOT NULL PRIMARY KEY, acronimo VARCHAR2(10) NOT NULL, nombre VARCHAR2(30) NOT NULL);");
@@ -76,19 +76,32 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave VARCHAR(10) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
                 db.execSQL("CREATE TABLE AccesoUsuario (id_acceso INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_usuario CHAR(2) NOT NULL, id_opcion_crud INTEGER NOT NULL, FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario)  ON DELETE CASCADE, FOREIGN KEY(id_opcion_crud) REFERENCES OpcionCrud(id_opcion_crud) ON DELETE CASCADE)");
 
-                // Creación del trigger
+                // Creación del trigger semantico 1
                 String createTriggerQuery =
                         "CREATE TRIGGER validar_anio " +
-                            "BEFORE INSERT ON ciclo " +
-                            "FOR EACH ROW " +
-                            "BEGIN " +
-                                "SELECT CASE " +
-                                "WHEN(new.año < 1900 OR new.año > 2100)"+
+                        "BEFORE INSERT ON ciclo " +
+                        "FOR EACH ROW " +
+                        "BEGIN " +
+                            "SELECT CASE " +
+                                "WHEN(new.anio < 1900 OR new.anio > 2100)"+
                                 "THEN RAISE(ABORT, 'AÑO INVALIDO') " +
                             "END;" +
                         "END;";
 
                 db.execSQL(createTriggerQuery);
+
+                // Creación del trigger semantico 2
+                String createTriggerQuery2 =
+                        "CREATE TRIGGER validar_unicidad " +
+                        "BEFORE INSERT ON Ciclo " +
+                        "BEGIN " +
+                            "SELECT CASE " +
+                                "WHEN EXISTS(SELECT 1 FROM Ciclo WHERE ciclo = NEW.ciclo AND anio = NEW.anio)" +
+                                    "THEN RAISE(ABORT, 'Ciclo y año debe ser unico') " +
+                            "END;" +
+                        "END;";
+
+                db.execSQL(createTriggerQuery2);
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -791,7 +804,7 @@ public class ControlG10Proyecto01 {
 
         cic.put("id_ciclo", ciclo.getId_ciclo());
         cic.put("ciclo", ciclo.getCiclo());
-        cic.put("año", ciclo.getAño());
+        cic.put("anio", ciclo.getAño());
 
         try {
             contador = db.insertOrThrow("ciclo", null, cic);
@@ -806,8 +819,10 @@ public class ControlG10Proyecto01 {
                 regInsertados = context.getResources().getString(R.string.error);
             } else if(e.getMessage().contains("AÑO")){
                 regInsertados = context.getResources().getString(R.string.error2);
-            } else {
+            } else if(e.getMessage().contains("Ciclo")){
                 regInsertados = context.getResources().getString(R.string.error3);
+            } else {
+                regInsertados = context.getResources().getString(R.string.error4);
             }
 
         }
@@ -844,7 +859,7 @@ public class ControlG10Proyecto01 {
         ContentValues cv = new ContentValues();
 
         cv.put("ciclo", ciclo.getCiclo());
-        cv.put("año", ciclo.getAño());
+        cv.put("anio", ciclo.getAño());
 
         db.update("ciclo", cv, "id_ciclo = ?", id);
 

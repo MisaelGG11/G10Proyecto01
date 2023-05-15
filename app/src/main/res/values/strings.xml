@@ -36,7 +36,8 @@
     <!--Clase Controladora-->
     <string name="error">Error al insertar el registro. Registro Duplicado. Verificar inserción</string>
     <string name="error2">Digite un año entre 1900 y 2100</string>
-    <string name="error3">Ocurrio algo inesperado en la DB</string>
+    <string name="error3">El año y el #Ciclo deben ser unicos</string>
+    <string name="error4">Ocurrio algo inesperado en la DB</string>
     <string name="regInsertado">Registro insertado Nº= </string>
     <string name="regActualizado">Registro actualizado correctamente</string>
     <string name="regNoActualizado">Registro no se actualizo, revise sus campos</string>

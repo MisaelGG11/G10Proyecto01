@@ -37,7 +37,8 @@
     <!--Clase Controladora-->
     <string name="error">Error inserting record. Duplicate registration. Verify Insertion</string>
     <string name="error2">Enter a year between 1900 and 2100</string>
-    <string name="error3">Something unexpected happened in the DB</string>
+    <string name="error3">The year and the #Cycle must be unique</string>
+    <string name="error4">Something unexpected happened in the DB</string>
     <string name="regInsertado">Inserted record nº= </string>
     <string name="regActualizado">Successfully updated record</string>
     <string name="regNoActualizado">Record was not updated, check your fields</string>

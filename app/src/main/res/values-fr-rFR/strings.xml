@@ -37,7 +37,8 @@
     <!--Clase Controladora-->
     <string name="error">Erreur lors de l’insertion de l’enregistrement. Enregistrement en double. Vérifier l’insertion</string>
     <string name="error2">Entrez une année entre 1900 et 2100</string>
-    <string name="error3">Quelque chose d’inattendu s’est produit dans le DB</string>
+    <string name="error3">L’année et le #Cycle doivent être uniques</string>
+    <string name="error4">Quelque chose d’inattendu s’est produit dans le DB</string>
     <string name="regInsertado">Enregistrement inséré Nº= </string>
     <string name="regActualizado">Enregistrement mis à jour avec succès</string>
     <string name="regNoActualizado">L’enregistrement n’a pas été mis à jour, vérifiez vos champs</string>
