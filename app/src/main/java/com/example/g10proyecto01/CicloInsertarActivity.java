@@ -66,7 +66,7 @@ public class CicloInsertarActivity extends AppCompatActivity {
 
             helper.cerrar();
 
-            if (regInsertados.contains("Err")) {
+            if (regInsertados.contains("Err") || regInsertados.contains("1900") || regInsertados.contains("DB")) {
                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, regInsertados, Toast.LENGTH_SHORT).show();

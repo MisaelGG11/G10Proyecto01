@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 
 
@@ -74,18 +76,19 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave VARCHAR(10) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
                 db.execSQL("CREATE TABLE AccesoUsuario (id_acceso INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_usuario CHAR(2) NOT NULL, id_opcion_crud INTEGER NOT NULL, FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario)  ON DELETE CASCADE, FOREIGN KEY(id_opcion_crud) REFERENCES OpcionCrud(id_opcion_crud) ON DELETE CASCADE)");
 
-                /* Creación del trigger
-                String createTriggerQuery = "CREATE TRIGGER validar_salario_minimo " +
-                        "AFTER INSERT ON empleado " +
-                        "FOR EACH ROW " +
-                        "WHEN NEW.salario < 1000 " +
-                        "BEGIN " +
-                        "    DELETE FROM empleado WHERE id = NEW.id; " +
+                // Creación del trigger
+                String createTriggerQuery =
+                        "CREATE TRIGGER validar_anio " +
+                            "BEFORE INSERT ON ciclo " +
+                            "FOR EACH ROW " +
+                            "BEGIN " +
+                                "SELECT CASE " +
+                                "WHEN(new.año < 1900 OR new.año > 2100)"+
+                                "THEN RAISE(ABORT, 'AÑO INVALIDO') " +
+                            "END;" +
                         "END;";
 
-                db.execSQL(createTriggerQuery);*/
-
-
+                db.execSQL(createTriggerQuery);
 
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -790,12 +793,23 @@ public class ControlG10Proyecto01 {
         cic.put("ciclo", ciclo.getCiclo());
         cic.put("año", ciclo.getAño());
 
-        contador = db.insert("ciclo", null, cic);
+        try {
+            contador = db.insertOrThrow("ciclo", null, cic);
 
-        if (contador == -1 || contador == 0) {
-            regInsertados = context.getResources().getString(R.string.error);
-        } else {
             regInsertados = regInsertados + contador;
+
+            return regInsertados;
+
+        } catch (SQLiteConstraintException e) {
+
+            if (e.getMessage().contains("UNIQUE")) {
+                regInsertados = context.getResources().getString(R.string.error);
+            } else if(e.getMessage().contains("AÑO")){
+                regInsertados = context.getResources().getString(R.string.error2);
+            } else {
+                regInsertados = context.getResources().getString(R.string.error3);
+            }
+
         }
 
         return regInsertados;
