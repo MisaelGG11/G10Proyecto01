@@ -54,7 +54,7 @@ public class ControlG10Proyecto01 {
         @Override
         public void onCreate(SQLiteDatabase db) {
             try {
-                db.execSQL("CREATE TABLE Ciclo(id_ciclo NUMBER(6) NOT NULL PRIMARY KEY, ciclo CHAR(1) NOT NULL, año CHAR(4) NOT NULL);");
+                db.execSQL("CREATE TABLE Ciclo(id_ciclo NUMBER(6) NOT NULL PRIMARY KEY, ciclo INTEGER NOT NULL, año INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Docente(id_docente INTEGER NOT NULL PRIMARY KEY, id_empleado INTEGER NOT NULL, nip_docente INTEGER NOT NULL, categoria_docente VARCHAR2(10) NOT NULL);");
                 db.execSQL("CREATE TABLE Empleado_UES(id_empleado INTEGER NOT NULL PRIMARY KEY, id_tipo_empleado INTEGER NOT NULL, nombre_empleado VARCHAR2(30) NOT NULL, apellido_empleado VARCHAR2(30) NOT NULL, email_empleado VARCHAR2(50) NOT NULL, telefono_empleado INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Escuela(id_escuela INTEGER NOT NULL PRIMARY KEY, acronimo VARCHAR2(10) NOT NULL, nombre VARCHAR2(30) NOT NULL);");
@@ -73,6 +73,20 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Tipo_evento (id_tipo_evento INTEGER NOT NULL, nombre_tipo_evento VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_EVENTO PRIMARY KEY (id_tipo_evento));");
                 db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave VARCHAR(10) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
                 db.execSQL("CREATE TABLE AccesoUsuario (id_acceso INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_usuario CHAR(2) NOT NULL, id_opcion_crud INTEGER NOT NULL, FOREIGN KEY(id_usuario) REFERENCES Usuario(id_usuario)  ON DELETE CASCADE, FOREIGN KEY(id_opcion_crud) REFERENCES OpcionCrud(id_opcion_crud) ON DELETE CASCADE)");
+
+                /* Creación del trigger
+                String createTriggerQuery = "CREATE TRIGGER validar_salario_minimo " +
+                        "AFTER INSERT ON empleado " +
+                        "FOR EACH ROW " +
+                        "WHEN NEW.salario < 1000 " +
+                        "BEGIN " +
+                        "    DELETE FROM empleado WHERE id = NEW.id; " +
+                        "END;";
+
+                db.execSQL(createTriggerQuery);*/
+
+
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -798,8 +812,8 @@ public class ControlG10Proyecto01 {
             Ciclo ciclo = new Ciclo();
 
             ciclo.setId_ciclo(cursor.getInt(0));
-            ciclo.setCiclo(cursor.getString(1));
-            ciclo.setAño(cursor.getString(2));
+            ciclo.setCiclo(cursor.getInt(1));
+            ciclo.setAño(cursor.getInt(2));
 
             return ciclo;
         } else {
@@ -855,8 +869,8 @@ public class ControlG10Proyecto01 {
             do {
                 ciclo = new Ciclo();
                 ciclo.setId_ciclo(cursor.getInt(0));
-                ciclo.setCiclo(cursor.getString(1));
-                ciclo.setAño(cursor.getString(2));
+                ciclo.setCiclo(cursor.getInt(1));
+                ciclo.setAño(cursor.getInt(2));
 
                 listaCiclos.add(ciclo);
             } while (cursor.moveToNext());
@@ -1948,8 +1962,8 @@ public class ControlG10Proyecto01 {
 
         //CICLO
         final int[] CicloId = {1, 2, 3, 4};
-        final String[] CicloCiclo = {"1", "1", "2", "2"};
-        final String[] CicloAño = {"2021", "2022", "2021", "2022"};
+        final int[] CicloCiclo = {1, 1, 2, 2};
+        final int[] CicloAño = {2021, 2022, 2021, 2022};
 
         Ciclo ciclo = new Ciclo();
         for (int i = 0; i < 4; i++) {

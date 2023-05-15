@@ -42,7 +42,7 @@ public class CicloInsertarActivity extends AppCompatActivity {
     }
 
     public void insertarCiclo(View v) {
-        String regex = "^(2000|2[0-9]{3}|3000)$";
+        String regex = "^\\d{4}$";
 
         if (editIdCiclo.getText().toString().isEmpty() ||
                 editAño.getText().toString().isEmpty()) {
@@ -50,8 +50,8 @@ public class CicloInsertarActivity extends AppCompatActivity {
             Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
         } else if (editAño.getText().toString().matches(regex)){
             String id_ciclo = editIdCiclo.getText().toString();
-            String ciclo = String.valueOf(valores.get(spinnerCiclo.getSelectedItemPosition()));
-            String año = editAño.getText().toString();
+            int ciclo = valores.get(spinnerCiclo.getSelectedItemPosition());
+            int año = Integer.valueOf(editAño.getText().toString());
 
             String regInsertados;
 

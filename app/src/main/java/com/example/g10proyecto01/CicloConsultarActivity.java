@@ -108,7 +108,7 @@ public class CicloConsultarActivity extends AppCompatActivity {
 
             editIdCiclo.setText(String.valueOf(ciclo.getId_ciclo()));
             spinnerCiclo.setSelection(posicion);
-            editAño.setText(ciclo.getAño());
+            editAño.setText(String.valueOf(ciclo.getAño()));
         }
     }
 
@@ -131,8 +131,8 @@ public class CicloConsultarActivity extends AppCompatActivity {
                 Ciclo ciclo = new Ciclo();
 
                 ciclo.setId_ciclo(Integer.valueOf(editIdCiclo.getText().toString()));
-                ciclo.setCiclo(String.valueOf(valores.get(spinnerCiclo.getSelectedItemPosition())));
-                ciclo.setAño(editAño.getText().toString());
+                ciclo.setCiclo(valores.get(spinnerCiclo.getSelectedItemPosition()));
+                ciclo.setAño(Integer.valueOf(editAño.getText().toString()));
 
                 helper.abrir();
                 String estado = helper.actualizar(ciclo);

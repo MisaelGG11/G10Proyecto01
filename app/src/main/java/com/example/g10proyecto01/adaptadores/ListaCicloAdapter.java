@@ -40,7 +40,7 @@ public class ListaCicloAdapter extends RecyclerView.Adapter<ListaCicloAdapter.Ci
 
     @Override
     public void onBindViewHolder(@NonNull CicloViewHolder holder, int position) {
-        holder.viewAño.setText(listaCiclo.get(position).getAño());
+        holder.viewAño.setText(String.valueOf(listaCiclo.get(position).getAño()));
         holder.viewIdCiclo.setText("ID: " + listaCiclo.get(position).getId_ciclo());
         holder.viewCiclo.setText("Ciclo: " + listaCiclo.get(position).getCiclo());
     }
@@ -54,8 +54,8 @@ public class ListaCicloAdapter extends RecyclerView.Adapter<ListaCicloAdapter.Ci
         } else {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
                 List<Ciclo> collecion = listaCiclo.stream()
-                        .filter(i -> i.getAño().toLowerCase().contains(txtBuscar.toLowerCase())
-                                || i.getCiclo().toLowerCase().contains(txtBuscar.toLowerCase())
+                        .filter(i -> String.valueOf(i.getAño()).toLowerCase().contains(txtBuscar.toLowerCase())
+                                || String.valueOf(i.getCiclo()).toLowerCase().contains(txtBuscar.toLowerCase())
                                 || String.valueOf(i.getId_ciclo()).contains(txtBuscar))
                         .collect(Collectors.toList());
 
@@ -63,7 +63,7 @@ public class ListaCicloAdapter extends RecyclerView.Adapter<ListaCicloAdapter.Ci
                 listaCiclo.addAll(collecion);
             } else {
                 for (Ciclo c : listaOriginal) {
-                    if (c.getCiclo().toLowerCase().contains(txtBuscar.toLowerCase())) {
+                    if (String.valueOf(c.getCiclo()).toLowerCase().contains(txtBuscar.toLowerCase())) {
                         listaCiclo.add(c);
                     }
                 }
