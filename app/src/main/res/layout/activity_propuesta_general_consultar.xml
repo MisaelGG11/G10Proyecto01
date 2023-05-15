@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:text="@string/consultar"
             android:backgroundTint="#00b4fc"
-            android:onClick="ConsultarPropuestasEspecificas"
+            android:onClick="ConsultarPropuestasGeneral"
             />
         <Button
             android:id="@+id/botonLimpiar"
@@ -36,10 +36,25 @@
             android:onClick="LimpiarTexto"/>
 
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:paddingBottom="15dp"
+        android:text="@string/txtEstadoPropuestaEspecifica"/>
+    <TextView
+        android:id="@+id/txtEstadoPropuestaGeneral"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dip"
+        android:paddingBottom="15dp"
+        />
+
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

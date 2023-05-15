@@ -1,7 +1,5 @@
 package com.example.g10proyecto01;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.database.Cursor;
@@ -22,6 +20,7 @@ public class PropuestaGeneralConsultarActivity extends Activity {
     Spinner spinIdPropuestaGeneral;
     List<Integer> opcionesSpinner = new ArrayList<>();
     ArrayList<PropuestaEspecificaDetalle> propuestas = new ArrayList<>();
+    TextView txtEstado;
     LinearLayout propuestasEspecificaLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +29,7 @@ public class PropuestaGeneralConsultarActivity extends Activity {
         helper = new ControlG10Proyecto01(this);
         spinIdPropuestaGeneral = findViewById(R.id.spinConsultarIdPropuestaGeneral);
         propuestasEspecificaLayout = findViewById(R.id.mostrarPropuestaEspecificas);
+        txtEstado = findViewById(R.id.txtEstadoPropuestaGeneral);
         llenarSpinner();
 
     }
@@ -47,12 +47,15 @@ public class PropuestaGeneralConsultarActivity extends Activity {
         spinIdPropuestaGeneral.setAdapter(adapterOpcionesSpinner);
     }
 
-    public void ConsultarPropuestasEspecificas(View v){
+    public void ConsultarPropuestasGeneral(View v){
         propuestasEspecificaLayout.removeAllViews();
         String idPropuestaGeneral = spinIdPropuestaGeneral.getSelectedItem().toString();
+
         helper.abrir();
         propuestas = helper.obtenerDetallePropuestaEspecifica(idPropuestaGeneral);
+        PropuestaGeneral propuestaGeneral = helper.obtenerPropuestaGeneral(idPropuestaGeneral);
         helper.cerrar();
+        txtEstado.setText(propuestaGeneral.getEstado_propuesta());
         if(propuestas.size() == 0){
             TextView notFoundPropuesta= new TextView(PropuestaGeneralConsultarActivity.this);
             notFoundPropuesta.setText(R.string.registro_no_encontrado);
@@ -77,7 +80,9 @@ public class PropuestaGeneralConsultarActivity extends Activity {
         }
     }
 
+
     public void LimpiarTexto(View v){
         propuestasEspecificaLayout.removeAllViews();
+        txtEstado.setText("");
     }
 }

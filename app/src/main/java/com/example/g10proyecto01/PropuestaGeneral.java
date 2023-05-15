@@ -4,6 +4,9 @@ public class PropuestaGeneral {
     private int id_propuesta;
     private String estado_propuesta;
 
+    public PropuestaGeneral() {
+    }
+
     public PropuestaGeneral(int id_propuesta) {
         this.id_propuesta = id_propuesta;
     }
