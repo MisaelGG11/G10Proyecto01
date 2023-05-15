@@ -3,6 +3,7 @@ package com.example.g10proyecto01;
 import androidx.annotation.NonNull;
 
 public class OpcionCrud {
+
     private int id_opcion_crud;
     private String des_opcion;
 

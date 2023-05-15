@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 
 import java.sql.Timestamp;
@@ -1550,6 +1551,30 @@ public class ControlG10Proyecto01 {
             regInsertados = regInsertados + contador;
         }
         return regInsertados;
+    }
+
+    public PropuestaGeneral obtenerPropuestaGeneral(String idPropuesta){
+        PropuestaGeneral propuestaGeneral = new PropuestaGeneral();
+        String[] id = {idPropuesta};
+        String estado;
+        String query = "SELECT id_propuesta, estado_propuesta FROM Propuesta_General WHERE id_propuesta = ?";
+        Cursor cursor = db.rawQuery(query,id);
+        if(cursor.moveToFirst()){
+            estado = cursor.getString(1);
+            Log.wtf("Test",estado);
+            if(estado.equals("A")){
+                estado = "Aprobada";
+            } else if (estado.equals("D")) {
+                estado = "Denegado";
+            } else if (estado.equals("P")) {
+                estado = "Parcialmente Aprobado";
+            }else{
+                estado = "Revisión";
+            }
+            propuestaGeneral.setId_propuesta(cursor.getInt(0));
+            propuestaGeneral.setEstado_propuesta(estado);
+        }
+        return propuestaGeneral;
     }
     public ArrayList<PropuestaEspecificaDetalle> obtenerDetallePropuestaEspecifica(String idPropuesta){
 
