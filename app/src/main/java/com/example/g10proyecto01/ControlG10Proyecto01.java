@@ -1987,11 +1987,11 @@ public class ControlG10Proyecto01 {
         }
 
         //GRUPO
-        final int[] grupoId = {1,2};
-        final int[] num_grupo = {1,2};
-        final int[] id_oferta = {1,2};
-        final String[] tipo_grupo = {"Teorico","Discusion"};
-        final int[] cupoGrupo = {25,10};
+        final int[] grupoId = {1,2,3,4};
+        final int[] num_grupo = {1,2,2,3};
+        final int[] id_oferta = {1,2,2,1};
+        final String[] tipo_grupo = {"Teorico","Discusion","Teorico","Discusion"};
+        final int[] cupoGrupo = {25,10,100,20};
         for (int i = 0; i < grupoId.length; i++) {
             Grupo grupo = new Grupo(grupoId[i], num_grupo[i], id_oferta[i], cupoGrupo[i], tipo_grupo[i]);
             insertarGrupo(grupo);
@@ -2006,9 +2006,11 @@ public class ControlG10Proyecto01 {
             insertarHorario(horario);
         }
         //GRUPOHORARIO
-        final int[] idGrupoHorario = {1,2};
+        final int[] idGrupoHorario = {1,2,3,4};
+        final int[] idHorarioo = {3,1,2,4};
+        final int[] grupooId = {1,4,2,3};
         for (int i = 0; i < idGrupoHorario.length; i++) {
-            GrupoHorario grupoHorario = new GrupoHorario(idGrupoHorario[i], idHorario[i], grupoId[i]);
+            GrupoHorario grupoHorario = new GrupoHorario(idGrupoHorario[i], idHorarioo[i], grupooId[i]);
             insertarGrupoHorario(grupoHorario);
         }
         //MATERIA
@@ -2059,7 +2061,13 @@ public class ControlG10Proyecto01 {
         }
 
         //PROPUESTAESPECIFICA
-
+        final int[] idPropuestaEspecifica = {1, 2, 3, 4, 5};
+        final int[] idGh = {1, 3, 3, 1, 2};
+        final int[] idlocalpe = {1, 7, 6, 4, 5};
+        for (int i = 0; i < idPropuestaEspecifica.length; i++) {
+            PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(idPropuestaEspecifica[i],idGh[i],idlocalpe[i]);
+            insertar(propuestaEspecifica);
+        }
 
         //TIPO EMPLEADO
         final int[] idTipoEmpleado = {1, 2, 3, 4};
