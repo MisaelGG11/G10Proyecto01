@@ -140,7 +140,7 @@ public class ControlG10Proyecto01 {
                         "   BEGIN" +
                         "       UPDATE Propuesta_General" +
                         "       SET estado_propuesta = " +
-                        "        CASE" +
+                        "       CASE" +
                         "            WHEN (" +
                         "                SELECT COUNT(*)" +
                         "                FROM Propuesta_Especifica" +
@@ -162,16 +162,16 @@ public class ControlG10Proyecto01 {
                         "            WHEN (" +
                         "                SELECT COUNT(*) " +
                         "                FROM Propuesta_Especifica " +
-                        "                WHERE id_propuesta = NEW.id_propuesta AND estado_especifica IN ('P', 'R')" +
+                        "                WHERE id_propuesta = NEW.id_propuesta AND estado_especifica = 'P'" +
                         "            ) > 0 THEN 'R'" +
                         "            WHEN (" +
                         "                SELECT COUNT(*)" +
                         "                FROM Propuesta_Especifica" +
                         "                WHERE id_propuesta = NEW.id_propuesta AND estado_especifica = 'A'" +
-                        "            ) > 0 THEN 'P'\n" +
-                        "            ELSE 'Estado no definido'\n" +
-                        "        END\n" +
-                        "    WHERE id_propuesta = NEW.id_propuesta;\n" +
+                        "            ) > 0 THEN 'P'" +
+                        "            ELSE 'Estado no definido'" +
+                        "        END" +
+                        "    WHERE id_propuesta = NEW.id_propuesta;" +
                         "END;";
 
                 db.execSQL(triggerActualizarEstadoPG);
