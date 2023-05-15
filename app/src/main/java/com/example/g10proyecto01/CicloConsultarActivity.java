@@ -121,7 +121,7 @@ public class CicloConsultarActivity extends AppCompatActivity {
             edicion = 1;
 
         } else {
-            String regex = "^(2000|2[0-9]{3}|3000)$";
+            String regex = "^\\d{4}$";
 
             if (editIdCiclo.getText().toString().isEmpty() ||
                     editAño.getText().toString().isEmpty()) {
@@ -138,9 +138,11 @@ public class CicloConsultarActivity extends AppCompatActivity {
                 String estado = helper.actualizar(ciclo);
                 helper.cerrar();
 
-                Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
-
-                actulizarAlRegresar();
+                if (estado.contains("Err") || estado.contains("1900") || estado.contains("#") || estado.contains("DB")) {
+                    Toast.makeText(this, estado, Toast.LENGTH_SHORT).show();
+                } else {
+                    actulizarAlRegresar();
+                }
             } else {
                 Toast.makeText(this, getResources().getString(R.string.anioValido), Toast.LENGTH_SHORT).show();
             }

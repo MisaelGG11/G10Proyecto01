@@ -104,6 +104,34 @@ public class ControlG10Proyecto01 {
 
                 db.execSQL(createTriggerQuery2);
 
+                // Creación del trigger actualizar 2
+                String createTriggerQuery3 =
+                        "CREATE TRIGGER validar_anio_actualizar " +
+                                "BEFORE UPDATE ON ciclo " +
+                                "FOR EACH ROW " +
+                                "BEGIN " +
+                                "SELECT CASE " +
+                                "WHEN(new.anio < 1900 OR new.anio > 2100)"+
+                                "THEN RAISE(ABORT, 'AÑO INVALIDO') " +
+                                "END;" +
+                                "END;";
+
+                db.execSQL(createTriggerQuery3);
+
+
+                // Creación del trigger actualizar 3
+                String createTriggerQuery4 =
+                        "CREATE TRIGGER validar_unicidad_actualizar " +
+                                "BEFORE UPDATE ON Ciclo " +
+                                "BEGIN " +
+                                "SELECT CASE " +
+                                "WHEN EXISTS(SELECT 1 FROM Ciclo WHERE ciclo = NEW.ciclo AND anio = NEW.anio AND (NEW.ciclo <> OLD.ciclo OR NEW.anio <> OLD.anio))" +
+                                "THEN RAISE(ABORT, 'Ciclo y año debe ser unico') " +
+                                "END;" +
+                                "END;";
+
+                db.execSQL(createTriggerQuery4);
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -859,13 +887,31 @@ public class ControlG10Proyecto01 {
 
         ContentValues cv = new ContentValues();
 
+        String resultado = "X";
+
         cv.put("ciclo", ciclo.getCiclo());
         cv.put("anio", ciclo.getAño());
 
-        db.update("ciclo", cv, "id_ciclo = ?", id);
+        try {
+            db.update("ciclo", cv, "id_ciclo = ?", id);
 
-        return context.getResources().getString(R.string.regActualizado);
+            resultado = context.getResources().getString(R.string.regActualizado);
 
+            return resultado;
+
+
+        } catch (SQLiteConstraintException e) {
+
+            if(e.getMessage().contains("AÑO")){
+                resultado = context.getResources().getString(R.string.error2);
+            } else if(e.getMessage().contains("Ciclo")){
+                resultado = context.getResources().getString(R.string.error3);
+            } else {
+                resultado = context.getResources().getString(R.string.error4);
+            }
+        }
+
+        return resultado;
     }
 
     /*  Eliminar escuela  */
