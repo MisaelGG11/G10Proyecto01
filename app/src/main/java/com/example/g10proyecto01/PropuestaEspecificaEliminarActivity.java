@@ -41,7 +41,7 @@ public class PropuestaEspecificaEliminarActivity extends Activity {
         adapterOpcionesSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinIdPropuesta.setAdapter(adapterOpcionesSpinner);
     }
-    public void EliminarPropuestaEspecifica(View v){
+    public void EliminarPropuestaGeneral(View v){
         AlertDialog.Builder alerta = new AlertDialog.Builder(PropuestaEspecificaEliminarActivity.this);
         alerta.setCancelable(false);
         alerta.setMessage(R.string.mensajeAlerta);

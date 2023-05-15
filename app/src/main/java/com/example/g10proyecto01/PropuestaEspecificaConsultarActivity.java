@@ -61,8 +61,8 @@ public class PropuestaEspecificaConsultarActivity extends Activity {
         String estadoPropuesta = propuestaEspecifica.getEstado_especifica().substring(0,1);
         if(estadoPropuesta.equals("D")){
             editEstadoPropuesta.setText("Denegada");
-        } else if (estadoPropuesta.equals("P")) {
-            editEstadoPropuesta.setText("Pendiente");
+        } else if (estadoPropuesta.equals("R")) {
+            editEstadoPropuesta.setText("Revision");
         }else {
             editEstadoPropuesta.setText("Aprobada");
         }

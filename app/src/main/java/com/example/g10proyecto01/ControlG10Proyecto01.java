@@ -63,15 +63,15 @@ public class ControlG10Proyecto01 {
                 db.execSQL("CREATE TABLE Escuela(id_escuela INTEGER NOT NULL PRIMARY KEY, acronimo VARCHAR2(10) NOT NULL, nombre VARCHAR2(30) NOT NULL);");
                 db.execSQL("CREATE TABLE Evento_Especial(id_evento INTEGER NOT NULL PRIMARY KEY, nombre_evento VARCHAR2(100) NOT NULL, id_tipo_evento INTEGER NOT NULL, organizador INTEGER NOT NULL, fecha VARCHAR2(8) NOT NULL, id_horario INTEGER NOT NULL, id_localidad INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Grupo(id_grupo INTEGER NOT NULL PRIMARY KEY, id_oferta_a INTEGER , num_grupo INTEGER NOT NULL, tipo_grupo VARCHAR2(11) NOT NULL, cupo INTEGER NOT NULL);");
-                db.execSQL("CREATE TABLE Horario(id_horario INTEGER PRIMARY KEY NOT NULL, hora_inicio TIMESTAMP NOT NULL, hora_finalizacion TIMESTAMP NOT NULL, dia TEXT NOT NULL)");
+                db.execSQL("CREATE TABLE Horario(id_horario INTEGER PRIMARY KEY NOT NULL, hora_inicio TIMESTAMP NOT NULL, hora_finalizacion TIMESTAMP NOT NULL, dia TEXT NOT NULL);");
                 db.execSQL("CREATE TABLE Grupo_Horario(id_gh INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_horario INTEGER NOT NULL, id_grupo INTEGER NOT NULL, FOREIGN KEY(id_horario) REFERENCES Horario ON DELETE CASCADE, FOREIGN KEY(id_grupo) REFERENCES Grupo);");
                 db.execSQL("CREATE TABLE Local_Administrado(id_local_admin INTEGER NOT NULL PRIMARY KEY, id_localidad INTEGER NOT NULL, id_empleado INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Localidad(id_localidad INTEGER NOT NULL, edificio_localidad VARCHAR2(60) NOT NULL, nombre_localidad VARCHAR2(30) NOT NULL, capacidad_localidad INTEGER NOT NULL, CONSTRAINT PK_LOCALIDAD PRIMARY KEY (id_localidad));");
                 db.execSQL("CREATE TABLE Materia(id_materia INTEGER NOT NULL PRIMARY KEY, cod_materia VARCHAR2(6) NOT NULL, nombre_materia VARCHAR2(30) NOT NULL, id_escuela INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE Oferta_Academica(id_oferta_a INTEGER NOT NULL PRIMARY KEY, id_ciclo NUMBER(6) NOT NULL, id_docente INTEGER NOT NULL, id_materia INTEGER NOT NULL);");
                 db.execSQL("CREATE TABLE OpcionCrud(id_opcion_crud INTEGER NOT NULL PRIMARY KEY, des_opcion VARCHAR2(30) NOT NULL);");
-                db.execSQL("CREATE TABLE Propuesta_Especifica(id_especifica INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_propuesta INTEGER, id_gh INTEGER NOT NULL, id_localidad INTEGER NOT NULL, estado_especifica VARCHAR2(1) NOT NULL DEFAULT 'P', FOREIGN KEY(id_propuesta) REFERENCES PropuestaGeneral(id_propuesta) ON DELETE CASCADE, FOREIGN KEY(id_gh) REFERENCES Grupo_Horario(id_gh) ON DELETE SET NULL, FOREIGN KEY(id_localidad) REFERENCES Localidad(id_localidad) ON DELETE SET NULL)");
-                db.execSQL("CREATE TABLE Propuesta_General(id_propuesta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, estado_propuesta VARCHAR2(1) NOT NULL DEFAULT 'P');");
+                db.execSQL("CREATE TABLE Propuesta_Especifica(id_especifica INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, id_propuesta INTEGER, id_gh INTEGER NOT NULL, id_localidad INTEGER NOT NULL, estado_especifica VARCHAR2(1) NOT NULL DEFAULT 'R', FOREIGN KEY(id_propuesta) REFERENCES PropuestaGeneral(id_propuesta) ON DELETE CASCADE, FOREIGN KEY(id_gh) REFERENCES Grupo_Horario(id_gh) ON DELETE SET NULL, FOREIGN KEY(id_localidad) REFERENCES Localidad(id_localidad) ON DELETE SET NULL)");
+                db.execSQL("CREATE TABLE Propuesta_General(id_propuesta INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, estado_propuesta VARCHAR2(1) NOT NULL DEFAULT 'R');");
                 db.execSQL("CREATE TABLE Tipo_de_Empleado(id_tipo_empleado INTEGER NOT NULL, ocupacion VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_DE_EMPLEADO PRIMARY KEY (id_tipo_empleado));");
                 db.execSQL("CREATE TABLE Tipo_evento (id_tipo_evento INTEGER NOT NULL, nombre_tipo_evento VARCHAR2(50) NOT NULL, CONSTRAINT PK_TIPO_EVENTO PRIMARY KEY (id_tipo_evento));");
                 db.execSQL("CREATE TABLE Usuario (id_usuario CHAR(2) NOT NULL, nom_usuario VARCHAR2(30) NOT NULL, clave VARCHAR(10) NOT NULL, CONSTRAINT PK_USUARIO PRIMARY KEY (id_usuario));");
@@ -1597,6 +1597,7 @@ public class ControlG10Proyecto01 {
         Cursor cursor = db.query("Propuesta_Especifica", camposPropuestaEspecifica, "id_especifica = ?", id, null, null, null);
         if (cursor.moveToFirst()) {
             PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3), cursor.getString(4));
+            Log.wtf("Test",String.valueOf(propuestaEspecifica.getId_grupo_horario()));
             return propuestaEspecifica;
         } else {
             return null;
@@ -2151,7 +2152,7 @@ public class ControlG10Proyecto01 {
         }
         //GRUPOHORARIO
         final int[] idGrupoHorario = {1,2,3,4};
-        final int[] idHorarioo = {3,1,2,4};
+        final int[] idHorarioo = {33,34,35,33};
         final int[] grupooId = {1,4,2,3};
         for (int i = 0; i < idGrupoHorario.length; i++) {
             GrupoHorario grupoHorario = new GrupoHorario(idGrupoHorario[i], idHorarioo[i], grupooId[i]);
@@ -2205,11 +2206,11 @@ public class ControlG10Proyecto01 {
         }
 
         //PROPUESTAESPECIFICA
-        final int[] idPropuestaEspecifica = {1, 2, 3, 4, 5};
-        final int[] idGh = {1, 3, 3, 1, 2};
-        final int[] idlocalpe = {1, 7, 6, 4, 5};
-        for (int i = 0; i < idPropuestaEspecifica.length; i++) {
-            PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(idPropuestaEspecifica[i],idGh[i],idlocalpe[i]);
+        final int[] idPG = {1, 2};
+        final int[] idGh = {1, 3};
+        final int[] idlocalpe = {1, 7};
+        for (int i = 0; i < idlocalpe.length; i++) {
+            PropuestaEspecifica propuestaEspecifica = new PropuestaEspecifica(idPG[i],idGh[i],idlocalpe[i]);
             insertar(propuestaEspecifica);
         }
 
