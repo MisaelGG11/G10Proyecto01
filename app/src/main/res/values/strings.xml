@@ -21,16 +21,6 @@
     <string name="tablaCiclo">Tabla Ciclo</string>
     <string name="tablaEscuela">Tabla Escuela</string>
 
-    <!--Servicios web-->
-    <string name="servicioWeb1">Servicio Web alex 1</string>
-    <string name="servicioWeb2">Servicio Web alex 2</string>
-    <string name="servicioWeb3">Servicio Web claudia 3</string>
-    <string name="servicioWeb4">Servicio Web claudia 4</string>
-    <string name="servicioWeb5">Servicio Web leo 5</string>
-    <string name="servicioWeb6">Servicio Web leo 6</string>
-    <string name="servicioWeb7">Servicio Web fabio 7</string>
-    <string name="servicioWeb8">Servicio Web fabio 8</string>
-
     <!--Operaciones de cada tabla-->
     <string name="insertar_registro">Insertar Registro</string>
     <string name="insertar">Insertar</string>
@@ -194,5 +184,18 @@
     <string name="ofertaDocente">Docente:</string>
     <string name="OfertaMateria">Materia:</string>
 
+    <!--Servicios web-->
+    <string name="servicioWeb1">Servicio Web alex 1</string>
+    <string name="servicioWeb2">Servicio Web alex 2</string>
+    <string name="servicioWeb3">Servicio Web claudia 3</string>
+    <string name="servicioWeb4">Servicio Web claudia 4</string>
+    <string name="servicioWeb5">Servicio Web leo 5</string>
+    <string name="servicioWeb6">Servicio Web leo 6</string>
+    <string name="servicioWeb7">Servicio Web fabio 7</string>
+    <string name="servicioWeb8">Servicio Web fabio 8</string>
+    <string name="servicio_PHPexterno">Servicio PHP Externo</string>
+    <string name="servicio_PHPlocal">Servicio PHP Local</string>
+    <string name="indicacion_materia">A partir de que fecha desea actualizar?</string>
+    <string name="formato_fecha">dd/mm/aaaa</string>
 
 </resources>

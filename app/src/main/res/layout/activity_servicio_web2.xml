@@ -1,9 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ServicioWeb2Activity">
+    android:orientation="vertical"
+    tools:context=".IngresarNotaActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/TextView03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/carnet" />
+
+            <EditText
+                android:id="@+id/editText_notaCarnet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10">
+
+                <requestFocus />
+            </EditText>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/TextView02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cod_materia" />
+
+            <EditText
+                android:id="@+id/editText_notaMateria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ciclo" />
+
+            <EditText
+                android:id="@+id/editText_notaCiclo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/nota_final" />
+
+            <EditText
+                android:id="@+id/editText_notaFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_notaLocal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="insertarNota"
+            android:text="@string/servicio_PHPlocal" />
+
+        <Button
+            android:id="@+id/btn_notaExterno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="insertarNota"
+            android:text="@string/servicio_PHPexterno" />
+
+        <Button
+            android:id="@+id/btn_notaPublicoUES"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="insertarNota"
+            android:text="@string/servicio_PublicoUES" />
+    </LinearLayout>
+</LinearLayout>
