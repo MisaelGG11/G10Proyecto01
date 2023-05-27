@@ -195,7 +195,7 @@
     <string name="servicioWeb8">Servicio Web 8</string>
     <string name="servicio_PHPexterno">Service PHP externe</string>
     <string name="servicio_PHPlocal">Service PHP local</string>
-    <string name="indicacion_materia">A partir de que fecha desea actualizar?</string>
-    <string name="formato_fecha">dd/mm/aaaa</string>
+    <string name="indicacion_actualizar">À partir de quelle date souhaitez-vous mettre à jour ?</string>
+    <string name="formato_fecha">jj/mm/aaaa</string>
 
 </resources>
