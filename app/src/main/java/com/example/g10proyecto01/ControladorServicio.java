@@ -54,8 +54,7 @@ public class ControladorServicio {
                 respuesta = EntityUtils.toString(entidad);
             }
         } catch (Exception e) {
-            Toast.makeText(ctx,url,Toast.LENGTH_LONG).show();
-            Toast.makeText(ctx, "Error en la conexion", Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx, "Error en la conexion: " + e.getMessage(), Toast.LENGTH_LONG).show();
 
             // Desplegando el error en el LogCat
             Log.v("Error de Conexion", e.toString());
@@ -105,27 +104,27 @@ public class ControladorServicio {
         return respuesta;
     }
 
-    public static List<Materia> obtenerMateriasExterno(String json, Context ctx) {
-        List<Materia> listaMaterias = new ArrayList<Materia>();
+    public static List<Escuela> obtenerEscuelas(String json, Context ctx) {
+        List<Escuela> listaEscuelas = new ArrayList<Escuela>();
 
         try {
-            JSONArray materiasJSON = new JSONArray(json);
+            JSONArray escuelasJSON = new JSONArray(json);
 
-            for (int i = 0; i < materiasJSON.length(); i++) {
-                JSONObject obj = materiasJSON.getJSONObject(i);
+            for (int i = 0; i < escuelasJSON.length(); i++) {
+                JSONObject obj = escuelasJSON.getJSONObject(i);
 
-                Materia materia = new Materia();
+                Escuela escuela = new Escuela();
 
-                materia.setCodmateria(obj.getString("CODMATERIA"));
-                materia.setNommateria(obj.getString("NOMMATERIA"));
-                materia.setUnidadesval(obj.getString("UNIDADESVAL"));
+                escuela.setId_escuela(obj.getInt("id_escuela"));
+                escuela.setAcronimo(obj.getString("acronimo"));
+                escuela.setNombre(obj.getString("nombre"));
 
-                listaMaterias.add(materia);
+                listaEscuelas.add(escuela);
             }
 
-            return listaMaterias;
+            return listaEscuelas;
         } catch (Exception e) {
-            Toast.makeText(ctx, "Error en parseOO de JSON", Toast.LENGTH_LONG ).show();
+            Toast.makeText(ctx, "Error en parseOO de JSON: " + e.getMessage(), Toast.LENGTH_LONG ).show();
             return null;
         }
     }

@@ -2124,6 +2124,7 @@ public class ControlG10Proyecto01 {
         final String[] EscuelaNombre = {"Escuela de Ingeniería en Sistemas Informaticos", "Unidad de Ciencias Básicas", "Escuela de Ingeniería Industrial", "Escuela de Ingeniería Eléctrica"};
 
         Escuela escuela = new Escuela();
+
         for (int i = 0; i < 4; i++) {
             escuela.setId_escuela(EscuelaId[i]);
             escuela.setAcronimo(EscuelaAcronimo[i]);
