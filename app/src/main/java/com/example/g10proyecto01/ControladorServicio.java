@@ -104,7 +104,7 @@ public class ControladorServicio {
         }
         return respuesta;
     }
- /*
+
     public static List<Materia> obtenerMateriasExterno(String json, Context ctx) {
         List<Materia> listaMaterias = new ArrayList<Materia>();
 
@@ -147,5 +147,5 @@ public class ControladorServicio {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-    }*/
+    }
 }
