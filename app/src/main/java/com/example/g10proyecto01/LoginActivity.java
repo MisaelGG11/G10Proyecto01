@@ -78,11 +78,11 @@ public class LoginActivity extends AppCompatActivity {
                     else  {messageError = "Usuario o contrasea incorrecto.";}
                 }
 
-                /* //INICIAR SIN LOGUEO
+                 //INICIAR SIN LOGUEO
                 usuario = "UserLogueado";
                 correct = true;
                 userPermisos = "01";
-                global.setUserPermisos(userPermisos);*/
+                global.setUserPermisos(userPermisos);
 
                 if (correct){
                     try{

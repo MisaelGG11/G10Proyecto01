@@ -32,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
-        String[] menu = {"AC17033", "EL19004", "FM19038", "GG20031", "HS19011", getResources().getString(R.string.llenadoBaseDatos), getResources().getString(R.string.logout)};
+        String[] menu = {"AC17033", "EL19004", "FM19038", "GG20031", "HS19011", getResources().getString(R.string.llenadoBaseDatos), getResources().getString(R.string.serviciosWeb), getResources().getString(R.string.logout)};
 
         Intent intent = getIntent();
 
@@ -68,15 +68,22 @@ public class MenuActivity extends AppCompatActivity {
                     Toast.makeText(MenuActivity.this, tost, Toast.LENGTH_SHORT).show();
                 } else if (position == 6) {
                     try {
-                        Class<?> clase2 = Class.forName("com.example.g10proyecto01.LoginActivity");
+                        Class<?> clase2 = Class.forName("com.example.g10proyecto01.ServiciosWebActivity");
                         Intent inte2 = new Intent(MenuActivity.this, clase2);
                         startActivity(inte2);
+                    } catch (ClassNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                } else if (position == 7) {
+                    try {
+                        Class<?> clase3 = Class.forName("com.example.g10proyecto01.LoginActivity");
+                        Intent inte3 = new Intent(MenuActivity.this, clase3);
+                        startActivity(inte3);
                         finish();
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
-
             }
         });
         //Toast.makeText(this, "Bienvenido " + userPermisos, Toast.LENGTH_LONG).show();

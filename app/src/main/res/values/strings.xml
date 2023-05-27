@@ -21,6 +21,16 @@
     <string name="tablaCiclo">Tabla Ciclo</string>
     <string name="tablaEscuela">Tabla Escuela</string>
 
+    <!--Servicios web-->
+    <string name="servicioWeb1">Servicio Web alex 1</string>
+    <string name="servicioWeb2">Servicio Web alex 2</string>
+    <string name="servicioWeb3">Servicio Web claudia 3</string>
+    <string name="servicioWeb4">Servicio Web claudia 4</string>
+    <string name="servicioWeb5">Servicio Web leo 5</string>
+    <string name="servicioWeb6">Servicio Web leo 6</string>
+    <string name="servicioWeb7">Servicio Web fabio 7</string>
+    <string name="servicioWeb8">Servicio Web fabio 8</string>
+
     <!--Operaciones de cada tabla-->
     <string name="insertar_registro">Insertar Registro</string>
     <string name="insertar">Insertar</string>
@@ -65,7 +75,9 @@
     <!--MenuActivity-->
     <string name="bienvenida">Bienvenido,</string>
     <string name="logout">Cerrar sesión</string>
+    <string name="serviciosWeb">Servicios Web</string>
     <string name="llenadoBaseDatos">LLenar base de datos</string>
+
 
     <!--TipoEmpleadoActivities-->
     <string name="tvIdTipoEmpleado">Id de tipo de empleado:</string>
