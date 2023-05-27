@@ -185,14 +185,14 @@
     <string name="OfertaMateria">Materia:</string>
 
     <!--Servicios web-->
-    <string name="servicioWeb1">Servicio Web alex 1</string>
-    <string name="servicioWeb2">Servicio Web alex 2</string>
-    <string name="servicioWeb3">Servicio Web claudia 3</string>
-    <string name="servicioWeb4">Servicio Web claudia 4</string>
-    <string name="servicioWeb5">Servicio Web leo 5</string>
-    <string name="servicioWeb6">Servicio Web leo 6</string>
-    <string name="servicioWeb7">Servicio Web fabio 7</string>
-    <string name="servicioWeb8">Servicio Web fabio 8</string>
+    <string name="servicioWeb1">Actualizar Escuelas</string>
+    <string name="servicioWeb2">Ingresar Escuela</string>
+    <string name="servicioWeb3">Actulizar claudia</string>
+    <string name="servicioWeb4">Ingresar claudia</string>
+    <string name="servicioWeb5">Actulizar leo</string>
+    <string name="servicioWeb6">Ingresar leo</string>
+    <string name="servicioWeb7">Actulizar fabio</string>
+    <string name="servicioWeb8">Ingresar fabio</string>
     <string name="servicio_PHPexterno">Servicio PHP Externo</string>
     <string name="servicio_PHPlocal">Servicio PHP Local</string>
     <string name="indicacion_actualizar">A partir de que fecha desea actualizar?</string>
