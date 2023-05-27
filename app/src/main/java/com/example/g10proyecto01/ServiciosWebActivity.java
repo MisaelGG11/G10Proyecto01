@@ -12,7 +12,7 @@ import android.widget.ListView;
 
 public class ServiciosWebActivity extends ListActivity {
 
-    String[] activities={"ServicioWeb1","ServicioWeb2","ServicioWeb3", "ServicioWeb4", "ServicioWeb5",  "ServicioWeb 6",  "ServicioWeb 7",  "ServicioWeb 8"};
+    String[] activities={"ServicioWeb1Activity","ServicioWeb2Activity","ServicioWeb3Activity", "ServicioWeb4Activity", "ServicioWeb5Activity",  "ServicioWeb6Activity",  "ServicioWeb7Activity",  "ServicioWeb8Activity"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
