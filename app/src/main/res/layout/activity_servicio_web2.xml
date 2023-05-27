@@ -20,7 +20,7 @@
                 android:id="@+id/TextView03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/carnet" />
+                android:text="fasf" />
 
             <EditText
                 android:id="@+id/editText_notaCarnet"
@@ -41,7 +41,7 @@
                 android:id="@+id/TextView02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/cod_materia" />
+                android:text="fsf" />
 
             <EditText
                 android:id="@+id/editText_notaMateria"
@@ -59,7 +59,7 @@
                 android:id="@+id/TextView01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ciclo" />
+                android:text="fsfd" />
 
             <EditText
                 android:id="@+id/editText_notaCiclo"
@@ -77,7 +77,7 @@
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/nota_final" />
+                android:text="sd" />
 
             <EditText
                 android:id="@+id/editText_notaFinal"
