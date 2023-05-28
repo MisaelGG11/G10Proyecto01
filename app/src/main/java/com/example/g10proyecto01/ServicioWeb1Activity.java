@@ -53,6 +53,10 @@ public class ServicioWeb1Activity extends AppCompatActivity {
         } else if (fechaTxt.getText().toString().matches(validarFecha)){
             String[] fecha = fechaTxt.getText().toString().split("/");
 
+            listaEscuelas.removeAll(listaEscuelas);
+
+            actualizarListView();
+
             if (Integer.valueOf(fecha[2]) >= 1900 && Integer.valueOf(fecha[2]) <= 2100 ) {
 
                 String url = "";
