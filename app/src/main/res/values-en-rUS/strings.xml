@@ -196,6 +196,14 @@
     <string name="servicio_PHPexterno">External PHP Service</string>
     <string name="servicio_PHPlocal">Local PHP Service</string>
     <string name="indicacion_actualizar">From what date do you want to update?</string>
-    <string name="formato_fecha">dd/mm/aaaa</string>
+    <string name="formato_fecha">dd/mm/yyyy</string>
+    <string name="el_formato">The format must be </string>
+    <string name="el_anio">The year must be between 1900 and 2100</string>
+    <string name="no_hay">No records to save</string>
+    <string name="si_hay">Saved successfully</string>
+    <string name="error_conexion">Connection error</string>
+    <string name="error_parseo">JSON parsing error</string>
+    <string name="reg_ingresado">record entered</string>
+    <string name="reg_duplicado">Duplicate record error</string>
 
 </resources>

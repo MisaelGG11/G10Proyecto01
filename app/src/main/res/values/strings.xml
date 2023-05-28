@@ -197,5 +197,16 @@
     <string name="servicio_PHPlocal">Servicio PHP Local</string>
     <string name="indicacion_actualizar">A partir de que fecha desea actualizar?</string>
     <string name="formato_fecha">dd/mm/aaaa</string>
+    <string name="el_formato">El formato debe ser </string>
+    <string name="el_anio">El año debe ser entre 1900 y 2100</string>
+    <string name="no_hay">No hay registros por guardar</string>
+    <string name="si_hay">Guardado con exito</string>
+    <string name="error_conexion">Error en la conexion</string>
+    <string name="error_parseo">Error en parseo de JSON</string>
+    <string name="reg_ingresado">Registro ingresado</string>
+    <string name="reg_duplicado">Error registro duplicado</string>
+
+
+
 
 </resources>

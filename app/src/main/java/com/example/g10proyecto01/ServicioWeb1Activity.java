@@ -82,10 +82,10 @@ public class ServicioWeb1Activity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             } else {
-                Toast.makeText(this, "El año debe ser entre 1900 y 2100", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.el_anio), Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(this, "El formato debe ser " + getResources().getString(R.string.formato_fecha), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.el_formato) + getResources().getString(R.string.formato_fecha), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -93,7 +93,7 @@ public class ServicioWeb1Activity extends AppCompatActivity {
         db.abrir();
 
         if (listaEscuelas.size() == 0) {
-            Toast.makeText(this, "No hay registros por guardar", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getResources().getString(R.string.no_hay), Toast.LENGTH_LONG).show();
         } else {
 
             for (int i = 0; i < listaEscuelas.size(); i++) {
@@ -102,7 +102,7 @@ public class ServicioWeb1Activity extends AppCompatActivity {
 
             db.cerrar();
 
-            Toast.makeText(this, "Guardado con exito", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getResources().getString(R.string.si_hay), Toast.LENGTH_LONG).show();
 
             listaEscuelas.removeAll(listaEscuelas);
 

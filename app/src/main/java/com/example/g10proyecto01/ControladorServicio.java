@@ -4,6 +4,22 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+
+import java.sql.Timestamp;
+import java.util.ArrayList;
+
+
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -55,7 +71,7 @@ public class ControladorServicio {
             }
         } catch (Exception e) {
 
-            Toast.makeText(ctx, "Error en la conexion: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(ctx, ctx.getResources().getString(R.string.error_conexion), Toast.LENGTH_LONG).show();
 
             // Desplegando el error en el LogCat
             Log.v("Error de Conexion", e.toString());
@@ -83,7 +99,7 @@ public class ControladorServicio {
 
             return listaEscuelas;
         } catch (Exception e) {
-            Toast.makeText(ctx, "Error en parseOO de JSON: " + e.getMessage(), Toast.LENGTH_LONG ).show();
+            Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
             return null;
         }
     }
@@ -97,15 +113,15 @@ public class ControladorServicio {
             int respuesta = resultado.getInt("resultado");
 
             if (respuesta == 1)
-                Toast.makeText(ctx, "Registro ingresado", Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.reg_ingresado), Toast.LENGTH_LONG).show();
 
         } catch (JSONException e) {
             e.printStackTrace();
 
             if (e.getMessage().contains("Duplicate"))
-                Toast.makeText(ctx, "Error registro duplicado", Toast.LENGTH_LONG).show();
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.reg_duplicado), Toast.LENGTH_LONG).show();
             else
-                Toast.makeText(ctx, "Error en parseo de JSON: " + e.getMessage(), Toast.LENGTH_LONG ).show();
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
         }
     }
 }
