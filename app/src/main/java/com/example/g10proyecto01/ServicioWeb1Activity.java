@@ -46,44 +46,64 @@ public class ServicioWeb1Activity extends AppCompatActivity {
     }
 
     public void servicioPHP(View v) {
-        String[] fecha = fechaTxt.getText().toString().split("/");
-        String url = "";
+        String validarFecha = "^(0[1-9]|1\\d|2\\d|3[01])/(0[1-9]|1[0-2])/(\\d{4})$";
 
-        switch (v.getId()) {
-            case R.id.button1:
-                // it was the first button
-                url = urlLocal + "?day=" + fecha[0] + "&month=" + fecha[1] + "&year=" + fecha[2];
-                break;
-            case R.id.button2:
-                // it was the second button
-                url = urlHostingGratuito + "?day=" + fecha[0] + "&month=" + fecha[1] + "&year=" + fecha[2];
-                break;
-        }
+        if (fechaTxt.getText().toString().isEmpty()){
+            Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();
+        } else if (fechaTxt.getText().toString().matches(validarFecha)){
+            String[] fecha = fechaTxt.getText().toString().split("/");
 
-        String escuelas = ControladorServicio.obtenerRespuestaPeticion(url, this);
+            if (Integer.valueOf(fecha[2]) >= 1900 && Integer.valueOf(fecha[2]) <= 2100 ) {
 
-        try {listaEscuelas.addAll(ControladorServicio.obtenerEscuelas(escuelas, this));
+                String url = "";
 
-            actualizarListView();
-        } catch (Exception e) {
-            e.printStackTrace();
+                switch (v.getId()) {
+                    case R.id.button1:
+                        // it was the first button
+                        url = urlLocal + "?day=" + fecha[0] + "&month=" + fecha[1] + "&year=" + fecha[2];
+                        break;
+                    case R.id.button2:
+                        // it was the second button
+                        url = urlHostingGratuito + "?day=" + fecha[0] + "&month=" + fecha[1] + "&year=" + fecha[2];
+                        break;
+                }
+
+                String escuelas = ControladorServicio.obtenerRespuestaPeticion(url, this);
+
+                try {
+                    listaEscuelas.addAll(ControladorServicio.obtenerEscuelas(escuelas, this));
+
+                    actualizarListView();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                Toast.makeText(this, "El año debe ser entre 1900 y 2100", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "El formato debe ser " + getResources().getString(R.string.formato_fecha), Toast.LENGTH_SHORT).show();
         }
     }
 
     public void guardar(View v) {
         db.abrir();
 
-        for (int i = 0; i < listaEscuelas.size(); i++) {
-            Log.v("guardar", db.insertar(listaEscuelas.get(i)));
+        if (listaEscuelas.size() == 0) {
+            Toast.makeText(this, "No hay registros por guardar", Toast.LENGTH_LONG).show();
+        } else {
+
+            for (int i = 0; i < listaEscuelas.size(); i++) {
+                Log.v("guardar", db.insertar(listaEscuelas.get(i)));
+            }
+
+            db.cerrar();
+
+            Toast.makeText(this, "Guardado con exito", Toast.LENGTH_LONG).show();
+
+            listaEscuelas.removeAll(listaEscuelas);
+
+            actualizarListView();
         }
-
-        db.cerrar();
-
-        Toast.makeText(this, "Guardado con exito", Toast.LENGTH_LONG).show();
-
-        listaEscuelas.removeAll(listaEscuelas);
-
-        actualizarListView();
     }
 
     private void actualizarListView() {

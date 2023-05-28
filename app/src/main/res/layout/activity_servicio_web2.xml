@@ -20,13 +20,15 @@
                 android:id="@+id/TextView03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="fasf" />
+                android:text="@string/idEscuela" />
 
             <EditText
-                android:id="@+id/editText_notaCarnet"
+                android:id="@+id/editIdEscuela"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10">
+                android:ems="10"
+                android:inputType="number"
+                android:maxLength="7" >
 
                 <requestFocus />
             </EditText>
@@ -41,13 +43,15 @@
                 android:id="@+id/TextView02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="fsf" />
+                android:text="@string/acronimoEscuela" />
 
             <EditText
-                android:id="@+id/editText_notaMateria"
+                android:id="@+id/editAcronimo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10" />
+                android:ems="10"
+                android:inputType="text"
+                android:maxLength="7" />
         </TableRow>
 
         <TableRow
@@ -59,32 +63,16 @@
                 android:id="@+id/TextView01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="fsfd" />
+                android:text="@string/nombreEscuela" />
 
             <EditText
-                android:id="@+id/editText_notaCiclo"
+                android:id="@+id/editNombreEscuela"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="10" />
+                android:ems="10"
+                android:maxLength="30"/>
         </TableRow>
 
-        <TableRow
-            android:id="@+id/tableRow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="sd" />
-
-            <EditText
-                android:id="@+id/editText_notaFinal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10" />
-        </TableRow>
     </TableLayout>
 
     <LinearLayout
@@ -93,17 +81,17 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_notaLocal"
+            android:id="@+id/btn_escuelaLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="insertarNota"
+            android:onClick="insertarEscuela"
             android:text="@string/servicio_PHPlocal" />
 
         <Button
-            android:id="@+id/btn_notaExterno"
+            android:id="@+id/btn_escuelaExterno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="insertarNota"
+            android:onClick="insertarEscuela"
             android:text="@string/servicio_PHPexterno" />
     </LinearLayout>
 </LinearLayout>

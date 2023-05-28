@@ -15,7 +15,8 @@
         android:id="@+id/editText_fecha"
         android:inputType="date"
         android:hint="@string/formato_fecha"
-        android:ems="10">
+        android:ems="10"
+        android:maxLength="10" >
         <requestFocus/>
     </EditText>
     <LinearLayout
