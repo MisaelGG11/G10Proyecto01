@@ -189,22 +189,22 @@
     <string name="servicioWeb2">Ingresar Escuela</string>
     <string name="servicioWeb3">Actulizar claudia</string>
     <string name="servicioWeb4">Ingresar claudia</string>
-    <string name="servicioWeb5">Actulizar leo</string>
-    <string name="servicioWeb6">Ingresar leo</string>
+    <string name="servicioWeb5">Actualizar Ciclo</string>
+    <string name="servicioWeb6">Ingresar Ciclo</string>
     <string name="servicioWeb7">Actulizar fabio</string>
     <string name="servicioWeb8">Ingresar fabio</string>
     <string name="servicio_PHPexterno">Servicio PHP Externo</string>
     <string name="servicio_PHPlocal">Servicio PHP Local</string>
-    <string name="indicacion_actualizar">A partir de que fecha desea actualizar?</string>
+    <string name="indicacion_actualizar">¿A partir de qué fecha desea actualizar?</string>
     <string name="formato_fecha">dd/mm/aaaa</string>
     <string name="el_formato">El formato debe ser </string>
     <string name="el_anio">El año debe ser entre 1900 y 2100</string>
     <string name="no_hay">No hay registros por guardar</string>
-    <string name="si_hay">Guardado con exito</string>
-    <string name="error_conexion">Error en la conexion</string>
+    <string name="si_hay">Guardado con éxito</string>
+    <string name="error_conexion">Error en la conexión</string>
     <string name="error_parseo">Error en parseo de JSON</string>
     <string name="reg_ingresado">Registro ingresado</string>
-    <string name="reg_duplicado">Error registro duplicado</string>
+    <string name="reg_duplicado">Error de registro duplicado</string>
 
 
 

@@ -10,28 +10,36 @@
         android:layout_width="wrap_content"
         android:id="@+id/textView"
         android:text="@string/indicacion_actualizar"/>
-    <EditText android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+
+    <EditText
         android:id="@+id/editText_fecha"
-        android:inputType="date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
         android:hint="@string/formato_fecha"
-        android:ems="10">
-        <requestFocus/>
+        android:inputType="date"
+        android:minHeight="48dp">
+
+        <requestFocus />
     </EditText>
     <LinearLayout
         android:orientation="vertical"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
-        <Button android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+
+        <Button
             android:id="@+id/button1"
-            android:text="@string/servicio_PHPlocal"
-            android:onClick="servicioPHP"/>
-        <Button android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="servicioPHP"
+            android:text="@string/servicio_PHPlocal" />
+
+        <Button
             android:id="@+id/button2"
-            android:text="@string/servicio_PHPexterno"
-            android:onClick="servicioPHP"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="servicioPHP"
+            android:text="@string/servicio_PHPexterno" />
     </LinearLayout>
     <Button android:layout_height="wrap_content"
         android:layout_width="match_parent"

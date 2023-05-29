@@ -81,14 +81,14 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_escuelaLocal"
+            android:id="@+id/btn_cicloLocal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="insertarEscuela"
             android:text="@string/servicio_PHPlocal" />
 
         <Button
-            android:id="@+id/btn_escuelaExterno"
+            android:id="@+id/btn_cicloExterno"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="insertarEscuela"

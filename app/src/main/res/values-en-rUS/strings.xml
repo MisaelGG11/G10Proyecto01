@@ -186,11 +186,11 @@
 
     <!--Servicios web-->
     <string name="servicioWeb1">Update Schools</string>
-    <string name="servicioWeb2">Enter School</string>
+    <string name="servicioWeb2">Insert School</string>
     <string name="servicioWeb3">Actulizar claudia</string>
     <string name="servicioWeb4">Ingresar claudia</string>
-    <string name="servicioWeb5">Actulizar leo</string>
-    <string name="servicioWeb6">Ingresar leo</string>
+    <string name="servicioWeb5">Update Cycle</string>
+    <string name="servicioWeb6">Insert Cycle </string>
     <string name="servicioWeb7">Actulizar fabio</string>
     <string name="servicioWeb8">Ingresar fabio</string>
     <string name="servicio_PHPexterno">External PHP Service</string>

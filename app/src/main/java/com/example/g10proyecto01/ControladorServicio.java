@@ -124,4 +124,29 @@ public class ControladorServicio {
                 Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
         }
     }
+
+    public static List<Ciclo> obtenerCiclos(String json, Context ctx) {
+        List<Ciclo> listaCiclos = new ArrayList<Ciclo>();
+
+        try {
+            JSONArray ciclosJSON = new JSONArray(json);
+
+            for (int i = 0; i < ciclosJSON.length(); i++) {
+                JSONObject obj = ciclosJSON.getJSONObject(i);
+
+                Ciclo ciclo = new Ciclo();
+
+                ciclo.setId_ciclo(obj.getInt("id_ciclo"));
+                ciclo.setCiclo(Integer.parseInt(obj.getString("ciclo")));
+                ciclo.setAño(Integer.parseInt(obj.getString("anio")));
+
+                listaCiclos.add(ciclo);
+            }
+
+            return listaCiclos;
+        } catch (Exception e) {
+            Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
+            return null;
+        }
+    }
 }

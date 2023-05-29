@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -66,13 +65,13 @@ public class ServicioWeb2Activity extends AppCompatActivity {
             JSONObject escuela = new JSONObject();
 
             switch (v.getId()) {
-                case R.id.btn_escuelaLocal:
+                case R.id.btn_cicloLocal:
                     url = urlLocal + "?id_escuela=" + URLEncoder.encode(idEscuela) + "&acronimo=" + URLEncoder.encode(acronimo) + "&nombre=" + URLEncoder.encode(nombre) + "&fecha_modificado=" + URLEncoder.encode(fechaHoy);
 
                     ControladorServicio.insertarEscuelaW(url, this);
 
                     break;
-                case R.id.btn_escuelaExterno:
+                case R.id.btn_cicloExterno:
                     url = urlHostingGratuito + "?id_escuela=" + URLEncoder.encode(idEscuela) + "&acronimo=" + URLEncoder.encode(acronimo) + "&nombre=" + URLEncoder.encode(nombre) + "&fecha_modificado=" + URLEncoder.encode(fechaHoy);
 
                     ControladorServicio.insertarEscuelaW(url, this);
