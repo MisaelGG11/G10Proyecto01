@@ -20,13 +20,9 @@ import java.util.Date;
 @SuppressLint("NewApi")
 public class ServicioWeb4Activity extends AppCompatActivity {
     EditText idLocalidadTxt, edificioTxt, nombreLocalTxt, capacidadTxt;
-    //ALEXANDER
-    //private final String urlLocal = "http://192.168.1.3/ws_db_localidad_insert.php";
-    //CLAUDIA
+
     private final String urlLocal = "http://192.168.0.11/ws_db_localidad_insert.php";
-    //FABIO
-    //LEONARDO
-    //MISAEL
+
     private final String urlHostingGratuito = "https://hs19011pdm115.000webhostapp.com/ws_db_localidad_insert.php";
 
     @SuppressLint("NewApi")

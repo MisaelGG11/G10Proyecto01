@@ -32,13 +32,9 @@ public class ServicioWeb3Activity extends AppCompatActivity {
     static List<String> nombrelocales;
     EditText fechaTxt;
     ListView listViewLocales;
-    //ALEXANDER
-    //private final String urlLocal = "http://192.168.1.3/ws_db_localidad_fecha.php";
-    //CLAUDIA
+
     private final String urlLocal = "http://192.168.0.11/ws_db_localidad_fecha.php";
-    //FABIO
-    //LEONARDO
-    //MISAEL
+
     private final String urlHostingGratuito = "https://hs19011pdm115.000webhostapp.com/ws_db_localidad_fecha.php";
 
     @SuppressLint("NewApi")
