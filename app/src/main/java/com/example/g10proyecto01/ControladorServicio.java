@@ -137,8 +137,8 @@ public class ControladorServicio {
                 Ciclo ciclo = new Ciclo();
 
                 ciclo.setId_ciclo(obj.getInt("id_ciclo"));
-                ciclo.setCiclo(Integer.parseInt(obj.getString("ciclo")));
-                ciclo.setAño(Integer.parseInt(obj.getString("anio")));
+                ciclo.setCiclo(obj.getInt("ciclo"));
+                ciclo.setAño(obj.getInt("anio"));
 
                 listaCiclos.add(ciclo);
             }
@@ -147,6 +147,27 @@ public class ControladorServicio {
         } catch (Exception e) {
             Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
             return null;
+        }
+    }
+
+    public static void insertarCicloW(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+        try {
+            JSONObject resultado = new JSONObject(json);
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.reg_ingresado), Toast.LENGTH_LONG).show();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+            if (e.getMessage().contains("Duplicate"))
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.reg_duplicado), Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
         }
     }
 

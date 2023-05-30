@@ -24,7 +24,7 @@ public class ServicioWeb5Activity extends AppCompatActivity {
     static List<String> nombreCiclos;
     EditText fechaTxt;
     ListView listViewCiclos;
-    private final String urlLocal = "http://192.168.1.3/ws_db_ciclo_fecha.php";
+    private final String urlLocal = "http://192.168.1.15/ws_db_ciclo_fecha.php";
     private final String urlHostingGratuito = "https://hs19011pdm115.000webhostapp.com/ws_db_ciclo_fecha.php";
 
     @SuppressLint("NewApi")
@@ -71,6 +71,9 @@ public class ServicioWeb5Activity extends AppCompatActivity {
                         url = urlHostingGratuito + "?day=" + fecha[0] + "&month=" + fecha[1] + "&year=" + fecha[2];
                         break;
                 }
+
+                Log.v("Errrrrrooooooorrrr: ", url);
+
 
                 String ciclos = ControladorServicio.obtenerRespuestaPeticion(url, this);
 

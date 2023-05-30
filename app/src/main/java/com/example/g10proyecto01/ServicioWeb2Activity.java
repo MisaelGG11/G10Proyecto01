@@ -65,13 +65,13 @@ public class ServicioWeb2Activity extends AppCompatActivity {
             JSONObject escuela = new JSONObject();
 
             switch (v.getId()) {
-                case R.id.btn_cicloLocal:
+                case R.id.btn_escuelaLocal:
                     url = urlLocal + "?id_escuela=" + URLEncoder.encode(idEscuela) + "&acronimo=" + URLEncoder.encode(acronimo) + "&nombre=" + URLEncoder.encode(nombre) + "&fecha_modificado=" + URLEncoder.encode(fechaHoy);
 
                     ControladorServicio.insertarEscuelaW(url, this);
 
                     break;
-                case R.id.btn_cicloExterno:
+                case R.id.btn_escuelaExterno:
                     url = urlHostingGratuito + "?id_escuela=" + URLEncoder.encode(idEscuela) + "&acronimo=" + URLEncoder.encode(acronimo) + "&nombre=" + URLEncoder.encode(nombre) + "&fecha_modificado=" + URLEncoder.encode(fechaHoy);
 
                     ControladorServicio.insertarEscuelaW(url, this);

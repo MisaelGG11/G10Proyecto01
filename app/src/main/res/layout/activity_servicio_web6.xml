@@ -28,8 +28,7 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:inputType="number"
-                android:maxLength="7"
-                tools:ignore="SpeakableTextPresentCheck">
+                android:maxLength="7">
 
                 <requestFocus />
             </EditText>
@@ -51,9 +50,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="text"
-                android:maxLength="7"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                android:inputType="number"
+                android:maxLength="7" />
         </TableRow>
 
         <TableRow
@@ -72,8 +70,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:maxLength="30"
-                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                android:inputType="number"
+                android:maxLength="30" />
         </TableRow>
 
     </TableLayout>
@@ -84,17 +82,17 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/btn_cicloLocal"
+            android:id="@+id/btn_escuelaLocal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="insertarEscuela"
+            android:onClick="insertarCiclo"
             android:text="@string/servicio_PHPlocal" />
 
         <Button
-            android:id="@+id/btn_cicloExterno"
+            android:id="@+id/btn_escuelaExterno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="insertarEscuela"
+            android:onClick="insertarCiclo"
             android:text="@string/servicio_PHPexterno" />
     </LinearLayout>
 </LinearLayout>
