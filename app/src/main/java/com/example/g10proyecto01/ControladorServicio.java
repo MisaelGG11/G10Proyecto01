@@ -78,7 +78,7 @@ public class ControladorServicio {
         }
         return respuesta;
     }
-
+    /*********************************** Tabla ESCUELA ***********************************/
     public static List<Escuela> obtenerEscuelas(String json, Context ctx) {
         List<Escuela> listaEscuelas = new ArrayList<Escuela>();
 
@@ -125,6 +125,7 @@ public class ControladorServicio {
         }
     }
 
+    /*********************************** Tabla CICLOS ***********************************/
     public static List<Ciclo> obtenerCiclos(String json, Context ctx) {
         List<Ciclo> listaCiclos = new ArrayList<Ciclo>();
 

@@ -199,6 +199,7 @@
     <string name="formato_fecha">dd/mm/yyyy</string>
     <string name="el_formato">The format must be </string>
     <string name="el_anio">The year must be between 1900 and 2100</string>
+    <string name="el_anio2">The year must be between 1900 and 2100, the month between 01 and 12 and the day between 01 and 31.</string>
     <string name="no_hay">No records to save</string>
     <string name="si_hay">Saved successfully</string>
     <string name="error_conexion">Connection error</string>

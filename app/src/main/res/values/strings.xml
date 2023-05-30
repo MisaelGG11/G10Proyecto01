@@ -199,6 +199,7 @@
     <string name="formato_fecha">dd/mm/aaaa</string>
     <string name="el_formato">El formato debe ser </string>
     <string name="el_anio">El año debe ser entre 1900 y 2100</string>
+    <string name="el_anio2">El año debe estar entre 1900 y 2100, el mes de 01 a 12 y el dia entre 01 y 31</string>
     <string name="no_hay">No hay registros por guardar</string>
     <string name="si_hay">Guardado con éxito</string>
     <string name="error_conexion">Error en la conexión</string>
