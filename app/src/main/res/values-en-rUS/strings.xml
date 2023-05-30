@@ -187,8 +187,8 @@
     <!--Servicios web-->
     <string name="servicioWeb1">Update Schools</string>
     <string name="servicioWeb2">Insert School</string>
-    <string name="servicioWeb3">Actulizar claudia</string>
-    <string name="servicioWeb4">Ingresar claudia</string>
+    <string name="servicioWeb3">Update Locations</string>
+    <string name="servicioWeb4">Enter Location</string>
     <string name="servicioWeb5">Update Cycle</string>
     <string name="servicioWeb6">Insert Cycle </string>
     <string name="servicioWeb7">Actulizar fabio</string>

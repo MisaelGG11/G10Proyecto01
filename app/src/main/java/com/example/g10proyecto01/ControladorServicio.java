@@ -149,4 +149,53 @@ public class ControladorServicio {
             return null;
         }
     }
+
+    /*********************************** Tabla LOCALIDAD ***********************************/
+    public static List<Localidad> obtenerLocalidad(String json, Context ctx) {
+        List<Localidad> listaLocalidades = new ArrayList<Localidad>();
+
+        try {
+            JSONArray localidadJSON = new JSONArray(json);
+
+            for (int i = 0; i < localidadJSON.length(); i++) {
+                JSONObject obj = localidadJSON.getJSONObject(i);
+
+                Localidad localidad = new Localidad();
+
+                localidad.setId_localidad(obj.getInt("id_localidad"));
+                localidad.setEdificio_localidad(obj.getString("edificio_localidad"));
+                localidad.setNombre_localidad(obj.getString("nombre_localidad"));
+                localidad.setCapacidad_localidad(obj.getInt("capacidad_localidad"));
+
+                listaLocalidades.add(localidad);
+            }
+
+            return listaLocalidades;
+        } catch (Exception e) {
+            Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
+            return null;
+        }
+    }
+
+    public static void insertarLocalidadW(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+        try {
+            JSONObject resultado = new JSONObject(json);
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.reg_ingresado), Toast.LENGTH_LONG).show();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+            if (e.getMessage().contains("Duplicate"))
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.reg_duplicado), Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
+        }
+    }
+
 }

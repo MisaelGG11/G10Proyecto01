@@ -187,8 +187,8 @@
     <!--Servicios web-->
     <string name="servicioWeb1">Mettre à jour les écoles</string>
     <string name="servicioWeb2">Entrer à l’école</string>
-    <string name="servicioWeb3">Actulizar claudia</string>
-    <string name="servicioWeb4">Ingresar claudia</string>
+    <string name="servicioWeb3">Mettre à jour les emplacements</string>
+    <string name="servicioWeb4">Entrer l’emplacement</string>
     <string name="servicioWeb5">Cycle de rafraîchissement</string>
     <string name="servicioWeb6">Entrer dans le cycle</string>
     <string name="servicioWeb7">Actulizar fabio</string>
