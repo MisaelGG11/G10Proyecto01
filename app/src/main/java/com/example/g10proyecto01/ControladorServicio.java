@@ -220,4 +220,28 @@ public class ControladorServicio {
         }
     }
 
+    /*********************************** Tabla CICLOS ***********************************/
+    public static List<OpcionCrud> obtenerOpcionCruds(String json, Context ctx) {
+        List<OpcionCrud> listaOpcionCruds = new ArrayList<OpcionCrud>();
+
+        try {
+            JSONArray opcionCrudsJSON = new JSONArray(json);
+
+            for (int i = 0; i < opcionCrudsJSON.length(); i++) {
+                JSONObject obj = opcionCrudsJSON.getJSONObject(i);
+
+                OpcionCrud opcionCrud = new OpcionCrud();
+
+                opcionCrud.setId_opcion_crud(obj.getInt("id_opcion"));
+                opcionCrud.setDes_opcion(obj.getString("des_opcion"));
+
+                listaOpcionCruds.add(opcionCrud);
+            }
+
+            return listaOpcionCruds;
+        } catch (Exception e) {
+            Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
+            return null;
+        }
+    }
 }

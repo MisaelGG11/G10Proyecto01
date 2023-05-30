@@ -191,8 +191,8 @@
     <string name="servicioWeb4">Entrer l’emplacement</string>
     <string name="servicioWeb5">Cycle de rafraîchissement</string>
     <string name="servicioWeb6">Entrer dans le cycle</string>
-    <string name="servicioWeb7">Actulizar fabio</string>
-    <string name="servicioWeb8">Ingresar fabio</string>
+    <string name="servicioWeb7">mise à jour de l’option crud</string>
+    <string name="servicioWeb8">insérer l’option crud</string>
     <string name="servicio_PHPexterno">Service PHP externe</string>
     <string name="servicio_PHPlocal">Service PHP local</string>
     <string name="indicacion_actualizar">À partir de quelle date souhaitez-vous mettre à jour ?</string>

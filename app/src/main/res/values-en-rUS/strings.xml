@@ -191,8 +191,8 @@
     <string name="servicioWeb4">Enter Location</string>
     <string name="servicioWeb5">Update Cycle</string>
     <string name="servicioWeb6">Insert Cycle </string>
-    <string name="servicioWeb7">Actulizar fabio</string>
-    <string name="servicioWeb8">Ingresar fabio</string>
+    <string name="servicioWeb7">Update CRUD option</string>
+    <string name="servicioWeb8">Insert CRUD option</string>
     <string name="servicio_PHPexterno">External PHP Service</string>
     <string name="servicio_PHPlocal">Local PHP Service</string>
     <string name="indicacion_actualizar">From what date do you want to update?</string>

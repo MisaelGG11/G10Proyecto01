@@ -7,6 +7,9 @@ public class OpcionCrud {
     private int id_opcion_crud;
     private String des_opcion;
 
+    public OpcionCrud() {
+    }
+
     public OpcionCrud(int id_opcion_crud, String des_opcion) {
         this.id_opcion_crud = id_opcion_crud;
         this.des_opcion = des_opcion;
