@@ -79,7 +79,6 @@ public class ServicioWeb6Activity extends AppCompatActivity {
 
                     break;
             }
-            Log.v("Errrrrrooooooorrrr: ", url);
         }
     }
 }
