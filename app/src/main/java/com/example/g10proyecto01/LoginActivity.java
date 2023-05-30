@@ -79,10 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                  //INICIAR SIN LOGUEO
-                usuario = "UserLogueado";
+               /* usuario = "UserLogueado";
                 correct = true;
                 userPermisos = "01";
-                global.setUserPermisos(userPermisos);
+                global.setUserPermisos(userPermisos);*/
 
                 if (correct){
                     try{
