@@ -28,8 +28,8 @@ CREATE TABLE `OPCION_CRUD2` (
 --
 
 INSERT INTO `OPCION_CRUD2` (`id_opcion`, `des_opcion`, `fecha_modificado`) VALUES
-('006', 'Consultar y eliminar', '2023-05-30'),
-('007', 'Añadir y actualizar', '2023-05-30');
+('006', 'Consultar y eliminar', '2019-01-01 06:00:00'),
+('007', 'Agregar y actualizar', '2019-01-01 06:00:00');
 
 --
 -- Indices de la tabla `OPCION_CRUD2`
@@ -47,6 +47,6 @@ COMMIT;
   --
 
 INSERT INTO `OPCION_CRUD2` (`id_opcion`, `des_opcion`, `fecha_modificado`) VALUES
-('008', 'Consultar y actulizar', '2023-05-30'),
-('009', 'añafir y eliminar', '2023-05-30');
+('008', 'Consultar y actualizar', '2019-01-01 06:00:00'),
+('009', 'Agregar y eliminar', '2019-01-01 06:00:00');
 
