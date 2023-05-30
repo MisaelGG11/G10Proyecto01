@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
---
--- Base de datos: `grupo10`
---
 
--- --------------------------------------------------------
 --
 -- Estructura de tabla para la tabla `LOCALIDAD_2`
 --
@@ -31,11 +24,9 @@ INSERT INTO `localidad2` (`id_localidad`, `edificio_localidad`, `nombre_localida
 -- Indices de la tabla `LOCALIDAD_2`
 --
 ALTER TABLE `localidad2`
-ADD PRIMARY KEY (`id_localidad`);
+  ADD PRIMARY KEY (`id_localidad`);
 
 
-
--- SOLO DB WEB
 -- Volcado de datos para la tabla `Localidad2` SOLO PARA LA DB WEB
 --
    INSERT INTO `localidad2` (`id_localidad`, `edificio_localidad`, `nombre_localidad`, `capacidad_localidad`,`fecha_modificacion_localidad`) VALUES

@@ -41,4 +41,3 @@ ALTER TABLE `escuela2`
   INSERT INTO `escuela2` (`id_escuela`, `acronimo`, `nombre`, `fecha_modificado`) VALUES
   (7, 'EIAL', 'Escuela de ingenieria en alimentos', '2019-01-01 06:00:00'),
   (8, 'EISW', 'Escuela de ingenieria de software', '2019-01-01 06:00:00');
-
