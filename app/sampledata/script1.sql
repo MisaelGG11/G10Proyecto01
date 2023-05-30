@@ -33,17 +33,6 @@ ALTER TABLE `escuela2`
   ADD PRIMARY KEY (`id_escuela`);
 
 
-
-  -- SOLO DB WEB
-  -- Volcado de datos para la tabla `escuela2` SOLO PARA LA DB WEB
-  --
-
-  INSERT INTO `escuela2` (`id_escuela`, `acronimo`, `nombre`, `fecha_modificado`) VALUES
-  (7, 'EIAL', 'Escuela de ingenieria en alimentos', '2019-01-01 06:00:00'),
-  (8, 'EISW', 'Escuela de ingenieria de software', '2019-01-01 06:00:00');
-
-
-
 --
 -- Estructura de tabla para la tabla `LOCALIDAD_2`
 --
@@ -74,9 +63,18 @@ ALTER TABLE `localidad2`
 
 
 -- SOLO DB WEB
+
 -- Volcado de datos para la tabla `escuela2` SOLO PARA LA DB WEB
 --
-INSERT INTO `localidad2` (`id_localidad`, `edificio_localidad`, `nombre_localidad`, `capacidad_localidad`,`fecha_modificacion_localidad`) VALUES
-(14, 'Edificio C', 'C31',100, '2023-05-01 06:00:00'),
-(15, 'Edificio C', 'C33', 100,'2023-05-01 06:00:00'),
-(16, 'Labcomp EISI', 'LABCOMP05',20, '2023-05-05 06:00:00');
+
+  INSERT INTO `escuela2` (`id_escuela`, `acronimo`, `nombre`, `fecha_modificado`) VALUES
+  (7, 'EIAL', 'Escuela de ingenieria en alimentos', '2019-01-01 06:00:00'),
+  (8, 'EISW', 'Escuela de ingenieria de software', '2019-01-01 06:00:00');
+
+
+-- Volcado de datos para la tabla `Localidad2` SOLO PARA LA DB WEB
+--
+   INSERT INTO `localidad2` (`id_localidad`, `edificio_localidad`, `nombre_localidad`, `capacidad_localidad`,`fecha_modificacion_localidad`) VALUES
+   (14, 'Edificio C', 'C31',100, '2023-05-01 06:00:00'),
+   (15, 'Edificio C', 'C33', 100,'2023-05-01 06:00:00'),
+   (16, 'Labcomp EISI', 'LABCOMP05',20, '2023-05-05 06:00:00');

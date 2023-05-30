@@ -199,6 +199,7 @@
     <string name="formato_fecha">jj/mm/aaaa</string>
     <string name="el_formato">Le format doit être </string>
     <string name="el_anio">L’année doit être comprise entre 1900 et 2100 </string>
+    <string name="el_anio2">L année doit être comprise entre 1900 et 2100, le mois entre 01 et 12 et le jour entre 01 et 31.</string>
     <string name="no_hay">Aucun enregistrement à sauvegarder</string>
     <string name="si_hay">Enregistré avec succès</string>
     <string name="error_conexion">Erreur de connexion</string>
