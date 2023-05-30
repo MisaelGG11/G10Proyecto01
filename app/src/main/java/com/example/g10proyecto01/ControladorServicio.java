@@ -220,7 +220,7 @@ public class ControladorServicio {
         }
     }
 
-    /*********************************** Tabla CICLOS ***********************************/
+    /*********************************** Tabla OPCION CRUD ***********************************/
     public static List<OpcionCrud> obtenerOpcionCruds(String json, Context ctx) {
         List<OpcionCrud> listaOpcionCruds = new ArrayList<OpcionCrud>();
 
@@ -242,6 +242,27 @@ public class ControladorServicio {
         } catch (Exception e) {
             Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
             return null;
+        }
+    }
+
+    public static void insertarOpcionesW(String peticion, Context ctx) {
+        String json = obtenerRespuestaPeticion(peticion, ctx);
+
+        try {
+            JSONObject resultado = new JSONObject(json);
+
+            int respuesta = resultado.getInt("resultado");
+
+            if (respuesta == 1)
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.reg_ingresado), Toast.LENGTH_LONG).show();
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+            if (e.getMessage().contains("Duplicate"))
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.reg_duplicado), Toast.LENGTH_LONG).show();
+            else
+                Toast.makeText(ctx, ctx.getResources().getString(R.string.error_parseo), Toast.LENGTH_LONG ).show();
         }
     }
 }
