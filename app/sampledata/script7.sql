@@ -2,12 +2,6 @@
 -- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 30-05-2023 a las 22:13:23
--- Versión del servidor: 10.5.20-MariaDB
--- Versión de PHP: 7.3.32
-
---
 -- Base de datos: `id20759238_grupo10`
 --
 
@@ -20,8 +14,8 @@
 CREATE TABLE `OPCION_CRUD2` (
   `id_opcion` char(6) NOT NULL,
   `des_opcion` varchar(30) NOT NULL,
-  `fecha_modificado` date DEFAULT curdate()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `fecha_modificado` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `OPCION_CRUD2`
@@ -36,9 +30,6 @@ INSERT INTO `OPCION_CRUD2` (`id_opcion`, `des_opcion`, `fecha_modificado`) VALUE
 --
 ALTER TABLE `OPCION_CRUD2`
   ADD PRIMARY KEY (`id_opcion`);
-COMMIT;
-
-
 
 
 
