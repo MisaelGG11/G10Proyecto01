@@ -119,7 +119,7 @@ public class ServicioWeb5Activity extends AppCompatActivity {
         nombreCiclos.clear();
 
         for (int i = 0; i < listaCiclos.size(); i++) {
-            dato = listaCiclos.get(i).getId_ciclo() + " " + listaCiclos.get(i).getCiclo() + " \n" + listaCiclos.get(i).getAño();
+            dato = "ID: " + listaCiclos.get(i).getId_ciclo() + " Ciclo:" + listaCiclos.get(i).getCiclo() + " \n" + "Año: " + listaCiclos.get(i).getAño();
             nombreCiclos.add(dato);
         }
 
