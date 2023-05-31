@@ -13,7 +13,7 @@
     <EditText android:layout_height="wrap_content"
         android:layout_width="match_parent"
         android:id="@+id/editText_fecha"
-        android:inputType="date"
+        android:focusable="false"
         android:hint="@string/formato_fecha"
         android:ems="10"
         android:maxLength="10" >

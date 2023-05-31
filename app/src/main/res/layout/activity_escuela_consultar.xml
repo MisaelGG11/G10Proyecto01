@@ -51,7 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:maxLength="30"
+            android:maxLength="50"
             android:inputType="textEmailAddress"
             android:labelFor="@+id/viewNombre"
             android:textSize="18sp" />

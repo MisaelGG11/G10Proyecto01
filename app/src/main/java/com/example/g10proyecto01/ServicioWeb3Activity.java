@@ -14,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 
@@ -24,9 +25,11 @@ import android.graphics.Typeface;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
+
 
 @SuppressLint("NewApi")
-public class ServicioWeb3Activity extends AppCompatActivity {
+public class ServicioWeb3Activity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
     ControlG10Proyecto01 db;
     static List<Localidad> listalocales;
     static List<String> nombrelocales;
@@ -54,10 +57,34 @@ public class ServicioWeb3Activity extends AppCompatActivity {
 
         fechaTxt = (EditText) findViewById(R.id.editText_fechaL);
         listViewLocales = (ListView) findViewById(R.id.listViewlocales);
+
+        fechaTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Obtener la fecha actual para establecerla como fecha predeterminada en el selector
+                Calendar now = Calendar.getInstance();
+
+                DatePickerDialog dpd = DatePickerDialog.newInstance(
+                        ServicioWeb3Activity.this,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+
+                dpd.show(getSupportFragmentManager(), "DatePickerDialog");
+            }
+        });
+    }
+
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        // El usuario ha seleccionado una fecha
+        String selectedDate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
+        fechaTxt.setText(selectedDate);
     }
 
     public void LservicioPHP(View v) {
-        String validarFecha = "^(0[1-9]|1\\d|2\\d|3[01])/(0[1-9]|1[0-2])/(\\d{4})$";
+        String validarFecha = "^([1-9]|1\\d|2\\d|3[01])/([1-9]|1[0-2])/(\\d{4})$";
 
         if (fechaTxt.getText().toString().isEmpty()){
             Toast.makeText(this, getResources().getString(R.string.vacio), Toast.LENGTH_SHORT).show();

@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/formato_fecha"
-        android:inputType="date"
+        android:focusable="false"
         android:minHeight="48dp">
 
         <requestFocus />
