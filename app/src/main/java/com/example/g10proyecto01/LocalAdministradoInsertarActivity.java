@@ -21,7 +21,12 @@ public class LocalAdministradoInsertarActivity extends Activity {
 
     List<Integer> listIdLocal = new ArrayList<>();
     List<Integer> listIdEncargado = new ArrayList<>();
-
+    List<Integer> listIdEmp = new ArrayList<>();
+    List<String> nombresEmp = new ArrayList<>();
+    List<Integer> idLA = new ArrayList<>();
+    List<String> loc = new ArrayList<>();
+    List <String> spinnerList = new ArrayList<>();
+    List <String> spinnerList2 = new ArrayList<>();
     Spinner spinnerEmpleado;
     Spinner spinnerLocal;
 
@@ -42,8 +47,8 @@ public class LocalAdministradoInsertarActivity extends Activity {
     }
     public void insertarLocalAdmin(View v) {
         String idLocalAdmin = editIdLocalAdmin.getText().toString();
-        int idLocal = listIdLocal.get(spinnerLocal.getSelectedItemPosition());
-        int idEmpleado = listIdEncargado.get(spinnerEmpleado.getSelectedItemPosition());
+        int idLocal = idLA.get(spinnerLocal.getSelectedItemPosition());
+        int idEmpleado = listIdEmp.get(spinnerEmpleado.getSelectedItemPosition());
         String regInsertados;
 
         if (idLocalAdmin.isEmpty()) {
@@ -67,32 +72,46 @@ public class LocalAdministradoInsertarActivity extends Activity {
     }
 
     public void SpinnerLoc(){
-        String sql = "SELECT id_localidad FROM Localidad WHERE id_localidad NOT IN (SELECT id_localidad FROM Local_Administrado)";
-        Cursor cursorL = helper.llenarSpinner(sql);
-        while (cursorL.moveToNext()) {
-            @SuppressLint("Range")
-            int idLoc = cursorL.getInt(cursorL.getColumnIndex("id_localidad"));
-            listIdLocal.add(idLoc);
-        }
-        ArrayAdapter<Integer> adapterL = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdLocal);
-        adapterL.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        adapterL.notifyDataSetChanged();
-        spinnerLocal.setAdapter(adapterL);
+        String query = "SELECT l.id_local_admin, lo.nombre_localidad FROM Local_Administrado AS l JOIN Localidad AS lo ON l.id_localidad = lo.id_localidad";
+        Cursor cursor = helper.llenarSpinner(query);
+        while(cursor.moveToNext()){
+            @SuppressLint("Range")
+            int id = cursor.getInt(cursor.getColumnIndex("id_local_admin"));
+            idLA.add(id);
+
+            @SuppressLint("Range")
+            String local = cursor.getString(cursor.getColumnIndex("nombre_localidad"));
+            loc.add(local);
+
+            String itemSpinner = id + ": " + local;
+            spinnerList2.add(itemSpinner);
+        }
+        ArrayAdapter<String> adapterLocal = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,spinnerList2);
+        adapterLocal.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLocal.setAdapter(adapterLocal);
     }
 
-    public void SpinnerEmpleado(){
-        String sql = "SELECT id_empleado FROM Empleado_UES";
-        Cursor cursorE = helper.llenarSpinner(sql);
 
-        while (cursorE.moveToNext()) {
+
+    public void SpinnerEmpleado(){
+        String sql = "SELECT id_empleado, nombre_empleado, apellido_empleado FROM Empleado_UES";
+        Cursor cursor = helper.llenarSpinner(sql);
+        while (cursor.moveToNext()) {
             @SuppressLint("Range")
-            int idEn = cursorE.getInt(cursorE.getColumnIndex("id_empleado"));
-            listIdEncargado.add(idEn);
+            int idEmp = cursor.getInt(cursor.getColumnIndex("id_empleado"));
+            listIdEmp.add(idEmp);
+
+            @SuppressLint("Range")
+            String nom = cursor.getString(cursor.getColumnIndex("nombre_empleado")) + " " + cursor.getString(cursor.getColumnIndex("apellido_empleado"));
+            nombresEmp.add(nom);
+
+            String itemSpinner = idEmp + ": " + nom;
+            spinnerList.add(itemSpinner);
         }
-        ArrayAdapter<Integer> adapterE = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdEncargado);
-        adapterE.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerEmpleado.setAdapter(adapterE);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEmpleado.setAdapter(adapter);
     }
 
 }

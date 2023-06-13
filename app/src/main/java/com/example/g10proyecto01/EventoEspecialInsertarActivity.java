@@ -27,6 +27,13 @@ public class EventoEspecialInsertarActivity extends Activity {
         private EditText editFecha;
         private DatePickerDialog datePickerDialog;
         private SimpleDateFormat dateFormatter;
+    List<Integer> listIdEmp = new ArrayList<>();
+    List<String> nombresEmp = new ArrayList<>();
+    List<Integer> idLA = new ArrayList<>();
+    List<String> loc = new ArrayList<>();
+    List <String> spinnerList = new ArrayList<>();
+    List <String> spinnerList2 = new ArrayList<>();
+    List <String> spinnerList3 = new ArrayList<>();
 
 
     List<Integer> listIdLocal = new ArrayList<>();
@@ -74,11 +81,11 @@ public class EventoEspecialInsertarActivity extends Activity {
             String idEve = editIdEventoEspecial.getText().toString();
             String NomEve = editNombre.getText().toString();
             int TipoEve = listIdTipo.get(spinnerTipo.getSelectedItemPosition());
-            int OrganizadorEve = listIdEncargado.get(spinnerEmpleado.getSelectedItemPosition());
+            int OrganizadorEve = listIdEmp.get(spinnerEmpleado.getSelectedItemPosition());
             String FechaEve = editFecha.getText().toString();
             //String HorarioEve = editIdHorario.getText().toString();
             int HorarioEve = listIdHorario.get(spinnerHorario.getSelectedItemPosition());
-            int LocalEve = listIdLocal.get(spinnerLocal.getSelectedItemPosition());
+            int LocalEve = idLA.get(spinnerLocal.getSelectedItemPosition());
             String regInsertados;
 
             if (idEve.isEmpty()||NomEve.isEmpty()||FechaEve.isEmpty()) {
@@ -108,43 +115,66 @@ public class EventoEspecialInsertarActivity extends Activity {
 
         }
 
-        public void SpinnerLoc(){
-            String sql = "SELECT id_localidad FROM Localidad";
-            Cursor cursorL = helper.llenarSpinner(sql);
-            while (cursorL.moveToNext()) {
-                @SuppressLint("Range")
-                int idLoc = cursorL.getInt(cursorL.getColumnIndex("id_localidad"));
-                listIdLocal.add(idLoc);
-            }
-            ArrayAdapter<Integer> adapterL = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdLocal);
-            adapterL.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    public void SpinnerLoc(){
 
-            adapterL.notifyDataSetChanged();
-            spinnerLocal.setAdapter(adapterL);
+        String query = "SELECT l.id_local_admin, lo.nombre_localidad FROM Local_Administrado AS l JOIN Localidad AS lo ON l.id_localidad = lo.id_localidad";
+        Cursor cursor = helper.llenarSpinner(query);
+        while(cursor.moveToNext()){
+            @SuppressLint("Range")
+            int id = cursor.getInt(cursor.getColumnIndex("id_local_admin"));
+            idLA.add(id);
+
+            @SuppressLint("Range")
+            String local = cursor.getString(cursor.getColumnIndex("nombre_localidad"));
+            loc.add(local);
+
+            String itemSpinner = id + ": " + local;
+            spinnerList2.add(itemSpinner);
         }
+        ArrayAdapter<String> adapterLocal = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,spinnerList2);
+        adapterLocal.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLocal.setAdapter(adapterLocal);
+    }
 
-        public void SpinnerEmpleado(){
-            String sql = "SELECT id_empleado FROM Empleado_UES";
-            Cursor cursorE = helper.llenarSpinner(sql);
 
-            while (cursorE.moveToNext()) {
-                @SuppressLint("Range")
-                int idEn = cursorE.getInt(cursorE.getColumnIndex("id_empleado"));
-                listIdEncargado.add(idEn);
-            }
-            ArrayAdapter<Integer> adapterE = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdEncargado);
-            adapterE.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            spinnerEmpleado.setAdapter(adapterE);
+
+    public void SpinnerEmpleado(){
+        String sql = "SELECT id_empleado, nombre_empleado, apellido_empleado FROM Empleado_UES";
+        Cursor cursor = helper.llenarSpinner(sql);
+        while (cursor.moveToNext()) {
+            @SuppressLint("Range")
+            int idEmp = cursor.getInt(cursor.getColumnIndex("id_empleado"));
+            listIdEmp.add(idEmp);
+
+            @SuppressLint("Range")
+            String nom = cursor.getString(cursor.getColumnIndex("nombre_empleado")) + " " + cursor.getString(cursor.getColumnIndex("apellido_empleado"));
+            nombresEmp.add(nom);
+
+            String itemSpinner = idEmp + ": " + nom;
+            spinnerList.add(itemSpinner);
         }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerEmpleado.setAdapter(adapter);
+    }
+
+
     public void SpinnerTipo(){
-        String sql = "SELECT id_tipo_evento FROM Tipo_evento";
+        String sql = "SELECT id_tipo_evento, nombre_tipo_evento FROM Tipo_evento";
         Cursor cursorL = helper.llenarSpinner(sql);
         while (cursorL.moveToNext()) {
             @SuppressLint("Range")
             int idLoc = cursorL.getInt(cursorL.getColumnIndex("id_tipo_evento"));
             listIdTipo.add(idLoc);
+
+            @SuppressLint("Range")
+            String nom = cursorL.getString(cursorL.getColumnIndex("nombre_tipo_evento"));
+            nombresEmp.add(nom);
+
+            String itemSpinner = idLoc + ": " + nom;
+            spinnerList3.add(itemSpinner);
         }
-        ArrayAdapter<Integer> adapterT = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listIdTipo);
+        ArrayAdapter<String> adapterT = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerList3);
         adapterT.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         adapterT.notifyDataSetChanged();
