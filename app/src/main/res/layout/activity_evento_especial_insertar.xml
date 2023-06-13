@@ -84,7 +84,7 @@
                 android:id="@+id/editTextfecha"
                 android:ems="10"
                 android:inputType="none"
-                android:maxLength="8"
+                android:maxLength="10"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent" />
