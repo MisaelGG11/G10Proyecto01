@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 public class EL19004Activity extends ListActivity {
-    String[] activities={"GrupoMenuActivity","GrupoHorarioMenuActivity","HorarioMenuActivity"};
+    String[] activities={"GrupoMenuActivity","GrupoHorarioMenuActivity","GrupoHorarioMenuActivity"};
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
