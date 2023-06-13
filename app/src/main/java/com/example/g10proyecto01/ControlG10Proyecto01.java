@@ -2053,8 +2053,8 @@ public class ControlG10Proyecto01 {
         //ACCESOUSUARIO
 
         final int[] idsAccesoUsuario = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-        final String[] IDusuarios = {"01", "02", "03", "04", "01", "01", "01", "05", "05", "05"};
-        final int[] idOpcionCrud_Access = {1, 2, 3, 4, 2, 3, 4, 4, 2, 3};
+        final String[] IDusuarios = {"01", "02", "03", "04", "01", "01", "01", "05", "02", "03"};
+        final int[] idOpcionCrud_Access = {1, 2, 3, 4, 2, 3, 4, 1, 4, 4};
         for (int i = 0; i < idsAccesoUsuario.length; i++) {
             AccesoUsuario accesoUsuario = new AccesoUsuario(idsAccesoUsuario[i], IDusuarios[i], idOpcionCrud_Access[i]);
             insertar(accesoUsuario);
