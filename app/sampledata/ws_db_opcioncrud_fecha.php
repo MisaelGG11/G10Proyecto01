@@ -3,9 +3,6 @@ $year=$_REQUEST['year'];
 $month=$_REQUEST['month'];
 $day=$_REQUEST['day'];
 
-$idopcion=$_REQUEST['id_opcion'];
-$desopcion=$_REQUEST['des_opcion'];
-
 $servidor="localhost";
 $usuario="root";
 $baseDatos="grupo10";
